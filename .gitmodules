@@ -1,0 +1,3 @@
+[submodule "SoftHSMv2"]
+	path = SoftHSMv2
+	url = https://github.com/opendnssec/SoftHSMv2.git
