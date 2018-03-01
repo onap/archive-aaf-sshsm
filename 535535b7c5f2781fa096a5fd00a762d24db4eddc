@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_058cfa34",
+        "filename": "TPM2-Plugin/Makefile.am",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-01T20:11:38Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 1,
+        "startChar": 18,
+        "endLine": 1,
+        "endChar": 19
+      },
+      "revId": "535535b7c5f2781fa096a5fd00a762d24db4eddc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_258fb62b",
+        "filename": "TPM2-Plugin/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-01T20:11:38Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "535535b7c5f2781fa096a5fd00a762d24db4eddc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
