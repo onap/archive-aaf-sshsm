@@ -46,7 +46,4 @@ SUBDIRS = 			common \
 				test
 
 EXTRA_DIST =			$(srcdir)/*.h \
-				$(srcdir)/pkcs11/*.h \
-				$(srcdir)/win32/*.cc \
-				$(srcdir)/win32/*.cpp \
-				$(srcdir)/win32/*.h
+				$(srcdir)/pkcs11/*.h 
