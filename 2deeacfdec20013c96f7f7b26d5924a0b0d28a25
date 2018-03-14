@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_da8c7fd9",
+        "filename": "build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-03-14T23:58:09Z",
+      "side": 1,
+      "message": "Right now, if make fails, the bash script is not catching that.\n\nCheck output of make and return error if make fails.\n\nmake || exit 1\n\nshould do the trick",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "2deeacfdec20013c96f7f7b26d5924a0b0d28a25",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
