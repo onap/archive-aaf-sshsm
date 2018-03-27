@@ -1,0 +1,9 @@
+
+#Commands to build stub plugin
+gcc -fPIC -c tpmplugin_stub.c
+ld -shared -o plugin.so tpmplugin_stub.o
+
+#Commands to build hwinfra
+gcc -o hwinfrautil hwinfrautil.c -ldl
+
+

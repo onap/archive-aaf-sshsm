@@ -58,6 +58,9 @@ Session::Session(Slot* inSlot, bool inIsReadWrite, CK_VOID_PTR inPApplication, C
 	symmetricKey = NULL;
 	param = NULL;
 	paramLen = 0;
+
+    // Storing Key handle in session
+    hKey = CK_INVALID_HANDLE;
 }
 
 // Constructor
@@ -85,12 +88,28 @@ Session::Session()
 	symmetricKey = NULL;
 	param = NULL;
 	paramLen = 0;
+
+    // Storing Key handle in session
+    hKey = CK_INVALID_HANDLE;
 }
 
 // Destructor
 Session::~Session()
 {
 	resetOp();
+}
+
+void Session::setKeyHandle(CK_OBJECT_HANDLE inHKey)
+{
+    //store the key hanldle for subsequent use
+    hKey = inHKey;
+}
+
+
+CK_OBJECT_HANDLE Session::getKeyHandle()
+{
+    //return the Key handle for subsequent use
+    return hKey;
 }
 
 // Get session info

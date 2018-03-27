@@ -8,6 +8,7 @@ AM_CPPFLAGS =			-I$(srcdir)/common \
 				-I$(srcdir)/pkcs11 \
 				-I$(srcdir)/session_mgr \
 				-I$(srcdir)/slot_mgr \
+                -I$(srcdir)/HwInfra \
 				@CRYPTO_INCLUDES@
 
 lib_LTLIBRARIES =		libsofthsm2.la
@@ -23,7 +24,8 @@ libsofthsm2_la_LIBADD =		common/libsofthsm_common.la \
 				handle_mgr/libsofthsm_handlemgr.la \
 				object_store/libsofthsm_objectstore.la \
 				session_mgr/libsofthsm_sessionmgr.la \
-				slot_mgr/libsofthsm_slotmgr.la
+				slot_mgr/libsofthsm_slotmgr.la \
+                HwInfra/libsofthsm_hwinfra.la
 libsofthsm2_la_LDFLAGS =	-version-info @VERSION_INFO@ \
 				-avoid-version -module
 
