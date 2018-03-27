@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_3df3d074",
+        "filename": "TPM2-Plugin/lib/include/tpm2_plugin_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-03-27T21:41:53Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 130,
+        "startChar": 32,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "c15d5ab80330330ca8931e9718338cd5e94fabf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_dde74cab",
+        "filename": "TPM2-Plugin/lib/include/tpm2_plugin_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-03-27T21:41:53Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 131,
+        "startChar": 33,
+        "endLine": 131,
+        "endChar": 34
+      },
+      "revId": "c15d5ab80330330ca8931e9718338cd5e94fabf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_fda3284d",
+        "filename": "TPM2-Plugin/src/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-03-27T21:41:53Z",
+      "side": 1,
+      "message": "remove trailing white spaces in file",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "c15d5ab80330330ca8931e9718338cd5e94fabf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
