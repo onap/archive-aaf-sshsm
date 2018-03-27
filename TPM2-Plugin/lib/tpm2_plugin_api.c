@@ -29,13 +29,14 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 //**********************************************************************;
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 #include <stdbool.h>
 #include <unistd.h>
 #include "tpm2_plugin_api.h"
 #include "log.h"
 #include "tpm2_tcti_ldr.h"
 
+bool output_enabled = true;
 
 const char *tcti_path="libtcti-device.so";
 
@@ -68,15 +69,18 @@ static void sapi_teardown_full (TSS2_SYS_CONTEXT *sapi_context)
     tcti_teardown (tcti_context);
 }
 
+#define SUPPORTED_ABI_VERSION \
+{ \
+    .tssCreator = 1, \
+    .tssFamily = 2, \
+    .tssLevel = 1, \
+    .tssVersion = 108, \
+}
+
 static TSS2_SYS_CONTEXT* sapi_ctx_init(TSS2_TCTI_CONTEXT *tcti_ctx)
 {
 
-    TSS2_ABI_VERSION abi_version = {
-            .tssCreator = TSSWG_INTEROP,
-            .tssFamily = TSS_SAPI_FIRST_FAMILY,
-            .tssLevel = TSS_SAPI_FIRST_LEVEL,
-            .tssVersion = TSS_SAPI_FIRST_VERSION,
-    };
+    TSS2_ABI_VERSION abi_version = SUPPORTED_ABI_VERSION;
 
     size_t size = Tss2_Sys_GetContextSize(0);
     TSS2_SYS_CONTEXT *sapi_ctx = (TSS2_SYS_CONTEXT*) calloc(1, size);
@@ -95,6 +99,39 @@ static TSS2_SYS_CONTEXT* sapi_ctx_init(TSS2_TCTI_CONTEXT *tcti_ctx)
 
     return sapi_ctx;
 }
+
+
+int tpm2_plugin_init()
+{
+    printf("Init module done for TPM plugin ! \n");
+    return 0;
+}
+
+int tpm2_plugin_uninit()
+{
+    printf("UnInit module done for TPM plugin ! \n");
+    return 0;
+}
+
+int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info)
+{
+
+    printf("Activate module done for TPM plugin ! \n");
+    return 0;
+
+}
+int tpm2_plugin_load_key(
+           SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info,
+           void **keyHandle
+        )
+{
+
+    printf("Load key module done for TPM plugin ! \n");
+    return 0;
+
+}
+
+
 int tpm2_rsa_sign_init(
         unsigned long mechanish,
         void *param,

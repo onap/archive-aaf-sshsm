@@ -35,28 +35,14 @@
 
 #include "tpm2_plugin_api.h"
 
-int __plugin_init(char* configPath)
-{
-// if tpm_plugin, do this
-   printf("Init module done for TPM plug-in mode ! \n");
-// if SGX_plugin, do this
-
-	return 0;
-}
-
-int __plugin_finialize()
-{
-// if tpm_plugin, do this
-	printf("Finalize module done for SW mode ! \n");
-// if SGX_plugin, do this
-
-	return 0;
-}
 
 int __plugin_functions_mapping(plugin_register *plugin_fp)
 {
     printf("%s(): Assigning Function pointers for TPM (dTPM or PTT) mode \n", __func__);
-    plugin_fp->cb_crypto_rsa_decrypt_init     = NULL;
+    plugin_fp->cb_crypto_hw_plugin_init       = &tpm2_plugin_init;
+    plugin_fp->cb_crypto_hw_plugin_uninit     = &tpm2_plugin_uninit;
+    plugin_fp->cb_crypto_hw_plugin_activate   = &tpm2_plugin_activate;
+    plugin_fp->cb_crypto_hw_plugin_load_key   = &tpm2_plugin_uninit;
     plugin_fp->cb_crypto_rsa_decrypt          = NULL;
     plugin_fp->cb_crypto_rsa_sign_init        = &tpm2_rsa_sign_init;
     plugin_fp->cb_crypto_rsa_sign             = &tpm2_rsa_sign;

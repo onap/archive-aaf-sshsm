@@ -25,7 +25,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 //**********************************************************************;
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 
 #ifndef LIB_TPM2_TCTI_LDR_H_
 #define LIB_TPM2_TCTI_LDR_H_
@@ -34,8 +34,8 @@
  * Loads a TCTI from a friendly name, library name, or path.
  * For example
  *  friendly:     path = tabrmd
- *  library name: path = libtcti-socket.so
- *  full path:    path = /home/user/lib/libtcti-custom.so
+ *  library name: path = libtss2-tcti-mssim.so
+ *  full path:    path = /home/user/lib/libtss2-tcti-custom.so
  * @param path
  *  The path/library to load.
  * @param opts
@@ -53,6 +53,16 @@ TSS2_TCTI_CONTEXT *tpm2_tcti_ldr_load(const char *path, const char *opts);
  *  NULL if no TCTI is loaded, else the info structure pointer.
  */
 const TSS2_TCTI_INFO *tpm2_tcti_ldr_getinfo(void);
+
+/**
+ * Given a tcti name, like mssim, tells you if the
+ * library is present using dlopen(3).
+ * @param name
+ *   The friendly name of the tcti.
+ * @return
+ *  True if present, false otherwise.
+ */
+bool tpm2_tcti_ldr_is_tcti_present(const char *name);
 
 /**
  * Unloads the tcti loaded via tpm2_tcti_ldr_load();

@@ -35,7 +35,7 @@
 #include <ctype.h>
 #include <getopt.h>
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 
 #include "plugin_register.h"
 
@@ -89,6 +89,14 @@ TSS2_SYS_CONTEXT *InitSysContext (UINT16 maxCommandSize,
 void TeardownSysContext( TSS2_SYS_CONTEXT **sysContext );
 
 TSS2_RC TeardownTctiResMgrContext( TSS2_TCTI_CONTEXT *tctiContext );
+
+int tpm2_plugin_init();
+int tpm2_plugin_uninit();
+int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info);
+int tpm2_plugin_load_key(
+           SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info,
+           void **keyHandle
+        );
 
 int tpm2_rsa_create_object(
                         unsigned long appHandle,
