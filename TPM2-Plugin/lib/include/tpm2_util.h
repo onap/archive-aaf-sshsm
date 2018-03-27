@@ -35,7 +35,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 
 #include "tpm2_error.h"
 
@@ -118,20 +118,10 @@
         __result;                                          \
     })
 
-/**
- * prints output to stdout respecting the quiet option.
- * Ie when quiet, don't print.
- * @param fmt
- *  The format specifier, ala printf.
- * @param ...
- *  The varargs, just like printf.
- */
-#define tpm2_tool_output(fmt, ...)                   \
-    do {                                        \
-        if (output_enabled) {                   \
-            printf(fmt, ##__VA_ARGS__);         \
-        }                                       \
-    } while (0)
+typedef struct {
+    UINT16 size;
+    BYTE buffer[0];
+} TPM2B;
 
 int tpm2_util_hex_to_byte_structure(const char *inStr, UINT16 *byteLenth, BYTE *byteBuffer);
 
@@ -176,28 +166,23 @@ bool tpm2_util_string_to_uint16(const char *str, uint16_t *value);
  *  The data to print.
  * @param len
  *  The length of the data.
- * @param plain
- *  true for a plain hex string false for an xxd compatable
- *  dump.
  */
-void tpm2_util_hexdump(const BYTE *data, size_t len, bool plain);
+void tpm2_util_hexdump(const BYTE *data, size_t len);
 
 /**
- * Prints an xxd compatible hexdump to stdout if output is enabled,
+ * Prints a file as a hex string to stdout if quiet mode
+ * is not enabled.
  * ie no -Q option.
  *
  * @param fd
  *  A readable open file.
  * @param len
  *  The length of the data to read and print.
- * @param plain
- *  true for a plain hex string false for an xxd compatable
- *  dump.
  * @return
  *  true if len bytes were successfully read and printed,
  *  false otherwise
  */
-bool tpm2_util_hexdump_file(FILE *fd, size_t len, bool plain);
+bool tpm2_util_hexdump_file(FILE *fd, size_t len);
 
 /**
  * Prints a TPM2B as a hex dump.
@@ -205,7 +190,7 @@ bool tpm2_util_hexdump_file(FILE *fd, size_t len, bool plain);
  */
 static inline void tpm2_util_print_tpm2b(TPM2B *buffer) {
 
-    return tpm2_util_hexdump(buffer->buffer, buffer->size, true);
+    return tpm2_util_hexdump(buffer->buffer, buffer->size);
 }
 
 /**
@@ -214,18 +199,6 @@ static inline void tpm2_util_print_tpm2b(TPM2B *buffer) {
  *  A readable open file.
  */
 bool tpm2_util_print_tpm2b_file(FILE *fd);
-
-/**
- * Copies a tpm2b from dest to src and clears dest if src is NULL.
- * If src is NULL, it is a NOP.
- * @param dest
- *  The destination TPM2B
- * @param src
- *  The source TPM2B
- * @return
- *  The number of bytes copied.
- */
-UINT16 tpm2_util_copy_tpm2b(TPM2B *dest, TPM2B *src);
 
 /**
  * Checks if the host is big endian

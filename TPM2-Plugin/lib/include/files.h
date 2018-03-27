@@ -34,7 +34,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 
 /**
  * Reads a series of bytes from a file as a byte array. This is similar to files_read_bytes(),
@@ -214,6 +214,16 @@ bool files_load_ticket(const char *path, TPMT_TK_VERIFIED *ticket);
 bool files_load_sensitive(const char *path, TPM2B_SENSITIVE *sensitive);
 
 /**
+ * Serializes a TPM2B_SENSITIVE to the file path provided.
+ * @param sensitive
+ *  The TPM2B_SENSITIVE to save to disk.
+ * @param path
+ *  The path to save to.
+ * @return
+ *  true on success, false on error.
+ */
+bool files_save_sensitive(TPM2B_SENSITIVE *sensitive, const char *path);
+/**
  * Serializes a TPMT_TK_HASHCHECK to the file path provided.
  * @param validation
  *  The TPMT_TK_HASHCHECK to save to disk.
@@ -234,6 +244,28 @@ bool files_save_validation(TPMT_TK_HASHCHECK *validation, const char *path);
  *  true on success, false on error.
  */
 bool files_load_validation(const char *path, TPMT_TK_HASHCHECK *validation);
+
+/**
+ * Serializes a TPM2B_PRIVATE to the file path provided.
+ * @param private
+ *  The TPM2B_PRIVATE to save to disk.
+ * @param path
+ *  The path to save to.
+ * @return
+ *  true on success, false on error.
+ */
+bool files_save_private(TPM2B_PRIVATE *private, const char *path);
+
+/**
+ * Loads a TPM2B_PRIVATE from disk.
+ * @param private
+ *  The path to load from.
+ * @param validation
+ *  The TPM2B_PRIVATE to load.
+ * @return
+ *  true on success, false on error.
+ */
+bool files_load_private(const char *path, TPM2B_PRIVATE *private);
 
 /**
  * Checks a file for existence.

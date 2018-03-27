@@ -36,17 +36,51 @@
 extern "C" {
 #endif
 
+#define MAX_ID_LENGTH (32)
+
+typedef struct buffer_info_s{
+    char id[MAX_ID_LENGTH+1];
+    int length_of_buffer;
+    unsigned char *buffer;
+}buffer_info_t;
+
+
+typedef struct sshsm_hw_plugin_activate_in_info_s {
+    int num_buffers;
+    buffer_info_t *buffer_info;
+}SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t;
+
+typedef struct sshsm_hw_plugin_load_key_in_info_s {
+    int num_buffers;
+    buffer_info_t buffer_info[];
+}SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t;
+
+
+//typedef int (*sshsm_hw_plugin_load_key)(SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info, void **keyHandle);
+
+//typedef int (*sshsm_hw_plugin_activate)(SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info);
+
 /*
  * Callback function definitions
  */
 
+typedef int (*fp_crypto_hw_plugin_init) ( );
+typedef int (*fp_crypto_hw_plugin_uninit) ( );
+typedef int (*fp_crypto_hw_plugin_activate)(
+           SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info
+        );
+
+typedef int (*fp_crypto_hw_plugin_load_key)(
+           SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info,
+           void **keyHandle
+        );
 typedef int (*fp_crypto_rsa_decrypt_init) (
     /* IN */
     unsigned long mechanism,    /* PKCS#11 Mechanism */
     void *param,                /* PKCS#11 Paramter */
     unsigned long param_len,    /* PKCS#11 Parameter len */
     /* OUT */
-    void *cb                   /* Address of pointer to store context block */ 
+    void *cb                   /* Address of pointer to store context block */
     );
 
 typedef int (*fp_crypto_rsa_decrypt) (
@@ -167,10 +201,13 @@ typedef int (*fp_crypto_ecdsa_delete_object) (
     );
 
 
-typedef struct 
+typedef struct
 {
-    fp_crypto_rsa_decrypt_init     cb_crypto_rsa_decrypt_init;
-    fp_crypto_rsa_decrypt          cb_crypto_rsa_decrypt;	
+    fp_crypto_hw_plugin_init       cb_crypto_hw_plugin_init;
+    fp_crypto_hw_plugin_uninit     cb_crypto_hw_plugin_uninit;
+    fp_crypto_hw_plugin_activate   cb_crypto_hw_plugin_activate;
+    fp_crypto_hw_plugin_load_key   cb_crypto_hw_plugin_load_key;
+    fp_crypto_rsa_decrypt          cb_crypto_rsa_decrypt;
     fp_crypto_rsa_sign_init	   cb_crypto_rsa_sign_init;
     fp_crypto_rsa_sign_update 	   cb_crypto_rsa_sign_update;
     fp_crypto_rsa_sign_final	   cb_crypto_rsa_sign_final;

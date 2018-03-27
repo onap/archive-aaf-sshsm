@@ -32,9 +32,10 @@
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
 
-#include <sapi/tpm20.h>
-#include <sapi/tss2_mu.h>
+#include <tss2/tss2_sys.h>
+#include <tss2/tss2_mu.h>
 
 #include "files.h"
 #include "log.h"
@@ -634,3 +635,6 @@ LOAD_TYPE(TPM2B_SENSITIVE, sensitive)
 
 SAVE_TYPE(TPMT_TK_HASHCHECK, validation)
 LOAD_TYPE(TPMT_TK_HASHCHECK, validation)
+
+SAVE_TYPE(TPM2B_PRIVATE, private)
+LOAD_TYPE(TPM2B_PRIVATE, private)
