@@ -124,6 +124,9 @@ public:
 	void setSymmetricKey(SymmetricKey* inSymmetricKey);
 	SymmetricKey* getSymmetricKey();
 
+	void setKeyHandle(CK_OBJECT_HANDLE inHKey);
+	CK_OBJECT_HANDLE getKeyHandle();
+
 private:
 	// Constructor
 	Session();
@@ -170,6 +173,9 @@ private:
 
 	// Symmetric Crypto
 	SymmetricKey* symmetricKey;
+
+    // Storing Key handle in session
+    CK_OBJECT_HANDLE hKey;
 };
 
 #endif // !_SOFTHSM_V2_SESSION_H
