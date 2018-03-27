@@ -67,6 +67,8 @@
 #include "P11Objects.h"
 #include "odd.h"
 
+#include "HwInfra.h"
+
 #if defined(WITH_OPENSSL)
 #include "OSSLCryptoFactory.h"
 #else
@@ -100,6 +102,39 @@ std::auto_ptr<BotanCryptoFactory> BotanCryptoFactory::instance(NULL);
 std::auto_ptr<SoftHSM> SoftHSM::instance(NULL);
 
 #endif
+
+static CK_RV Extract_key_handle(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObject, void *hwKeyHandle)
+{
+  CK_RV rv=CK_TRUE;
+
+  // get value of the hw key handle
+  CK_ATTRIBUTE valAttrib[] = {
+    {CKA_PRIME_1,  NULL_PTR,  0}
+  };
+
+  // Get the length of the attribute first
+  rv = C_GetAttributeValue(hSession, hObject, valAttrib, sizeof(valAttrib)/sizeof(CK_ATTRIBUTE));
+  if(rv != CKR_OK)
+  {
+    printf("Getting length of keyHandle with C_GetAttributeValue() API failed ! \n");
+    return rv;
+  }
+
+  valAttrib[0].pValue = (CK_VOID_PTR) malloc(valAttrib[0].ulValueLen);
+
+  rv = C_GetAttributeValue(hSession, hObject, valAttrib, sizeof(valAttrib)/sizeof(CK_ATTRIBUTE));
+
+  // Convert the keyHandle from string to CK_ULONG
+  sscanf((char*) valAttrib[0].pValue, "%lx", (CK_ULONG *) hwKeyHandle);
+  printf("Extract_key_handle:: hwKeyHandle: %lu \n", (CK_ULONG) hwKeyHandle);
+
+  if(!(valAttrib[0].pValue))
+  {
+    free(valAttrib[0].pValue);
+  }
+
+  return rv;
+}
 
 static CK_RV newP11Object(CK_OBJECT_CLASS objClass, CK_KEY_TYPE keyType, CK_CERTIFICATE_TYPE certType, P11Object **p11object)
 {
@@ -342,6 +377,7 @@ SoftHSM::SoftHSM()
 	slotManager = NULL;
 	sessionManager = NULL;
 	handleManager = NULL;
+	isHWavailable = false;
 }
 
 // Destructor
@@ -517,6 +553,17 @@ CK_RV SoftHSM::C_Initialize(CK_VOID_PTR pInitArgs)
 
 	// Set the state to initialised
 	isInitialised = true;
+
+    if(prepareHWPlugin())
+    {
+       printf("HW plugin NOT available to use ! \n");
+       isHWavailable = false;
+    }
+    else
+    {
+       printf("HW plugin available and initialized ! \n");
+       isHWavailable = true;
+   } 
 
 	return CKR_OK;
 }
@@ -4168,20 +4215,33 @@ CK_RV SoftHSM::AsymSignInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechan
 #endif
         }
 
-	// Initialize signing
-	if (bAllowMultiPartOp && !asymCrypto->signInit(privateKey,mechanism,param,paramLen))
-	{
-		asymCrypto->recyclePrivateKey(privateKey);
-		CryptoFactory::i()->recycleAsymmetricAlgorithm(asymCrypto);
-		return CKR_MECHANISM_INVALID;
-	}
+    // Initialize signing
+    if(isHWavailable)
+    {
+        // Extract HW key handle
+        CK_ULONG hwKeyHandle = 0;
+        if(!Extract_key_handle (hSession, hKey, &hwKeyHandle))
+        {
+            LOG("ERROR in extracting key handle \n");
+            session->resetOp();
+            return CKR_GENERAL_ERROR;
+        }
+        LOG("Extracted key handle value: %lu \n", hwKeyHandle);
 
-	// Check if re-authentication is required
-	if (key->getBooleanValue(CKA_ALWAYS_AUTHENTICATE, false))
-	{
-		session->setReAuthentication(true);
-	}
-
+        if(! HwInfraSignInit(&hwKeyHandle, mechanism, param, paramLen))
+        {
+            return CKR_MECHANISM_INVALID;
+        }
+    }
+    else
+    {
+        if (bAllowMultiPartOp && !asymCrypto->signInit(privateKey,mechanism,param,paramLen))
+        {
+            asymCrypto->recyclePrivateKey(privateKey);
+            CryptoFactory::i()->recycleAsymmetricAlgorithm(asymCrypto);
+            return CKR_MECHANISM_INVALID;
+        }
+    }
 	session->setOpType(SESSION_OP_SIGN);
 	session->setAsymmetricCryptoOp(asymCrypto);
 	session->setMechanism(mechanism);
@@ -4189,6 +4249,7 @@ CK_RV SoftHSM::AsymSignInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechan
 	session->setAllowMultiPartOp(bAllowMultiPartOp);
 	session->setAllowSinglePartOp(true);
 	session->setPrivateKey(privateKey);
+    session->setKeyHandle(hKey);
 
 	return CKR_OK;
 }
@@ -4336,6 +4397,79 @@ static CK_RV AsymSign(Session* session, CK_BYTE_PTR pData, CK_ULONG ulDataLen, C
 	return CKR_OK;
 }
 
+// AsymmetricAlgorithm version of C_Sign
+static CK_RV AsymSignHW(CK_SESSION_HANDLE hSession, Session* session, CK_BYTE_PTR pData, CK_ULONG ulDataLen, CK_BYTE_PTR pSignature, CK_ULONG_PTR pulSignatureLen)
+{
+	AsymmetricAlgorithm* asymCrypto = session->getAsymmetricCryptoOp();
+	AsymMech::Type mechanism = session->getMechanism();
+	PrivateKey* privateKey = session->getPrivateKey();
+    CK_ULONG hwKeyHandle = 0;
+	if (asymCrypto == NULL || !session->getAllowSinglePartOp() || privateKey == NULL)
+	{
+		session->resetOp();
+		return CKR_OPERATION_NOT_INITIALIZED;
+	}
+
+	// Size of the signature
+	CK_ULONG size = privateKey->getOutputLength();
+	if (pSignature == NULL_PTR)
+	{
+		*pulSignatureLen = size;
+		return CKR_OK;
+	}
+
+	// Check buffer sizeq
+	if (*pulSignatureLen < size)
+	{
+		*pulSignatureLen = size;
+		return CKR_BUFFER_TOO_SMALL;
+	}
+
+	// Get the data
+	ByteString data;
+
+	// We must allow input length <= k and therfore need to prepend the data with zeroes.
+	if (mechanism == AsymMech::RSA) {
+		data.wipe(size-ulDataLen);
+	}
+
+	data += ByteString(pData, ulDataLen);
+	ByteString signature;
+
+	// Extract HW key handle
+    CK_OBJECT_HANDLE hKey = session->getKeyHandle();
+    if(!Extract_key_handle (hSession, hKey, &hwKeyHandle))
+    {
+        LOG("ERROR in extracting key handle \n");
+		session->resetOp();
+		return CKR_GENERAL_ERROR;
+    }
+    LOG("Extracted key handle value: %lu \n", hwKeyHandle);
+
+	// Sign the data
+    if(!HwInfraSign((void *)&hwKeyHandle, mechanism,
+                 pData, ulDataLen,
+                 pSignature, (int *) pulSignatureLen))
+    {
+		session->resetOp();
+		return CKR_GENERAL_ERROR;
+    }
+
+	// Check size
+	if (*pulSignatureLen != size)
+	{
+		ERROR_MSG("The size of the signature differs from the size of the mechanism");
+		session->resetOp();
+		return CKR_GENERAL_ERROR;
+	}
+
+
+	session->resetOp();
+	return CKR_OK;
+}
+
+
+
 // Sign the data in a single pass operation
 CK_RV SoftHSM::C_Sign(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG ulDataLen, CK_BYTE_PTR pSignature, CK_ULONG_PTR pulSignatureLen)
 {
@@ -4356,8 +4490,18 @@ CK_RV SoftHSM::C_Sign(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG ul
 		return MacSign(session, pData, ulDataLen,
 			       pSignature, pulSignatureLen);
 	else
-		return AsymSign(session, pData, ulDataLen,
-				pSignature, pulSignatureLen);
+    {
+        if(isHWavailable)
+        {
+		    return AsymSignHW(hSession, session, pData, ulDataLen,
+			    	pSignature, pulSignatureLen);
+        }
+        else
+        {
+		    return AsymSign(session, pData, ulDataLen,
+			    	pSignature, pulSignatureLen);
+        }
+    }
 }
 
 // MacAlgorithm version of C_SignUpdate

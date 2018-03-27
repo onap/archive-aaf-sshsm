@@ -211,6 +211,7 @@ AC_CONFIG_FILES([
 	src/lib/slot_mgr/test/Makefile
 	src/lib/handle_mgr/Makefile
 	src/lib/handle_mgr/test/Makefile
+    src/lib/HwInfra/Makefile
 	src/lib/test/Makefile
 	src/lib/test/softhsm2.conf
 	src/lib/test/softhsm2-alt.conf
