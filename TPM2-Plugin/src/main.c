@@ -31,6 +31,7 @@
 
 #include <stdio.h>
 #include "tpm2_plugin_api.h"
+#include "plugin_register.h"
 
 void main(void)
 {
@@ -38,11 +39,36 @@ void main(void)
     void *param = NULL;
     size_t len = 100;
     void *ctx = NULL;
+    
+    unsigned char *msg;
+    int msg_len;
+    unsigned char *sig;
+    int *sig_len;
 
-    printf("test app calling tpm2_rsa_sign_init in tpm2_plugin \n");
+    SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info;
+    SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info;
+    void **keyHandle;
 
-    tpm2_rsa_sign_init(mechanish, param, len, ctx);
+    printf("---------------------------------------------\n");
+    printf("Test app calling tpm2_plugin APIs\n");
+    
+    printf("---------------------------------------------\n");
+    tpm2_plugin_init();
+    
+    printf("---------------------------------------------\n");
+    tpm2_plugin_uninit();
+    
+    printf("---------------------------------------------\n");
+    tpm2_plugin_activate(activate_in_info);
+    
+    printf("---------------------------------------------\n");
+    tpm2_plugin_load_key(loadkey_in_info, keyHandle );
+    
+    printf("---------------------------------------------\n");
+    tpm2_plugin_rsa_sign_init(mechanish, param, len, ctx);
+    
+    printf("---------------------------------------------\n");
+    tpm2_plugin_rsa_sign(ctx, msg, msg_len, sig, sig_len);
 
-    printf("tpm2_rsa_sign_init was returned from tpm2_plugin, test app will exit...  \n");
 
 }

@@ -30,7 +30,7 @@
 #include <stdio.h>
 #include <dlfcn.h>
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 
 #include "log.h"
 #include "tpm2_tcti_ldr.h"
@@ -52,6 +52,19 @@ const TSS2_TCTI_INFO *tpm2_tcti_ldr_getinfo(void) {
     return info;
 }
 
+bool tpm2_tcti_ldr_is_tcti_present(const char *name) {
+
+    char path[PATH_MAX];
+    snprintf(path, sizeof(path), "libtss2-tcti-%s.so", name);
+
+    void *handle = dlopen (path, RTLD_LAZY);
+    if (handle) {
+        dlclose(handle);
+    }
+
+    return handle != NULL;
+}
+
 TSS2_TCTI_CONTEXT *tpm2_tcti_ldr_load(const char *path, const char *opts) {
 
     TSS2_TCTI_CONTEXT *tcti_ctx = NULL;
@@ -63,13 +76,13 @@ TSS2_TCTI_CONTEXT *tpm2_tcti_ldr_load(const char *path, const char *opts) {
 
     /*
      * Try what they gave us, if it doesn't load up, try
-     * libtcti-xxx.so replacing xxx with what they gave us.
+     * libtss2-tcti-xxx.so replacing xxx with what they gave us.
      */
     handle = dlopen (path, RTLD_LAZY);
     if (!handle) {
 
         char buf[PATH_MAX];
-        size_t size = snprintf(buf, sizeof(buf), "libtcti-%s.so", path);
+        size_t size = snprintf(buf, sizeof(buf), "libtss2-tcti-%s.so", path);
         if (size >= sizeof(buf)) {
             LOG_ERR("Truncated friendly name conversion, got: \"%s\", made: \"%s\"",
                     path, buf);
