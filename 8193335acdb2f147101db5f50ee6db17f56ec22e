@@ -114,6 +114,30 @@
       "revId": "8193335acdb2f147101db5f50ee6db17f56ec22e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_a73eef27",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-03-27T18:18:52Z",
+      "side": 1,
+      "message": "yes, thos codes will be implemented soon, hopefully in separate patches",
+      "parentUuid": "5a93c517_07b003f3",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 13
+      },
+      "revId": "8193335acdb2f147101db5f50ee6db17f56ec22e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
