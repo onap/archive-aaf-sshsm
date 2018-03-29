@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_b7f60a5c",
+        "filename": "SoftHSMv2/src/lib/HwInfra/README",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-03-29T14:19:59Z",
+      "side": 1,
+      "message": "Did not see this file in the patch, will it be in separate patch?",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "8b8b2248e8d5439b424a2cdb53a4194981b9a90e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_579546e2",
+        "filename": "SoftHSMv2/src/lib/HwInfra/README",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-03-29T14:19:59Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "8b8b2248e8d5439b424a2cdb53a4194981b9a90e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
