@@ -1,0 +1,17 @@
+
+After the installation of steps as given in the INSTALL document,
+follow the steps below.
+
+After you have installed the tools in "Duplicate" and "Import" directory
+
+1. Run the Init_and_create_tpm_primary.sh to initialize the connection to TPM
+and load the primary key into the TPM
+
+2. Run the Duplicate.sh which takes RSA private key in pem format as input and
+generates TPM structured buffers
+
+3. Run the ImportTpmKey.sh which takes the generated buffers from the "Duplicate tool"
+and generates the private and public portion of the tpm loaded key
+
+4. Run the Sign_Verify_test.sh which loads the key and does the sign and verify
+operation
