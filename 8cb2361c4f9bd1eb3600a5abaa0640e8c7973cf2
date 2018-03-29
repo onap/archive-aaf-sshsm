@@ -22,6 +22,30 @@
       "revId": "8cb2361c4f9bd1eb3600a5abaa0640e8c7973cf2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f8831fa7",
+        "filename": "SoftHSMv2/src/lib/HwInfra/README",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-29T20:46:54Z",
+      "side": 1,
+      "message": "Hi ning, this is the README required to use the stub function for the next patch. It would be great to keep it as of now. I will update this file with more information in the next patch.",
+      "parentUuid": "5a93c517_58eed38c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "8cb2361c4f9bd1eb3600a5abaa0640e8c7973cf2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
