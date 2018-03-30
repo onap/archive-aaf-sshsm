@@ -1,0 +1,53 @@
+1.  Download TPM emulator - ibmtpm974.tar.gz
+    a.  cd src/
+    b.  make
+    c.  Run tpm_server binary -  ./tpm_server –rm
+
+2.  Download TSS version 1.2.0
+    a.  Run following commands
+        i.  ./bootstrap
+        ii. ./configure
+        iii.    If you face any error for pkg-config,
+            1.  export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+        iv. make && make install
+
+3.  Download tpm2-abrmd version 1.1.1
+    a.  Run following commands
+        i.  sudo useradd --system --user-group tss
+        ii. cd tpm2-abrmd
+        iii. ./bootstrap
+        iv. ./configure
+        v.  If you face any error for pkg-config,
+            1.  export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+        vi. make && make install
+        vii.    sudo udevadm control --reload-rules && sudo udevadm trigger
+        viii.   sudo pkill -HUP dbus-daemon
+        ix. systemctl daemon-reload
+    b.  Run tpm2-abrmd as follows - ./tpm2-abrmd -t socket
+    c.  Check in tpm_server whether following debug prints are resulted in console, after resource manager startup
+            Client accepted
+            Client accepted
+
+4.  Download tpm2-tools version 2.1.0
+    a.  Run the following commands
+    i.  ./bootstrap
+    ii. ./configure
+    iii.    make && make install
+
+5.  Now configure Initialize TPM, configure with Primary key and then save it in TPM’s NV ram
+    a.  Initialize TPM
+        i.  tpm2_startup -clear -T tabrmd –V
+    b.  Take ownership
+        i.  tpm2_takeownership -o new -e new -l new -T tabrmd –V
+    c.  Create Primary Key
+        i.  tpm2_createprimary -P new -A o -g 0x000B -G 0x0001 -T tabrmd -V -C PrimaryKeyBlob
+    d.  Save primary Key in NV ram
+        i.  tpm2_evictcontrol -A o -c ./PrimaryKeyBlob -S 0x81000011 -T tabrmd -V -P new
+    e.  Check Primary Keys public portion
+        i.  tpm2_readpublic -H 0x81000011 --opu out_primary_public -T tabrmd –V
+    f.  If all the above commands are successful then TPM emulator, TPM resource manager and TPM tools are working fine
+
+6.  Now compile the TPM duplication tool with "make" command and run it as per instructions. use "./ossl_tpm_util --help" for usage.
+
+7.  Note: If you restart tpm_server, then you have to restart TPM resource manager too. And the repeat from step 5.
+
