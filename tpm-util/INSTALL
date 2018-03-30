@@ -1,4 +1,5 @@
-1.  Download TPM emulator - ibmtpm974.tar.gz
+1.  Download TPM emulator - ibmtpm974.tar.gz 
+(Note: Optional. No need to execute this step if the system has real TPM device on it)
     a.  cd src/
     b.  make
     c.  Run tpm_server binary -  ./tpm_server –rm
@@ -35,6 +36,7 @@
     iii.    make && make install
 
 5.  Now configure Initialize TPM, configure with Primary key and then save it in TPM’s NV ram
+(Equivalent of script - initandverify/Init_and_create_tpm_primary.sh, you can run that script)
     a.  Initialize TPM
         i.  tpm2_startup -clear -T tabrmd –V
     b.  Take ownership
@@ -47,7 +49,9 @@
         i.  tpm2_readpublic -H 0x81000011 --opu out_primary_public -T tabrmd –V
     f.  If all the above commands are successful then TPM emulator, TPM resource manager and TPM tools are working fine
 
-6.  Now compile the TPM duplication tool with "make" command and run it as per instructions. use "./ossl_tpm_util --help" for usage.
+6.  Now compile the TPM duplication and import tools with "make" command (after creation of Makefile) and run it as per instructions.
+    use "./ossl_tpm_duplicate --help" for usage.
+    use "./ossl_tpm_import --help" for usage.
 
 7.  Note: If you restart tpm_server, then you have to restart TPM resource manager too. And the repeat from step 5.
 
