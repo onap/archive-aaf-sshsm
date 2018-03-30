@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_ec7b60bc",
+        "filename": "SoftHSMv2/src/lib/session_mgr/Session.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-30T02:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_4c6db403",
+      "revId": "d159048b927b6fe5362803262f5c6c6a0c53974f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_ac66b827",
         "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2018-03-30T02:13:25Z",
       "side": 1,
       "message": "Use tab likewise code around.",
+      "revId": "d159048b927b6fe5362803262f5c6c6a0c53974f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_8c4adc81",
+        "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-30T02:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_ac66b827",
       "revId": "d159048b927b6fe5362803262f5c6c6a0c53974f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
