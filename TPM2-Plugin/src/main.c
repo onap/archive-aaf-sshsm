@@ -31,22 +31,24 @@
 
 #include <stdio.h>
 #include "tpm2_plugin_api.h"
-#include "plugin_register.h"
+//#include "plugin_register.h"
+//#include "hwpluginif.h"
 
 void main(void)
 {
-    unsigned long mechanish =1;
+    unsigned long mechanism =1;
     void *param = NULL;
     size_t len = 100;
-    void *ctx = NULL;
+    void *keyHandle_sign = NULL;
     
     unsigned char *msg;
     int msg_len;
     unsigned char *sig;
     int *sig_len;
 
-    SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info;
-    SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info;
+    SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info;
+    activate_in_info = malloc(sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
+    SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info;
     void **keyHandle;
 
     printf("---------------------------------------------\n");
@@ -65,9 +67,9 @@ void main(void)
     tpm2_plugin_load_key(loadkey_in_info, keyHandle );
 
     printf("---------------------------------------------\n");
-    tpm2_plugin_rsa_sign_init(mechanish, param, len, ctx);
+    tpm2_plugin_rsa_sign_init(keyHandle_sign, mechanism, param, len);
 
     printf("---------------------------------------------\n");
-    tpm2_plugin_rsa_sign(ctx, msg, msg_len, sig, sig_len);
+    tpm2_plugin_rsa_sign(keyHandle_sign, mechanism, msg, msg_len, sig, sig_len);
 
 }

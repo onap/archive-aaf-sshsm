@@ -118,12 +118,23 @@ int tpm2_plugin_uninit()
     return 0;
 }
 
-int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info)
+TPM2_HANDLE srk_handle;
+int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info)
 {
-
+    /*
+    */
+    char *handle;
+    printf("number of buffers %d ! \n", activate_in_info->num_buffers);
+    if (activate_in_info->num_buffers!=1){
+        printf("activate failed ! \n");
+        return 1;
+    }
+    printf("number of buffers %d ! \n", activate_in_info->num_buffers);
+    handle = malloc(activate_in_info->buffer_info[0]->length_of_buffer);
+    memcpy(handle, activate_in_info->buffer_info[0]->buffer, activate_in_info->buffer_info[0]->length_of_buffer);
+    srk_handle = strtol(handle, NULL, 16);
     printf("Activate API done for TPM plugin ! \n");
     return 0;
-
 }
 
 TPM2_HANDLE handle_load;
@@ -226,7 +237,7 @@ int tpm2_tool_load_key(TSS2_SYS_CONTEXT *sapi_context)
 }
 
 int tpm2_plugin_load_key(
-           SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info,
+           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
            void **keyHandle
         )
 {
@@ -296,10 +307,10 @@ tpm_sign_ctx ctx_sign = {
 
 
 int tpm2_plugin_rsa_sign_init(
+        void *keyHandle,
         unsigned long mechanish,
         void *param,
-        size_t len,
-        void *ctx)
+        int len)
 {
     printf("rsa_sign_init API done for tpm2_plugin... \n");
     return 0;
@@ -423,7 +434,8 @@ int tpm2_tool_sign(TSS2_SYS_CONTEXT *sapi_context)
 
 
 int tpm2_plugin_rsa_sign(
-        void  *ctx,
+        void  *keyHandle,
+        unsigned long mechanism,
         unsigned char *msg,
         int msg_len,
         unsigned char *sig,
