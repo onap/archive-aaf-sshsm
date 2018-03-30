@@ -37,7 +37,7 @@
 
 #include <tss2/tss2_sys.h>
 
-#include "plugin_register.h"
+#include "hwpluginif.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -92,9 +92,9 @@ TSS2_RC TeardownTctiResMgrContext( TSS2_TCTI_CONTEXT *tctiContext );
 
 int tpm2_plugin_init();
 int tpm2_plugin_uninit();
-int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_IN_INFO_t *activate_in_info);
+int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info);
 int tpm2_plugin_load_key(
-           SSHSM_HW_PLUGIN_LOAD_KEY_IN_INFO_t *loadkey_in_info,
+           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
            void **keyHandle
         );
 
@@ -113,13 +113,14 @@ int tpm2_rsa_delete_object(
                         void *cb_object);
 
 int tpm2_plugin_rsa_sign_init(
+        void *keyHandle,
         unsigned long mechanish,
         void *param,
-        size_t len,
-        void *ctx);
+        int len);
 
 int tpm2_plugin_rsa_sign(
-        void *ctx,
+        void *keyHandle,
+        unsigned long mechanism,
         unsigned char *msg,
         int msg_len,
         unsigned char *sig,

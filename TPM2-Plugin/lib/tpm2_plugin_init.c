@@ -31,33 +31,18 @@
 
 #include <stdio.h>
 
-#include "plugin_register.h"
-
 #include "tpm2_plugin_api.h"
 
-
-int __plugin_functions_mapping(plugin_register *plugin_fp)
+int sshsm_hw_plugin_get_plugin_functions(SSHSM_HW_FUNCTIONS_t *funcs)
 {
     printf("%s(): Assigning Function pointers for TPM (dTPM or PTT) mode \n", __func__);
-    plugin_fp->cb_crypto_hw_plugin_init       = &tpm2_plugin_init;
-    plugin_fp->cb_crypto_hw_plugin_uninit     = &tpm2_plugin_uninit;
-    plugin_fp->cb_crypto_hw_plugin_activate   = &tpm2_plugin_activate;
-    plugin_fp->cb_crypto_hw_plugin_load_key   = &tpm2_plugin_load_key;
-    plugin_fp->cb_crypto_rsa_decrypt          = NULL;
-    plugin_fp->cb_crypto_rsa_sign_init        = &tpm2_plugin_rsa_sign_init;
-    plugin_fp->cb_crypto_rsa_sign             = &tpm2_plugin_rsa_sign;
-    plugin_fp->cb_crypto_rsa_sign_update      = NULL;
-    plugin_fp->cb_crypto_rsa_sign_final       = NULL;
-    plugin_fp->cb_crypto_ecdsa_sign           = NULL;
-    plugin_fp->cb_crypto_ecdsa_verify         = NULL;
-    plugin_fp->cb_crypto_del_apphandle        = NULL;
-    plugin_fp->cb_crypto_swk_getParentKey     = NULL;
-    plugin_fp->cb_crypto_swk_import   	      = &tpm2_import_object;
-    plugin_fp->cb_crypto_rsa_create_object    = &tpm2_rsa_create_object;
-    plugin_fp->cb_crypto_rsa_delete_object    = &tpm2_rsa_delete_object;
-    plugin_fp->cb_crypto_ecdsa_create_object  = NULL;
-    plugin_fp->cb_crypto_ecdsa_delete_object  = NULL;
+    funcs->xxx_init           = &tpm2_plugin_init;
+    funcs->xxx_uninit         = &tpm2_plugin_uninit;
+    funcs->xxx_activate       = &tpm2_plugin_activate;
+    funcs->xxx_load_key       = &tpm2_plugin_load_key;
+    funcs->xxx_unload_key     = NULL;
+    funcs->xxx_rsa_sign_init  = &tpm2_plugin_rsa_sign_init;
+    funcs->xxx_rsa_sign       = &tpm2_plugin_rsa_sign;
 
     return 0;
 }
-
