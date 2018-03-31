@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_80829d50",
+        "filename": "tpm-util/duplicate/crypto_aux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-31T02:30:38Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_a085595a",
+        "filename": "tpm-util/duplicate/include/tpm_duplication_aux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-31T02:30:38Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_407c9572",
+        "filename": "tpm-util/duplicate/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-31T02:30:38Z",
+      "side": 1,
+      "message": "whitespace 2",
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_607f5167",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-31T02:30:38Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_00968d94",
+        "filename": "tpm-util/duplicate/tpm_duplication_aux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-03-31T02:30:38Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
