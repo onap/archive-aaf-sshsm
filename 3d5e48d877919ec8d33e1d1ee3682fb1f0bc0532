@@ -22,6 +22,30 @@
       "revId": "3d5e48d877919ec8d33e1d1ee3682fb1f0bc0532",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_b675a333",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-02T20:09:20Z",
+      "side": 1,
+      "message": "This is INSTALL file is updated in next commit. Please check.",
+      "parentUuid": "5a93c517_360f53e3",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 44
+      },
+      "revId": "3d5e48d877919ec8d33e1d1ee3682fb1f0bc0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
