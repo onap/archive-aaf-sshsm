@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_360f53e3",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T19:50:48Z",
+      "side": 1,
+      "message": "Is this the install guide for real tpm or just for tpm emulator?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 44
+      },
+      "revId": "3d5e48d877919ec8d33e1d1ee3682fb1f0bc0532",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
