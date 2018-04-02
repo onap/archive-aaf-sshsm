@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a93c517_963ae796",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T19:47:38Z",
+      "side": 1,
+      "message": "If you do not use abrmd, you will never need TPM emulator",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_76371bb1",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T19:47:38Z",
+      "side": 1,
+      "message": "jump from 2 to 4?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f64a4b26",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T19:47:38Z",
+      "side": 1,
+      "message": "any reason  to run this command in OS environment?",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_1646d721",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T19:47:38Z",
+      "side": 1,
+      "message": "what is this option for?",
+      "range": {
+        "startLine": 42,
+        "startChar": 55,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_b654c3ca",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T19:47:38Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 44,
+        "startChar": 66,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_80829d50",
         "filename": "tpm-util/duplicate/crypto_aux.c",
         "patchSetId": 1
