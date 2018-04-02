@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_36e753e6",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-02T20:18:51Z",
+      "side": 1,
+      "message": "as this tool is run just one time at the server deployment time frame, there is not memory management requirement for it. tpm2 tools can achieve the serialization without abrmd.",
+      "parentUuid": "5a93c517_76d39b38",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_76371bb1",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 1
