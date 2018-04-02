@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_76d39b38",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-02T20:06:54Z",
+      "side": 1,
+      "message": "We have to use tabrmd, as it does the serialization of commands to TPM and does memory management.\nUsing TPM emulator is optional, I mentioned it. So this step-1 is not needed if the host has TPM in it. I just added it for the info in case if the host doesn\u0027t have TPM.",
+      "parentUuid": "5a93c517_963ae796",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_76371bb1",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_76887b22",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-02T20:06:54Z",
+      "side": 1,
+      "message": "TPM2_Startup (initialization) is needed in order to trigger next TPM2 commands.",
+      "parentUuid": "5a93c517_f64a4b26",
+      "range": {
+        "startLine": 40,
+        "startChar": 12,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_1646d721",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 1
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_96bd07da",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-02T20:06:54Z",
+      "side": 1,
+      "message": "To use tpm2-abrmd daemon as resource manager to connect with TPM",
+      "parentUuid": "5a93c517_1646d721",
+      "range": {
+        "startLine": 42,
+        "startChar": 55,
+        "endLine": 42,
+        "endChar": 61
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_b654c3ca",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2018-04-02T19:47:38Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 44,
+        "startChar": 66,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_36b433f1",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-02T20:06:54Z",
+      "side": 1,
+      "message": "This is needed to use tpm2-abrmd daemon as resource manager to connect with TPM",
+      "parentUuid": "5a93c517_b654c3ca",
       "range": {
         "startLine": 44,
         "startChar": 66,
