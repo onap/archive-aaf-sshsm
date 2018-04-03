@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_a872170f",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-03T22:11:22Z",
+      "side": 1,
+      "message": "It mentions tpm2-abrmd should run in socket interface. Nothing related to Emulator.",
+      "parentUuid": "5a93c517_c8952341",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "2ac563372735668ac9687c57e35e39c3e4553ff0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_889f1b5f",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-04-03T21:37:33Z",
       "side": 1,
       "message": "is this sth different from duplicate",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "2ac563372735668ac9687c57e35e39c3e4553ff0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_48611338",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-03T22:11:22Z",
+      "side": 1,
+      "message": "Duplicate tool gives data to import. And the import tool imports the data into TPM.",
+      "parentUuid": "5a93c517_88763b3d",
       "range": {
         "startLine": 54,
         "startChar": 11,
