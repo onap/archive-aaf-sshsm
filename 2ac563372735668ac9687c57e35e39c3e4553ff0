@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a93c517_68f2cf70",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-03T22:21:33Z",
+      "side": 1,
+      "message": "suggest remove emulator info, it is misleading...",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 2,
+        "endChar": 41
+      },
+      "revId": "2ac563372735668ac9687c57e35e39c3e4553ff0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_c8952341",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 2
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "It mentions tpm2-abrmd should run in socket interface. Nothing related to Emulator.",
       "parentUuid": "5a93c517_c8952341",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "2ac563372735668ac9687c57e35e39c3e4553ff0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c8dbe3eb",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-03T22:21:33Z",
+      "side": 1,
+      "message": "can this socket interface access to real tpm?",
+      "parentUuid": "5a93c517_a872170f",
       "range": {
         "startLine": 27,
         "startChar": 49,
@@ -106,6 +153,30 @@
       "writtenOn": "2018-04-03T22:11:22Z",
       "side": 1,
       "message": "Duplicate tool gives data to import. And the import tool imports the data into TPM.",
+      "parentUuid": "5a93c517_88763b3d",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "2ac563372735668ac9687c57e35e39c3e4553ff0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_88e5dba9",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-03T22:21:33Z",
+      "side": 1,
+      "message": "ok",
       "parentUuid": "5a93c517_88763b3d",
       "range": {
         "startLine": 54,
