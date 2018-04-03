@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_4806f3cf",
+        "filename": "tpm-util/INSTALL",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-03T22:11:22Z",
+      "side": 1,
+      "message": "tpm2 tools don\u0027t do serialization, It just executes the command. It is always better to use tabrmd than connecting to dev directly.\nI can remove this step if needed, as TPM simulator is optional and not used when real TPM is present. This was just an info.",
+      "parentUuid": "5a93c517_36e753e6",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "c580efab676fc2cd442fcaeb1881bc3c149eddf9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_76371bb1",
         "filename": "tpm-util/INSTALL",
         "patchSetId": 1
