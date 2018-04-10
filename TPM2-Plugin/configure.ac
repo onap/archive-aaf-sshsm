@@ -11,5 +11,5 @@ AM_PROG_AR
 LT_INIT
 AC_PROG_CC
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([Makefile lib/Makefile src/Makefile])
+AC_CONFIG_FILES([Makefile lib/Makefile test/Makefile])
 AC_OUTPUT
