@@ -35,8 +35,7 @@
 #include <ctype.h>
 #include <getopt.h>
 
-#include <tss2/tss2_sys.h>
-
+#include <sapi/tpm20.h>
 #include "hwpluginif.h"
 
 #ifdef __cplusplus
@@ -67,6 +66,9 @@ extern "C" {
 #define TSS2_APP_RC_TEARDOWN_SYS_CONTEXT_FAILED (APP_RC_TEARDOWN_SYS_CONTEXT_FAILED + APP_RC_OFFSET + TSS2_APP_ERROR_LEVEL)
 #define TSS2_APP_RC_BAD_LOCALITY                (APP_RC_BAD_LOCALITY + APP_RC_OFFSET + TSS2_APP_ERROR_LEVEL)
 
+
+#define HAVE_TCTI_DEV 1
+//#define TCTI_DEFAULT HAVE_TCTI_DEV
 enum TSS2_APP_RC_CODE
 {
     APP_RC_PASSED,
@@ -89,6 +91,66 @@ TSS2_SYS_CONTEXT *InitSysContext (UINT16 maxCommandSize,
 void TeardownSysContext( TSS2_SYS_CONTEXT **sysContext );
 
 TSS2_RC TeardownTctiResMgrContext( TSS2_TCTI_CONTEXT *tctiContext );
+
+
+#ifdef HAVE_TCTI_TABRMD
+  #define TCTI_DEFAULT      TABRMD_TCTI
+  #define TCTI_DEFAULT_STR  "tabrmd"
+#elif HAVE_TCTI_SOCK
+  #define TCTI_DEFAULT      SOCKET_TCTI
+  #define TCTI_DEFAULT_STR  "socket"
+#elif  HAVE_TCTI_DEV
+  #define TCTI_DEFAULT      DEVICE_TCTI
+  #define TCTI_DEFAULT_STR  "device"
+#endif
+
+
+/* Defaults for Device TCTI */
+#define TCTI_DEVICE_DEFAULT_PATH "/dev/tpm0"
+
+/* Deafults for Socket TCTI connections, port default is for resourcemgr */
+#define TCTI_SOCKET_DEFAULT_ADDRESS "127.0.0.1"
+#define TCTI_SOCKET_DEFAULT_PORT     2321
+
+/* Environment variables usable as alternatives to command line options */
+#define TPM2TOOLS_ENV_TCTI_NAME      "TPM2TOOLS_TCTI_NAME"
+#define TPM2TOOLS_ENV_DEVICE_FILE    "TPM2TOOLS_DEVICE_FILE"
+#define TPM2TOOLS_ENV_SOCKET_ADDRESS "TPM2TOOLS_SOCKET_ADDRESS"
+#define TPM2TOOLS_ENV_SOCKET_PORT    "TPM2TOOLS_SOCKET_PORT"
+
+#define COMMON_OPTS_INITIALIZER { \
+    .tcti_type      = TCTI_DEFAULT, \
+    .device_file    = TCTI_DEVICE_DEFAULT_PATH, \
+    .socket_address = TCTI_SOCKET_DEFAULT_ADDRESS, \
+    .socket_port    = TCTI_SOCKET_DEFAULT_PORT, \
+    .help           = false, \
+    .verbose        = false, \
+    .version        = false, \
+}
+
+typedef enum {
+#ifdef HAVE_TCTI_DEV
+    DEVICE_TCTI,
+#endif
+#ifdef HAVE_TCTI_SOCK
+    SOCKET_TCTI,
+#endif
+#ifdef HAVE_TCTI_TABRMD
+    TABRMD_TCTI,
+#endif
+    UNKNOWN_TCTI,
+    N_TCTI,
+} TCTI_TYPE;
+
+typedef struct {
+    TCTI_TYPE tcti_type;
+    char     *device_file;
+    char     *socket_address;
+    uint16_t  socket_port;
+    int       help;
+    int       verbose;
+    int       version;
+} common_opts_t;
 
 int tpm2_plugin_init();
 int tpm2_plugin_uninit();
@@ -114,7 +176,7 @@ int tpm2_rsa_delete_object(
 
 int tpm2_plugin_rsa_sign_init(
         void *keyHandle,
-        unsigned long mechanish,
+        unsigned long mechanism,
         void *param,
         int len);
 

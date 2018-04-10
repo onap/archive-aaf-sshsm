@@ -28,66 +28,56 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 // THE POSSIBILITY OF SUCH DAMAGE.
 //**********************************************************************;
-#include <stdarg.h>
-#include <stdbool.h>
+
 #include <stdio.h>
+#include "tpm2_plugin_api.h"
+//#include "plugin_register.h"
+//#include "hwpluginif.h"
 
-#include "log.h"
-
-/*
- * Note that the logging library is not thread safe, thus calls on separate
- * threads will yield an interleaved output on stderr.
- */
-
-static log_level current_log_level = log_level_warning;
-
-void
-log_set_level (log_level value)
+void main(void)
 {
-    current_log_level = value;
-}
+    unsigned long mechanism =1;
+    void *param = NULL;
+    size_t len = 100;
+    void *keyHandle_sign = NULL;
 
-static const char *
-get_level_msg (log_level level)
-{
-    const char *value = "UNK";
-    switch (level)
-    {
-        case log_level_error:
-            value = "ERROR";
-            break;
-        case log_level_warning:
-            value = "WARN";
-            break;
-        case log_level_verbose:
-            value = "INFO";
-    }
-    return value;
-}
+    unsigned char *msg;
+    int msg_len;
+    unsigned char *sig;
+    int *sig_len;
 
-void
-_log (log_level level, const char *file, unsigned lineno, const char *fmt, ...)
-{
+    SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info;
+    activate_in_info = malloc(sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
+    SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info;
+    loadkey_in_info = malloc(sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
+    loadkey_in_info->num_buffers = 2;
+    unsigned char *str ="abcde";
+    //loadkey_in_info->buffer_info[0]->buffer = str;
+    //loadkey_in_info->buffer_info[0]->length_of_buffer = 5;
+    //loadkey_in_info->buffer_info[1]->buffer = str;
+    //loadkey_in_info->buffer_info[1]->length_of_buffer = 5;
 
-    /* Skip printing messages outside of the log level */
-    if (level > current_log_level)
-        return;
+    void **keyHandle;
 
-    va_list argptr;
-    va_start(argptr, fmt);
+    printf("---------------------------------------------\n");
+    printf("Test app calling tpm2_plugin APIs\n");
 
-    /* Verbose output prints file and line on error */
-    if (current_log_level >= log_level_verbose)
-        fprintf (stderr, "%s on line: \"%u\" in file: \"%s\": ",
-                 get_level_msg (level), lineno, file);
-    else
-        fprintf (stderr, "%s: ", get_level_msg (level));
+    printf("---------------------------------------------\n");
+    tpm2_plugin_init();
 
-    /* Print the user supplied message */
-    vfprintf (stderr, fmt, argptr);
+    printf("---------------------------------------------\n");
+    tpm2_plugin_uninit();
 
-    /* always add a new line so the user doesn't have to */
-    fprintf (stderr, "\n");
+    printf("---------------------------------------------\n");
+    tpm2_plugin_activate(activate_in_info);
 
-    va_end(argptr);
+    printf("---------------------------------------------\n");
+    tpm2_plugin_rsa_sign_init(keyHandle_sign, mechanism, param, len);
+
+    printf("---------------------------------------------\n");
+    tpm2_plugin_load_key(loadkey_in_info, keyHandle);
+
+    printf("---------------------------------------------\n");
+    tpm2_plugin_rsa_sign(keyHandle_sign, mechanism, msg, msg_len, sig, sig_len);
+
 }
