@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_f69c61c2",
+        "filename": "build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-04-11T23:07:18Z",
+      "side": 1,
+      "message": "What is the reason for building this from master? Can this be installed from package or use the one that is already installed?",
+      "revId": "c605bf03bc8f6a6133f5720ca487e8beef20ec07",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
