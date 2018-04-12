@@ -16,6 +16,24 @@
       "revId": "7793a619f0fe6a879221e675249cccc632216a11",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_ea846e0c",
+        "filename": "build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-04-12T16:47:05Z",
+      "side": 1,
+      "message": "oh, I see, I correted it from my dev machine, should be #!/bin/bash",
+      "parentUuid": "5a93c517_eab6aef8",
+      "revId": "7793a619f0fe6a879221e675249cccc632216a11",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
