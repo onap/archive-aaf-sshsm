@@ -36,6 +36,7 @@
 #include "cryptoki.h"
 #include "OSObject.h"
 #include "Token.h"
+#include "OSAttributes.h"
 
 // The operation types
 #define OBJECT_OP_NONE		0x0
@@ -1260,5 +1261,23 @@ protected:
 	// Update the value if allowed
 	virtual CK_RV updateAttr(Token *token, bool isPrivate, CK_VOID_PTR pValue, CK_ULONG ulValueLen, int op);
 };
+
+/*****************************************
+ * CKA_COEFFICIENT
+ *****************************************/
+
+class P11AttrPrivateHandle : public P11Attribute
+{
+public:
+        // Constructor
+        P11AttrPrivateHandle(OSObject* inobject) : P11Attribute(inobject) { type = CKA_OS_PRIVATE_HANDLE; checks = ck1; }
+
+protected:
+        // Set the default value of the attribute
+        virtual bool setDefault();
+        // Update the value if allowed
+        virtual CK_RV updateAttr(Token *token, bool isPrivate, CK_VOID_PTR pValue, CK_ULONG ulValueLen, int op);
+};
+
 
 #endif // !_SOFTHSM_V2_P11ATTRIBUTES_H

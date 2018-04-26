@@ -103,37 +103,26 @@ std::auto_ptr<SoftHSM> SoftHSM::instance(NULL);
 
 #endif
 
-static CK_RV Extract_key_handle(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObject, void *hwKeyHandle)
+
+static CK_RV Extract_key_handle(CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObject, void *private_handle)
 {
-  CK_RV rv=CK_TRUE;
+    CK_RV rv=CK_TRUE;
 
-  // get value of the hw key handle
-  CK_ATTRIBUTE valAttrib[] = {
-    {CKA_PRIME_1,  NULL_PTR,  0}
-  };
+    // get value of the wrapped data (ck)
+    CK_ATTRIBUTE valAttrib[] = {
+      {CKA_OS_PRIVATE_HANDLE,  NULL_PTR,   sizeof(CK_ULONG)}
+    };
 
-  // Get the length of the attribute first
-  rv = C_GetAttributeValue(hSession, hObject, valAttrib, sizeof(valAttrib)/sizeof(CK_ATTRIBUTE));
-  if(rv != CKR_OK)
-  {
-    printf("Getting length of keyHandle with C_GetAttributeValue() API failed ! \n");
+    *(CK_ULONG*)private_handle = 0;
+    valAttrib[0].pValue = private_handle;
+
+    rv = C_GetAttributeValue(hSession, hObject, valAttrib, sizeof(valAttrib)/sizeof(CK_ATTRIBUTE));
+    if (rv != CKR_OK)
+    {
+       LOG("C_GetAttributeValue() API failed ! %lx\n", rv);
+    }
+
     return rv;
-  }
-
-  valAttrib[0].pValue = (CK_VOID_PTR) malloc(valAttrib[0].ulValueLen);
-
-  rv = C_GetAttributeValue(hSession, hObject, valAttrib, sizeof(valAttrib)/sizeof(CK_ATTRIBUTE));
-
-  // Convert the keyHandle from string to CK_ULONG
-  sscanf((char*) valAttrib[0].pValue, "%lx", (CK_ULONG *) hwKeyHandle);
-  printf("Extract_key_handle:: hwKeyHandle: %lu \n", (CK_ULONG) hwKeyHandle);
-
-  if(!(valAttrib[0].pValue))
-  {
-    free(valAttrib[0].pValue);
-  }
-
-  return rv;
 }
 
 static CK_RV newP11Object(CK_OBJECT_CLASS objClass, CK_KEY_TYPE keyType, CK_CERTIFICATE_TYPE certType, P11Object **p11object)
@@ -4214,13 +4203,12 @@ CK_RV SoftHSM::AsymSignInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechan
 		return CKR_MECHANISM_INVALID;
 #endif
         }
-
     // Initialize signing
     if(isHWavailable)
     {
         // Extract HW key handle
         CK_ULONG hwKeyHandle = 0;
-        if(!Extract_key_handle (hSession, hKey, &hwKeyHandle))
+        if(Extract_key_handle (hSession, hKey, &hwKeyHandle) != CKR_OK)
         {
             LOG("ERROR in extracting key handle \n");
             session->resetOp();
@@ -4228,7 +4216,7 @@ CK_RV SoftHSM::AsymSignInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechan
         }
         LOG("Extracted key handle value: %lu \n", hwKeyHandle);
 
-        if(! HwInfraSignInit(&hwKeyHandle, mechanism, param, paramLen))
+        if(HwInfraSignInit(&hwKeyHandle, mechanism, param, paramLen) != 0)
         {
             return CKR_MECHANISM_INVALID;
         }
