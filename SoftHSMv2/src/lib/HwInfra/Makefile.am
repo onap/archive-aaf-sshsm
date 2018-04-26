@@ -9,7 +9,7 @@ AM_CPPFLAGS =			-I$(srcdir)/.. \
 				-I$(srcdir)/../session_mgr
 
 noinst_LTLIBRARIES =		libsofthsm_hwinfra.la
-libsofthsm_hwinfra_la_SOURCES =	HwInfra.c
+libsofthsm_hwinfra_la_SOURCES =	HwInfra.cpp
 
 SUBDIRS =
 
