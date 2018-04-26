@@ -126,6 +126,9 @@ public:
 
 	void setKeyHandle(CK_OBJECT_HANDLE inHKey);
 	CK_OBJECT_HANDLE getKeyHandle();
+        
+        void setHwCryptoOpaque(void* inHwCryptoOpaque);
+        void *getHwCryptoOpaque();  
 
 private:
 	// Constructor
@@ -173,6 +176,9 @@ private:
 
 	// Symmetric Crypto
 	SymmetricKey* symmetricKey;
+        
+        // hw plugin specific data
+        void *hwCryptoOpaque;
 
     // Storing Key handle in session
     CK_OBJECT_HANDLE hKey;
