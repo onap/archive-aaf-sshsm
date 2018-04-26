@@ -1,4 +1,4 @@
-#!/etc/bash
+#!/bin/bash
 
 #set -e
 sudo kill -9 $(ps -ef | grep "apt" | grep -v grep | awk '{print $2}')
