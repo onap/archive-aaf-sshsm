@@ -61,6 +61,7 @@ Session::Session(Slot* inSlot, bool inIsReadWrite, CK_VOID_PTR inPApplication, C
 
 	// Storing Key handle in session
 	hKey = CK_INVALID_HANDLE;
+        hwCryptoOpaque = NULL;
 }
 
 // Constructor
@@ -91,6 +92,7 @@ Session::Session()
 
     // Storing Key handle in session
     hKey = CK_INVALID_HANDLE;
+       hwCryptoOpaque = NULL;
 }
 
 // Destructor
@@ -471,3 +473,14 @@ SymmetricKey* Session::getSymmetricKey()
 {
 	return symmetricKey;
 }
+
+void Session::setHwCryptoOpaque(void *inHwCryptoOpaque )
+{
+        hwCryptoOpaque = inHwCryptoOpaque;
+}
+
+void*  Session::getHwCryptoOpaque()
+{
+        return hwCryptoOpaque;
+}
+

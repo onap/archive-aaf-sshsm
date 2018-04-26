@@ -294,6 +294,10 @@ CK_RV P11Attribute::retrieve(Token *token, bool isPrivate, CK_VOID_PTR pValue, C
 		{
 			attrSize = attr.getAttributeMapValue().size() * sizeof(CK_ATTRIBUTE);
 		}
+                else if (attr.isUnsignedLongAttribute())
+                {
+                        attrSize = sizeof(unsigned long);
+                }
 		else
 		{
 			// Should be impossible.
@@ -2512,3 +2516,36 @@ CK_RV P11AttrAllowedMechanisms::updateAttr(Token* /*token*/, bool /*isPrivate*/,
 	osobject->setAttribute(type, OSAttribute(data));
 	return CKR_OK;
 }
+
+
+// Set default value
+bool P11AttrPrivateHandle::setDefault()
+{
+        OSAttribute attr((CK_ULONG)0);
+        return osobject->setAttribute(type, attr);
+}
+
+// Update the value if allowed
+CK_RV P11AttrPrivateHandle::updateAttr(Token* /*token*/, bool /*isPrivate*/, CK_VOID_PTR pValue, CK_ULONG ulValueLen, int op)
+{
+    unsigned long tmp = (unsigned long)pValue;
+        // Attribute specific checks
+        if (op != OBJECT_OP_CREATE)
+        {
+                return CKR_ATTRIBUTE_READ_ONLY;
+        }
+
+        if (ulValueLen !=sizeof(CK_ULONG))
+        {
+                return CKR_ATTRIBUTE_VALUE_INVALID;
+        }
+
+        // Store data
+
+        //osobject->setAttribute(type, *(CK_VOID_PTR*)pValue);
+        osobject->setAttribute(type, (unsigned long)tmp);
+
+        return CKR_OK;
+}
+
+
