@@ -385,6 +385,7 @@ static bool isModifiable(CK_ATTRIBUTE_TYPE type)
 	case CKA_OS_TOKENFLAGS:
 	case CKA_OS_SOPIN:
 	case CKA_OS_USERPIN:
+        case CKA_OS_PRIVATE_HANDLE:
 		return true;
 	default:
 		return false;
@@ -516,6 +517,7 @@ static AttributeKind attributeKind(CK_ATTRIBUTE_TYPE type)
 	case CKA_OS_TOKENFLAGS: return akInteger;
 	case CKA_OS_SOPIN: return akBinary;
 	case CKA_OS_USERPIN: return akBinary;
+        case CKA_OS_PRIVATE_HANDLE: return akInteger;
 
 	default: return akUnknown;
 	}

@@ -1107,6 +1107,7 @@ bool P11RSAPrivateKeyObj::init(OSObject *inobject)
 	P11Attribute* attrExponent1 = new P11AttrExponent1(osobject);
 	P11Attribute* attrExponent2 = new P11AttrExponent2(osobject);
 	P11Attribute* attrCoefficient = new P11AttrCoefficient(osobject);
+        P11Attribute* attrPrivateHandle = new P11AttrPrivateHandle(osobject);
 
 	// Initialize the attributes
 	if
@@ -1118,6 +1119,7 @@ bool P11RSAPrivateKeyObj::init(OSObject *inobject)
 		!attrPrime2->init() ||
 		!attrExponent1->init() ||
 		!attrExponent2->init() ||
+                !attrPrivateHandle->init() ||
 		!attrCoefficient->init()
 	)
 	{
@@ -1130,6 +1132,7 @@ bool P11RSAPrivateKeyObj::init(OSObject *inobject)
 		delete attrExponent1;
 		delete attrExponent2;
 		delete attrCoefficient;
+                delete attrPrivateHandle;
 		return false;
 	}
 
@@ -1142,6 +1145,7 @@ bool P11RSAPrivateKeyObj::init(OSObject *inobject)
 	attributes[attrExponent1->getType()] = attrExponent1;
 	attributes[attrExponent2->getType()] = attrExponent2;
 	attributes[attrCoefficient->getType()] = attrCoefficient;
+        attributes[attrPrivateHandle->getType()] = attrPrivateHandle;
 
 	initialized = true;
 	return true;
@@ -1223,23 +1227,27 @@ bool P11ECPrivateKeyObj::init(OSObject *inobject)
 	// Create attributes
 	P11Attribute* attrEcParams = new P11AttrEcParams(osobject,P11Attribute::ck4|P11Attribute::ck6);
 	P11Attribute* attrValue = new P11AttrValue(osobject,P11Attribute::ck1|P11Attribute::ck4|P11Attribute::ck6|P11Attribute::ck7);
+        P11Attribute* attrPrivateHandle = new P11AttrPrivateHandle(osobject);
 
 	// Initialize the attributes
 	if
 	(
 		!attrEcParams->init() ||
+                !attrPrivateHandle->init() ||
 		!attrValue->init()
 	)
 	{
 		ERROR_MSG("Could not initialize the attribute");
 		delete attrEcParams;
 		delete attrValue;
+                delete attrPrivateHandle;
 		return false;
 	}
 
 	// Add them to the map
 	attributes[attrEcParams->getType()] = attrEcParams;
 	attributes[attrValue->getType()] = attrValue;
+        attributes[attrPrivateHandle->getType()] = attrPrivateHandle;
 
 	initialized = true;
 	return true;
