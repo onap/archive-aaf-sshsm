@@ -20,13 +20,15 @@
 int sshsm_hw_plugin_get_plugin_functions(SSHSM_HW_FUNCTIONS_t *funcs)
 {
     printf("%s(): Assigning Function pointers for TPM (dTPM or PTT) mode \n", __func__);
-    funcs->xxx_init           = &tpm2_plugin_init;
-    funcs->xxx_uninit         = &tpm2_plugin_uninit;
-    funcs->xxx_activate       = &tpm2_plugin_activate;
-    funcs->xxx_load_key       = &tpm2_plugin_load_key;
-    funcs->xxx_unload_key     = NULL;
-    funcs->xxx_rsa_sign_init  = &tpm2_plugin_rsa_sign_init;
-    funcs->xxx_rsa_sign       = &tpm2_plugin_rsa_sign;
+    funcs->xxx_init             = &tpm2_plugin_init;
+    funcs->xxx_uninit           = &tpm2_plugin_uninit;
+    funcs->xxx_activate         = &tpm2_plugin_activate;
+    funcs->xxx_load_key         = &tpm2_plugin_load_key;
+    funcs->xxx_unload_key       = NULL;
+    funcs->xxx_rsa_sign_init    = &tpm2_plugin_rsa_sign_init;
+    funcs->xxx_rsa_sign_update  = &tpm2_plugin_rsa_sign_update;
+    funcs->xxx_rsa_sign_final   = &tpm2_plugin_rsa_sign_final;
+    funcs->xxx_rsa_sign         = &tpm2_plugin_rsa_sign;
 
     return 0;
 }

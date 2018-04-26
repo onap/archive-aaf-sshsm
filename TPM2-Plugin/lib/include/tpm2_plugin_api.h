@@ -141,15 +141,25 @@ typedef struct {
     int       version;
 } common_opts_t;
 
+#define MAX_DATA_SIGNUPDATE  0x2000
+#define MAX_SESSIONS  10
+
+typedef struct concatenate_data_signupdate {
+    unsigned long int session_handle;
+    unsigned char data_signupdate[MAX_DATA_SIGNUPDATE];
+    int data_length;
+}CONCATENATE_DATA_SIGNUPDATE_t;
+
 int tpm2_plugin_init();
 int tpm2_plugin_uninit();
 int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info);
 int tpm2_plugin_load_key(
-           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-           void **keyHandle
+        unsigned long int hSession,
+        SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
+        void **keyHandle
         );
 
-int tpm2_rsa_create_object(
+int tpm2_plugin_rsa_create_object(
                         unsigned long appHandle,
                         //DhsmWPKRSAFormat* wpk,
                         void *wpk,
@@ -160,16 +170,18 @@ int tpm2_rsa_create_object(
                         int tag_len,
                         void **cb_object);
 
-int tpm2_rsa_delete_object(
+int tpm2_plugin_rsa_delete_object(
                         void *cb_object);
 
 int tpm2_plugin_rsa_sign_init(
+        unsigned long int hSession,
         void *keyHandle,
         unsigned long mechanism,
         void *param,
         int len);
 
 int tpm2_plugin_rsa_sign(
+        unsigned long int hSession,
         void *keyHandle,
         unsigned long mechanism,
         unsigned char *msg,
@@ -178,7 +190,7 @@ int tpm2_plugin_rsa_sign(
         int *sig_len);
 
 
-int tpm2_import_object(
+int tpm2_plugin_import_object(
         unsigned long appHandle,
         unsigned char* tlvbuffer,
         int buflen,
@@ -186,6 +198,32 @@ int tpm2_import_object(
         int iv_len,
         unsigned char* tpm_pwd,
         int tpm_pwd_len);
+
+int tpm2_plugin_rsa_sign_update(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *msg,
+         int msg_len
+        );
+
+int tpm2_plugin_rsa_sign_final(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *outsig,
+         int *outsiglen
+        );
+
+/** This function is called by SSHSM only if there sign_final function is not called.
+If sign_final function is called, it is assumed that plugin would have cleaned this up.
+***/
+
+typedef int (*sshsm_hw_plugin_rsa_sign_cleanup)(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism
+        );
 
 
 #ifdef __cplusplus
