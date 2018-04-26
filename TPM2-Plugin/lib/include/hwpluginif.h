@@ -129,12 +129,13 @@ typedef int (*sshsm_hw_plugin_activate)(
  ***/
 
 typedef int (*sshsm_hw_plugin_load_key)(
-           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-           void **keyHandle
-        );
+             SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
+             void **keyHandle,
+             SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info  
+            );
 
 typedef int (*sshsm_hw_plugin_unload_key)(
-           void **keyHandle
+         void **keyHandle
         );
 
 /***
@@ -147,7 +148,8 @@ typedef int (*sshsm_hw_plugin_rsa_sign_init)(
          void *keyHandle,
          unsigned long mechanism,
          void *param,
-         int len
+         int len,
+         void **plugin_data_ref
         );
 
 /***
@@ -166,8 +168,35 @@ typedef int (*sshsm_hw_plugin_rsa_sign)(
          unsigned long mechanism,
          unsigned char *msg,
          int msg_len,
+         void *plugin_data_ref,
          unsigned char *outsig,
          int *outsiglen
+        );
+
+typedef int (*sshsm_hw_plugin_rsa_sign_update)(
+         void *keyHandle,
+         unsigned long mechnaism,
+         unsigned char *msg,
+         int msg_len,
+         void *plugin_data_ref
+        );
+
+typedef int (*sshsm_hw_plugin_rsa_sign_final)(
+         void *keyHandle,
+         unsigned long mechnaism,
+         void *plugin_data_ref,
+         unsigned char *outsig,
+         int *outsiglen
+        );
+
+/** This function is called by SSHSM only if there sign_final function is not called.
+If sign_final function is called, it is assumed that plugin would have cleaned this up.
+***/
+
+typedef int (*sshsm_hw_plugin_rsa_sign_cleanup)(
+         void *keyHandle,
+         unsigned long mechnaism,
+         void *plugin_data_ref
         );
 
 /***
@@ -193,6 +222,9 @@ typedef struct sshsm_hw_functions_s
     sshsm_hw_plugin_unload_key xxx_unload_key;
     sshsm_hw_plugin_rsa_sign_init  xxx_rsa_sign_init;
     sshsm_hw_plugin_rsa_sign xxx_rsa_sign;
+    sshsm_hw_plugin_rsa_sign_update xxx_rsa_sign_update;
+    sshsm_hw_plugin_rsa_sign_final xxx_rsa_sign_final;
+    sshsm_hw_plugin_rsa_sign_cleanup xxx_rsa_sign_cleanup;
 }SSHSM_HW_FUNCTIONS_t;
 
 int sshsm_hw_plugin_get_plugin_functions(SSHSM_HW_FUNCTIONS_t *funcs);
