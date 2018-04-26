@@ -24,7 +24,7 @@
 #include <unistd.h>
 #include "HwInfra.h"
 #include "hwpluginif.h"
-
+#include "OSAttributes.h"
 #include "cryptoki.h"
 
 char hw_plugins_parent_dir[MAX_PARENT_PATH_NAME+1] = "";
@@ -584,6 +584,28 @@ int program_pkcs11_info (char *dirpath, void *key_handle)
 }
 
 
+void long_to_byte_string(const unsigned long longValue, unsigned char *out, size_t *outlen)
+{
+        unsigned long setValue = longValue;
+        unsigned char byteStrIn[8];
+        size_t i;
+
+        for (i = 0; i < 8; i++)
+        {
+            byteStrIn[7-i] = (unsigned char) (setValue & 0xFF);
+            setValue >>= 8;
+        }
+        for (i = 0; i < 8; i++)
+        {
+            if (byteStrIn[i])
+               break;
+        }
+        memcpy(out, &byteStrIn[i], 8-i);
+        *outlen = 8-i;
+}
+
+
+
 /*** PrepareKeyInSoftHSM
 ** Description:  It creates the object in softhsm with given key id and
 ** key label and also stores the keyhandle that was returned by hardware plugin
@@ -611,8 +633,7 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
 
     printf ("slot %ul upin %s key_id %s key_label %s \n", slot_id, upin, key_id,
              key_label);
-
-    if(!key_handle)
+    if(key_handle)
     {
         //ultoa((CK_ULONG)key_handle,  key_handle_str,  16); // Linking error seen
         printf("Key_handle to be stored: %lx \n", *((CK_ULONG *)key_handle) );
@@ -651,39 +672,82 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
     CK_KEY_TYPE keyType = CKK_RSA;
     CK_BBOOL ckTrue = CK_TRUE, ckFalse = CK_FALSE ;
 
+    unsigned long int key_id_int = atoi(key_id );
+    unsigned char byte_str[8];
+    size_t outlen;
+    long_to_byte_string(key_id_int, byte_str, &outlen);
+
+    //Add a Dummy key for now
+    CK_BYTE pN[] = { 0xC6, 0x47, 0xDD, 0x74, 0x3B, 0xCB, 0xDC, 0x6F, 0xCE, 0xA7,
+                         0xF0, 0x5F, 0x29, 0x4B, 0x27, 0x00, 0xCC, 0x92, 0xE9, 0x20,
+                         0x8A, 0x2C, 0x87, 0x36, 0x47, 0x24, 0xB0, 0xD5, 0x7D, 0xB0,
+                         0x92, 0x01, 0xA0, 0xA3, 0x55, 0x2E, 0x3F, 0xFE, 0xA7, 0x4C,
+                         0x4B, 0x3F, 0x9D, 0x4E, 0xCB, 0x78, 0x12, 0xA9, 0x42, 0xAD,
+                         0x51, 0x1F, 0x3B, 0xBD, 0x3D, 0x6A, 0xE5, 0x38, 0xB7, 0x45,
+                         0x65, 0x50, 0x30, 0x35 };
+    CK_BYTE pD[] = { 0x6D, 0x94, 0x6B, 0xEB, 0xFF, 0xDC, 0x03, 0x80, 0x7B, 0x0A,
+                         0x4F, 0x0A, 0x98, 0x6C, 0xA3, 0x2A, 0x8A, 0xE4, 0xAA, 0x18,
+                         0x44, 0xA4, 0xA5, 0x39, 0x37, 0x0A, 0x2C, 0xFC, 0x5F, 0xD1,
+                         0x44, 0x6E, 0xCE, 0x25, 0x9B, 0xE5, 0xD1, 0x51, 0xAF, 0xA8,
+                         0x30, 0xD1, 0x4D, 0x3C, 0x60, 0x33, 0xB5, 0xED, 0x4C, 0x39,
+                         0xDA, 0x68, 0x78, 0xF9, 0x6B, 0x4F, 0x47, 0x55, 0xB2, 0x02,
+                         0x00, 0x7E, 0x9C, 0x05 };
+
+
     CK_ATTRIBUTE keyTemplate[] = {
         { CKA_CLASS,            &privClass,         sizeof(privClass) },
         { CKA_KEY_TYPE,         &keyType,           sizeof(keyType) },
         { CKA_LABEL,            key_label,          strlen((char *) key_label) },
-        { CKA_ID,               key_id,             (CK_ULONG)key_id_len },
+        { CKA_ID,               byte_str,           outlen },
         { CKA_SIGN,             &ckTrue,            sizeof(ckTrue) },
         { CKA_DECRYPT,          &ckTrue,            sizeof(ckTrue) },
         { CKA_UNWRAP,           &ckFalse,           sizeof(ckFalse) },
         { CKA_TOKEN,            &ckTrue,            sizeof(ckTrue) },
         { CKA_PRIVATE,          &ckTrue,            sizeof(ckTrue) },
-        { CKA_EXTRACTABLE,      &ckTrue,            sizeof(ckTrue) },
-        { CKA_PUBLIC_EXPONENT,  0,            0},
-        { CKA_MODULUS,          0,            0},
-        { CKA_PRIVATE_EXPONENT, 0,            0},
-        { CKA_PRIME_2,          0,            0},
-        { CKA_EXPONENT_1,       0,            0},
-        { CKA_EXPONENT_2,       0,            0},
-        { CKA_COEFFICIENT,      0,            0},
-        { CKA_PRIME_1,          key_handle_str,     strlen((char *)key_handle_str) }
-        /** For now keep the key handle returned by Plugin in CK_PRIME_1.
-        ** TBD - Define new attribute to store this in future
-        ***/
+        { CKA_EXTRACTABLE,      &ckFalse,           sizeof(ckFalse) },
+        { CKA_SENSITIVE,        &ckFalse,           sizeof(ckFalse) },
+        { CKA_PUBLIC_EXPONENT,  0,                  0},
+        { CKA_MODULUS,          pN,                 sizeof(pN) },
+        { CKA_PRIVATE_EXPONENT, pD,                 sizeof(pD) },
+        { CKA_PRIME_2,          0,                  0},
+        { CKA_EXPONENT_1,       0,                  0},
+        { CKA_EXPONENT_2,       0,                  0},
+        { CKA_COEFFICIENT,      0,                  0},
+        { CKA_OS_PRIVATE_HANDLE,       (CK_ULONG) *((CK_ULONG*)key_handle),      sizeof(CK_ULONG) }
     };
 
-    ret_val =  C_CreateObject(hSession, keyTemplate,
+
+    CK_OBJECT_HANDLE hObject;
+    CK_ULONG ulObjectCount;
+    CK_RV rv;
+
+    rv = C_FindObjectsInit(hSession, keyTemplate, 0);
+    if(rv != CKR_OK) {
+        LOG ("C_FindObjectsInit rv %ld\n", rv);
+    }
+    rv = C_FindObjects(hSession, &hObject, 16, &ulObjectCount);
+    if(rv != CKR_OK) {
+        LOG ("C_FindObjects rv %ld\n", rv);
+    }
+    rv = C_FindObjectsFinal(hSession);
+    if(rv != CKR_OK) {
+        LOG ("C_FindObjectsFinal rv %ld\n", rv);
+    }
+
+    if (ulObjectCount != 0) {
+        ret_val =  C_CreateObject(hSession, keyTemplate,
                  sizeof(keyTemplate)/sizeof(CK_ATTRIBUTE),&hKey);
-    if (ret_val != CKR_OK)
-    {
-        printf("CreateObject failed: 0x%lx | for slot %x | keylabel %s | keyid below \n",
+        if (ret_val != CKR_OK)
+        {
+            printf("CreateObject failed: 0x%lx | for slot %x | keylabel %s | keyid below \n",
                 ret_val, slot_id, key_label);
-        for (ii = 0; ii < key_id_len; ii++ )
-           printf("%2x  %c \n",  key_id[ii], key_id[ii]);
+            for (ii = 0; ii < key_id_len; ii++ )
+               printf("%2x  %c \n",  key_id[ii], key_id[ii]);
         //return(ret_val);
+        }
+    }
+    else {
+        LOG("PrepareKeyInSoftHSM: Object already exists\n");
     }
 
     ret_val = C_Logout(hSession);
@@ -706,6 +770,8 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
 int HwInfraSignInit(void *keyHandle,  unsigned long mechanism,
                  void* param, int paramLen)
 {
+    if (g_pluginfuncs.xxx_rsa_sign_init == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
     return ( g_pluginfuncs.xxx_rsa_sign_init(keyHandle, mechanism, param, paramLen) );
 }
 
@@ -713,6 +779,8 @@ int HwInfraSign( void *keyHandle,  unsigned long mechanism,
                  unsigned char *msg, int msg_len,
                  unsigned char *outsig,  int *outsiglen)
 {
+    if (g_pluginfuncs.xxx_rsa_sign == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
     return ( g_pluginfuncs.xxx_rsa_sign(keyHandle, mechanism, msg, msg_len,
                 outsig, outsiglen) );
 }
