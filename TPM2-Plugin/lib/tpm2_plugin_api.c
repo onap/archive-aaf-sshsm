@@ -381,8 +381,9 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
     return 0;
 }
 
-int tpm2_plugin_load_key(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-                         void **keyHandle)
+int tpm2_plugin_load_key(
+        SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
+        void **keyHandle)
 {
     int ret = 1;
     common_opts_t opts = COMMON_OPTS_INITIALIZER;
@@ -423,16 +424,64 @@ struct tpm_sign_ctx {
     TSS2_SYS_CONTEXT *sapi_context;
 };
 
+//create a table to consolidate all parts of data from multiple SignUpdate from sessions
+CONCATENATE_DATA_SIGNUPDATE_t data_signupdate_session[MAX_SESSIONS];
+unsigned long sign_sequence_id =0;
 int tpm2_plugin_rsa_sign_init(
         void *keyHandle,
         unsigned long mechanism,
         void *param,
-        int len)
+        int len,
+        void **plugin_data_ref
+       )
 {
-    printf("rsa_sign_init API mechanism is %lx \n", mechanism);
+    printf("rsa_sign_init API mechanism is %ld \n", mechanism);
+    printf("rsa_sign_init API len is %d \n", len);
+    int i, j;
+
+    sign_sequence_id++;
+    unsigned long hSession = sign_sequence_id;
+
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle = 0){
+            data_signupdate_session[i].session_handle = hSession;
+            for (j =0; j < MAX_DATA_SIGNUPDATE; j++ )
+                data_signupdate_session[i].data_signupdate[j] =0;
+            data_signupdate_session[i].data_length = 0;
+        }
+    }
+    plugin_data_ref = (void *)hSession;
+
     printf("rsa_sign_init API done for tpm2_plugin... \n");
     return 0;
 }
+
+/** This function is called by SSHSM only if there sign_final function is not called.
+If sign_final function is called, it is assumed that plugin would have cleaned this up.
+***/
+
+int tpm2_plugin_rsa_sign_cleanup(
+         void *keyHandle,
+         unsigned long mechnaism,
+         void *plugin_data_ref
+        )
+{
+    int i, j;
+    unsigned long hSession = (unsigned long)plugin_data_ref;
+    for (i = 0; i < MAX_SESSIONS; i++)    {
+        if (data_signupdate_session[i].session_handle = hSession){
+            data_signupdate_session[i].session_handle = 0;
+            for (j =0; j < MAX_DATA_SIGNUPDATE; j++ )
+                data_signupdate_session[i].data_signupdate[j] =0;
+            data_signupdate_session[i].data_length = 0;
+        }
+    }
+
+    if (sign_sequence_id>0xfffffffe)
+        sign_sequence_id =0;
+    return 0;
+}
+
 
 UINT32 tpm_hash(TSS2_SYS_CONTEXT *sapi_context, TPMI_ALG_HASH hashAlg,
         UINT16 size, BYTE *data, TPM2B_DIGEST *result) {
@@ -644,6 +693,7 @@ int tpm2_plugin_rsa_sign(
         unsigned long mechanism,
         unsigned char *msg,
         int msg_len,
+        void *plugin_data_ref,
         unsigned char *sig,
         int *sig_len)
 {
@@ -671,12 +721,15 @@ int tpm2_plugin_rsa_sign(
             .validation = { 0 },
             .sapi_context = sapi_context
     };
-    
+
     printf("rsa_sign API mechanism is %lx \n", mechanism);
     ctx.sessionData.sessionHandle = TPM_RS_PW;
     ctx.validation.tag = TPM_ST_HASHCHECK;
     ctx.validation.hierarchy = TPM_RH_NULL;
-    ctx.halg = TPM_ALG_SHA256;
+    if (mechanism = 7)
+        ctx.halg = TPM_ALG_SHA256;
+    else
+        printf("mechanism not supported! \n");
     ctx.keyHandle = *(TPMI_DH_OBJECT *)keyHandle;
 
     rval = Tss2_Sys_ContextLoad(ctx.sapi_context, &loaded_key_context, &ctx.keyHandle);
@@ -701,4 +754,50 @@ out:
 
 }
 
+int tpm2_plugin_rsa_sign_update(
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *msg,
+         int msg_len,
+         void *plugin_data_ref
+        )
+{
+    int i, j, n;
+    unsigned long hSession = (unsigned long)plugin_data_ref;
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle = hSession){
+            n = data_signupdate_session[i].data_length;
+            for (j =0; j < msg_len; j++ )
+                data_signupdate_session[i].data_signupdate[n + j] = msg[j];
+            data_signupdate_session[i].data_length += msg_len;
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int tpm2_plugin_rsa_sign_final(
+         void *keyHandle,
+         unsigned long mechanism,
+         void *plugin_data_ref,
+         unsigned char *outsig,
+         int *outsiglen
+        )
+{
+    int i, j;
+    unsigned long hSession = (unsigned long)plugin_data_ref;
+    unsigned char *msg;
+    int msg_len;
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle = hSession){
+            msg = data_signupdate_session[i].data_signupdate;
+            msg_len = data_signupdate_session[i].data_length;
+            tpm2_plugin_rsa_sign(keyHandle, mechanism, msg, msg_len, plugin_data_ref, outsig, outsiglen);
+            tpm2_plugin_rsa_sign_cleanup(keyHandle, mechanism, plugin_data_ref);
+            return 0;
+        }
+    }
+
+    return -1;
+}
 
