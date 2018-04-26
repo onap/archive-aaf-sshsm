@@ -57,11 +57,18 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
                unsigned char *key_label, void *key_handle);
 
 int HwInfraSignInit(void *keyHandle,  unsigned long mechanism,
-                 void* param, int paramLen);
-
-int HwInfraSign( void *keyHandle,  unsigned long mechanism,
-                 unsigned char *msg, int msg_len,
+                 void* param, int paramLen, void **hwCryptoOpaque);
+int HwInfraSign(void *keyHandle,  unsigned long mechanism,
+                 unsigned char *msg, int msg_len, void *hwCryptoOpaque,
                  unsigned char *outsig,  int *outsiglen);
+int HwInfraSignUpdate(void *keyHandle,  
+                 unsigned char *msg, int msg_len, void *hwCryptoOpaque);
+int HwInfraSignFinal(void *keyHandle,  
+                 void *hwCryptoOpaque,
+                 unsigned char *outsig,  int *outsiglen);
+int HwInfraSignCleanup(void *keyHandle,  
+                       void *hwCryptoOpaque);
+
 
 #define MAX_PARENT_PATH_NAME 256
 
@@ -76,6 +83,7 @@ int HwInfraSign( void *keyHandle,  unsigned long mechanism,
 #define PLUGIN_DL_OPEN_ERROR (06)
 #define PLUGIN_DL_SYM_ERROR (07)
 #define PLUGIN_INIT_ERROR (10)
+#define INVALID_KEY_ERROR (11)
 
 #if defined(__cplusplus)
 }
