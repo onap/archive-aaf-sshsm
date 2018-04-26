@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_eb720649",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-26T00:05:30Z",
+      "side": 1,
+      "message": "Return error in case of key_handle is NULL?",
+      "revId": "8a76293757898f6f637ebd7919210f48e8aa5e91",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_cb95ca33",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-26T00:05:30Z",
+      "side": 1,
+      "message": "Suggestion: atol() could be used instead of atoi.",
+      "revId": "8a76293757898f6f637ebd7919210f48e8aa5e91",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_abb71ed7",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-26T00:05:30Z",
+      "side": 1,
+      "message": "Whether this check should be if(ulObjectCount \u003e 0) ?",
+      "revId": "8a76293757898f6f637ebd7919210f48e8aa5e91",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_8bb262e3",
+        "filename": "SoftHSMv2/src/lib/P11Attributes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2531,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-26T00:05:30Z",
+      "side": 1,
+      "message": "conversion from void pointer to unsigned long. Is this expected? you want to store a address value in this tmp variable?",
+      "revId": "8a76293757898f6f637ebd7919210f48e8aa5e91",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_2bcb0e54",
+        "filename": "SoftHSMv2/src/lib/P11Attributes.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2546,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-26T00:05:30Z",
+      "side": 1,
+      "message": "type conversion to (unsigned long) is not needed as tmp is already the same type.",
+      "revId": "8a76293757898f6f637ebd7919210f48e8aa5e91",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_abde3e0f",
+        "filename": "SoftHSMv2/src/lib/object_store/DBObject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-04-26T00:05:30Z",
+      "side": 1,
+      "message": "Can I suggest to change this name related to Key handle?\nsay, CKA_OS_KEY_HANDLE?",
+      "revId": "8a76293757898f6f637ebd7919210f48e8aa5e91",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
