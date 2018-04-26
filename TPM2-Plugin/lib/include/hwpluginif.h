@@ -129,12 +129,14 @@ typedef int (*sshsm_hw_plugin_activate)(
  ***/
 
 typedef int (*sshsm_hw_plugin_load_key)(
-           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-           void **keyHandle
+         unsigned long int hSession,
+         SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
+         void **keyHandle
         );
 
 typedef int (*sshsm_hw_plugin_unload_key)(
-           void **keyHandle
+         unsigned long int hSession,
+         void **keyHandle
         );
 
 /***
@@ -144,6 +146,7 @@ typedef int (*sshsm_hw_plugin_unload_key)(
  */
 
 typedef int (*sshsm_hw_plugin_rsa_sign_init)(
+         unsigned long int hSession,
          void *keyHandle,
          unsigned long mechanism,
          void *param,
@@ -162,12 +165,39 @@ typedef int (*sshsm_hw_plugin_rsa_sign_init)(
  */
 
 typedef int (*sshsm_hw_plugin_rsa_sign)(
+         unsigned long int hSession,
          void *keyHandle,
          unsigned long mechanism,
          unsigned char *msg,
          int msg_len,
          unsigned char *outsig,
          int *outsiglen
+        );
+
+typedef int (*sshsm_hw_plugin_rsa_sign_update)(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *msg,
+         int msg_len
+        );
+
+typedef int (*sshsm_hw_plugin_rsa_sign_final)(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *outsig,
+         int *outsiglen
+        );
+
+/** This function is called by SSHSM only if there sign_final function is not called.
+If sign_final function is called, it is assumed that plugin would have cleaned this up.
+***/
+
+typedef int (*sshsm_hw_plugin_rsa_sign_cleanup)(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism
         );
 
 /***
@@ -192,6 +222,9 @@ typedef struct sshsm_hw_functions_s
     sshsm_hw_plugin_load_key xxx_load_key;
     sshsm_hw_plugin_unload_key xxx_unload_key;
     sshsm_hw_plugin_rsa_sign_init  xxx_rsa_sign_init;
+    sshsm_hw_plugin_rsa_sign_update xxx_rsa_sign_update;
+    sshsm_hw_plugin_rsa_sign_final xxx_rsa_sign_final;
+    sshsm_hw_plugin_rsa_sign_cleanup xxx_rsa_sign_cleanup;
     sshsm_hw_plugin_rsa_sign xxx_rsa_sign;
 }SSHSM_HW_FUNCTIONS_t;
 

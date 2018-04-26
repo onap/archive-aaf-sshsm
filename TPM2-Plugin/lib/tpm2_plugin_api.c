@@ -381,8 +381,10 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
     return 0;
 }
 
-int tpm2_plugin_load_key(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-                         void **keyHandle)
+int tpm2_plugin_load_key(
+        unsigned long int hSession,
+        SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
+        void **keyHandle)
 {
     int ret = 1;
     common_opts_t opts = COMMON_OPTS_INITIALIZER;
@@ -423,13 +425,27 @@ struct tpm_sign_ctx {
     TSS2_SYS_CONTEXT *sapi_context;
 };
 
+//create a table to consolidate all parts of data from multiple SignUpdate from sessions
+CONCATENATE_DATA_SIGNUPDATE_t data_signupdate_session[MAX_SESSIONS];
+
 int tpm2_plugin_rsa_sign_init(
+        unsigned long int hSession,
         void *keyHandle,
         unsigned long mechanism,
         void *param,
         int len)
 {
-    printf("rsa_sign_init API mechanism is %lx \n", mechanism);
+    printf("rsa_sign_init API mechanism is %ld \n", mechanism);
+    printf("rsa_sign_init API len is %d \n", len);
+    int i, j;
+    for (i = 0; i < MAX_SESSIONS; i++)    {
+        if (data_signupdate_session[i].session_handle = 0){
+            data_signupdate_session[i].session_handle = hSession;
+            for (j =0; j < MAX_DATA_SIGNUPDATE; j++ )
+                data_signupdate_session[i].data_signupdate[j] =0;
+            data_signupdate_session[i].data_length = 0;
+        }
+    }
     printf("rsa_sign_init API done for tpm2_plugin... \n");
     return 0;
 }
@@ -640,6 +656,7 @@ static bool sign_and_save(tpm_sign_ctx *ctx,  unsigned char *sig, int *sig_len) 
 }
 
 int tpm2_plugin_rsa_sign(
+        unsigned long int hSession,
         void  *keyHandle,
         unsigned long mechanism,
         unsigned char *msg,
@@ -671,12 +688,15 @@ int tpm2_plugin_rsa_sign(
             .validation = { 0 },
             .sapi_context = sapi_context
     };
-    
+
     printf("rsa_sign API mechanism is %lx \n", mechanism);
     ctx.sessionData.sessionHandle = TPM_RS_PW;
     ctx.validation.tag = TPM_ST_HASHCHECK;
     ctx.validation.hierarchy = TPM_RH_NULL;
-    ctx.halg = TPM_ALG_SHA256;
+    if (mechanism = 7)
+        ctx.halg = TPM_ALG_SHA256;
+    else
+        printf("mechanism not supported! \n");
     ctx.keyHandle = *(TPMI_DH_OBJECT *)keyHandle;
 
     rval = Tss2_Sys_ContextLoad(ctx.sapi_context, &loaded_key_context, &ctx.keyHandle);
@@ -701,4 +721,70 @@ out:
 
 }
 
+int tpm2_plugin_rsa_sign_update(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *msg,
+         int msg_len
+        )
+{
+    int i, j, n;
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle = hSession){
+            n = data_signupdate_session[i].data_length;
+            for (j =0; j < msg_len; j++ )
+                data_signupdate_session[i].data_signupdate[n + j] = msg[j];
+            data_signupdate_session[i].data_length += msg_len;
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int tpm2_plugin_rsa_sign_final(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *outsig,
+         int *outsiglen
+        )
+{
+    int i, j;
+    unsigned char *msg;
+    int msg_len;
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle = hSession){
+            msg = data_signupdate_session[i].data_signupdate;
+            msg_len = data_signupdate_session[i].data_length;
+            tpm2_plugin_rsa_sign(hSession, keyHandle, mechanism, msg, msg_len, outsig, outsiglen);
+            return 0;
+        }
+    }
+
+    return -1;
+}
+
+/** This function is called by SSHSM only if there sign_final function is not called.
+If sign_final function is called, it is assumed that plugin would have cleaned this up.
+***/
+
+int tpm2_plugin_rsa_sign_cleanup(
+         unsigned long int hSession,
+         void *keyHandle,
+         unsigned long mechanism
+        )
+{
+    int i, j;
+    for (i = 0; i < MAX_SESSIONS; i++)    {
+        if (data_signupdate_session[i].session_handle = hSession){
+            data_signupdate_session[i].session_handle = 0;
+            for (j =0; j < MAX_DATA_SIGNUPDATE; j++ )
+                data_signupdate_session[i].data_signupdate[j] =0;
+            data_signupdate_session[i].data_length = 0;
+        }
+    }
+
+    return 0;
+}
 
