@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_e4330760",
+        "filename": "SoftHSMv2/src/lib/HwInfra/hwpluginif.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-05-01T17:27:03Z",
+      "side": 1,
+      "message": "need to add \"unsigned long mechanism\" parameter in this API",
+      "range": {
+        "startLine": 187,
+        "startChar": 14,
+        "endLine": 187,
+        "endChar": 45
+      },
+      "revId": "8b57bdb7aa07850e4f843231b6c0460ea1ccad4e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_a4417faa",
+        "filename": "SoftHSMv2/src/lib/HwInfra/hwpluginif.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-05-01T17:27:03Z",
+      "side": 1,
+      "message": "need to add \"unsigned long mechanism\" parameter in this API",
+      "range": {
+        "startLine": 194,
+        "startChar": 14,
+        "endLine": 194,
+        "endChar": 44
+      },
+      "revId": "8b57bdb7aa07850e4f843231b6c0460ea1ccad4e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c43ccb31",
+        "filename": "SoftHSMv2/src/lib/HwInfra/hwpluginif.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-05-01T17:27:03Z",
+      "side": 1,
+      "message": "need to add \"unsigned long mechanism\" parameter in this API",
+      "range": {
+        "startLine": 205,
+        "startChar": 14,
+        "endLine": 205,
+        "endChar": 46
+      },
+      "revId": "8b57bdb7aa07850e4f843231b6c0460ea1ccad4e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
