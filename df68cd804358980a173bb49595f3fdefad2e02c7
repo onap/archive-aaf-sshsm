@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_87280598",
+        "filename": "TPM2-Plugin/lib/include/tpm2_plugin_api.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T00:02:18Z",
+      "side": 1,
+      "message": "This seems to be very small. There can be more active sessions then 10. Or you can make it dynamic",
+      "range": {
+        "startLine": 145,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 24
+      },
+      "revId": "df68cd804358980a173bb49595f3fdefad2e02c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_6205a70f",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T00:02:18Z",
+      "side": 1,
+      "message": "should be \u003d\u003d",
+      "range": {
+        "startLine": 446,
+        "startChar": 54,
+        "endLine": 446,
+        "endChar": 55
+      },
+      "revId": "df68cd804358980a173bb49595f3fdefad2e02c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0714f54a",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T00:02:18Z",
+      "side": 1,
+      "message": "should be \u003d\u003d",
+      "range": {
+        "startLine": 472,
+        "startChar": 54,
+        "endLine": 472,
+        "endChar": 55
+      },
+      "revId": "df68cd804358980a173bb49595f3fdefad2e02c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_679139f0",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T00:02:18Z",
+      "side": 1,
+      "message": "Should be \u003d\u003d",
+      "range": {
+        "startLine": 729,
+        "startChar": 18,
+        "endLine": 729,
+        "endChar": 19
+      },
+      "revId": "df68cd804358980a173bb49595f3fdefad2e02c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c7092d32",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T00:02:18Z",
+      "side": 1,
+      "message": "should be \u003d\u003d",
+      "range": {
+        "startLine": 768,
+        "startChar": 54,
+        "endLine": 768,
+        "endChar": 55
+      },
+      "revId": "df68cd804358980a173bb49595f3fdefad2e02c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_87ffa501",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T00:02:18Z",
+      "side": 1,
+      "message": "should be \u003d\u003d",
+      "range": {
+        "startLine": 792,
+        "startChar": 54,
+        "endLine": 792,
+        "endChar": 55
+      },
+      "revId": "df68cd804358980a173bb49595f3fdefad2e02c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
