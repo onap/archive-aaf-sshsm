@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_b3a543a3",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-02T17:15:34Z",
+      "side": 1,
+      "message": "Signature is of type TPMT_SIGNATURE. This needs to be deferenced based on this link. \nhttps://github.com/tpm2-software/tpm2-tss/blob/72227dc6fa2e553fba83c779bc5d4a6f21b9bb16/include/tss2/tss2_tpm2_types.h#L1517",
+      "range": {
+        "startLine": 689,
+        "startChar": 27,
+        "endLine": 689,
+        "endChar": 36
+      },
+      "revId": "b2e9cd9753699fd5e7b66aafe481e0fbe214f62f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
