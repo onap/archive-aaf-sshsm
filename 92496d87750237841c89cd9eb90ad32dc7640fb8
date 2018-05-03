@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_a26f26c3",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-03T22:34:20Z",
+      "side": 1,
+      "message": "Please check agian",
+      "parentUuid": "5a93c517_bc0d0f91",
+      "range": {
+        "startLine": 691,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 11
+      },
+      "revId": "92496d87750237841c89cd9eb90ad32dc7640fb8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_9ce5b3dd",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "this is also pointer passing, should not have *",
       "parentUuid": "5a93c517_9ce5b3dd",
+      "range": {
+        "startLine": 692,
+        "startChar": 4,
+        "endLine": 692,
+        "endChar": 7
+      },
+      "revId": "92496d87750237841c89cd9eb90ad32dc7640fb8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_426ae2b3",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-03T22:34:20Z",
+      "side": 1,
+      "message": "Please check again",
+      "parentUuid": "5a93c517_5c288be1",
       "range": {
         "startLine": 692,
         "startChar": 4,
