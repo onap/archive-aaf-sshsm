@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_2cdd3fe0",
+        "filename": "SoftHSMv2/src/bin/Makefile.am",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-05-08T23:33:12Z",
+      "side": 1,
+      "message": "Is this line needed? Can it be removed?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "b52ca8884000864a4aea1b241b7d283d3463b055",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
