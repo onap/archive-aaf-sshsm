@@ -1,9 +1,9 @@
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 
-SUBDIRS = common keyconv util dump
+SUBDIRS = common util dump
 
 if BUILD_MIGRATE
 SUBDIRS += migrate
 endif
 
-#EXTRA_DIST =	
+#EXTRA_DIST =
