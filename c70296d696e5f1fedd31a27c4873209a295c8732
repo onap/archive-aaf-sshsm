@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_ac2dcfff",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-11T22:35:04Z",
+      "side": 1,
+      "message": "Use memcpy to copy the signature in the buffer provided by SoftHSM",
+      "range": {
+        "startLine": 750,
+        "startChar": 4,
+        "endLine": 750,
+        "endChar": 67
+      },
+      "revId": "c70296d696e5f1fedd31a27c4873209a295c8732",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
