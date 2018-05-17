@@ -50,6 +50,23 @@
       "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_e51c2f15",
+        "filename": "bin/tpmdockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-05-17T18:51:51Z",
+      "side": 1,
+      "message": "Is this master branch stable and backward compatible with all other components?",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
