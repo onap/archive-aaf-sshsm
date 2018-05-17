@@ -146,7 +146,8 @@ int tpm2_plugin_uninit();
 int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info);
 int tpm2_plugin_load_key(
            SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-           void **keyHandle
+           void **keyHandle,
+           SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info
         );
 
 int tpm2_rsa_create_object(

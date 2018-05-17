@@ -27,6 +27,8 @@
 #ifdef HAVE_TCTI_TABRMD
 #include <tcti/tcti-tabrmd.h>
 #endif
+#define ARRAY_LEN(x) (sizeof(x)/sizeof(x[0]))
+
 bool output_enabled = true;
 bool hexPasswd = false;
 TPM_HANDLE handle2048rsa;
@@ -337,10 +339,66 @@ int load_key(TSS2_SYS_CONTEXT *sapi_context,
     return 0;
 }
 
+int read_public(TSS2_SYS_CONTEXT *sapi_context,
+                TPM_HANDLE handle, 
+                SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info)
+{
+
+    TPMS_AUTH_RESPONSE session_out_data;
+    TSS2_SYS_RSP_AUTHS sessions_out_data;
+    TPMS_AUTH_RESPONSE *session_out_data_array[1];
+
+    TPM2B_PUBLIC public = {
+            { 0, }
+    };
+
+    TPM2B_NAME name = TPM2B_TYPE_INIT(TPM2B_NAME, name);
+
+    TPM2B_NAME qualified_name = TPM2B_TYPE_INIT(TPM2B_NAME, name);
+
+    session_out_data_array[0] = &session_out_data;
+    sessions_out_data.rspAuths = &session_out_data_array[0];
+    sessions_out_data.rspAuthsCount = ARRAY_LEN(session_out_data_array);
+
+    TPM_RC rval = Tss2_Sys_ReadPublic(sapi_context, handle, 0,
+            &public, &name, &qualified_name, &sessions_out_data);
+    if (rval != TPM_RC_SUCCESS) {
+        printf("TPM2_ReadPublic error: rval = 0x%0x", rval);
+        return false;
+    }
+
+    printf("\nTPM2_ReadPublic OutPut: \n");
+    printf("name: \n");
+    UINT16 i;
+    for (i = 0; i < name.t.size; i++)
+        printf("%02x ", name.t.name[i]);
+    printf("\n");
+
+    printf("qualified_name: \n");
+    for (i = 0; i < qualified_name.t.size; i++)
+        printf("%02x ", qualified_name.t.name[i]);
+    printf("\n");
+
+    printf("public.t.publicArea.parameters.rsaDetail.keyBits = %d \n", public.t.publicArea.parameters.rsaDetail.keyBits);
+    printf("public.t.publicArea.parameters.rsaDetail.exponent = %d \n", public.t.publicArea.parameters.rsaDetail.exponent);
+    
+    importkey_info->modulus_size = public.t.publicArea.unique.rsa.t.size;
+    printf("importkey_info->modulus_size = %ld \n", importkey_info->modulus_size);
+    memcpy(importkey_info->modulus, &public.t.publicArea.unique.rsa.t.buffer, importkey_info->modulus_size);
+
+    importkey_info->exponent_size = sizeof(public.t.publicArea.parameters.rsaDetail.exponent);
+    printf("importkey_info->exponent_size = %ld \n", importkey_info->exponent_size);
+    memcpy(importkey_info->exponent, &public.t.publicArea.parameters.rsaDetail.exponent, importkey_info->exponent_size);
+    //*importkey_info->exponent = public.t.publicArea.parameters.rsaDetail.exponent;
+
+    return 0;
+}
+
 TPMS_CONTEXT loaded_key_context;
 
 int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-                     void **keyHandle, TSS2_SYS_CONTEXT *sapi_context)
+                     void **keyHandle, TSS2_SYS_CONTEXT *sapi_context, 
+                     SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info)
 {
 
     TPMI_DH_OBJECT parentHandle;
@@ -365,12 +423,14 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
     memcpy(&inPrivate, loadkey_in_info->buffer_info[1]->buffer,
            loadkey_in_info->buffer_info[1]->length_of_buffer);
 
-        printf("we are here now\n");
     returnVal = load_key (sapi_context,
                           parentHandle,
                           &inPublic,
                           &inPrivate,
                           0);
+    returnVal = read_public(sapi_context, 
+                            handle2048rsa, 
+                            importkey_info);
 
     TPM_RC rval = Tss2_Sys_ContextSave(sapi_context, handle2048rsa, &loaded_key_context);
     if (rval != TPM_RC_SUCCESS) {
@@ -382,7 +442,8 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
 }
 
 int tpm2_plugin_load_key(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-                         void **keyHandle)
+                         void **keyHandle,
+                         SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info)
 {
     int ret = 1;
     common_opts_t opts = COMMON_OPTS_INITIALIZER;
@@ -400,7 +461,7 @@ int tpm2_plugin_load_key(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_inf
         }
     }
 
-    ret = load_key_execute(loadkey_in_info, keyHandle, sapi_context);
+    ret = load_key_execute(loadkey_in_info, keyHandle, sapi_context, importkey_info);
     if (ret !=0)
         printf("Load key API failed in TPM plugin ! \n");
 

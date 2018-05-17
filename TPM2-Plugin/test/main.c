@@ -32,6 +32,9 @@ void main(void)
 
     SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info;
     activate_in_info = malloc(sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
+    SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info;
+    importkey_info = malloc(sizeof(SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t));
+
     SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info;
     loadkey_in_info = malloc(sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
     loadkey_in_info->num_buffers = 2;
@@ -59,7 +62,7 @@ void main(void)
     tpm2_plugin_rsa_sign_init(keyHandle_sign, mechanism, param, len);
 
     printf("---------------------------------------------\n");
-    tpm2_plugin_load_key(loadkey_in_info, keyHandle);
+    tpm2_plugin_load_key(loadkey_in_info, keyHandle, importkey_info);
 
     printf("---------------------------------------------\n");
     tpm2_plugin_rsa_sign(keyHandle_sign, mechanism, msg, msg_len, sig, sig_len);
