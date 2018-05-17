@@ -88,6 +88,14 @@ typedef struct sshsm_hw_plugin_activate_in_info_s {
     buffer_info_t *buffer_info[MAX_BUFFER_SEGMENTS];
 }SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t;
 
+typedef struct sshsm_hw_plugin_import_public_key_info_s {
+    unsigned long modulus_size;
+    unsigned char *modulus;
+    unsigned long exponent_size;
+    //unsigned char *exponent;
+    unsigned int *exponent;
+}SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t;
+
 typedef int (*sshsm_hw_plugin_activate)(
            SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info
         );
@@ -130,7 +138,8 @@ typedef int (*sshsm_hw_plugin_activate)(
 
 typedef int (*sshsm_hw_plugin_load_key)(
            SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-           void **keyHandle
+           void **keyHandle,
+           SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info
         );
 
 typedef int (*sshsm_hw_plugin_unload_key)(
