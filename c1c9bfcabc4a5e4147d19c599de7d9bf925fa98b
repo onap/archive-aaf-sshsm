@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_85e20b9e",
+        "filename": "TPM2-Plugin/lib/include/hwpluginif.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-05-17T22:32:44Z",
+      "side": 1,
+      "message": "this is intentionally left here for integration with SOftHSM, once SoftHSM data structure finalized, we can remove it.",
+      "parentUuid": "5a93c517_4562c33e",
+      "revId": "c1c9bfcabc4a5e4147d19c599de7d9bf925fa98b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_05583b88",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-17T22:15:50Z",
       "side": 1,
       "message": "I don\u0027t see this being used?",
+      "revId": "c1c9bfcabc4a5e4147d19c599de7d9bf925fa98b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c5dc93e6",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3169
+      },
+      "writtenOn": "2018-05-17T22:32:44Z",
+      "side": 1,
+      "message": "see line 361",
+      "parentUuid": "5a93c517_05583b88",
       "revId": "c1c9bfcabc4a5e4147d19c599de7d9bf925fa98b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
