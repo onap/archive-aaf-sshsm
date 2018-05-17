@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_25de973e",
+        "filename": "bin/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-05-17T19:13:21Z",
+      "side": 1,
+      "message": "Tool is already installed in bin, so it will always work.",
+      "parentUuid": "5a93c517_c5fa53bc",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_450723ca",
         "filename": "bin/entrypoint.sh",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_e5e3cf02",
+        "filename": "bin/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-05-17T19:13:21Z",
+      "side": 1,
+      "message": "Yes. This is how TABRMD connects to the tpm simulator running on the host. We want TABRMD to work with device. So, this may not be needed when it runs against a device.",
+      "parentUuid": "5a93c517_450723ca",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_e5f50fcb",
         "filename": "bin/entrypoint.sh",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-05-17T18:42:23Z",
       "side": 1,
       "message": "same as above",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_85ee8beb",
+        "filename": "bin/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-05-17T19:13:21Z",
+      "side": 1,
+      "message": "Same as above. The tools are installed into bin as part of make install step during container build and will be available during run time.",
+      "parentUuid": "5a93c517_e5f50fcb",
       "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
