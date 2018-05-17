@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_c5fa53bc",
+        "filename": "bin/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-05-17T18:42:23Z",
+      "side": 1,
+      "message": "Absolute path is recommended for running the tools. So that script will work even if the path is not set correctly.",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_450723ca",
+        "filename": "bin/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-05-17T18:42:23Z",
+      "side": 1,
+      "message": "This would return the gateway to external network instead of hostip.",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_e5f50fcb",
+        "filename": "bin/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-05-17T18:42:23Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "c2a9c2799e0efaf04ca813dc160333363ac156a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
