@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_659a5f15",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-05-17T23:47:04Z",
+      "side": 1,
+      "message": "had-coded values can be avoided. size of (unsigned long) can be used?",
+      "revId": "673d1620a8f5bb0651e8ca2d3ef689ae8c50abca",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_451ac37d",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-05-17T23:47:04Z",
+      "side": 1,
+      "message": "Hope you will read Public key portion from hardware in next version as discussed.",
+      "revId": "673d1620a8f5bb0651e8ca2d3ef689ae8c50abca",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_45be4366",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 3687
+      },
+      "writtenOn": "2018-05-17T23:47:04Z",
+      "side": 1,
+      "message": "Private exponent is not needed. You can remove this.",
+      "revId": "673d1620a8f5bb0651e8ca2d3ef689ae8c50abca",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
