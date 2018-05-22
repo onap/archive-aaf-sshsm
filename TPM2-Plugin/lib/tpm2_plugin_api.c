@@ -384,11 +384,18 @@ int read_public(TSS2_SYS_CONTEXT *sapi_context,
 
     importkey_info->modulus_size = public.t.publicArea.unique.rsa.t.size;
     printf("importkey_info->modulus_size = %ld \n", importkey_info->modulus_size);
-    memcpy(importkey_info->modulus, &public.t.publicArea.unique.rsa.t.buffer, importkey_info->modulus_size);
+    importkey_info->modulus = (unsigned char *) malloc(importkey_info->modulus_size);
+    if (importkey_info->modulus != NULL) {
+        memcpy(importkey_info->modulus, &public.t.publicArea.unique.rsa.t.buffer, importkey_info->modulus_size);
+    }
 
     importkey_info->exponent_size = sizeof(public.t.publicArea.parameters.rsaDetail.exponent);
     printf("importkey_info->exponent_size = %ld \n", importkey_info->exponent_size);
-    memcpy(importkey_info->exponent, &public.t.publicArea.parameters.rsaDetail.exponent, importkey_info->exponent_size);
+    importkey_info->exponent = (unsigned char *) malloc(importkey_info->exponent_size);
+    if (importkey_info->exponent != NULL) {
+        memcpy(importkey_info->exponent, &public.t.publicArea.parameters.rsaDetail.exponent, importkey_info->exponent_size);
+    }
+
     //*importkey_info->exponent = public.t.publicArea.parameters.rsaDetail.exponent;
 
     return 0;
