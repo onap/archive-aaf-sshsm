@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_cbe254a0",
+        "filename": "SoftHSMv2/src/lib/HwInfra/HwInfra.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-23T22:12:56Z",
+      "side": 1,
+      "message": "This will be done in a separate patch.",
+      "parentUuid": "5a93c517_d031a5ee",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "e536d7d20d6be3f9d8bdc28197eb11ab89d14de0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_90247db3",
         "filename": "SoftHSMv2/src/lib/SoftHSM.cpp",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-23T18:58:04Z",
       "side": 1,
       "message": "Please remove this",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "e536d7d20d6be3f9d8bdc28197eb11ab89d14de0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_4bcf242a",
+        "filename": "SoftHSMv2/src/lib/SoftHSM.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-23T22:12:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_90247db3",
       "range": {
         "startLine": 123,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_6bd460bd",
+        "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-23T22:12:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_700c513c",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 8
+      },
+      "revId": "e536d7d20d6be3f9d8bdc28197eb11ab89d14de0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_300ec933",
         "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_0bd91cf4",
+        "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-23T22:12:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_300ec933",
+      "range": {
+        "startLine": 131,
+        "startChar": 34,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "e536d7d20d6be3f9d8bdc28197eb11ab89d14de0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_f0170144",
         "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
         "patchSetId": 9
@@ -105,6 +201,30 @@
       "writtenOn": "2018-05-23T18:58:04Z",
       "side": 1,
       "message": "Please remove this",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 8
+      },
+      "revId": "e536d7d20d6be3f9d8bdc28197eb11ab89d14de0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_2bd658c4",
+        "filename": "SoftHSMv2/src/lib/session_mgr/Session.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-05-23T22:12:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_f0170144",
       "range": {
         "startLine": 179,
         "startChar": 0,
