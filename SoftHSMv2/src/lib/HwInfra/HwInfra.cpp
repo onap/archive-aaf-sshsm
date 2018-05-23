@@ -24,14 +24,13 @@
 #include <unistd.h>
 #include "HwInfra.h"
 #include "hwpluginif.h"
-
+#include "OSAttributes.h"
 #include "cryptoki.h"
 
 char hw_plugins_parent_dir[MAX_PARENT_PATH_NAME+1] = "";
 char *default_hw_plugin_parent_dir = "/tmp/hwparent/";
 void *g_dl_handle;
 SSHSM_HW_FUNCTIONS_t g_pluginfuncs;
-
 
 /**
   Function name : prepareHWPlugin
@@ -138,7 +137,7 @@ int loadHWPlugin(char *parent_dir, char *pluginsubdir)
 
    dirhandle = opendir(fullpath);
 
-   entries = malloc(sizeof(hwpluginentries_t));
+   entries = (hwpluginentries_t*)malloc(sizeof(hwpluginentries_t));
    if (entries == NULL )
    {
      LOG("Could not allocate entries  \n");
@@ -282,7 +281,7 @@ int load_hw_plugin_and_get_function_pointers(char *so_path,
    }
 
    functogetpluginfuncs = NULL;
-   functogetpluginfuncs = dlsym(g_dl_handle,
+   functogetpluginfuncs = (int (*)(SSHSM_HW_FUNCTIONS_t *)) dlsym(g_dl_handle,
              "sshsm_hw_plugin_get_plugin_functions");
 
    if (functogetpluginfuncs == NULL)
@@ -342,7 +341,6 @@ int activate_hw_plugin(hwpluginentries_t *entries, SSHSM_HW_FUNCTIONS_t *funcs)
    return(ret_val);
 }
 
-
 int load_keys_in_hw_plugin(hwpluginentries_t *entries,
                    SSHSM_HW_FUNCTIONS_t *funcs)
 {
@@ -354,6 +352,7 @@ int load_keys_in_hw_plugin(hwpluginentries_t *entries,
     //key_handle = (void *) &hwkeyhandle;
 
     SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t comp_buffers;
+    SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t import_public_key;
 
     /**
      Travese through all key directories and load the key in plugin
@@ -370,19 +369,27 @@ int load_keys_in_hw_plugin(hwpluginentries_t *entries,
 
        if(ret_val == 0)
        {
-           ret_val = (funcs->xxx_load_key)(&comp_buffers, &key_handle);
+           ret_val = (funcs->xxx_load_key)(&comp_buffers, &key_handle,
+                                                       &import_public_key);
            //free_buffers(&comp_buffers);
            if(ret_val == 0)
            {
                /** Get PKCS11 information **/
                /** Call SoftHSM functions to create private key object */
-               ret_val = program_pkcs11_info(entries->key_dir_full_path[ii], &key_handle);
+               if (ret_val == 0) {
+                   ret_val = program_pkcs11_info(entries->key_dir_full_path[ii],
+                                             &key_handle,  &import_public_key);
+                   if (import_public_key.modulus != NULL)
+                      free(import_public_key.modulus);
+                   if (import_public_key.exponent != NULL)
+                      free(import_public_key.exponent);
+               }
            }
        }
 
     }
 
-    return(0);
+    return(ret_val);
 }
 
 int get_all_file_contents(char *dirpath, char starting_char,
@@ -410,7 +417,7 @@ int get_all_file_contents(char *dirpath, char starting_char,
          if ((entry->d_type == DT_REG) &&
               (entry->d_name[0] == starting_char))
          {
-             buffer = malloc(sizeof(buffer_info_t));
+             buffer = (buffer_info_t*) malloc(sizeof(buffer_info_t));
              if (buffer == NULL )
              {
                LOG("Could not allocate entries  \n");
@@ -431,7 +438,7 @@ int get_all_file_contents(char *dirpath, char starting_char,
              strcpy(fullpath,dirpath);
              strcat(fullpath, entry->d_name);
              stat(fullpath, &st);
-             buffer->buffer = malloc(st.st_size);
+             buffer->buffer = (unsigned char*) malloc(st.st_size);
              if(buffer->buffer == NULL)
              {
                LOG("Could not allocate entries  \n");
@@ -489,7 +496,8 @@ void free_buffers ( SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *c_buffers )
    }
 }
 
-int program_pkcs11_info (char *dirpath, void *key_handle)
+int program_pkcs11_info (char *dirpath, void *key_handle,
+                         SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *import_public_key)
 {
    DIR *dirhandle;
    struct dirent *entry;
@@ -572,7 +580,7 @@ int program_pkcs11_info (char *dirpath, void *key_handle)
 
              /** Program key in SoftHSM **/
              ret_val = PrepareKeyInSoftHSM(slot_id, upin, upin_len, keyid,
-                           key_id_len, key_label, key_handle);
+                           key_id_len, key_label, key_handle, import_public_key);
 
               break;
            }
@@ -582,6 +590,28 @@ int program_pkcs11_info (char *dirpath, void *key_handle)
 
    return ret_val;
 }
+
+
+void long_to_byte_string(const unsigned long longValue, unsigned char *out, size_t *outlen)
+{
+        unsigned long setValue = longValue;
+        unsigned char byteStrIn[8];
+        size_t i;
+
+        for (i = 0; i < 8; i++)
+        {
+            byteStrIn[7-i] = (unsigned char) (setValue & 0xFF);
+            setValue >>= 8;
+        }
+        for (i = 0; i < 8; i++)
+        {
+            if (byteStrIn[i])
+               break;
+        }
+        memcpy(out, &byteStrIn[i], 8-i);
+        *outlen = 8-i;
+}
+
 
 
 /*** PrepareKeyInSoftHSM
@@ -601,7 +631,8 @@ int program_pkcs11_info (char *dirpath, void *key_handle)
 int PrepareKeyInSoftHSM(unsigned int slot_id,
                unsigned char *upin, int upin_len,
                unsigned char *key_id, int key_id_len,
-               unsigned char *key_label, void *key_handle)
+               unsigned char *key_label, void *key_handle,
+               SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *import_public_key)
 {
     CK_SESSION_HANDLE hSession;
     CK_RV ret_val;
@@ -611,16 +642,15 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
 
     printf ("slot %ul upin %s key_id %s key_label %s \n", slot_id, upin, key_id,
              key_label);
-
     if(!key_handle)
     {
-        //ultoa((CK_ULONG)key_handle,  key_handle_str,  16); // Linking error seen
-        printf("Key_handle to be stored: %lx \n", *((CK_ULONG *)key_handle) );
-        sprintf((char *) key_handle_str, "%lx", *((CK_ULONG *)key_handle));
-    }
-    else
-    {
         printf("Input Key handle is NULL ! \n");
+        return (SSHSM_HW_PLUGIN_ERROR_BASE + INVALID_KEY_ERROR);
+    }
+    if (import_public_key->modulus == NULL ||
+                    import_public_key->exponent == NULL)
+    {
+         return (SSHSM_HW_PLUGIN_ERROR_BASE + INVALID_KEY_ERROR);
     }
 
     /** For creating the key object, first the session needs to be opened
@@ -651,39 +681,64 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
     CK_KEY_TYPE keyType = CKK_RSA;
     CK_BBOOL ckTrue = CK_TRUE, ckFalse = CK_FALSE ;
 
+    unsigned long int key_id_int = atol( (const char*) key_id );
+    unsigned char byte_str[8];
+    size_t outlen;
+    long_to_byte_string(key_id_int, byte_str, &outlen);
+
     CK_ATTRIBUTE keyTemplate[] = {
         { CKA_CLASS,            &privClass,         sizeof(privClass) },
         { CKA_KEY_TYPE,         &keyType,           sizeof(keyType) },
         { CKA_LABEL,            key_label,          strlen((char *) key_label) },
-        { CKA_ID,               key_id,             (CK_ULONG)key_id_len },
+        { CKA_ID,               byte_str,           outlen },
         { CKA_SIGN,             &ckTrue,            sizeof(ckTrue) },
         { CKA_DECRYPT,          &ckTrue,            sizeof(ckTrue) },
         { CKA_UNWRAP,           &ckFalse,           sizeof(ckFalse) },
         { CKA_TOKEN,            &ckTrue,            sizeof(ckTrue) },
         { CKA_PRIVATE,          &ckTrue,            sizeof(ckTrue) },
-        { CKA_EXTRACTABLE,      &ckTrue,            sizeof(ckTrue) },
-        { CKA_PUBLIC_EXPONENT,  0,            0},
-        { CKA_MODULUS,          0,            0},
-        { CKA_PRIVATE_EXPONENT, 0,            0},
-        { CKA_PRIME_2,          0,            0},
-        { CKA_EXPONENT_1,       0,            0},
-        { CKA_EXPONENT_2,       0,            0},
-        { CKA_COEFFICIENT,      0,            0},
-        { CKA_PRIME_1,          key_handle_str,     strlen((char *)key_handle_str) }
-        /** For now keep the key handle returned by Plugin in CK_PRIME_1.
-        ** TBD - Define new attribute to store this in future
-        ***/
+        { CKA_EXTRACTABLE,      &ckFalse,           sizeof(ckFalse) },
+        { CKA_SENSITIVE,        &ckFalse,           sizeof(ckFalse) },
+        { CKA_PUBLIC_EXPONENT,  import_public_key->exponent, import_public_key->exponent_size},
+        //{ CKA_MODULUS,          pN,                 sizeof(pN) },
+        { CKA_MODULUS,          import_public_key->modulus, import_public_key->modulus_size },
+        { CKA_PRIVATE_EXPONENT, 0,                 0 },
+        { CKA_PRIME_2,          0,                  0},
+        { CKA_EXPONENT_1,       0,                  0},
+        { CKA_EXPONENT_2,       0,                  0},
+        { CKA_COEFFICIENT,      0,                  0},
+        { CKA_OS_PRIVATE_HANDLE,       (CK_VOID_PTR ) *((CK_ULONG*)key_handle),      sizeof(CK_ULONG) }
     };
 
-    ret_val =  C_CreateObject(hSession, keyTemplate,
+
+    CK_OBJECT_HANDLE hObject;
+    CK_ULONG ulObjectCount;
+    CK_RV rv;
+
+    rv = C_FindObjectsInit(hSession, keyTemplate, 0);
+    if(rv != CKR_OK) {
+        LOG ("C_FindObjectsInit rv %ld\n", rv);
+    }
+    rv = C_FindObjects(hSession, &hObject, 16, &ulObjectCount);
+    printf("PrepareKeyInSoftHSM: ulObjectCount %ld\n", ulObjectCount);
+    if(rv != CKR_OK || ulObjectCount == 0) {
+        ret_val =  C_CreateObject(hSession, keyTemplate,
                  sizeof(keyTemplate)/sizeof(CK_ATTRIBUTE),&hKey);
-    if (ret_val != CKR_OK)
-    {
-        printf("CreateObject failed: 0x%lx | for slot %x | keylabel %s | keyid below \n",
+        if (ret_val != CKR_OK)
+        {
+            printf("CreateObject failed: 0x%lx | for slot %x | keylabel %s | keyid below \n",
                 ret_val, slot_id, key_label);
-        for (ii = 0; ii < key_id_len; ii++ )
-           printf("%2x  %c \n",  key_id[ii], key_id[ii]);
+            for (ii = 0; ii < key_id_len; ii++ )
+               printf("%2x  %c \n",  key_id[ii], key_id[ii]);
         //return(ret_val);
+        }
+    }
+    else {
+        printf("PrepareKeyInSoftHSM: Object already exists\n");
+    }
+
+    rv = C_FindObjectsFinal(hSession);
+    if(rv != CKR_OK) {
+        LOG ("C_FindObjectsFinal rv %ld\n", rv);
     }
 
     ret_val = C_Logout(hSession);
@@ -704,16 +759,56 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
 }
 
 int HwInfraSignInit(void *keyHandle,  unsigned long mechanism,
-                 void* param, int paramLen)
+                 void* param, int paramLen, void **hwCryptoOpaque)
 {
-    return ( g_pluginfuncs.xxx_rsa_sign_init(keyHandle, mechanism, param, paramLen) );
+    if (g_pluginfuncs.xxx_rsa_sign_init == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
+
+    return (g_pluginfuncs.xxx_rsa_sign_init(keyHandle, mechanism, param,
+                                                 paramLen, hwCryptoOpaque)) ;
+
 }
 
-int HwInfraSign( void *keyHandle,  unsigned long mechanism,
-                 unsigned char *msg, int msg_len,
+int HwInfraSign(void *keyHandle,  unsigned long mechanism,
+                 unsigned char *msg, int msg_len, void *hwCryptoOpaque,
                  unsigned char *outsig,  int *outsiglen)
 {
+    if (g_pluginfuncs.xxx_rsa_sign == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
+
     return ( g_pluginfuncs.xxx_rsa_sign(keyHandle, mechanism, msg, msg_len,
-                outsig, outsiglen) );
+                hwCryptoOpaque, outsig, outsiglen) );
+}
+
+int HwInfraSignUpdate(void *keyHandle, unsigned long mechanism,
+                      unsigned char *param, int paramLen, void *hwCryptoOpaque)
+{
+    if (g_pluginfuncs.xxx_rsa_sign_update == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
+
+    int x =  ( g_pluginfuncs.xxx_rsa_sign_update(keyHandle, mechanism, param,
+                                               paramLen, hwCryptoOpaque) );
+    return 0;
+}
+
+int HwInfraSignFinal(void *keyHandle, unsigned long mechanism,
+                  void *hwCryptoOpaque,
+                 unsigned char *outsig,  int *outsiglen)
+{
+    if (g_pluginfuncs.xxx_rsa_sign_final == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
+
+    return ( g_pluginfuncs.xxx_rsa_sign_final(keyHandle, mechanism,
+                                     hwCryptoOpaque, outsig, outsiglen) );
+}
+
+int HwInfraSignCleanup(void *keyHandle, unsigned long mechanism,
+                       void *hwCryptoOpaque)
+{
+    if (g_pluginfuncs.xxx_rsa_sign_cleanup == NULL)
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
+
+    return ( g_pluginfuncs.xxx_rsa_sign_cleanup(keyHandle, mechanism,
+                                                hwCryptoOpaque) );
 }
 

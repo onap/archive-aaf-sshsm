@@ -50,18 +50,26 @@ int get_all_file_contents(char *dirpath,  char starting_char,
                   SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *c_buffers );
 
 void free_buffers ( SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *c_buffers );
-int program_pkcs11_info (char *dirpath, void *key_handle);
+int program_pkcs11_info (char *dirpath, void *key_handle, SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t* ik);
 int PrepareKeyInSoftHSM(unsigned int slot_id,
                unsigned char *upin, int upin_len,
                unsigned char *key_id, int key_id_len,
-               unsigned char *key_label, void *key_handle);
+               unsigned char *key_label, void *key_handle,
+               SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t* ik);
 
 int HwInfraSignInit(void *keyHandle,  unsigned long mechanism,
-                 void* param, int paramLen);
-
-int HwInfraSign( void *keyHandle,  unsigned long mechanism,
-                 unsigned char *msg, int msg_len,
+                 void* param, int paramLen, void **hwCryptoOpaque);
+int HwInfraSign(void *keyHandle,  unsigned long mechanism,
+                 unsigned char *msg, int msg_len, void *hwCryptoOpaque,
                  unsigned char *outsig,  int *outsiglen);
+int HwInfraSignUpdate(void *keyHandle, unsigned long mechanism,
+                 unsigned char *msg, int msg_len, void *hwCryptoOpaque);
+int HwInfraSignFinal(void *keyHandle,  unsigned long mechanism,
+                 void *hwCryptoOpaque,
+                 unsigned char *outsig,  int *outsiglen);
+int HwInfraSignCleanup(void *keyHandle,  unsigned long mechanism,
+                       void *hwCryptoOpaque);
+
 
 #define MAX_PARENT_PATH_NAME 256
 
@@ -76,6 +84,7 @@ int HwInfraSign( void *keyHandle,  unsigned long mechanism,
 #define PLUGIN_DL_OPEN_ERROR (06)
 #define PLUGIN_DL_SYM_ERROR (07)
 #define PLUGIN_INIT_ERROR (10)
+#define INVALID_KEY_ERROR (11)
 
 #if defined(__cplusplus)
 }
