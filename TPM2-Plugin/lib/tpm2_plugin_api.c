@@ -134,7 +134,6 @@ tcti_device_init (char const *device_file)
 }
 #endif
 
-
 #ifdef HAVE_TCTI_SOCK
 TSS2_TCTI_CONTEXT* tcti_socket_init (char const *address, uint16_t port)
 {
@@ -484,16 +483,64 @@ struct tpm_sign_ctx {
     TSS2_SYS_CONTEXT *sapi_context;
 };
 
+//create a table to consolidate all parts of data from multiple SignUpdate from sessions
+CONCATENATE_DATA_SIGNUPDATE_t data_signupdate_session[MAX_SESSIONS];
+unsigned long sign_sequence_id = 0;
 int tpm2_plugin_rsa_sign_init(
         void *keyHandle,
         unsigned long mechanism,
         void *param,
-        int len)
+        int len,
+        void **plugin_data_ref
+       )
 {
-    printf("rsa_sign_init API mechanism is %lx \n", mechanism);
+    printf("rsa_sign_init API mechanism is %ld \n", mechanism);
+    printf("rsa_sign_init API len is %d \n", len);
+    int i, j;
+
+    sign_sequence_id++;
+    unsigned long hSession = sign_sequence_id;
+
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle == 0){
+            data_signupdate_session[i].session_handle = hSession;
+            for (j = 0; j < MAX_DATA_SIGNUPDATE; j++ )
+                data_signupdate_session[i].data_signupdate[j] = 0;
+            data_signupdate_session[i].data_length = 0;
+        }
+    }
+    *plugin_data_ref = (void *)hSession;
+
     printf("rsa_sign_init API done for tpm2_plugin... \n");
     return 0;
 }
+
+/** This function is called by SSHSM only if there sign_final function is not called.
+If sign_final function is called, it is assumed that plugin would have cleaned this up.
+***/
+
+int tpm2_plugin_rsa_sign_cleanup(
+         void *keyHandle,
+         unsigned long mechnaism,
+         void *plugin_data_ref
+        )
+{
+    int i, j;
+    unsigned long hSession = (unsigned long)plugin_data_ref;
+    for (i = 0; i < MAX_SESSIONS; i++)    {
+        if (data_signupdate_session[i].session_handle == hSession){
+            data_signupdate_session[i].session_handle = 0;
+            for (j =0; j < MAX_DATA_SIGNUPDATE; j++ )
+                data_signupdate_session[i].data_signupdate[j] =0;
+            data_signupdate_session[i].data_length = 0;
+        }
+    }
+
+    if (sign_sequence_id>0xfffffffe)
+        sign_sequence_id =0;
+    return 0;
+}
+
 
 UINT32 tpm_hash(TSS2_SYS_CONTEXT *sapi_context, TPMI_ALG_HASH hashAlg,
         UINT16 size, BYTE *data, TPM2B_DIGEST *result) {
@@ -563,8 +610,10 @@ int tpm_hash_compute_data(TSS2_SYS_CONTEXT *sapi_context, BYTE *buffer,
 
     if (length <= MAX_DIGEST_BUFFER) {
         if (tpm_hash(sapi_context, halg, length, buffer,
-                result) == TPM_RC_SUCCESS)
+                result) == TPM_RC_SUCCESS){
+            printf("Single hash result size: %d\n", result->t.size);
             return 0;
+        }
         else
             return -1;
     }
@@ -588,6 +637,7 @@ int tpm_hash_compute_data(TSS2_SYS_CONTEXT *sapi_context, BYTE *buffer,
 
     TPM_RC rval = hash_sequence_ex(sapi_context, halg, numBuffers, bufferList, result);
     free(bufferList);
+    printf("Sequence hash result size: %d\n", result->t.size);
     return rval == TPM_RC_SUCCESS ? 0 : -3;
 }
 
@@ -654,12 +704,10 @@ static bool set_scheme(TSS2_SYS_CONTEXT *sapi_context, TPMI_DH_OBJECT keyHandle,
 
     return true;
 }
-static bool sign_and_save(tpm_sign_ctx *ctx,  unsigned char *sig, int *sig_len) {
+static bool sign_and_save(tpm_sign_ctx *ctx, TPMT_SIGNATURE *sig) {
     TPM2B_DIGEST digest = TPM2B_TYPE_INIT(TPM2B_DIGEST, buffer);
 
     TPMT_SIG_SCHEME in_scheme;
-    TPMT_SIGNATURE signature;
-    int signature_len;
     TSS2_SYS_CMD_AUTHS sessions_data;
     TPMS_AUTH_RESPONSE session_data_out;
     TSS2_SYS_RSP_AUTHS sessions_data_out;
@@ -679,6 +727,8 @@ static bool sign_and_save(tpm_sign_ctx *ctx,  unsigned char *sig, int *sig_len) 
         return false;
     }
 
+    printf("Compute message hash digest size : %d \n", digest.t.size);
+
     bool result = set_scheme(ctx->sapi_context, ctx->keyHandle, ctx->halg, &in_scheme);
     if (!result) {
         return false;
@@ -686,17 +736,14 @@ static bool sign_and_save(tpm_sign_ctx *ctx,  unsigned char *sig, int *sig_len) 
 
     TPM_RC rval = Tss2_Sys_Sign(ctx->sapi_context, ctx->keyHandle,
                                 &sessions_data, &digest, &in_scheme,
-                                &ctx->validation, &signature,
+                                &ctx->validation, sig,
                                 &sessions_data_out);
 
     if (rval != TPM_RC_SUCCESS) {
         printf("Sys_Sign failed, error code: 0x%x", rval);
         return false;
     }
-    signature_len = sizeof(signature);
-    sig_len = &signature_len;
-    sig = (unsigned char *)&signature;
-
+    
     return true;
 }
 
@@ -705,11 +752,13 @@ int tpm2_plugin_rsa_sign(
         unsigned long mechanism,
         unsigned char *msg,
         int msg_len,
+        void *plugin_data_ref,
         unsigned char *sig,
         int *sig_len)
 {
     TPM_RC rval;
     common_opts_t opts = COMMON_OPTS_INITIALIZER;
+    TPMT_SIGNATURE signature;
     TSS2_TCTI_CONTEXT *tcti_ctx;
     tcti_ctx = tcti_init_from_options(&opts);
     if (tcti_ctx == NULL)
@@ -732,12 +781,15 @@ int tpm2_plugin_rsa_sign(
             .validation = { 0 },
             .sapi_context = sapi_context
     };
-    
+
     printf("rsa_sign API mechanism is %lx \n", mechanism);
     ctx.sessionData.sessionHandle = TPM_RS_PW;
     ctx.validation.tag = TPM_ST_HASHCHECK;
     ctx.validation.hierarchy = TPM_RH_NULL;
-    ctx.halg = TPM_ALG_SHA256;
+    if (mechanism == 7)
+        ctx.halg = TPM_ALG_SHA256;
+    else
+        printf("mechanism not supported! \n");
     ctx.keyHandle = *(TPMI_DH_OBJECT *)keyHandle;
 
     rval = Tss2_Sys_ContextLoad(ctx.sapi_context, &loaded_key_context, &ctx.keyHandle);
@@ -748,11 +800,15 @@ int tpm2_plugin_rsa_sign(
     ctx.length = msg_len;
     ctx.msg = msg;
 
-    if (!sign_and_save(&ctx, sig, sig_len)){
+    if (!sign_and_save(&ctx, &signature)){
         printf("RSA sign failed\n");
         goto out;
     }
 
+    *sig_len = (int)signature.signature.rsassa.sig.t.size;
+    printf("signature length:  %d \n", *sig_len);
+    memcpy(sig, signature.signature.rsassa.sig.t.buffer, *sig_len);
+    printf("signature buffer size:  %ld \n", sizeof(signature.signature.rsassa.sig.t.buffer));
     printf("RSA sign API successful in TPM plugin ! \n");
 
 out:
@@ -762,4 +818,50 @@ out:
 
 }
 
+int tpm2_plugin_rsa_sign_update(
+         void *keyHandle,
+         unsigned long mechanism,
+         unsigned char *msg,
+         int msg_len,
+         void *plugin_data_ref
+        )
+{
+    int i, j, n;
+    unsigned long hSession = (unsigned long)plugin_data_ref;
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle == hSession){
+            n = data_signupdate_session[i].data_length;
+            for (j =0; j < msg_len; j++ )
+                data_signupdate_session[i].data_signupdate[n + j] = msg[j];
+            data_signupdate_session[i].data_length += msg_len;
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int tpm2_plugin_rsa_sign_final(
+         void *keyHandle,
+         unsigned long mechanism,
+         void *plugin_data_ref,
+         unsigned char *outsig,
+         int *outsiglen
+        )
+{
+    int i, j;
+    unsigned long hSession = (unsigned long)plugin_data_ref;
+    unsigned char *msg;
+    int msg_len;
+    for (i = 0; i < MAX_SESSIONS; i++){
+        if (data_signupdate_session[i].session_handle == hSession){
+            msg = data_signupdate_session[i].data_signupdate;
+            msg_len = data_signupdate_session[i].data_length;
+            tpm2_plugin_rsa_sign(keyHandle, mechanism, msg, msg_len, plugin_data_ref, outsig, outsiglen);
+            tpm2_plugin_rsa_sign_cleanup(keyHandle, mechanism, plugin_data_ref);
+            return 0;
+        }
+    }
+
+    return -1;
+}
 

@@ -24,6 +24,7 @@ void main(void)
     void *param = NULL;
     size_t len = 100;
     void *keyHandle_sign = NULL;
+    unsigned long int hSession = 1;
 
     unsigned char *msg;
     int msg_len;
@@ -59,12 +60,12 @@ void main(void)
     tpm2_plugin_activate(activate_in_info);
 
     printf("---------------------------------------------\n");
-    tpm2_plugin_rsa_sign_init(keyHandle_sign, mechanism, param, len);
+    tpm2_plugin_rsa_sign_init(keyHandle_sign, mechanism, param, len, (void *)hSession);
 
     printf("---------------------------------------------\n");
     tpm2_plugin_load_key(loadkey_in_info, keyHandle, importkey_info);
 
     printf("---------------------------------------------\n");
-    tpm2_plugin_rsa_sign(keyHandle_sign, mechanism, msg, msg_len, sig, sig_len);
+    tpm2_plugin_rsa_sign(keyHandle_sign, mechanism, msg, msg_len, (void *)hSession, sig, sig_len);
 
 }
