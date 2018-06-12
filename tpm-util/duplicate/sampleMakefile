@@ -6,7 +6,7 @@ AR = ar
 LDDFLAGS += -fPIC
 ARFLAGS = -rc
 
-TSS_DIR?=/home/pramod/tpm2-tss
+TSS_DIR?=/tpm2-tss
 OPENSSL_DIR?=/usr/local/bin/openssl
 
 OUTPUT=ossl_tpm_duplicate
