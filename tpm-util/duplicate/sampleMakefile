@@ -6,7 +6,7 @@ AR = ar
 LDDFLAGS += -fPIC
 ARFLAGS = -rc
 
-TSS_DIR?=/home/pramod/tpm2-tss
+TSS_DIR?=/tpm2-tss
 OPENSSL_DIR?=/usr/local/bin/openssl
 
 OUTPUT=ossl_tpm_duplicate
@@ -15,7 +15,7 @@ OBJS=	util.o \
         marshal.o \
         crypto_aux.o \
         tpm_duplication_aux.o \
-        main.o 
+        main.o
 
 
 CFLAGS += -g -fPIC -I./include -I${TSS_DIR}/include/ -I$(TSS_DIR)/sysapi/include #-I${OPENSSL_DIR}/include/
