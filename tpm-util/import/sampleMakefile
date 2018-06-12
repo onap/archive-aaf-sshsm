@@ -6,24 +6,23 @@ AR = ar
 LDDFLAGS += -fPIC
 ARFLAGS = -rc
 
-TSS_DIR?=/home/pramod/tpm2-tss
+TSS_DIR?=/tpm2-tss
 
 OUTPUT=ossl_tpm_import
 
 OBJS=	util.o \
 		tpm_wrapper.o \
-		main.o 
+		main.o
 
+CFLAGS += -g -fPIC -I./include -I${TSS_DIR}/include/ -I$(TSS_DIR)/sysapi/include
 
-CFLAGS += -g -fPIC -I./include -I${TSS_DIR}/include/ -I$(TSS_DIR)/sysapi/include 
-
-LDFLAGS += -ldl -L/usr/local/lib/ -lsapi -ltcti-device -ltcti-tabrmd 
+LDFLAGS += -ldl -L/usr/local/lib/ -lsapi -ltcti-device -ltcti-tabrmd
 
 LIBS = -lpthread -lcrypto -lssl
 
 %.o : %.c
 	$(CC) -c $(CFLAGS) $< -o $@
-	
+
 
 $(OUTPUT): $(OBJS)
 	$(CC) $(OBJS) $(LDFLAGS) ${LIBS} -o $(OUTPUT)
@@ -35,4 +34,4 @@ install:
 	@set -e; for i in $(OUTPUT); do mv $$i ../../bin/$$i ; done
 
 clean:
-	rm -f *.o $(OUTPUT) *.so 
+	rm -f *.o $(OUTPUT) *.so
