@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_5758ef56",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-06-13T04:27:51Z",
+      "side": 1,
+      "message": "Remove this line if not needed.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 90
+      },
+      "revId": "ff4c7a539ba1cec45e88a681fbe89b43320eef02",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
