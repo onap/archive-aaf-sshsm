@@ -1,0 +1,56 @@
+
+# Base Image for the build
+FROM rmannfv/aaf-base:latest
+
+RUN apt-get update
+RUN apt-get install -y softhsm2
+RUN apt-get install -y opensc
+
+# Files required for the Java application
+RUN wget https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bcpkix-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bcmail-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bcpg-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bctls-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bctest-jdk15on-159.jar
+RUN cp ./bcpkix-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bcprov-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
+
+# Clone the sshsm repo
+RUN git clone https://gerrit.onap.org/r/aaf/sshsm
+
+# Build SoftHSMv2
+RUN cd sshsm && \
+  cd SoftHSMv2 && \
+  sh autogen.sh && \
+  ./configure --disable-gost && \
+  make && \
+  make install
+
+# Create the directory for storing the TPM Handle,
+# Primary Key (in TPM understandable format) and
+RUN mkdir -p /tmp/hwparent
+RUN mkdir -p /tmp/files
+
+# Build TPM-Plugin
+RUN cd sshsm && \
+  chmod -R 755 . && \
+  cd TPM2-Plugin && \
+  chmod a+x * && \
+  ./bootstrap && \
+  ./configure && \
+  make && \
+  make install && \
+  ldconfig && \
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+RUN cd sshsm && \
+  cd tpm-util && \
+  cd import && \
+  make -f sampleMakefile
+
+COPY ./test.sh /
+
