@@ -1,0 +1,16 @@
+
+### Copy the ~/sshsm/bin/caservicecontainer/files to /files
+
+### Build docker image with a base image 
+
+````
+$ docker build -t <image name> -f dockerfile .
+````
+
+### Running the CA service container 
+
+````
+$ docker run -d -v /tmp/run/dbus:/var/run/dbus:rw -v /files:/tmp/files:rw --name CAServicecontainer <image name>
+````
+
+#### Make sure the TABRMD container is running on the same dbus mountpoint on the host as the CA service container
