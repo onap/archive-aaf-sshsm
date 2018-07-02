@@ -1,0 +1,20 @@
+
+### Copy the ~/sshsm/test/integration/samplecaservicecontainer to /tmp/samplecaservicecontainer on host machine where the
+### containers will be running
+### "samplecaservicecontainer" directory is considered as the sample shared volume for now
+### The files directory will be mounted on the container
+### the bash script test.sh ~/sshsm/test/integration/samplecaservicecontainer/scripts has the steps which are executed by this container as per design
+
+### Build docker image with a base image
+
+````
+$ docker build -t <image name> -f dockerfile .
+````
+
+### Running the CA service container
+
+````
+$ docker run -d -v /tmp/run/dbus:/var/run/dbus:rw -v /tmp/samplecaservicecontainer:/tmp/files:rw --name CAServicecontainer <image name>
+````
+
+#### Make sure the TABRMD container is running on the same dbus mountpoint on the host as the CA service container
