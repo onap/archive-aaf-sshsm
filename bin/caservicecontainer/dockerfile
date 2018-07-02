@@ -1,0 +1,44 @@
+
+# Base Image for the build
+FROM rmannfv/aaf-base:latest
+
+# Clone the sshsm repo
+RUN git clone https://gerrit.onap.org/r/aaf/sshsm
+
+# Build SoftHSMv2
+RUN cd sshsm && \
+  cd SoftHSMv2 && \
+  sh autogen.sh && \
+  ./configure --disable-gost && \
+  make && \
+  make install
+
+# Create the directory for storing the TPM Handle,
+# Primary Key (in TPM understandable format) and
+# Private key
+RUN mkdir -p /tmp/hwparent
+
+# Copy the files (Keys and certificates) to container
+# "files" is the shared directory with all the relevant date
+#ADD files /tmp/files
+
+# Build TPM-Plugin
+RUN cd sshsm && \
+  chmod -R 755 . && \
+  cd TPM2-Plugin && \
+  chmod a+x * && \
+  ./bootstrap && \
+  ./configure && \
+  make && \
+  make install && \
+  ldconfig && \ 
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+RUN cd sshsm && \
+  cd tpm-util && \
+  cd import && \
+  make -f sampleMakefile && \
+  make install
+
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
