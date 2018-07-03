@@ -232,6 +232,40 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_13b020dc",
+        "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-03T20:04:38Z",
+      "side": 1,
+      "message": "These files are part of this patch not coming from tar file.",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_d3c9585b",
+        "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-03T20:04:38Z",
+      "side": 1,
+      "message": "Add the exact steps to import the keys.",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_33019c6a",
         "filename": "bin/caservicecontainer/files/applicationfiles/ca.cert",
         "patchSetId": 1
