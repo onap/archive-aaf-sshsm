@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_13d100cd",
+        "filename": "bin/caservicecontainer/README",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "This is the sshsm/bin/cacontainer/files folder which can be considered as shared volume for all files (keys, certificates and TPM related files)",
+      "parentUuid": "5a93c517_1399006e",
+      "range": {
+        "startLine": 13,
+        "startChar": 53,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_339c3c5d",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 1
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_93e430ad",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "Yes, Actually the base image comes with old openssl version. So i have included here it for testing purpose.",
+      "parentUuid": "5a93c517_d3a2b899",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_f39d7458",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 1
@@ -105,6 +153,30 @@
       "writtenOn": "2018-07-03T18:39:59Z",
       "side": 1,
       "message": "remove commented out lines if not used",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_b3dfecd5",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "This is kept for testing purpose incase the Dupicates needs to be run inside this CA service container",
+      "parentUuid": "5a93c517_f39d7458",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_53eea88c",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "This is the pin for accessing the specific slot. Ideally it is handled by admin/user. Further discussion is required",
+      "parentUuid": "5a93c517_53b6a8dd",
+      "range": {
+        "startLine": 38,
+        "startChar": 59,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_b3d5ace6",
         "filename": "bin/caservicecontainer/files/applicationfiles/CaSign.java",
         "patchSetId": 1
@@ -197,6 +293,30 @@
       "writtenOn": "2018-07-03T18:39:59Z",
       "side": 1,
       "message": "can you also add some text on top about what this readme is talking about here. It will help during documentation time.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_d3dab8e8",
+        "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "Yes this is the sample application README. Will spin up a new file for this.",
+      "parentUuid": "5a93c517_13fee06b",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -249,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_73f16469",
+        "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "I need to change the name of this tar file. But i have included the latest one which is recommended you",
+      "parentUuid": "5a93c517_13b020dc",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_d3c9585b",
         "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
         "patchSetId": 1
@@ -260,6 +398,24 @@
       "writtenOn": "2018-07-03T20:04:38Z",
       "side": 1,
       "message": "Add the exact steps to import the keys.",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f3d574b7",
+        "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "Sure. As we already have the steps for importing from the README in tpm-util , it may be redundant here. Also the bash file will run the import tool in the upcoming patch.",
+      "parentUuid": "5a93c517_d3c9585b",
       "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -283,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_13e8207b",
+        "filename": "bin/caservicecontainer/files/applicationfiles/ca.cert",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "5a93c517_33019c6a",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_f3f2549a",
         "filename": "bin/caservicecontainer/files/inittoolfiles/Afile1.id1",
         "patchSetId": 1
@@ -294,6 +468,24 @@
       "writtenOn": "2018-07-03T18:39:59Z",
       "side": 1,
       "message": "what is this file?",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_33ebdc79",
+        "filename": "bin/caservicecontainer/files/inittoolfiles/Afile1.id1",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-03T20:53:43Z",
+      "side": 1,
+      "message": "TPM primary key handle",
+      "parentUuid": "5a93c517_f3f2549a",
       "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
