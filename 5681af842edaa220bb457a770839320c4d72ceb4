@@ -489,6 +489,24 @@
       "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f3fc9441",
+        "filename": "bin/caservicecontainer/files/inittoolfiles/Afile1.id1",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-07-03T20:56:59Z",
+      "side": 1,
+      "message": "Does this need to be checked in? Isn\u0027t it something that is dynamically generated?",
+      "parentUuid": "5a93c517_33ebdc79",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
