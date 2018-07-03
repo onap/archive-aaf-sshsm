@@ -507,6 +507,24 @@
       "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_7398841b",
+        "filename": "bin/caservicecontainer/files/inittoolfiles/Afile1.id1",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-03T21:21:32Z",
+      "side": 1,
+      "message": "This is okay for initial testing purpose.",
+      "parentUuid": "5a93c517_f3fc9441",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
