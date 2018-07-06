@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a93c517_569e91b9",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-06T14:45:49Z",
+      "side": 1,
+      "message": "how is the /tmp/files directory populated?",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_369bc5ca",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-06T14:45:49Z",
+      "side": 1,
+      "message": "Doesn\u0027t look like this is the correct path.",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f6a47d09",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-06T14:45:49Z",
+      "side": 1,
+      "message": "If the directory is not populated all these copy will fail.",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
