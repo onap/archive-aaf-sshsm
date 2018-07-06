@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_7b14d6e8",
+        "filename": "bin/caservicecontainer/README",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_7392c44c",
+      "range": {
+        "startLine": 4,
+        "startChar": 40,
+        "endLine": 4,
+        "endChar": 41
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_1399006e",
         "filename": "bin/caservicecontainer/README",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_5b19da20",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_339c3c5d",
+      "range": {
+        "startLine": 17,
+        "startChar": 48,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_d3a2b899",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 1
@@ -129,6 +177,30 @@
       "writtenOn": "2018-07-03T20:53:43Z",
       "side": 1,
       "message": "Yes, Actually the base image comes with old openssl version. So i have included here it for testing purpose.",
+      "parentUuid": "5a93c517_d3a2b899",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_9b1f6209",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "5a93c517_d3a2b899",
       "range": {
         "startLine": 40,
@@ -189,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_bb1a5e16",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_b3dfecd5",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_93ac308e",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 1
@@ -223,6 +319,24 @@
       "writtenOn": "2018-07-04T00:07:00Z",
       "side": 1,
       "message": "First create /tmp/hwparent ?",
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_c583c9a7",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "https://gerrit.onap.org/r/#/c/55667/1/bin/caservicecontainer/dockerfile \n\nIt is done in docker file as of now",
+      "parentUuid": "5a93c517_d30b9829",
       "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -316,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_db572ac9",
+        "filename": "bin/caservicecontainer/files/applicationfiles/CaSign.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "Yes! it will be deprecated in the final application code.",
+      "parentUuid": "5a93c517_b3d5ace6",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_13fee06b",
         "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
         "patchSetId": 1
@@ -350,6 +488,30 @@
       "writtenOn": "2018-07-03T20:53:43Z",
       "side": 1,
       "message": "Yes this is the sample application README. Will spin up a new file for this.",
+      "parentUuid": "5a93c517_13fee06b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "5681af842edaa220bb457a770839320c4d72ceb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_1bd35239",
+        "filename": "bin/caservicecontainer/files/applicationfiles/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-06T00:31:23Z",
+      "side": 1,
+      "message": "Done and removed thisd file",
       "parentUuid": "5a93c517_13fee06b",
       "range": {
         "startLine": 1,
