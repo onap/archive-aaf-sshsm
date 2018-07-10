@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_4cca7e1b",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_764dcdc3",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_569e91b9",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 3
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_f681ddfb",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "As of now this directory \"tmp/files\" is predefined and is  as below. we can consider the shared voule to have the same structure. Right now we are copying files, but in real time we need to make sure the output of import tool, Duplicate and the init script are placed in shared volume",
+      "parentUuid": "5a93c517_569e91b9",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_369bc5ca",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 3
@@ -70,6 +112,24 @@
       "writtenOn": "2018-07-06T14:45:49Z",
       "side": 1,
       "message": "Doesn\u0027t look like this is the correct path.",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_0cd476bb",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "Right now we need to copy the file from shared volume to the container directory. Can i know what is expected correct path? it is part oof README document",
+      "parentUuid": "5a93c517_369bc5ca",
       "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_acda22e7",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_964899b4",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 41
+      },
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_f6a47d09",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 3
@@ -116,6 +200,24 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_8cdf26d6",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "It is a shared volume\u0027s target. so it is expected for the files to be present",
+      "parentUuid": "5a93c517_f6a47d09",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_56ca111b",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 3
@@ -127,6 +229,30 @@
       "writtenOn": "2018-07-06T20:58:18Z",
       "side": 1,
       "message": "Don\u0027t use hardcoding. You can use environment variables for this",
+      "range": {
+        "startLine": 38,
+        "startChar": 59,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_6ce41aac",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93c517_56ca111b",
       "range": {
         "startLine": 38,
         "startChar": 59,
@@ -162,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_ccd52eb8",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "This will pass only if the input files are available on shared volume from the directory. \nWorking on the scenario when there is a key present in the TPM already. Will probably upload it as a follow up patch",
+      "parentUuid": "5a93c517_16d489bb",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 47
+      },
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_5663f140",
         "filename": "bin/caservicecontainer/files/applicationfiles/pkcs11.cfg",
         "patchSetId": 3
@@ -173,6 +323,30 @@
       "writtenOn": "2018-07-06T20:58:18Z",
       "side": 1,
       "message": "Extra space at the end of line",
+      "range": {
+        "startLine": 2,
+        "startChar": 58,
+        "endLine": 2,
+        "endChar": 59
+      },
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_2cee128c",
+        "filename": "bin/caservicecontainer/files/applicationfiles/pkcs11.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-10T01:52:38Z",
+      "side": 1,
+      "message": "The new entrypoint.sh script will create and update this file.",
+      "parentUuid": "5a93c517_5663f140",
       "range": {
         "startLine": 2,
         "startChar": 58,
