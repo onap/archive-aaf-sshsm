@@ -1,7 +1,7 @@
 ### Building Docker Images
 
 ```
-$ docker build -t <image name> -f tpmdockerfile .
+$ docker build -t <image name> -f dockerfile .
 ```
 
 ### Running ABRMD Container
