@@ -1,0 +1,8 @@
+Code-Review+1: Manjunath Ranganathaiah <manjunath.ranganathaiah@intel.com>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Kiran Kamineni <kiran.k.kamineni@intel.com>
+Submitted-by: Kiran Kamineni <kiran.k.kamineni@intel.com>
+Submitted-at: Wed, 11 Jul 2018 22:03:06 +0000
+Reviewed-on: https://gerrit.onap.org/r/56247
+Project: aaf/sshsm
+Branch: refs/heads/master
