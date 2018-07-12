@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a9dcd25_1be89b7b",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-12T14:31:42Z",
+      "side": 1,
+      "message": "typo on RUN command",
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_bbf8874a",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-12T14:31:42Z",
+      "side": 1,
+      "message": "Remove the commented line",
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3ba47756",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-12T14:31:42Z",
+      "side": 1,
+      "message": "Move the lines 16 to 30 before cloning the sshsm repo but after FROM command.",
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_7ba0bff4",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 10
@@ -64,6 +115,29 @@
         "startChar": 0,
         "endLine": 39,
         "endChar": 21
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_fbaccf37",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-12T14:31:42Z",
+      "side": 1,
+      "message": "How do we see the output?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
       },
       "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
