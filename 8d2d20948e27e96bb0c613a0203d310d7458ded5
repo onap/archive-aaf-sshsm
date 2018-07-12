@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_1b12db62",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-07-12T15:59:33Z",
+      "side": 1,
+      "message": "change this appropriately after you rename the file",
+      "range": {
+        "startLine": 4,
+        "startChar": 34,
+        "endLine": 4,
+        "endChar": 47
+      },
+      "revId": "8d2d20948e27e96bb0c613a0203d310d7458ded5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7b1d1f73",
+        "filename": "bin/abrmdcontainer/tpmdockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-07-12T15:59:33Z",
+      "side": 1,
+      "message": "you can rename this file to dockerfile instead of tpmdockerfile",
+      "revId": "8d2d20948e27e96bb0c613a0203d310d7458ded5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
