@@ -265,6 +265,23 @@
     },
     {
       "key": {
+        "uuid": "5a93c517_b601153b",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-12T06:41:59Z",
+      "side": 1,
+      "message": "The command to load the certificate is missing",
+      "revId": "20346b654d81901e1861dc96a4d8ea0cfa858dba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a93c517_16d489bb",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 3
