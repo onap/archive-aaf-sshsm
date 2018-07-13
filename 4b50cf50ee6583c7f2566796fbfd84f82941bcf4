@@ -389,6 +389,29 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_fe6efd95",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T21:13:49Z",
+      "side": 1,
+      "message": "Make it specific",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_7b875f62",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
