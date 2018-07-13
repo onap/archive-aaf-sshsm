@@ -65,6 +65,52 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_af3361f5",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T23:41:06Z",
+      "side": 1,
+      "message": "Not needed here and not used in this container. Remove thia. Private key will not leave the distribution center container.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 84
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_cf302deb",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T23:41:06Z",
+      "side": 1,
+      "message": "keep updating of the two files separate for readability perspective.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_e42430c8",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 12
@@ -81,6 +127,29 @@
         "startChar": 0,
         "endLine": 68,
         "endChar": 50
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_8f522512",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T23:41:06Z",
+      "side": 1,
+      "message": "ca.cert is output of the java test app. Remove this from here",
+      "range": {
+        "startLine": 68,
+        "startChar": 31,
+        "endLine": 68,
+        "endChar": 39
       },
       "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
