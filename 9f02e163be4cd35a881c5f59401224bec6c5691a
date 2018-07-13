@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_6431000b",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 12
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T21:13:49Z",
+      "side": 1,
+      "message": "Add comments about what this is that is being dowmloaded",
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_84368c02",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T21:13:49Z",
+      "side": 1,
+      "message": "This file doesn\u0027t exist anymore",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_44408456",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T21:13:49Z",
+      "side": 1,
+      "message": "certid is same a key_id in hex format. Keep one and convert from hex to decimal",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_e42430c8",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T21:13:49Z",
+      "side": 1,
+      "message": "Move this later where application is started",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 50
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_04227cb9",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-13T21:13:49Z",
+      "side": 1,
+      "message": "Why is Java file copied to tmp?",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "9f02e163be4cd35a881c5f59401224bec6c5691a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
