@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_1ed169cd",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_1be89b7b",
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_bbf8874a",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-12T14:31:42Z",
       "side": 1,
       "message": "Remove the commented line",
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3ed6a5c6",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_bbf8874a",
       "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_deda21e9",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_3ba47756",
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_7ba0bff4",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 10
@@ -64,6 +118,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "What does this comment mean?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9e8fb975",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "This is the directory which is created as per the requirement of the HwInfra in softhsm to access the files.\nall the files will be accessed by SoftHSm/HwInfra from this location",
+      "parentUuid": "1a9dcd25_7ba0bff4",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_be8cf580",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "same as above comment",
+      "parentUuid": "1a9dcd25_1ba5fb03",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_3baa37d5",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 10
@@ -110,6 +212,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "What does this comment mean?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5ee93119",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "t part of this will be done by the bash script. Hence removing this comment. The purpose was to mount the directory in the container. NOw this is done using docker command line",
+      "parentUuid": "1a9dcd25_3baa37d5",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_7eee6d24",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "This is not the entry point anymore as per the discussion. We need to copy this into the container and run.",
+      "parentUuid": "1a9dcd25_fbaccf37",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_9bb82b2c",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -156,6 +306,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "Remove hard coding and create a variable to hold this",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9ee499ad",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_9bb82b2c",
       "range": {
         "startLine": 8,
         "startChar": 9,
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_bee1559c",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_5b82a353",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_7b875f62",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -202,6 +400,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "Remove hard coding",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5eee118d",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_7b875f62",
       "range": {
         "startLine": 33,
         "startChar": 6,
@@ -237,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_9e9259f5",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "It is required to print tpm handle for verfying it is updated.",
+      "parentUuid": "1a9dcd25_1b7c1b72",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 56
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_3b81d74a",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -248,6 +494,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "Why do we need this?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 84
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_de88e1c8",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Yes. This is the private key",
+      "parentUuid": "1a9dcd25_3b81d74a",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_1ee8897b",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_db955389",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_fb928f9e",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -294,6 +588,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "Separate out the things needed to be done for the Java app in a function to make this modular",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_3eed458c",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_fb928f9e",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -329,6 +647,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_3ea46556",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_9b8fcb75",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 12
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_bb8c0781",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -340,6 +682,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "give meaningful name",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_de01c13a",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_bb8c0781",
       "range": {
         "startLine": 54,
         "startChar": 11,
@@ -375,6 +741,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_fefefd37",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_5be94319",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_7bee7f24",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -398,6 +788,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_9efb3947",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_7bee7f24",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 17
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_1bf3bb0b",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -409,6 +823,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_bef8754a",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_1bf3bb0b",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -467,6 +905,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_5e95b1e2",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_fbd92f84",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 72
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_bbe3a732",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -490,6 +952,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_7e9aed15",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_bbe3a732",
+      "range": {
+        "startLine": 111,
+        "startChar": 111,
+        "endLine": 111,
+        "endChar": 115
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_5bd06353",
         "filename": "bin/caservicecontainer/entrypoint.sh",
         "patchSetId": 10
@@ -501,6 +987,30 @@
       "writtenOn": "2018-07-12T06:41:59Z",
       "side": 1,
       "message": "remove hard coding",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "4b50cf50ee6583c7f2566796fbfd84f82941bcf4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1e9f2905",
+        "filename": "bin/caservicecontainer/entrypoint.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-13T21:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_5bd06353",
       "range": {
         "startLine": 115,
         "startChar": 25,
