@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_30824e01",
+        "filename": "bin/distcenter/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-16T20:24:53Z",
+      "side": 1,
+      "message": "The output files from this container will be used by caservice container. Hence, we should take the shared folder approach.",
+      "parentUuid": "1a9dcd25_101dd20f",
+      "revId": "5921044f0201d6caa8f88ecdfb84d8b5701c096c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_9031e2a4",
         "filename": "bin/distcenter/entrypoint.sh",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2018-07-16T19:22:19Z",
       "side": 1,
       "message": "will this container copy the private key as well or just read from shard volume for operations?",
+      "revId": "5921044f0201d6caa8f88ecdfb84d8b5701c096c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5087da0f",
+        "filename": "bin/distcenter/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-16T20:24:53Z",
+      "side": 1,
+      "message": "No the private key should never be shared or distributed.",
+      "parentUuid": "1a9dcd25_502b5a30",
       "revId": "5921044f0201d6caa8f88ecdfb84d8b5701c096c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
