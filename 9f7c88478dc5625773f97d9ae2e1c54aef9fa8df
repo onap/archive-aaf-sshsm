@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_30580efa",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_4f465d25",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "9f7c88478dc5625773f97d9ae2e1c54aef9fa8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_ef4ac926",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 14
@@ -186,6 +210,54 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_307c8e72",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_b592d0f4",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "9f7c88478dc5625773f97d9ae2e1c54aef9fa8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_50811a49",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_d58f5ccb",
+      "range": {
+        "startLine": 65,
+        "startChar": 45,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "9f7c88478dc5625773f97d9ae2e1c54aef9fa8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_0f48552c",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 14
@@ -197,6 +269,30 @@
       "writtenOn": "2018-07-14T06:02:32Z",
       "side": 1,
       "message": "why is this command called twice?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 91
+      },
+      "revId": "9f7c88478dc5625773f97d9ae2e1c54aef9fa8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f095c688",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:12:47Z",
+      "side": 1,
+      "message": "redundant",
+      "parentUuid": "1a9dcd25_0f48552c",
       "range": {
         "startLine": 67,
         "startChar": 0,
