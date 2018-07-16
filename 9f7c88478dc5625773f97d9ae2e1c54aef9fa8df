@@ -140,6 +140,52 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_d58f5ccb",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-16T17:37:53Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 65,
+        "startChar": 45,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "9f7c88478dc5625773f97d9ae2e1c54aef9fa8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_b592d0f4",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-16T17:37:53Z",
+      "side": 1,
+      "message": "Make this also a variable",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "9f7c88478dc5625773f97d9ae2e1c54aef9fa8df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_0f48552c",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 14
