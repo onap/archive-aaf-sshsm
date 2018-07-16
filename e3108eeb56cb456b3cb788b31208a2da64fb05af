@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_90656247",
+        "filename": "bin/distcenter/entrypoint.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-16T22:49:08Z",
+      "side": 1,
+      "message": "May be use descriptive directory name?",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "e3108eeb56cb456b3cb788b31208a2da64fb05af",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
