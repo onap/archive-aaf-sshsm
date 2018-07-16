@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_101dd20f",
+        "filename": "bin/distcenter/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:22:19Z",
+      "side": 1,
+      "message": "Can we follow the same directory structure as used by caservice container? It would be easy to testing purpose?",
+      "revId": "5921044f0201d6caa8f88ecdfb84d8b5701c096c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9031e2a4",
+        "filename": "bin/distcenter/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:22:19Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "5921044f0201d6caa8f88ecdfb84d8b5701c096c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_502b5a30",
+        "filename": "bin/distcenter/entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-16T19:22:19Z",
+      "side": 1,
+      "message": "will this container copy the private key as well or just read from shard volume for operations?",
+      "revId": "5921044f0201d6caa8f88ecdfb84d8b5701c096c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
