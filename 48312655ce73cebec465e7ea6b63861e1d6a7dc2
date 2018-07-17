@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_3ae788e6",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-17T23:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_b0a97e26",
+      "range": {
+        "startLine": 31,
+        "startChar": 23,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "48312655ce73cebec465e7ea6b63861e1d6a7dc2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_d0a68a53",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-17T00:16:44Z",
       "side": 1,
       "message": "Command invalid for this location",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 68
+      },
+      "revId": "48312655ce73cebec465e7ea6b63861e1d6a7dc2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5aecd4c7",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-17T23:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_d0a68a53",
       "range": {
         "startLine": 36,
         "startChar": 28,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_fad040f9",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-17T23:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_7063f61a",
+      "revId": "48312655ce73cebec465e7ea6b63861e1d6a7dc2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_10add231",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 17
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_1ace4c5b",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-17T23:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_10add231",
+      "revId": "48312655ce73cebec465e7ea6b63861e1d6a7dc2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_906802f7",
         "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
         "patchSetId": 17
@@ -93,6 +177,30 @@
       "writtenOn": "2018-07-17T00:16:44Z",
       "side": 1,
       "message": "This is a directory",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "48312655ce73cebec465e7ea6b63861e1d6a7dc2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_badab815",
+        "filename": "test/integration/samplecaservicecontainer/scripts/test.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-17T23:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_906802f7",
       "range": {
         "startLine": 58,
         "startChar": 5,
