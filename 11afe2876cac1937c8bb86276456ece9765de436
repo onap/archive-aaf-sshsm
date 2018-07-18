@@ -102,6 +102,23 @@
       "revId": "11afe2876cac1937c8bb86276456ece9765de436",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_18265417",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-18T15:54:54Z",
+      "side": 1,
+      "message": "Add the verification step to verify the certificate.\n\nopenssl verify -verbose -CAfile ca.cert test.cert\n\nwhere test.cert is the generated certificate.",
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
