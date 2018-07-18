@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_33e4930c",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-18T19:54:50Z",
+      "side": 1,
+      "message": "It is a good practice to change permissions on only required files otherwise can lead to security issues, hence the comment.",
+      "parentUuid": "1a9dcd25_d38f6f74",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_5a3a9437",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 19
