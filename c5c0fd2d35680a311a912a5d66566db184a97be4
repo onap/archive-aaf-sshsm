@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_73bbfb72",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 21
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T22:07:12Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "c5c0fd2d35680a311a912a5d66566db184a97be4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
