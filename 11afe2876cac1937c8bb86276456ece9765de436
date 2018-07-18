@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_53e83f7c",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T21:04:51Z",
+      "side": 1,
+      "message": "Did you try changing permissions only on bootstrap",
+      "parentUuid": "1a9dcd25_d34d2fc6",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_5a3a9437",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 19
