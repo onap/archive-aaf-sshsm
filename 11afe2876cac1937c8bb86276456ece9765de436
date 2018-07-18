@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_53b4bff1",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T19:58:21Z",
+      "side": 1,
+      "message": "I agree with Manjunath. What is the error you see if this step is omitted?",
+      "parentUuid": "1a9dcd25_33e4930c",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_5a3a9437",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 19
