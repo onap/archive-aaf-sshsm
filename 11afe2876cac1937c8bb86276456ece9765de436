@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9dcd25_1a3c0c2f",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T00:01:12Z",
+      "side": 1,
+      "message": "Is this needed in the dockerfile?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_5a3a9437",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T00:01:12Z",
+      "side": 1,
+      "message": "Add some comments to what some of the key variables are. May be rearrange the order if it helps in understanding the use of these",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_9a301c58",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T00:01:12Z",
+      "side": 1,
+      "message": "Remove extra line",
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_7a2bd0eb",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T00:01:12Z",
+      "side": 1,
+      "message": "fix comment",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_1af5ec82",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-18T00:01:12Z",
+      "side": 1,
+      "message": "Duplicate of line 75. Remove this",
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
