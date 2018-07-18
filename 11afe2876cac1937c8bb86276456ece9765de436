@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_73253baa",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_93ffa701",
+      "range": {
+        "startLine": 3,
+        "startChar": 22,
+        "endLine": 3,
+        "endChar": 28
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_1a3c0c2f",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 19
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-18T00:01:12Z",
       "side": 1,
       "message": "Is this needed in the dockerfile?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f3194b7a",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Yes it is needed, First one is for the directory for SoftHSm operations with HwInfra. Second is for mount point, since it needs to be created before we mount the directory into the container.",
+      "parentUuid": "1a9dcd25_1a3c0c2f",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_73f8dbe5",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_9326c7b9",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_53203f9b",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 19
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-18T18:33:20Z",
       "side": 1,
       "message": "Is this required ? you\u0027re changing the permission blindly on all the files in that directory.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_d38f6f74",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "TPM plugin is written by other developer and not me. It should be done otherwise it won\u0027t work. It can verified by building it on local test system. I would think twice before making such comments without testing and verifying.",
+      "parentUuid": "1a9dcd25_53203f9b",
       "range": {
         "startLine": 42,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_f35e2b12",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_5a3a9437",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_9a301c58",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 19
@@ -128,6 +248,24 @@
       "writtenOn": "2018-07-18T00:01:12Z",
       "side": 1,
       "message": "Remove extra line",
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_13415739",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_9a301c58",
       "revId": "11afe2876cac1937c8bb86276456ece9765de436",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "1a9dcd25_333ed3b9",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_7a2bd0eb",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_1af5ec82",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 19
@@ -168,6 +330,24 @@
       "writtenOn": "2018-07-18T00:01:12Z",
       "side": 1,
       "message": "Duplicate of line 75. Remove this",
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a9dcd25_f3470b4a",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-18T19:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9dcd25_1af5ec82",
       "revId": "11afe2876cac1937c8bb86276456ece9765de436",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
