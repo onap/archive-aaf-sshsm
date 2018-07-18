@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a9dcd25_93ffa701",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 19
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-07-18T17:46:18Z",
+      "side": 1,
+      "message": "Use the tag \"xenial\" which is branched out.",
+      "range": {
+        "startLine": 3,
+        "startChar": 22,
+        "endLine": 3,
+        "endChar": 28
+      },
+      "revId": "11afe2876cac1937c8bb86276456ece9765de436",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a9dcd25_1a3c0c2f",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 19
