@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_d9aeb3e7",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-19T00:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_99611bd6",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "81b16ea71a100537184bc106c35a41f425cd47a0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_196e6bca",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 23
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-18T23:42:03Z",
       "side": 1,
       "message": "How is this comment different from number 3 comment",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 48
+      },
+      "revId": "81b16ea71a100537184bc106c35a41f425cd47a0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_f9ab77d4",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-19T00:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_196e6bca",
       "range": {
         "startLine": 63,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da7095c5_99b83b2c",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-19T00:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_7979a792",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 67
+      },
+      "revId": "81b16ea71a100537184bc106c35a41f425cd47a0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7095c5_d96793e9",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 23
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-18T23:42:03Z",
       "side": 1,
       "message": "This is incorrect",
+      "range": {
+        "startLine": 73,
+        "startChar": 44,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "81b16ea71a100537184bc106c35a41f425cd47a0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_b9b5ff32",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 23
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-07-19T00:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7095c5_d96793e9",
       "range": {
         "startLine": 73,
         "startChar": 44,
