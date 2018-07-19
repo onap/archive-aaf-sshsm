@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_7fcc2736",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-19T17:03:15Z",
+      "side": 1,
+      "message": "Use SSHSM_HW_PLUGINS_PARENT_DIR to create this directory",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "e0056bae090e212a1ae5fe8463e5a9322c6af9a2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_3fd6afc6",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-07-19T17:03:15Z",
+      "side": 1,
+      "message": "Comment 2 missing",
+      "revId": "e0056bae090e212a1ae5fe8463e5a9322c6af9a2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
