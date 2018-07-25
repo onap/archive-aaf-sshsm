@@ -1270,7 +1270,7 @@ class P11AttrPrivateHandle : public P11Attribute
 {
 public:
         // Constructor
-        P11AttrPrivateHandle(OSObject* inobject) : P11Attribute(inobject) { type = CKA_OS_PRIVATE_HANDLE; checks = ck1; }
+        P11AttrPrivateHandle(OSObject* inobject) : P11Attribute(inobject) { type = CKA_OS_PRIVATE_HANDLE; checks = 0; }
 
 protected:
         // Set the default value of the attribute
