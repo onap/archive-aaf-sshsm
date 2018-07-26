@@ -2,10 +2,6 @@
 # Base Image for the build
 FROM rmannfv/aaf-base:xenial
 
-RUN apt-get update
-RUN apt-get install -y softhsm2
-RUN apt-get install -y opensc
-
 # Files required for the Java application
 RUN wget https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar
 RUN wget https://www.bouncycastle.org/download/bcpkix-jdk15on-159.jar
