@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7095c5_ffc33c36",
+        "filename": "bin/distcenter/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-07-27T22:42:47Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 1,
+        "startChar": 130,
+        "endLine": 1,
+        "endChar": 131
+      },
+      "revId": "8da2c22b273f662795518e2622cb042e91e5061e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7095c5_5fc7c845",
+        "filename": "bin/distcenter/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-07-27T22:42:47Z",
+      "side": 1,
+      "message": "Change file extension to .txt or change the file content itself to follow markdown (.md) syntax.",
+      "revId": "8da2c22b273f662795518e2622cb042e91e5061e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
