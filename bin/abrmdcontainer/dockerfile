@@ -31,6 +31,9 @@ RUN git clone https://github.com/tpm2-software/tpm2-tss.git
 RUN git clone https://github.com/tpm2-software/tpm2-abrmd.git
 RUN git clone https://github.com/tpm2-software/tpm2-tools.git
 
+# Directory for the scripts
+RUN mkdir -p /abrmd/bin
+
 RUN cd tpm2-tss && \
   git checkout 1.2.0 && \
   ./bootstrap && \
@@ -58,5 +61,12 @@ RUN cd tpm2-tools && \
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/tpm2.conf && \
   ldconfig
 
-ADD entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+RUN rm -rf tpm2-tss
+RUN rm -rf tpm2-abrmd
+RUN rm -rf tpm2-tools
+
+COPY ./initialize_tpm.sh /abrmd/bin/
+COPY ./run_abrmd.sh /abrmd/bin/
+COPY ./init.sh /abrmd/bin/
+
+RUN chmod -R +x /abrmd/bin
