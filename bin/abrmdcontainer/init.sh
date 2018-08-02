@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+echo "Shared volume is ${ABRMD_DATA}"
+flag=$(echo "$(cat ${ABRMD_DATA}/tpm_status.yaml)" | sed '/^flag/{s/[^0-9,]//g;y/,/\n/;}')
+if [ "$flag" == 0 ];then
+    # Start DBUS
+    mkdir -p /var/run/dbus
+    stdbuf -oL -eL dbus-daemon --system --nofork 2>&1 1> /var/log/dbus-daemon.log &
+
+    # Start Resource Manager
+    if [ -z $TPM_SIMULATOR ]; then
+        echo "Using TPM Hardware for the operations";
+        tpm2-abrmd
+    else
+        echo "Using TPM Simulator for the opeations";
+        hostip=$(ip route show | awk '/default/ {print $3}');
+        echo "Connecting to $hostip\n";
+        tpm2-abrmd -a $hostip -t socket&
+    fi
+
+    /abrmd/bin/initialize_tpm.sh
+    status=$?
+    if [ $status -eq "0" ]; then
+    echo "TPM Initialization successful $status"
+    fi
+    exit $?
+
+else
+    echo "TPM is already Initialized"
+    exit;
+fi
