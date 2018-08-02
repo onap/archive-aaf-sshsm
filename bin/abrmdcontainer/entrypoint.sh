@@ -8,4 +8,7 @@ stdbuf -oL -eL dbus-daemon --system --nofork 2>&1 1> /var/log/dbus-daemon.log &
 # Start Resource Manager
 hostip=$(ip route show | awk '/default/ {print $3}')
 echo "Connecting to $hostip\n"
-tpm2-abrmd -a $hostip -t socket
+tpm2-abrmd -a $hostip -t socket&
+
+# For TPM Hardware presence
+#tpm2-abrmd
