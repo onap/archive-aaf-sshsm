@@ -1,13 +1,24 @@
+### Make  a directory /tmp/volume (mkdir -p /tmp/volume) on the Host
+### Copy the samplesharedvolume directory ~/sshsm/test/integration/sampleabrmdcontainer into /tmp/volume/ on host
+### This directory (Sample Shared volume) will be used to mount into the abrmd container and is mounted
+### as /tmp/files/ inside container
+
 ### Building Docker Images
 
 ```
 $ docker build -t <image name> -f dockerfile .
 ```
 
-### Running ABRMD Container
+### Running ABRMD Container with Simulator
 
 ```
-$ docker run -d --privileged -v /tmp/run/dbus:/var/run/dbus --name <container name> <image name>
+$ docker run -d --privileged -v /tmp/run/dbus:/var/run/dbus -v /tmp/volume:/tmp/files --name <container name> <image name>
+```
+
+### Running ABRMD Container with TPM Hardware
+
+```
+$ docker run -d --privileged -device=/dev/tpm0 -v /tmp/run/dbus:/var/run/dbus -v /tmp/volume:/tmp/files --name <container name> <image name>
 ```
 
 ### Running Tools Container
