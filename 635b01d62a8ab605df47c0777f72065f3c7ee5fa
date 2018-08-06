@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_74b0b4f4",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-06T17:19:00Z",
+      "side": 1,
+      "message": "Create a variable for storing password. Also password should come from environment variable",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d4750833",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-06T17:19:00Z",
+      "side": 1,
+      "message": "On error exit the script otherwise then statements will throw errors",
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
