@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_c75eb7e9",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-07T21:11:13Z",
+      "side": 1,
+      "message": "List out the Input and output to this container with path and file names",
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6748032e",
+        "filename": "bin/abrmdcontainer/dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-07T21:11:13Z",
+      "side": 1,
+      "message": "Once the script exits, the container will exit. This will terminate the tabrmd daemon as well.",
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_74b0b4f4",
         "filename": "bin/abrmdcontainer/initialize_tpm.sh",
         "patchSetId": 3
