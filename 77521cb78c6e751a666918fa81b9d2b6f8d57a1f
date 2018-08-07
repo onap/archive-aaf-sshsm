@@ -22,6 +22,30 @@
       "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e7a093f6",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-07T20:25:10Z",
+      "side": 1,
+      "message": "There is a dependency on tabrmd while building TPM plugin. Hence this is required.",
+      "parentUuid": "1a76adc5_0477cd03",
+      "range": {
+        "startLine": 36,
+        "startChar": 46,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
