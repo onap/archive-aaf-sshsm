@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_a72b7b2f",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-07T21:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_74b0b4f4",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_d4750833",
         "filename": "bin/abrmdcontainer/initialize_tpm.sh",
         "patchSetId": 3
@@ -70,6 +94,24 @@
       "writtenOn": "2018-08-06T17:19:00Z",
       "side": 1,
       "message": "On error exit the script otherwise then statements will throw errors",
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_47206749",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-07T21:31:52Z",
+      "side": 1,
+      "message": "As Discussed, the default values is updated at line 11 and 12",
+      "parentUuid": "1a76adc5_d4750833",
       "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
