@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_0477cd03",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-07T20:05:12Z",
+      "side": 1,
+      "message": "tabrmd and Softhsm will not be in the same container. There should be 2 different images one with tabrmd and one with Softhsm",
+      "range": {
+        "startLine": 36,
+        "startChar": 46,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
