@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_fa2ca14c",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-09T01:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c75eb7e9",
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_6748032e",
         "filename": "bin/abrmdcontainer/dockerfile",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-07T21:11:13Z",
       "side": 1,
       "message": "Once the script exits, the container will exit. This will terminate the tabrmd daemon as well.",
+      "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1a32bda7",
+        "filename": "bin/abrmdcontainer/dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-09T01:15:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_6748032e",
       "revId": "635b01d62a8ab605df47c0777f72065f3c7ee5fa",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
