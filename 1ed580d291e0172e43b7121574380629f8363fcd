@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d64df973",
+        "filename": "bin/abrmdcontainer/dockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-10T23:59:41Z",
+      "side": 1,
+      "message": "Can you move these to a folder such as /abrmd/bin or something like that?\nIt provides a root for mounting persistent volumes in kubernetes.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "1ed580d291e0172e43b7121574380629f8363fcd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_26d9a457",
         "filename": "bin/abrmdcontainer/wrapper.sh",
         "patchSetId": 8
