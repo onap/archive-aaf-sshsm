@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_ac0029ab",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "This should be part of the name and not a tag. Like latest or ${VERSION}-SNAPSHOT-latest. xenial should be part of the name of the image itself. eg: aaf-base-xenial",
+      "range": {
+        "startLine": 26,
+        "startChar": 50,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4c2dd545",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "change to latest",
+      "range": {
+        "startLine": 27,
+        "startChar": 48,
+        "endLine": 27,
+        "endChar": 54
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2c2c1947",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "same comment as above. Integrate the name into the image name instead of the tag. eg: aaf-base-openssl",
+      "range": {
+        "startLine": 28,
+        "startChar": 50,
+        "endLine": 28,
+        "endChar": 63
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ec1dc110",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "change to latest",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 61
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8c1a0d16",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "change to latest",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4cd4f51f",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "change to latest",
+      "range": {
+        "startLine": 36,
+        "startChar": 30,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_0477cd03",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 3
@@ -43,6 +181,23 @@
         "endLine": 36,
         "endChar": 60
       },
+      "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ac69098d",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-13T22:07:57Z",
+      "side": 1,
+      "message": "Can you make sure to delete the source files from the container image after building it, we only need to distribute the binaries.",
       "revId": "77521cb78c6e751a666918fa81b9d2b6f8d57a1f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
