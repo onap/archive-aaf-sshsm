@@ -6,8 +6,8 @@ RUN cd sshsm && \
   cd duplicate && \
   make -f sampleMakefile
 
-RUN mkdir /createca
-COPY ./create_ca.sh /createca/
+RUN mkdir -p /distcenter/bin
+COPY ./create_ca.sh /distcenter/bin
 RUN mkdir /dup
 RUN mkdir /dup/bin
 

@@ -1,22 +1,23 @@
 #!/bin/sh
 set -e
-cd /createca
-/createca/create_ca.sh
-cd /createca/ca
-cat /volume/passphrase | gpg --no-tty --symmetric -z 9 --require-secmem \
+cd /distcenter
+/distcenter/bin/create_ca.sh
+cd /distcenter/ca
+cat /distcenter/passphrase/passphrase | gpg --no-tty --symmetric -z 9 --require-secmem \
   --cipher-algo AES256 --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 \
   --s2k-mode 3 --s2k-count 65000000 --compress-algo BZIP2 \
   --passphrase-fd 0 privkey.pem
-cp /createca/ca/privkey.pem.gpg /volume
-cp /createca/ca/ca.cert /volume
+cp /distcenter/ca/privkey.pem.gpg /distcenter/data
+cp /distcenter/ca/ca.cert /distcenter/data
 
-cd /volume
+cd /distcenter/data
 DLIST=`ls -d host_*`
+#Iterate over all hosts (host in k8s corresponds node)
 for DIR in $DLIST; do
   echo $DIR
-  cp /createca/ca/ca.cert /volume/$DIR
-  cd /volume/$DIR
-  /dup/bin/ossl_tpm_duplicate -pemfile /createca/ca/privkey.pem  -parentPub \
-  /volume/$DIR/out_parent_public -dupPub dupPub -dupPriv dupPriv -dupSymSeed \
+  cp /distcenter/ca/ca.cert /distcenter/data/$DIR
+  cd /distcenter/data/$DIR
+  /dup/bin/ossl_tpm_duplicate -pemfile /distcenter/ca/privkey.pem  -parentPub \
+  /distcenter/data/$DIR/out_parent_public -dupPub dupPub -dupPriv dupPriv -dupSymSeed \
   dupSymseed -dupEncKey dupEncKey
 done
