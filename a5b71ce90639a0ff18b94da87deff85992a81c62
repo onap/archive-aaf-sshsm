@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_61776f03",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-15T20:20:23Z",
+      "side": 1,
+      "message": "Format file 80 characters per line",
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e1fe1f6b",
         "filename": "bin/abrmdcontainer/dockerfile",
         "patchSetId": 9
@@ -41,6 +58,46 @@
         "startChar": 0,
         "endLine": 18,
         "endChar": 14
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0160fb30",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-15T20:20:23Z",
+      "side": 1,
+      "message": "Format file 80 characters per line",
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c151a363",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-15T20:20:23Z",
+      "side": 1,
+      "message": "Why is this required in this script?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
       },
       "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
