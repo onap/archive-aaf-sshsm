@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_f5201d9d",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T01:03:15Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "1a76adc5_c6a55005",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 35
+      },
+      "revId": "1ed580d291e0172e43b7121574380629f8363fcd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c67c7075",
         "filename": "bin/abrmdcontainer/README.md",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-09T16:49:48Z",
       "side": 1,
       "message": "List out the exact file names and path on the /tmp/volume",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 71
+      },
+      "revId": "1ed580d291e0172e43b7121574380629f8363fcd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1526f9b7",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T01:03:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c67c7075",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -82,6 +130,54 @@
       "writtenOn": "2018-08-10T23:59:41Z",
       "side": 1,
       "message": "Can you move these to a folder such as /abrmd/bin or something like that?\nIt provides a root for mounting persistent volumes in kubernetes.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "1ed580d291e0172e43b7121574380629f8363fcd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b53aa5cb",
+        "filename": "bin/abrmdcontainer/dockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T01:03:15Z",
+      "side": 1,
+      "message": "As per the deployment instructions, I have renamed the scripts",
+      "parentUuid": "1a76adc5_a6e4d40d",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "1ed580d291e0172e43b7121574380629f8363fcd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d53721e2",
+        "filename": "bin/abrmdcontainer/dockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T01:03:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_d64df973",
       "range": {
         "startLine": 64,
         "startChar": 0,
