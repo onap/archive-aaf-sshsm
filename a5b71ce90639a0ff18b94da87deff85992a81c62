@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6181af8e",
+        "filename": "bin/abrmdcontainer/dockerfile",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_e1fe1f6b",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_410a738b",
         "filename": "bin/abrmdcontainer/init.sh",
         "patchSetId": 9
@@ -53,6 +77,30 @@
       "writtenOn": "2018-08-15T19:36:01Z",
       "side": 1,
       "message": "move line out",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c109a332",
+        "filename": "bin/abrmdcontainer/init.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_410a738b",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -82,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_61068f22",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_0160fb30",
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c151a363",
         "filename": "bin/abrmdcontainer/initialize_tpm.sh",
         "patchSetId": 9
@@ -93,6 +159,30 @@
       "writtenOn": "2018-08-15T20:20:23Z",
       "side": 1,
       "message": "Why is this required in this script?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8103ab0e",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c151a363",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_3c051a11",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_a1b0278c",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 87,
+        "endChar": 45
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c1f52384",
         "filename": "bin/abrmdcontainer/run_abrmd.sh",
         "patchSetId": 9
@@ -139,6 +253,30 @@
       "writtenOn": "2018-08-15T19:36:01Z",
       "side": 1,
       "message": "Convert this to an if condition based on an environment variable: TPM_SIMULATOR\nIf this env variable is set, it will connect to simulator, else, it will use the hardware mounted TPM",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5c1d7665",
+        "filename": "bin/abrmdcontainer/run_abrmd.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-15T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c1f52384",
       "range": {
         "startLine": 9,
         "startChar": 0,
