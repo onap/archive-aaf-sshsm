@@ -1,4 +1,3 @@
-
 # Base Image for the build
 FROM rmannfv/aaf-base:xenial
 
@@ -46,4 +45,4 @@ RUN cd sshsm && \
   cd import && \
   make -f sampleMakefile
 
-COPY ./test.sh /
+COPY ./import.sh /
