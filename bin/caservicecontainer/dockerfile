@@ -46,4 +46,4 @@ RUN cd sshsm && \
   cd import && \
   make -f sampleMakefile
 
-COPY ./test.sh /
+COPY ./import.sh /
