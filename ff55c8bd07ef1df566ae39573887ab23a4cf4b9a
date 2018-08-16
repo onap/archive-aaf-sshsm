@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_4f6e1598",
+        "filename": "bin/base/openssldockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:49:26Z",
+      "side": 1,
+      "message": "Why do we need this line?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "ff55c8bd07ef1df566ae39573887ab23a4cf4b9a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cf09c5de",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:49:26Z",
+      "side": 1,
+      "message": "Consider combining to single cd command.\nRUN cd sshsm/tpm-util/import",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 16
+      },
+      "revId": "ff55c8bd07ef1df566ae39573887ab23a4cf4b9a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ef6cc19e",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:49:26Z",
+      "side": 1,
+      "message": "Consider combining this into a single line:\nRUN mkdir -p tpm-util/bin",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "ff55c8bd07ef1df566ae39573887ab23a4cf4b9a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
