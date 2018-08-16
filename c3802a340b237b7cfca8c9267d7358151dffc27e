@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_ef0361b6",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:57:31Z",
+      "side": 1,
+      "message": "Add bin/bash line",
+      "revId": "c3802a340b237b7cfca8c9267d7358151dffc27e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8f13cd0c",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:57:31Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 55
+      },
+      "revId": "c3802a340b237b7cfca8c9267d7358151dffc27e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4ff5b5c9",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:57:31Z",
+      "side": 1,
+      "message": "This should be the first line of a bash script",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 11
+      },
+      "revId": "c3802a340b237b7cfca8c9267d7358151dffc27e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2ffab9bd",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-16T23:57:31Z",
+      "side": 1,
+      "message": "Indent",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "c3802a340b237b7cfca8c9267d7358151dffc27e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
