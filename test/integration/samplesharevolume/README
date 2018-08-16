@@ -1,0 +1,19 @@
+### List of files present in the shared volume when CA service container runs
+
+1. ca.cert
+2. CaSign.java
+3. dupPub
+4. out_parent_public
+5. slotinfo.txt
+6. ca.der
+7. dupEncKey
+8. dupSymseed
+9. passphrase
+10. privkey.pem
+11. srkhandle.txt
+11. CaSign.class
+12. dupPriv
+13. flag.yaml
+14. password.txt
+15. privkey.pem.gpg
+16. test.csr
