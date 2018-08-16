@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_8f450d19",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-16T23:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_af000902",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_ef1da167",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 2
@@ -88,6 +112,72 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6f42f111",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-16T23:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_ef1da167",
+      "range": {
+        "startLine": 48,
+        "startChar": 72,
+        "endLine": 48,
+        "endChar": 81
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cf3b059b",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-16T23:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_8f0d0d3a",
+      "range": {
+        "startLine": 48,
+        "startChar": 134,
+        "endLine": 48,
+        "endChar": 138
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_af3809a1",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-16T23:26:48Z",
+      "side": 1,
+      "message": "I tried moving this to next line but the command failed",
+      "parentUuid": "1a76adc5_6f0af122",
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_0f19fd78",
         "filename": "bin/caservicecontainer/test.sh",
         "patchSetId": 2
@@ -99,6 +189,30 @@
       "writtenOn": "2018-08-16T21:57:20Z",
       "side": 1,
       "message": "Separate out import as discussed",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2f4cf941",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-16T23:26:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_0f19fd78",
       "range": {
         "startLine": 92,
         "startChar": 3,
