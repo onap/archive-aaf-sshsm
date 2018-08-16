@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_af000902",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-16T21:57:20Z",
+      "side": 1,
+      "message": "What if the directory is present but files are missing?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ef1da167",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-16T21:57:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 48,
+        "startChar": 72,
+        "endLine": 48,
+        "endChar": 81
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6f0af122",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-16T21:57:20Z",
+      "side": 1,
+      "message": "80 characters per column",
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8f0d0d3a",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-16T21:57:20Z",
+      "side": 1,
+      "message": "hardcoding",
+      "range": {
+        "startLine": 48,
+        "startChar": 134,
+        "endLine": 48,
+        "endChar": 138
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0f19fd78",
+        "filename": "bin/caservicecontainer/test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-16T21:57:20Z",
+      "side": 1,
+      "message": "Separate out import as discussed",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "67483f7c947791400df24475f6918339ef0d0ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
