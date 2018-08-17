@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_721d0366",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-17T00:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_9e9c6b6b",
+      "range": {
+        "startLine": 38,
+        "startChar": 63,
+        "endLine": 38,
+        "endChar": 64
+      },
+      "revId": "ff3e727bbadf262fd7b8737c46d9a4ee7b6b3c05",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_3e899726",
         "filename": "bin/base/build_base_images.sh",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-14T18:42:21Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 43,
+        "startChar": 68,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "ff3e727bbadf262fd7b8737c46d9a4ee7b6b3c05",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_921a1f6d",
+        "filename": "bin/base/build_base_images.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-17T00:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_3e899726",
       "range": {
         "startLine": 43,
         "startChar": 68,
