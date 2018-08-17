@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_6f275165",
+        "filename": "bin/base/openssldockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-17T00:04:22Z",
+      "side": 1,
+      "message": "Just get the version in the log.",
+      "parentUuid": "1a76adc5_4f6e1598",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "ff55c8bd07ef1df566ae39573887ab23a4cf4b9a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_cf09c5de",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_8f2aed2a",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-17T00:04:22Z",
+      "side": 1,
+      "message": "If there is a dependency and changes, they have to be moved down. This is good..",
+      "parentUuid": "1a76adc5_cf09c5de",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 16
+      },
+      "revId": "ff55c8bd07ef1df566ae39573887ab23a4cf4b9a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_ef6cc19e",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-16T23:49:26Z",
       "side": 1,
       "message": "Consider combining this into a single line:\nRUN mkdir -p tpm-util/bin",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "ff55c8bd07ef1df566ae39573887ab23a4cf4b9a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2f21594d",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-17T00:04:22Z",
+      "side": 1,
+      "message": "Ditto above",
+      "parentUuid": "1a76adc5_ef6cc19e",
       "range": {
         "startLine": 95,
         "startChar": 0,
