@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_30420c11",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-20T23:33:27Z",
+      "side": 1,
+      "message": "Nit: remove whitespace",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "652063b06af3a64ea3273b9b9a3cf51cb2174e86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f04b3429",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-20T23:33:27Z",
+      "side": 1,
+      "message": "Call import tool directly rather than the script",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "652063b06af3a64ea3273b9b9a3cf51cb2174e86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b055bcc7",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-20T23:33:27Z",
+      "side": 1,
+      "message": "Do you need an escape character to break line",
+      "revId": "652063b06af3a64ea3273b9b9a3cf51cb2174e86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
