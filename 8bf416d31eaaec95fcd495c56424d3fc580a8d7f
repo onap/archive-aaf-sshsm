@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_ad4ec7bf",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-20T23:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_2dff1769",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "8bf416d31eaaec95fcd495c56424d3fc580a8d7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_2de877b3",
         "filename": "bin/caservicecontainer/application.sh",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-20T21:47:20Z",
       "side": 1,
       "message": "Move this import script",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 127
+      },
+      "revId": "8bf416d31eaaec95fcd495c56424d3fc580a8d7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cd49c3b8",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-20T23:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_2de877b3",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_ad06c71e",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-20T23:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_cdd6a3f1",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 95
+      },
+      "revId": "8bf416d31eaaec95fcd495c56424d3fc580a8d7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_edf83f7e",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2018-08-20T21:47:20Z",
       "side": 1,
       "message": "Create another script for SoftHsm configuration",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 93
+      },
+      "revId": "8bf416d31eaaec95fcd495c56424d3fc580a8d7f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cd01c307",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-20T23:17:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_edf83f7e",
       "range": {
         "startLine": 49,
         "startChar": 4,
