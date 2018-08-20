@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_8d2f4bf6",
+        "filename": "bin/abrmdcontainer/init.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-20T21:54:10Z",
+      "side": 1,
+      "message": "Check for tpm_status.yaml fiel and check if TPM is initialized",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "e46ec2453df6b98dfe58d3437e04def0d41d643f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
