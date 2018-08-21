@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_9675139a",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-21T22:02:26Z",
+      "side": 1,
+      "message": "Add more details of encrypted password and passphrase.",
+      "range": {
+        "startLine": 6,
+        "startChar": 43,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "5bae08764ee02b44bb30db489b21d67efd1f31c0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f646c74e",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-21T22:02:26Z",
+      "side": 1,
+      "message": "Update the README with how the OOM will deploy this container with different entrypoints/phases",
+      "revId": "5bae08764ee02b44bb30db489b21d67efd1f31c0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f62fa786",
+        "filename": "bin/abrmdcontainer/init.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-21T22:02:26Z",
+      "side": 1,
+      "message": "This will fail with no such file tpm_status.yaml for the first time when the TPM is not initialized. Check for file existence and then cat the file.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 90
+      },
+      "revId": "5bae08764ee02b44bb30db489b21d67efd1f31c0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d662abd7",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-21T22:02:26Z",
+      "side": 1,
+      "message": "Document this in README file also",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "5bae08764ee02b44bb30db489b21d67efd1f31c0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
