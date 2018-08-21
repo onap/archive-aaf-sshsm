@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Ritu Sood <Ritu.Sood@intel.com>
+Code-Review+2: Kiran Kamineni <kiran.k.kamineni@intel.com>
+Submitted-by: Kiran Kamineni <kiran.k.kamineni@intel.com>
+Submitted-at: Tue, 21 Aug 2018 03:04:36 +0000
+Reviewed-on: https://gerrit.onap.org/r/61155
+Project: aaf/sshsm
+Branch: refs/heads/master
