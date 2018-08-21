@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_0641f159",
+        "filename": "bin/abrmdcontainer/README.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-21T22:02:26Z",
+      "side": 1,
+      "message": "Remove this, Abrmd containers needs to run with root privilege.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "a5b71ce90639a0ff18b94da87deff85992a81c62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e1fe1f6b",
         "filename": "bin/abrmdcontainer/dockerfile",
         "patchSetId": 9
