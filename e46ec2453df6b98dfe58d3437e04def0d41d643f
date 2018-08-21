@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_10ca706e",
+        "filename": "bin/abrmdcontainer/init.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-21T18:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_8d2f4bf6",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "e46ec2453df6b98dfe58d3437e04def0d41d643f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_0d3b3b39",
         "filename": "bin/abrmdcontainer/initialize_tpm.sh",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-20T21:58:39Z",
       "side": 1,
       "message": "Read the password from the shared volume in gpg format. And decrypt before using it",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "e46ec2453df6b98dfe58d3437e04def0d41d643f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_908c4037",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-21T18:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_0d3b3b39",
       "range": {
         "startLine": 19,
         "startChar": 0,
