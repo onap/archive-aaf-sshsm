@@ -13,7 +13,7 @@ example
 
 Build the container using
 
-  docker build --no-cache -t dist-center .
+  docker build --no-cache -t dist-center -f distcenterdockerfile .
 
 Run it mounting the volume
 
