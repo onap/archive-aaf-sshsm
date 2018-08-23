@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_9b30d49f",
+        "filename": "bin/caservicecontainer/README",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-23T01:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_62bd1668",
+      "revId": "558a085a35aac5d472b58ee48da14b80c3a3b6b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_82c072e1",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 10
@@ -30,6 +48,30 @@
       "writtenOn": "2018-08-21T21:11:31Z",
       "side": 1,
       "message": "Move it to softhsm script only used there",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "558a085a35aac5d472b58ee48da14b80c3a3b6b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1621034d",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-23T01:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_82c072e1",
       "range": {
         "startLine": 12,
         "startChar": 7,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_361c3f13",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-23T01:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_028542ac",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "558a085a35aac5d472b58ee48da14b80c3a3b6b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e202863d",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 10
@@ -76,6 +142,30 @@
       "writtenOn": "2018-08-21T21:08:30Z",
       "side": 1,
       "message": "exporting is similar to setting up a global context. These variables are visible across shells that is spawn under. Consider making them local variables and pass them as argument to other scripts if required.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "558a085a35aac5d472b58ee48da14b80c3a3b6b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d61aab16",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-23T01:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_e202863d",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_f61567e5",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-23T01:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_b69fefb3",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "558a085a35aac5d472b58ee48da14b80c3a3b6b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_02ac6234",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 10
@@ -122,6 +236,30 @@
       "writtenOn": "2018-08-21T21:11:31Z",
       "side": 1,
       "message": "Pass these files as parameters to the softhsmconfig.sh script and then line number 44, 58 and 59 also move there and all the things needed for softhsn config will be in the same file",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 98
+      },
+      "revId": "558a085a35aac5d472b58ee48da14b80c3a3b6b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_96d43321",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-23T01:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_02ac6234",
       "range": {
         "startLine": 58,
         "startChar": 3,
