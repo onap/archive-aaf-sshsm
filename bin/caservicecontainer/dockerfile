@@ -1,6 +1,5 @@
-
 # Base Image for the build
-FROM rmannfv/aaf-base:xenial
+FROM nexus3.onap.org:10001/onap/aaf/aaf-base-xenial:latest
 
 # Files required for the Java application
 RUN wget https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar
@@ -14,36 +13,9 @@ RUN cp ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN cp ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN cp ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
 
-# Clone the sshsm repo
-RUN git clone https://gerrit.onap.org/r/aaf/sshsm
-
-# Build SoftHSMv2
-RUN cd sshsm && \
-  cd SoftHSMv2 && \
-  sh autogen.sh && \
-  ./configure --disable-gost && \
-  make && \
-  make install
-
 # Create the directory for mounting the shared voulme
 RUN mkdir -p /tmp/files
 
-# Build TPM-Plugin
-RUN cd sshsm && \
-  chmod 755 TPM2-Plugin/ && \
-  cd TPM2-Plugin && \
-  chmod 755 bootstrap && \
-  sleep 2 && \
-  ./bootstrap && \
-  ./configure && \
-  make && \
-  make install && \
-  ldconfig && \
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-
-RUN cd sshsm && \
-  cd tpm-util && \
-  cd import && \
-  make -f sampleMakefile
-
-COPY ./test.sh /
+COPY ./import.sh /
+COPY ./softhsmconfig.sh /
+COPY ./application.sh /
