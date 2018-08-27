@@ -22,6 +22,30 @@
       "revId": "56663fe65d8bb254dcc3be397ad0844ddd34fafb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e6b4bad2",
+        "filename": "bin/abrmdcontainer/build_initabrmd_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-27T22:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_263152a2",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "56663fe65d8bb254dcc3be397ad0844ddd34fafb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
