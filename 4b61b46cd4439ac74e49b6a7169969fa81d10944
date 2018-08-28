@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_09d8e251",
+        "filename": "bin/caservicecontainer/README",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Add input and output for application also",
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c92aea2b",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "What is this export needed for here?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 65
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e9d48621",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Debug output",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_891cf214",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Cleanup unrelated to this file.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_33918d99",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 2
@@ -71,6 +157,75 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_69fab6be",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "What is this space needed for",
+      "range": {
+        "startLine": 31,
+        "startChar": 56,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_49ffbaaa",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Ditto. Debug print",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e92d6647",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Why is this needed here",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_537d29b0",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 2
@@ -87,6 +242,167 @@
         "startChar": 4,
         "endLine": 44,
         "endChar": 29
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2ea0449e",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Why is this being exported here, in the abandoned patch https://gerrit.onap.org/r/#/c/60975/ there was a comment to remove all exports",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 65
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2904bebe",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Wrong print for the user.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 77
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ee89ec26",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Why is this being exported here, in the abandoned patch https://gerrit.onap.org/r/#/c/60975/ there was a comment to remove all exports",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0ea6a8c1",
+        "filename": "bin/caservicecontainer/softhsmconfig.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "This is confusing print",
+      "range": {
+        "startLine": 6,
+        "startChar": 7,
+        "endLine": 6,
+        "endChar": 70
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e906c6cd",
+        "filename": "bin/caservicecontainer/softhsmconfig.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Why do you need to put this out as output. This seems to be debug print. Either remove it or add some way of turning off debug prints",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_090a22d2",
+        "filename": "bin/caservicecontainer/softhsmconfig.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c913ca0b",
+        "filename": "bin/caservicecontainer/softhsmconfig.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-28T21:06:13Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 24
       },
       "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
