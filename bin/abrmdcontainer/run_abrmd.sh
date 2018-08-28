@@ -3,7 +3,9 @@ set -e
 
 # Start DBUS
 mkdir -p /var/run/dbus
+rm -f /var/run/dbus/*
 stdbuf -oL -eL dbus-daemon --system --nofork 2>&1 1> /var/log/dbus-daemon.log &
+sleep 1m
 
 # Start Resource Manager
 if [ -z $TPM_SIMULATOR ]; then
