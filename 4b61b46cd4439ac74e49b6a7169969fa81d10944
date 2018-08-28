@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_33918d99",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-28T16:00:31Z",
+      "side": 1,
+      "message": "The base image is available from nexus repo now. You can use it from there:\n\nnexus3.onap.org:10001/onap/aaf/aaf-base-xenial:latest",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b3b7dd85",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-28T16:00:31Z",
+      "side": 1,
+      "message": "This will come from base image",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_73b1458e",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-28T16:00:31Z",
+      "side": 1,
+      "message": "This will come from base image",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_537d29b0",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-28T16:00:31Z",
+      "side": 1,
+      "message": "ossl_tpm_import binary is installed under /tpm-util/bin in the base image.",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
