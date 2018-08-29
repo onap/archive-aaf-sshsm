@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_89e62daf",
+        "filename": "bin/abrmdcontainer/init.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-29T18:53:43Z",
+      "side": 1,
+      "message": "Add else to log unsuccessful case",
+      "revId": "91aaed94a7068b07b7bdd8a31674178482d4e8f9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_09a8dd1e",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-29T18:53:43Z",
+      "side": 1,
+      "message": "This is a encrypted password, extract it using given passphrase.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "91aaed94a7068b07b7bdd8a31674178482d4e8f9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a915294a",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-29T18:53:43Z",
+      "side": 1,
+      "message": "Who owns the tpm now? When and how is the initial password set?",
+      "revId": "91aaed94a7068b07b7bdd8a31674178482d4e8f9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6924f1c4",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-29T18:53:43Z",
+      "side": 1,
+      "message": "Add else to echo for the existing case",
+      "revId": "91aaed94a7068b07b7bdd8a31674178482d4e8f9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
