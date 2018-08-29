@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_bf9d5c5b",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T09:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_041769a4",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_33918d99",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 2
@@ -602,6 +626,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_3fa94c7b",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T09:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c4397142",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 65
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_2904bebe",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 2
@@ -634,6 +682,30 @@
         "id": 3261
       },
       "writtenOn": "2018-08-28T23:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_2904bebe",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 77
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1faed085",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T09:19:41Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "1a76adc5_2904bebe",
@@ -696,6 +768,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_7f9fc450",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T09:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_492b3a94",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_843b7937",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 2
@@ -707,6 +803,30 @@
       "writtenOn": "2018-08-29T05:16:43Z",
       "side": 1,
       "message": "You are passing in the values here just like the earlier comment which is good. https://gerrit.onap.org/r/#/c/60975/10/bin/caservicecontainer/import.sh@30\nBut the same values are also exported and the passed in arguments are not being used? What is the reason for that? Doing that will make it more modular",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 62
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5fa448a5",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T09:19:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_843b7937",
       "range": {
         "startLine": 90,
         "startChar": 0,
