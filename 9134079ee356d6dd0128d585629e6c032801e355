@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_8cfcfb73",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T20:43:56Z",
+      "side": 1,
+      "message": "key_label not defined in this file. You need to use positional parameters. Please test this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "9134079ee356d6dd0128d585629e6c032801e355",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4cfa6376",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T20:43:56Z",
+      "side": 1,
+      "message": "Ditto for all parameters",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "9134079ee356d6dd0128d585629e6c032801e355",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0cd9cb21",
+        "filename": "bin/caservicecontainer/softhsmconfig.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T20:43:56Z",
+      "side": 1,
+      "message": "tpm_handle not defined in this file. You need to use positional parameters",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "9134079ee356d6dd0128d585629e6c032801e355",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_cc067386",
+        "filename": "bin/caservicecontainer/softhsmconfig.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T20:43:56Z",
+      "side": 1,
+      "message": "Ditto for all parameters",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "9134079ee356d6dd0128d585629e6c032801e355",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
