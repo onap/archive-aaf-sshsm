@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_041769a4",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T05:16:43Z",
+      "side": 1,
+      "message": "Yes that is correct. For modularity it should be done in the calling script where this file was created.",
+      "parentUuid": "1a76adc5_695f1642",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_33918d99",
         "filename": "bin/caservicecontainer/dockerfile",
         "patchSetId": 2
@@ -554,6 +578,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_c4397142",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T05:16:43Z",
+      "side": 1,
+      "message": "The original comment was to pass in the arguments to the script rather than export the variables.\nhttps://gerrit.onap.org/r/#/c/60975/10/bin/caservicecontainer/import.sh@30\nThat is more modular.",
+      "parentUuid": "1a76adc5_e932460f",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 65
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_2904bebe",
         "filename": "bin/caservicecontainer/import.sh",
         "patchSetId": 2
@@ -641,6 +689,29 @@
         "startChar": 0,
         "endLine": 89,
         "endChar": 45
+      },
+      "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_843b7937",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-29T05:16:43Z",
+      "side": 1,
+      "message": "You are passing in the values here just like the earlier comment which is good. https://gerrit.onap.org/r/#/c/60975/10/bin/caservicecontainer/import.sh@30\nBut the same values are also exported and the passed in arguments are not being used? What is the reason for that? Doing that will make it more modular",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 62
       },
       "revId": "4b61b46cd4439ac74e49b6a7169969fa81d10944",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
