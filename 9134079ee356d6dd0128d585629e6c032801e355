@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_acb9b77a",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T21:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_8cfcfb73",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "9134079ee356d6dd0128d585629e6c032801e355",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_4cfa6376",
         "filename": "bin/caservicecontainer/application.sh",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-29T20:43:56Z",
       "side": 1,
       "message": "Ditto for all parameters",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "9134079ee356d6dd0128d585629e6c032801e355",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4cb26395",
+        "filename": "bin/caservicecontainer/application.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-08-29T21:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_4cfa6376",
       "range": {
         "startLine": 13,
         "startChar": 15,
