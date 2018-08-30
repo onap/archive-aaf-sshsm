@@ -19,17 +19,14 @@
 //
 
 #include <stdio.h>
-#include <stdlib.h>   
+#include <stdlib.h>
 #include <string.h>
-#include <unistd.h>  
+#include <unistd.h>
 
 #include <sapi/tpm20.h>
 
-#include "tpm_wrapper.h" 
-#include "util.h" 
-
-char* tpm_pwd = "";
-int tpm_pwd_len = 0;
+#include "tpm_wrapper.h"
+#include "util.h"
 
 void PrintHelp();
 char version[] = "0.1";
@@ -37,10 +34,11 @@ char version[] = "0.1";
 void PrintHelp()
 {
     printf(
-            "OSSL key to tpm import tool, Version %s\nUsage:" 
-            "./ossl_tpm_import " 
-            "[-dupPub out_dupPubFile] [-dupPriv out_dupPrivFile] [-dupSymSeed out_dupSymSeedFile] [-dupEncKey out_dupEncKeyFile]" 
-            "[-pub out_keyPub] [-priv out_KeyPriv]\n"
+            "OSSL key to tpm import tool, Version %s\nUsage:"
+            "./ossl_tpm_import "
+            "[-dupPub out_dupPubFile] [-dupPriv out_dupPrivFile] [-dupSymSeed out_dupSymSeedFile] "
+            "[-dupEncKey out_dupEncKeyFile] [-password keyPassword] "
+            "[-pub out_keyPub] [-priv out_KeyPriv] [-H primaryKeyHandle]\n"
 			"\n"
 			 , version);
 }
@@ -61,10 +59,12 @@ int main(int argc, char* argv[])
     int dupSymSeed_flag = 0;
     char dupEncKey_Filename[256];
     int dupEncKey_flag = 0;
-    TPM2B_DATA encryptionKey; 
-    TPM2B_PUBLIC swKeyPublic; 
-    TPM2B_PRIVATE swKeyPrivate; 
-    TPM2B_ENCRYPTED_SECRET encSymSeed; 
+    char keyPassword[256];
+    int keyPassword_flag = 0;
+    TPM2B_DATA encryptionKey;
+    TPM2B_PUBLIC swKeyPublic;
+    TPM2B_PRIVATE swKeyPrivate;
+    TPM2B_ENCRYPTED_SECRET encSymSeed;
 
     // SW Key Import O/P variables
     char pub_Filename[256];
@@ -127,6 +127,15 @@ int main(int argc, char* argv[])
                     return 1;
                 }
                 dupEncKey_flag = 1;
+            }
+            else if( 0 == strcmp( argv[count], "-password" ) ) {
+                count++;
+                if ( (1 != sscanf(argv[count], "%s", keyPassword )) )
+                {
+                    PrintHelp();
+                    return 1;
+                }
+                keyPassword_flag = 1;
             }
             else if( 0 == strcmp( argv[count], "-pub" ) ) {
                 count++;
@@ -215,9 +224,9 @@ int main(int argc, char* argv[])
 
         TPM2B_PRIVATE importPrivate;
         INIT_SIMPLE_TPM2B_SIZE(importPrivate);
-        rval = swKeyTpmImport(sysContext, primaryKeyHandle, 
-                &encryptionKey, &swKeyPublic, &swKeyPrivate, &encSymSeed, 
-                tpm_pwd, tpm_pwd_len, 
+        rval = swKeyTpmImport(sysContext, primaryKeyHandle,
+                &encryptionKey, &swKeyPublic, &swKeyPrivate, &encSymSeed,
+                keyPassword, strlen(keyPassword),
                 &importPrivate);
         if(rval != 0) {
             printf("\nswKeyTpmImport failed: 0x%x ! \n", rval);
@@ -241,4 +250,3 @@ end:
 
     return rval;
 }
-
