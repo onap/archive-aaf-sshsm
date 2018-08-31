@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_759a766f",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-31T18:01:31Z",
+      "side": 1,
+      "message": "It is being used.",
+      "parentUuid": "1a76adc5_f5ae8697",
+      "range": {
+        "startLine": 41,
+        "startChar": 56,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "6e0d9f68d073cceef1d602f864aa324fe870063c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_75c35657",
         "filename": "tpm-util/import/main.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-31T17:57:33Z",
       "side": 1,
       "message": "What is this flag needed for?",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 25
+      },
+      "revId": "6e0d9f68d073cceef1d602f864aa324fe870063c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d5802af9",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-31T18:01:31Z",
+      "side": 1,
+      "message": "Added with the intention of making it a mandatory flag. Not sure if I should make it mandatory or not. Depending on that it will be added to line 181",
+      "parentUuid": "1a76adc5_75c35657",
       "range": {
         "startLine": 63,
         "startChar": 8,
