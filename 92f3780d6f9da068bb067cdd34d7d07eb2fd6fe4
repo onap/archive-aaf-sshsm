@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_a2245b60",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-31T17:41:17Z",
+      "side": 1,
+      "message": "Remove all the white spaces in this file.",
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_75e27630",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-31T17:41:17Z",
+      "side": 1,
+      "message": "Keep the comment about environment variables and will help while running this container standalone.",
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_153a2299",
+        "filename": "bin/abrmdcontainer/run_abrmd.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-31T17:41:17Z",
+      "side": 1,
+      "message": "Is there a way to check the log to make sure dbus-daemon is really up instead of sleep?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 8
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
