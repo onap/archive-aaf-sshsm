@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_58abef74",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-31T21:11:41Z",
+      "side": 1,
+      "message": "Key Password should be optional.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 30
+      },
+      "revId": "1d538e3e8d598c231d63deffa3dcb32f78d98b97",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
