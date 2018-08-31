@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_15e0e2cb",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-31T18:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_b5f80ec4",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_153a2299",
         "filename": "bin/abrmdcontainer/run_abrmd.sh",
         "patchSetId": 9
