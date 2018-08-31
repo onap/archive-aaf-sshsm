@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d5aeea80",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-31T18:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_15d6a228",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_22e36ba5",
         "filename": "bin/abrmdcontainer/create_primary.sh",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_35be3eb5",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-31T18:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_22e36ba5",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_d5db4a4d",
         "filename": "bin/abrmdcontainer/create_primary.sh",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-31T17:53:08Z",
       "side": 1,
       "message": "Remove PrimaryKeyBlob in failure case also",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_95ccf26b",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-08-31T18:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_d5db4a4d",
       "range": {
         "startLine": 47,
         "startChar": 4,
