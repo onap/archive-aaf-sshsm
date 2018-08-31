@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_006187a8",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-08-31T00:10:20Z",
+      "side": 1,
+      "message": "-H option is missing in the help. Is tpm handle still needed for import?",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "ac77675d7a1b35474950f2b99403191e78070d37",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
