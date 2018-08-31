@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_15d6a228",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-31T17:53:08Z",
+      "side": 1,
+      "message": "nit: echo and commands don\u0027t match",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_22e36ba5",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-31T17:53:08Z",
+      "side": 1,
+      "message": "Remove white spaces in this file",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d5db4a4d",
+        "filename": "bin/abrmdcontainer/create_primary.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-31T17:53:08Z",
+      "side": 1,
+      "message": "Remove PrimaryKeyBlob in failure case also",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_a2245b60",
         "filename": "bin/abrmdcontainer/create_primary.sh",
         "patchSetId": 9
@@ -66,6 +135,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1a76adc5_75e27630",
+      "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b5f80ec4",
+        "filename": "bin/abrmdcontainer/initialize_tpm.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-08-31T17:53:08Z",
+      "side": 1,
+      "message": "Add this to the create_primary.sh script also if required",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 33
+      },
       "revId": "92f3780d6f9da068bb067cdd34d7d07eb2fd6fe4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
