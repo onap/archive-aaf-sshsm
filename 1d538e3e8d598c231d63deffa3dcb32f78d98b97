@@ -22,6 +22,30 @@
       "revId": "1d538e3e8d598c231d63deffa3dcb32f78d98b97",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_b88803c6",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-01T00:33:57Z",
+      "side": 1,
+      "message": "It is part of the input from the kube node admin. If no password is provided, access to primarykey is not secure. I am not sure if we should make this optional.",
+      "parentUuid": "1a76adc5_58abef74",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 30
+      },
+      "revId": "1d538e3e8d598c231d63deffa3dcb32f78d98b97",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
