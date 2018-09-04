@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_542093ab",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-04T17:48:40Z",
+      "side": 1,
+      "message": "Initialize to empty string to cover the case when password is not provided",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "88c581a7540b343ff9119c5db74dc31df355a373",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
