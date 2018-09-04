@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_3785d959",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-04T18:23:22Z",
+      "side": 1,
+      "message": "There is no expected length. I have used 256 is a reasonable length to set for the password.",
+      "parentUuid": "1a76adc5_d73905d8",
+      "range": {
+        "startLine": 62,
+        "startChar": 21,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "88c581a7540b343ff9119c5db74dc31df355a373",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f77a0176",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-04T18:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_542093ab",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "88c581a7540b343ff9119c5db74dc31df355a373",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_572e5593",
         "filename": "tpm-util/import/main.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2018-09-04T18:00:56Z",
       "side": 1,
       "message": "check the length before copy in to cover buffer over run",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 66
+      },
+      "revId": "88c581a7540b343ff9119c5db74dc31df355a373",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_578ad56a",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-04T18:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_572e5593",
       "range": {
         "startLine": 132,
         "startChar": 27,
