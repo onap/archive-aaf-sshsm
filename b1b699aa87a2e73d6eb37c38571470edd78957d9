@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_77d91121",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-04T20:30:58Z",
+      "side": 1,
+      "message": "Is this extra dot intentional ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "b1b699aa87a2e73d6eb37c38571470edd78957d9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_37071984",
+        "filename": "bin/caservicecontainer/import.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-04T20:30:58Z",
+      "side": 1,
+      "message": "Is this extra dot intentional ?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "b1b699aa87a2e73d6eb37c38571470edd78957d9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
