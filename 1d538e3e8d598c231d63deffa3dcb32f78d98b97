@@ -46,6 +46,30 @@
       "revId": "1d538e3e8d598c231d63deffa3dcb32f78d98b97",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_74f02f91",
+        "filename": "tpm-util/import/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-04T16:59:35Z",
+      "side": 1,
+      "message": "Ok. The reason I am suggesting is that import utility is a tool/wrapper around the Tss2_Sys_Import call. TPM has support with and without key password. May be in future there may be a requirement like that and this tool shouldn\u0027t limit it.",
+      "parentUuid": "1a76adc5_b88803c6",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 30
+      },
+      "revId": "1d538e3e8d598c231d63deffa3dcb32f78d98b97",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
