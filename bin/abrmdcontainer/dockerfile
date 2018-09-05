@@ -2,6 +2,5 @@ FROM nexus3.onap.org:10001/onap/aaf/aaf-base-xenial:latest
 
 COPY ./initialize_tpm.sh /abrmd/bin/
 COPY ./run_abrmd.sh /abrmd/bin/
-COPY ./init.sh /abrmd/bin/
 
 RUN chmod -R +x /abrmd/bin
