@@ -107,7 +107,7 @@ public class CaSign {
             System.out.println(args[i]);
         }
         // Set up the Sun PKCS 11 provider
-        String configName = "/tmp/pkcs11.cfg";
+        String configName = "pkcs11.cfg";
         Provider p = new SunPKCS11(configName);
         //Provider p = Security.getProvider("SunPKCS11-pkcs11Test");
         if (p==null) {
@@ -128,7 +128,7 @@ public class CaSign {
         PrivateKeyEntry privateKeyEntry = (PrivateKeyEntry) keyStore.getEntry(args[1], null);
         PrivateKey privateKey = privateKeyEntry.getPrivateKey();
 
-	File csrf = new File("/tmp/test.csr");
+	File csrf = new File("test.csr");
         if ( csrf == null )
             System.out.println("Make sure to copy the test.csr file to /tmp");
 	Reader pemcsr = new FileReader(csrf);
@@ -192,10 +192,10 @@ public class CaSign {
         sw.write("-----BEGIN CERTIFICATE-----\n");
         sw.write(DatatypeConverter.printBase64Binary(x509.getEncoded()).replaceAll("(.{64})", "$1\n"));
         sw.write("\n-----END CERTIFICATE-----\n");
-        FileWriter fw = new FileWriter("/tmp/test.cert");
+        FileWriter fw = new FileWriter("test.cert");
         fw.write(sw.toString());
         fw.close();
-        System.out.println("Done - Signed certificate at /tmp/test.cert");
+        System.out.println("Done - Signed certificate at test.cert");
 
    }
 }
