@@ -414,20 +414,34 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
     int returnVal = 0;
 
     memset(&inPublic,0,sizeof(TPM2B_PUBLIC));
-    memset(&inPrivate,0,sizeof(TPM2B_SENSITIVE));
+    memset(&inPrivate,0,sizeof(TPM2B_PRIVATE));
 
     setbuf(stdout, NULL);
     setvbuf (stdout, NULL, _IONBF, BUFSIZ);
 
-    //parentHandle = 0x81000011;
     parentHandle = srk_handle;
 
     if (loadkey_in_info->num_buffers != 2)
         return -1;
-    memcpy(&inPublic, loadkey_in_info->buffer_info[0]->buffer,
-           loadkey_in_info->buffer_info[0]->length_of_buffer);
-    memcpy(&inPrivate, loadkey_in_info->buffer_info[1]->buffer,
-           loadkey_in_info->buffer_info[1]->length_of_buffer);
+
+    /*
+        Identify which buffer is public vs which is private
+        TPM2B_PUBLIC should be 360 bytes
+        TPM2B_PRIVATE should be 912 bytes
+    */
+
+    for (int i=0; i<2; i++) {
+        if (loadkey_in_info->buffer_info[i]->length_of_buffer == sizeof(TPM2B_PUBLIC)) {
+            memcpy(&inPublic, loadkey_in_info->buffer_info[i]->buffer,
+                loadkey_in_info->buffer_info[i]->length_of_buffer);
+            continue;
+        }
+        if (loadkey_in_info->buffer_info[i]->length_of_buffer == sizeof(TPM2B_PRIVATE)) {
+            memcpy(&inPrivate, loadkey_in_info->buffer_info[i]->buffer,
+                loadkey_in_info->buffer_info[i]->length_of_buffer);
+            continue;
+        }
+    }
 
     returnVal = load_key (sapi_context,
                           parentHandle,
