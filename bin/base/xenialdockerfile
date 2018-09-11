@@ -96,6 +96,11 @@ RUN mkdir tpm-util
 RUN cd tpm-util && \
   mkdir bin
 RUN cp /sshsm/tpm-util/import/ossl_tpm_import /tpm-util/bin/
+
+COPY ./import.sh /
+COPY ./softhsmconfig.sh /
+COPY ./application.sh /
+
 RUN rm -rf tpm2-tss
 RUN rm -rf tpm2-abrmd
 RUN rm -rf tpm2-tools
