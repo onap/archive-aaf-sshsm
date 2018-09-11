@@ -22,6 +22,30 @@
       "revId": "e6d5d0d790c57f932dc4c98a903ce826868dd98d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_07e96be5",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-11T18:34:22Z",
+      "side": 1,
+      "message": "loadkey is not aware of what the contents of the buffers are right now because of the way the files are being read in the hwinfra layer in softhsm.\nThis sizes are based on the definitions here. \nhttps://github.com/tpm2-software/tpm2-tss/blob/83fabe742545b7559dcd5cd7fd2fb6cc6d0022b6/include/tss2/tss2_tpm2_types.h",
+      "parentUuid": "1a76adc5_4724435f",
+      "range": {
+        "startLine": 429,
+        "startChar": 8,
+        "endLine": 430,
+        "endChar": 41
+      },
+      "revId": "e6d5d0d790c57f932dc4c98a903ce826868dd98d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
