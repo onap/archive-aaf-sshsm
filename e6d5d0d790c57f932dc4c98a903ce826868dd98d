@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_4724435f",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-11T18:23:05Z",
+      "side": 1,
+      "message": "If the two buffer size ever became equal the problem will come back. Ideally this should be differentiated by an additional field in the load key info.",
+      "range": {
+        "startLine": 429,
+        "startChar": 8,
+        "endLine": 430,
+        "endChar": 41
+      },
+      "revId": "e6d5d0d790c57f932dc4c98a903ce826868dd98d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
