@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_27da67e8",
+        "filename": "bin/base/import.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-11T19:24:24Z",
+      "side": 1,
+      "message": "This is just a suggestion. If these definitions are moved to application.sh and passed as inputs to this file then both import.sh and softhsmconfig.sh can be made independent and need not be changed in future and all changes can be confined to one file",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "1fdee3fc1b907de106a0a2d4cee99b69194da6b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c7c13330",
+        "filename": "bin/base/softhsmconfig.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-11T19:24:24Z",
+      "side": 1,
+      "message": "Take these values as inputs to make this script more independent and without any assumptions",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "1fdee3fc1b907de106a0a2d4cee99b69194da6b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
