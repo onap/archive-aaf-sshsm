@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_673e1fdc",
+        "filename": "bin/base/import.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-11T20:05:56Z",
+      "side": 1,
+      "message": "The import.sh is the first script that will be called, which does the pre steps to prepare slot , softhsm, application etc. Then it will call the other scripts do specific configuration and are related. Most of the defines are used in import.sh and other defines dependent on shredvolume data. Some of the defines like slot and key id\u0027s are shared across the scripts and makes them dependent on each other. Similar to header file thought all the defines at one place is more easy to change.",
+      "parentUuid": "1a76adc5_27da67e8",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "1fdee3fc1b907de106a0a2d4cee99b69194da6b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c7c13330",
         "filename": "bin/base/softhsmconfig.sh",
         "patchSetId": 3
