@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_ab0ac123",
+        "filename": "bin/base/import.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-11T22:40:10Z",
+      "side": 1,
+      "message": "From the deployment prospective it is key import, should be fine.",
+      "parentUuid": "1a76adc5_6beca9bb",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "1fdee3fc1b907de106a0a2d4cee99b69194da6b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c7c13330",
         "filename": "bin/base/softhsmconfig.sh",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "writtenOn": "2018-09-11T19:24:24Z",
       "side": 1,
       "message": "Take these values as inputs to make this script more independent and without any assumptions",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "1fdee3fc1b907de106a0a2d4cee99b69194da6b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4b052d12",
+        "filename": "bin/base/softhsmconfig.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-11T22:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c7c13330",
       "range": {
         "startLine": 40,
         "startChar": 3,
