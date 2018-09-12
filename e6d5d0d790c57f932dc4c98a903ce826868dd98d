@@ -1,0 +1,11 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Manjunath Ranganathaiah <manjunath.ranganathaiah@intel.com>
+Code-Review+1: Ritu Sood <Ritu.Sood@intel.com>
+Code-Review+2: Kiran Kamineni <kiran.k.kamineni@intel.com>
+Code-Review+1: Pramod <pramod.raghavendra.jayathirth@intel.com>
+Code-Review+2: Girish Havaldar <hg0071052@techmahindra.com>
+Submitted-by: Girish Havaldar <hg0071052@techmahindra.com>
+Submitted-at: Wed, 12 Sep 2018 06:14:29 +0000
+Reviewed-on: https://gerrit.onap.org/r/65623
+Project: aaf/sshsm
+Branch: refs/heads/master
