@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_17e0aff8",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-12T23:47:46Z",
+      "side": 1,
+      "message": "Copy these to /sshsm/bin",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "453f1d0e6eecf619adfe51c4a6882ed58ae91582",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
