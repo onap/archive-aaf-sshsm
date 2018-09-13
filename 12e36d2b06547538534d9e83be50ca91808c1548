@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_579ce70e",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-13T03:40:36Z",
+      "side": 1,
+      "message": "True. Wouldn\u0027t this get confusing though?\nConsider moving the three cp lines to the end instead; after the rm lines and keep the sshsm name since it is the name of our repo.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "12e36d2b06547538534d9e83be50ca91808c1548",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
