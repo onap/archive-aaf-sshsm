@@ -22,6 +22,30 @@
       "revId": "12e36d2b06547538534d9e83be50ca91808c1548",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_779243f7",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-13T03:49:18Z",
+      "side": 1,
+      "message": "should be fine I guess. It\u0027s just another directory name.",
+      "parentUuid": "1a76adc5_579ce70e",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 31
+      },
+      "revId": "12e36d2b06547538534d9e83be50ca91808c1548",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
