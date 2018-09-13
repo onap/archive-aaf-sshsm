@@ -22,6 +22,30 @@
       "revId": "453f1d0e6eecf619adfe51c4a6882ed58ae91582",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_175d0f79",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-13T03:09:42Z",
+      "side": 1,
+      "message": "Using /shsm/bin instead, \"sshsm\" is also repo name and is cloned and removed at the end.",
+      "parentUuid": "1a76adc5_17e0aff8",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "453f1d0e6eecf619adfe51c4a6882ed58ae91582",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
