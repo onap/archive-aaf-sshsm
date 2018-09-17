@@ -19,7 +19,7 @@ echo "library = ${applicationlibrary}" >> /tmp/pkcs11.cfg
 echo "slot = ${SoftHSMv2SlotID}" >> /tmp/pkcs11.cfg
 
 # 2. Compile the Application
-cd /tmp/files
+cd /
 cp test.csr /tmp/test.csr
 javac CaSign.java
 

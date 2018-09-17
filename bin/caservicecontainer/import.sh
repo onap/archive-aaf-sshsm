@@ -21,7 +21,7 @@ sopin="123456789"
 #Slot number for the SoftHSM operations. Initially it should be started with 0
 slot_no="0"
 #Name for creating the slot used by SoftHSM
-token_no="Token1"
+token_name="Token1"
 #cert_id is the input for the application which is hexadecimal equivalent of key_id
 cert_id=$(printf '%x' ${key_id})
 

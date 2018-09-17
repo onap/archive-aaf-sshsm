@@ -19,3 +19,5 @@ RUN mkdir -p /tmp/files
 COPY ./import.sh /
 COPY ./softhsmconfig.sh /
 COPY ./application.sh /
+COPY ./test.csr /
+COPY ./CaSign.java /
