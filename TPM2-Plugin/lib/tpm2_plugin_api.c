@@ -277,11 +277,11 @@ int hex2ByteStructure(const char *inStr, UINT16 *byteLength, BYTE *byteBuffer)
     }
     return 0;
 }
+
 int load_key(TSS2_SYS_CONTEXT *sapi_context,
              TPMI_DH_OBJECT    parentHandle,
              TPM2B_PUBLIC     *inPublic,
-             TPM2B_PRIVATE    *inPrivate,
-             int               P_flag)
+             TPM2B_PRIVATE    *inPrivate)
 {
     UINT32 rval;
     TPMS_AUTH_RESPONSE sessionDataOut;
@@ -303,9 +303,6 @@ int load_key(TSS2_SYS_CONTEXT *sapi_context,
 
     sessionData.sessionHandle = TPM_RS_PW;
     sessionData.nonce.t.size = 0;
-
-    if(P_flag == 0)
-        sessionData.hmac.t.size = 0;
 
     *((UINT8 *)((void *)&sessionData.sessionAttributes)) = 0;
     if (sessionData.hmac.t.size > 0 && hexPasswd)
@@ -400,6 +397,29 @@ int read_public(TSS2_SYS_CONTEXT *sapi_context,
     return 0;
 }
 
+/*
+Reads the PRK_PASSWORD Environment variable
+and populates that information into the
+sessionData global environment variable
+*/
+int readPassword()
+{
+    char *prk_passwd;
+
+    sessionData.hmac.t.size = 0;
+    
+    prk_passwd = getenv("TPM_PRK_PASSWORD");
+    if (prk_passwd != NULL) {
+        sessionData.hmac.t.size = strlen(prk_passwd);
+        if (sessionData.hmac.t.size > sizeof(sessionData.hmac.t.buffer)) {
+            return -1;
+        }
+        memcpy(sessionData.hmac.t.buffer, prk_passwd, sessionData.hmac.t.size);
+        return 0;
+    }
+    return 0;
+}
+
 TPMS_CONTEXT loaded_key_context;
 
 int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
@@ -443,11 +463,16 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
         }
     }
 
+    // Read TPM_PRK_PASSWORD and setup sessionsData appropriately
+    if (readPassword() != 0) {
+        // Password read failure
+        return -1;
+    }
+
     returnVal = load_key (sapi_context,
                           parentHandle,
                           &inPublic,
-                          &inPrivate,
-                          0);
+                          &inPrivate);
     returnVal = read_public(sapi_context,
                             handle2048rsa,
                             importkey_info);
