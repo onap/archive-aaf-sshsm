@@ -22,6 +22,30 @@
       "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_fb285e98",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-18T21:25:25Z",
+      "side": 1,
+      "message": "This is controlled by the environment of the application that is calling the plugin. Eg: In testca, import.sh sets it. \nCorrespondingly, it must be set in the env where the plugin gets accessed.\nRegarding import utility, it is provided at the commandline. See import.sh",
+      "parentUuid": "1a76adc5_1b619a04",
+      "range": {
+        "startLine": 290,
+        "startChar": 25,
+        "endLine": 290,
+        "endChar": 41
+      },
+      "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
