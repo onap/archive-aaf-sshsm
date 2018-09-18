@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_4e5752ca",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-18T22:08:31Z",
+      "side": 1,
+      "message": "Check prk_passwd size not greater than sizeof buffer being copied into",
+      "range": {
+        "startLine": 414,
+        "startChar": 8,
+        "endLine": 414,
+        "endChar": 79
+      },
+      "revId": "bd9f7654ecf448bf2d1b90cdc65f1d680f1c8394",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
