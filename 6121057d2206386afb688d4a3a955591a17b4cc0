@@ -46,6 +46,52 @@
       "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ee165e48",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-18T21:34:28Z",
+      "side": 1,
+      "message": "P_flag can be given a non-zero value and that will keep the function more generic.",
+      "range": {
+        "startLine": 302,
+        "startChar": 40,
+        "endLine": 302,
+        "endChar": 41
+      },
+      "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8e500a0c",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-18T21:34:28Z",
+      "side": 1,
+      "message": "readPassword can be done in the calling function where other files are being read to make it modular and set P_flag to non zero value",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
