@@ -1,17 +1,22 @@
 #!/bin/bash
 
 # NOTE - This scripts expects the Init and the Duplicate tools to be already
-# run and the output files(listedb in README) to be present at the
+# run and the output files(listed in README) to be present at the
 # shared volume (input for Import tool)
+# It also requires the following ENVIRONMENT variables to be set
+# SECRETS_FOLDER - containing the srk_handl and prk_passwd files
+# DATA_FOLDER - containing the files that are produced from the distcenter
 
 set -e
 
+#Primary Key Password used by TPM Plugin to load keys
+TPM_PRK_PASSWORD="$(cat ${SECRETS_FOLDER}/prk_passwd)"
+#Handle to the aforementioned Primary Key
+SRK_HANDLE="$(cat ${SECRETS_FOLDER}/srk_handle)"
 #Placeholder of Input files to the Import tool which is the output of duplicate tool
-sharedvolume="/tmp/files"
+sharedvolume="${DATA_FOLDER}"
 #key_id is the parameter expected by SoftHSM
 key_id="8738"
-#TPM handle
-tpm_handle="0x81000011"
 #Key_label is the  parameter expected by SoftHSM
 key_label="ABC"
 #UserPin for the SoftHSM operations
@@ -40,12 +45,12 @@ if [ -f ${sharedvolume}/out_parent_public ]; then
 
     # 2.b Run the Import Utility
     cd /tpm-util/bin
-    ./ossl_tpm_import -H $tpm_handle -dupPub dupPub -dupPriv dupPriv \
+    ./ossl_tpm_import -H $SRK_HANDLE -dupPub dupPub -dupPriv dupPriv \
 -dupSymSeed dupSymseed -dupEncKey dupEncKey -pub outPub -priv outPriv
 
     cd /
     chmod 755 softhsmconfig.sh
-    ./softhsmconfig.sh $tpm_handle $key_id $key_label $upin $sopin $SoftHSMv2SlotID
+    ./softhsmconfig.sh $SRK_HANDLE $key_id $key_label $upin $sopin $SoftHSMv2SlotID
 else
 
 # 3 SoftHSM mode implementation
