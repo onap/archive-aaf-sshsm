@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_aeef061d",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-18T21:48:52Z",
+      "side": 1,
+      "message": "I removed P_flag because I intend to remove sessionData global variable as part of another following patch.\nAt which point, load_key will take sessionData as an additional parameter and will do the checking based on its contents.",
+      "parentUuid": "1a76adc5_ee165e48",
+      "range": {
+        "startLine": 302,
+        "startChar": 40,
+        "endLine": 302,
+        "endChar": 41
+      },
+      "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_8e500a0c",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 6
@@ -83,6 +107,30 @@
       "writtenOn": "2018-09-18T21:34:28Z",
       "side": 1,
       "message": "readPassword can be done in the calling function where other files are being read to make it modular and set P_flag to non zero value",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "6121057d2206386afb688d4a3a955591a17b4cc0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_eee09e27",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-18T21:48:52Z",
+      "side": 1,
+      "message": "Will move readPassword into the calling function where we are reading the private and public key buffers.",
+      "parentUuid": "1a76adc5_8e500a0c",
       "range": {
         "startLine": 311,
         "startChar": 4,
