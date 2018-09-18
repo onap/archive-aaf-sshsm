@@ -17,7 +17,6 @@ echo "The newly assigned plugin directory is ${SSHSM_HW_PLUGINS_PARENT_DIR}"
 
 # Configuration generation for SoftHSM
 # 1.a Create the directory as expected by the SoftHSM to read the files
-mkdir -p ${SSHSM_HW_PLUGINS_PARENT_DIR}/S01tpm
 mkdir -p ${SSHSM_HW_PLUGINS_PARENT_DIR}/S01tpm/activate
 mkdir -p ${SSHSM_HW_PLUGINS_PARENT_DIR}/S01tpm/key01
 
