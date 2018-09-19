@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_ea516130",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-19T22:29:45Z",
+      "side": 1,
+      "message": "Remove white spaces.",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 4
+      },
+      "revId": "3a28b0865ff4e372d1f6022df0848d4792fb892c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_15115e51",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-09-19T22:29:45Z",
+      "side": 1,
+      "message": "Initialize to zero since this was done by the compiler when it was global to exclude any side effects.",
+      "range": {
+        "startLine": 434,
+        "startChar": 22,
+        "endLine": 434,
+        "endChar": 33
+      },
+      "revId": "3a28b0865ff4e372d1f6022df0848d4792fb892c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
