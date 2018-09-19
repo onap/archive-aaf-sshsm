@@ -247,7 +247,7 @@ static TSS2_SYS_CONTEXT *sapi_ctx_init (TSS2_TCTI_CONTEXT *tcti_ctx)
 
 #define BUFFER_SIZE(type, field) (sizeof((((type *)NULL)->t.field)))
 #define TPM2B_TYPE_INIT(type, field) { .t = { .size = BUFFER_SIZE(type, field), }, }
-TPMS_AUTH_COMMAND sessionData;
+
 int hex2ByteStructure(const char *inStr, UINT16 *byteLength, BYTE *byteBuffer)
 {
     int strLength;//if the inStr likes "1a2b...", no prefix "0x"
@@ -279,6 +279,7 @@ int hex2ByteStructure(const char *inStr, UINT16 *byteLength, BYTE *byteBuffer)
 }
 
 int load_key(TSS2_SYS_CONTEXT *sapi_context,
+             TPMS_AUTH_COMMAND sessionData,
              TPMI_DH_OBJECT    parentHandle,
              TPM2B_PUBLIC     *inPublic,
              TPM2B_PRIVATE    *inPrivate)
@@ -400,21 +401,21 @@ int read_public(TSS2_SYS_CONTEXT *sapi_context,
 /*
 Reads the PRK_PASSWORD Environment variable
 and populates that information into the
-sessionData global environment variable
+provided sessionData variable
 */
-int readPassword()
+int readPassword(TPMS_AUTH_COMMAND *sessionData)
 {
     char *prk_passwd;
 
-    sessionData.hmac.t.size = 0;
+    sessionData->hmac.t.size = 0;
     
     prk_passwd = getenv("TPM_PRK_PASSWORD");
     if (prk_passwd != NULL) {
-        sessionData.hmac.t.size = strlen(prk_passwd);
-        if (sessionData.hmac.t.size > sizeof(sessionData.hmac.t.buffer)) {
+        sessionData->hmac.t.size = strlen(prk_passwd);
+        if (sessionData->hmac.t.size > sizeof(sessionData->hmac.t.buffer)) {
             return -1;
         }
-        memcpy(sessionData.hmac.t.buffer, prk_passwd, sessionData.hmac.t.size);
+        memcpy(sessionData->hmac.t.buffer, prk_passwd, sessionData->hmac.t.size);
         return 0;
     }
     return 0;
@@ -430,6 +431,7 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
     TPMI_DH_OBJECT parentHandle;
     TPM2B_PUBLIC  inPublic;
     TPM2B_PRIVATE inPrivate;
+    TPMS_AUTH_COMMAND sessionData;
     UINT16 size;
     int returnVal = 0;
 
@@ -464,12 +466,13 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
     }
 
     // Read TPM_PRK_PASSWORD and setup sessionsData appropriately
-    if (readPassword() != 0) {
+    if (readPassword(&sessionData) != 0) {
         // Password read failure
         return -1;
     }
 
     returnVal = load_key (sapi_context,
+                          sessionData,
                           parentHandle,
                           &inPublic,
                           &inPrivate);
