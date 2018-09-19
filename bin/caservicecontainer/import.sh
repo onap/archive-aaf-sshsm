@@ -10,7 +10,7 @@
 set -e
 
 #Primary Key Password used by TPM Plugin to load keys
-TPM_PRK_PASSWORD="$(cat ${SECRETS_FOLDER}/prk_passwd | base64 -d)"
+export TPM_PRK_PASSWORD="$(cat ${SECRETS_FOLDER}/prk_passwd | base64 -d)"
 #Handle to the aforementioned Primary Key
 SRK_HANDLE="$(cat ${SECRETS_FOLDER}/srk_handle | base64 -d)"
 #Placeholder of Input files to the Import tool which is the output of duplicate tool
@@ -29,6 +29,8 @@ slot_no="0"
 token_no="Token1"
 #cert_id is the input for the application which is hexadecimal equivalent of key_id
 cert_id=$(printf '%x' ${key_id})
+#Set working dir
+WORKDIR=$PWD
 
 # 1.Initialize the token/
     softhsm2-util --init-token --slot ${slot_no} --label "${token_name}" \
@@ -49,7 +51,7 @@ if [ -f ${sharedvolume}/out_parent_public ]; then
     -dupSymSeed dupSymseed -dupEncKey dupEncKey -pub outPub -priv outPriv \
     -password $TPM_PRK_PASSWORD
 
-    cd /
+    cd $WORKDIR
     chmod 755 softhsmconfig.sh
     ./softhsmconfig.sh $SRK_HANDLE $key_id $key_label $upin $sopin $SoftHSMv2SlotID
 else
@@ -85,10 +87,10 @@ pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so -l --pin ${upin} \
 --write-object ./ca.der --type cert --id ${cert_id}
 
 # 4. Calling the functionalities of the sample application
-cd /
+cd $WORKDIR
 chmod 755 application.sh
 ./application.sh $key_label $SoftHSMv2SlotID $upin $cert_id
 
 # 5. Cleanup
-cd /
+cd $WORKDIR
 rm -rf slotinfo.txt

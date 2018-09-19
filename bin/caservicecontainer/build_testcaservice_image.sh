@@ -23,8 +23,16 @@ fi
 echo $BUILD_ARGS
 
 function build_image {
+    echo "Copying files for image"
+    cp ../../test/integration/samplecaservicecontainer/applicationfiles/CaSign.java .
+    cp ../../test/integration/samplecaservicecontainer/applicationfiles/ca.cert .
+    cp ../../test/integration/samplecaservicecontainer/applicationfiles/test.csr .
+
     echo "Start build docker image: ${IMAGE_NAME}:latest"
     docker build ${BUILD_ARGS} -t ${IMAGE_NAME}:latest -f dockerfile .
+
+    echo "Remove files after image is built"
+    rm CaSign.java ca.cert test.csr
 }
 
 function push_image {
