@@ -13,9 +13,11 @@ RUN cp ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN cp ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN cp ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
 
-# Create the directory for mounting the shared voulme
-RUN mkdir -p /tmp/files
+# Create the directory for running things in this container
+RUN mkdir -p /testca/bin
 
-COPY ./import.sh /
-COPY ./softhsmconfig.sh /
-COPY ./application.sh /
+COPY import.sh /testca/bin
+COPY softhsmconfig.sh /testca/bin
+COPY application.sh /testca/bin
+COPY CaSign.java /testca/bin
+COPY test.csr /testca/bin
