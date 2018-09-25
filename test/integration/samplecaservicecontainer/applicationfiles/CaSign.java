@@ -85,8 +85,6 @@ import org.bouncycastle.asn1.x509.GeneralName;
 import org.bouncycastle.asn1.x509.GeneralNames;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 
-
-
 import javax.xml.bind.DatatypeConverter;
 import java.security.cert.X509Certificate;
 import java.io.StringWriter;
@@ -107,7 +105,7 @@ public class CaSign {
             System.out.println(args[i]);
         }
         // Set up the Sun PKCS 11 provider
-        String configName = "pkcs11.cfg";
+        String configName = "/tmp/pkcs11.cfg";
         Provider p = new SunPKCS11(configName);
         //Provider p = Security.getProvider("SunPKCS11-pkcs11Test");
         if (p==null) {
@@ -128,7 +126,7 @@ public class CaSign {
         PrivateKeyEntry privateKeyEntry = (PrivateKeyEntry) keyStore.getEntry(args[1], null);
         PrivateKey privateKey = privateKeyEntry.getPrivateKey();
 
-	File csrf = new File("test.csr");
+	File csrf = new File("/tmp/test.csr");
         if ( csrf == null )
             System.out.println("Make sure to copy the test.csr file to /tmp");
 	Reader pemcsr = new FileReader(csrf);
@@ -184,18 +182,37 @@ public class CaSign {
 		            //		false, new GeneralNames(sans));
 
 
-
 	ContentSigner sigGen = new JcaContentSignerBuilder("SHA256WithRSA").build(privateKey);
+	for (int i=0; i<10; i++); {
+	
 	x509 = new JcaX509CertificateConverter().getCertificate(xcb.build(sigGen));
 
 	StringWriter sw = new StringWriter();
         sw.write("-----BEGIN CERTIFICATE-----\n");
         sw.write(DatatypeConverter.printBase64Binary(x509.getEncoded()).replaceAll("(.{64})", "$1\n"));
         sw.write("\n-----END CERTIFICATE-----\n");
-        FileWriter fw = new FileWriter("test.cert");
+        FileWriter fw = new FileWriter("/tmp/test.cert");
         fw.write(sw.toString());
         fw.close();
-        System.out.println("Done - Signed certificate at test.cert");
+        System.out.println("Done - Signed certificate at /tmp/test.cert");
 
+	String command = "openssl verify -verbose -CAfile /tmp/files/ca.cert /tmp/test.cert";
+ 
+	    try {
+    	    Process process = Runtime.getRuntime().exec(command);
+ 
+    	    BufferedReader reader1 = new BufferedReader(
+            new InputStreamReader(process.getInputStream()));
+    	    String line;
+    	    while ((line = reader1.readLine()) != null) {
+            System.out.println(line);
+    	    }
+ 
+    	    reader1.close();
+ 
+	    } catch (IOException e) {
+    		e.printStackTrace();
+	    }
+	}
    }
 }
