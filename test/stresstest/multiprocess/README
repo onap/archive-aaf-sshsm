@@ -1,0 +1,38 @@
+
+### Create a directory /tmp/volume (mkdir -p /tmp/volume) on host.
+### This is used as shared volume and mounted inside container
+
+### Build docker image with a base image
+
+````
+$ docker build -t <imagename> -f multiprocessdockerfile .
+````
+
+### Running the CA service container - Below command will run and log you into the container
+
+````
+$ docker run -d -e DATA_FOLDER=<Location of shared directory> -v /tmp/run/dbus:/var/run/dbus:rw -v /tmp/volume:/tmp/files:rw --name <containername> -i -t --entrypoint=/bin/bash <imagename>
+````
+
+### Login to the container
+````
+$ docker exec -it <containername> /bin/bash
+````
+
+### Running the Import utility with stress test
+````
+$ ./entrypoint.sh
+````
+#### Make sure the TABRMD container is running on the same dbus mountpoint on the host as the CA service container
+
+### Expected Input files for SoftHSM operations
+### 1. passphrase 2. privkey.pem.gpg 3. ca.cert
+### Output - None
+
+### Expected Input files for TPM Hardware opeartion
+### 1. ca.cert 2. duPEncKey 3. dupPriv 4. dupPub 5. dupSymseed 6. tpm_handle (srkhandle)
+### Output - None
+
+### Expected Input for Application's operations
+### 1. test.csr 2. CaSign.java(Application file) 3. ca.cert
+### Output - test.cert (in /tmp Directory)
