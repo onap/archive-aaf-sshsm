@@ -29,6 +29,9 @@ token_no="Token1"
 cert_id=$(printf '%x' ${key_id})
 #Set working dir
 WORKDIR=$PWD
+#set the scripts permission
+chmod 755 softhsmconfig.sh
+chmod 755 application.sh
 
 # 1.Initialize the token/
     softhsm2-util --init-token --slot ${slot_no} --label "${token_name}" \
@@ -50,7 +53,6 @@ if [ -f ${DATA_FOLDER}/out_parent_public ]; then
     -password $TPM_PRK_PASSWORD
 
     cd $WORKDIR
-    chmod 755 softhsmconfig.sh
     ./softhsmconfig.sh $SRK_HANDLE $key_id $key_label $upin $sopin $SoftHSMv2SlotID
 else
 
@@ -86,7 +88,6 @@ pkcs11-tool --module /usr/local/lib/softhsm/libsofthsm2.so -l --pin ${upin} \
 
 # 4. Calling the functionalities of the sample application
 cd $WORKDIR
-chmod 755 application.sh
 ./application.sh $key_label $SoftHSMv2SlotID $upin $cert_id
 
 # 5. Cleanup
