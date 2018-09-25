@@ -85,20 +85,17 @@ import org.bouncycastle.asn1.x509.GeneralName;
 import org.bouncycastle.asn1.x509.GeneralNames;
 import org.bouncycastle.cert.jcajce.JcaX509ExtensionUtils;
 
-
-
 import javax.xml.bind.DatatypeConverter;
 import java.security.cert.X509Certificate;
 import java.io.StringWriter;
 
 public class CaSign {
 
-	private static final KeyPurposeId[] ASN_WebUsage = new KeyPurposeId[] {
-				KeyPurposeId.id_kp_serverAuth,
+    private static final KeyPurposeId[] ASN_WebUsage = new KeyPurposeId[] {
+            KeyPurposeId.id_kp_serverAuth,
+            KeyPurposeId.id_kp_clientAuth};
 
-				KeyPurposeId.id_kp_clientAuth};
-
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         //System.setProperty("javax.net.debug","all");
         //System.setProperty("javax.security.debug","all");
         if ( args.length < 2 )
@@ -107,7 +104,7 @@ public class CaSign {
             System.out.println(args[i]);
         }
         // Set up the Sun PKCS 11 provider
-        String configName = "pkcs11.cfg";
+        String configName = "/tmp/pkcs11.cfg";
         Provider p = new SunPKCS11(configName);
         //Provider p = Security.getProvider("SunPKCS11-pkcs11Test");
         if (p==null) {
@@ -128,13 +125,13 @@ public class CaSign {
         PrivateKeyEntry privateKeyEntry = (PrivateKeyEntry) keyStore.getEntry(args[1], null);
         PrivateKey privateKey = privateKeyEntry.getPrivateKey();
 
-	File csrf = new File("test.csr");
+        File csrf = new File("/tmp/test.csr");
         if ( csrf == null )
             System.out.println("Make sure to copy the test.csr file to /tmp");
-	Reader pemcsr = new FileReader(csrf);
-	PemReader reader = new PemReader(pemcsr);
-	PemObject pem = reader.readPemObject();
-	PKCS10CertificationRequest csr = new PKCS10CertificationRequest(pem.getContent());
+        Reader pemcsr = new FileReader(csrf);
+        PemReader reader = new PemReader(pemcsr);
+        PemObject pem = reader.readPemObject();
+        PKCS10CertificationRequest csr = new PKCS10CertificationRequest(pem.getContent());
 
         X509Certificate caCert = (X509Certificate) privateKeyEntry.getCertificate();
         RSAPublicKey publicKey = (RSAPublicKey) caCert.getPublicKey();
@@ -147,55 +144,64 @@ public class CaSign {
         x500NameBld.addRDN(BCStyle.L, "local");
         x500NameBld.addRDN(BCStyle.O, "onap");
         x500NameBld.addRDN(BCStyle.CN, "test.onap.ca");
-	X500Name issuer = x500NameBld.build();
+        X500Name issuer = x500NameBld.build();
 
-	GregorianCalendar gc = new GregorianCalendar();
+        GregorianCalendar gc = new GregorianCalendar();
         Date start = gc.getTime();
-	gc.add(GregorianCalendar.DAY_OF_MONTH, 1000);
-	Date end = gc.getTime();
+        gc.add(GregorianCalendar.DAY_OF_MONTH, 1000);
+        Date end = gc.getTime();
 
-	X509Certificate x509;
+        X509Certificate x509;
         byte[] serialish = new byte[24];
-	SecureRandom random = new SecureRandom();
-	BigInteger bi;
+        SecureRandom random = new SecureRandom();
+        BigInteger bi;
         synchronized(serialish) {
-		random.nextBytes(serialish);
-		bi = new BigInteger(serialish);
+            random.nextBytes(serialish);
+            bi = new BigInteger(serialish);
         }
         X509v3CertificateBuilder xcb = new X509v3CertificateBuilder(issuer, bi,
-		start, end, csr.getSubject(), csr.getSubjectPublicKeyInfo());
+                start, end, csr.getSubject(), csr.getSubjectPublicKeyInfo());
 
+        JcaX509ExtensionUtils extUtils = new JcaX509ExtensionUtils();
+        xcb	.addExtension(Extension.basicConstraints,
+                false, new BasicConstraints(false))
+                .addExtension(Extension.keyUsage,
+                        true, new KeyUsage(KeyUsage.digitalSignature
+                                | KeyUsage.keyEncipherment))
+                .addExtension(Extension.extendedKeyUsage,
+                        true, new ExtendedKeyUsage(ASN_WebUsage))
+                .addExtension(Extension.authorityKeyIdentifier,
+                        false, extUtils.createAuthorityKeyIdentifier(caCert))
+                .addExtension(Extension.subjectKeyIdentifier,
+                        false, extUtils.createSubjectKeyIdentifier(caCert.getPublicKey()));
+        //.addExtension(Extension.subjectAlternativeName,
+        // false, new GeneralNames(sans));
 
+        ContentSigner sigGen = new JcaContentSignerBuilder("SHA256WithRSA").build(privateKey);
+        for (int i=0; i<10; i++); {
+            x509 = new JcaX509CertificateConverter().getCertificate(xcb.build(sigGen));
+            StringWriter sw = new StringWriter();
+            sw.write("-----BEGIN CERTIFICATE-----\n");
+            sw.write(DatatypeConverter.printBase64Binary(x509.getEncoded()).replaceAll("(.{64})", "$1\n"));
+            sw.write("\n-----END CERTIFICATE-----\n");
+            FileWriter fw = new FileWriter("/tmp/test.cert");
+            fw.write(sw.toString());
+            fw.close();
+            System.out.println("Done - Signed certificate at /tmp/test.cert");
 
-	JcaX509ExtensionUtils extUtils = new JcaX509ExtensionUtils();
-		    xcb		.addExtension(Extension.basicConstraints,
-                    	false, new BasicConstraints(false))
-		            .addExtension(Extension.keyUsage,
-		                true, new KeyUsage(KeyUsage.digitalSignature
-		                                 | KeyUsage.keyEncipherment))
-		            .addExtension(Extension.extendedKeyUsage,
-		                          true, new ExtendedKeyUsage(ASN_WebUsage))
-
-                    .addExtension(Extension.authorityKeyIdentifier,
-		                          false, extUtils.createAuthorityKeyIdentifier(caCert))
-		            .addExtension(Extension.subjectKeyIdentifier,
-		                          false, extUtils.createSubjectKeyIdentifier(caCert.getPublicKey()));
-		            //.addExtension(Extension.subjectAlternativeName,
-		            //		false, new GeneralNames(sans));
-
-
-
-	ContentSigner sigGen = new JcaContentSignerBuilder("SHA256WithRSA").build(privateKey);
-	x509 = new JcaX509CertificateConverter().getCertificate(xcb.build(sigGen));
-
-	StringWriter sw = new StringWriter();
-        sw.write("-----BEGIN CERTIFICATE-----\n");
-        sw.write(DatatypeConverter.printBase64Binary(x509.getEncoded()).replaceAll("(.{64})", "$1\n"));
-        sw.write("\n-----END CERTIFICATE-----\n");
-        FileWriter fw = new FileWriter("test.cert");
-        fw.write(sw.toString());
-        fw.close();
-        System.out.println("Done - Signed certificate at test.cert");
-
-   }
+            String command = "openssl verify -verbose -CAfile /tmp/files/ca.cert /tmp/test.cert";
+            try {
+                Process process = Runtime.getRuntime().exec(command);
+                BufferedReader reader1 = new BufferedReader(
+                        new InputStreamReader(process.getInputStream()));
+                String line;
+                while ((line = reader1.readLine()) != null) {
+                    System.out.println(line);
+                }
+                reader1.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
