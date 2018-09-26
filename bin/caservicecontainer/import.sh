@@ -60,9 +60,7 @@ else
     cd ${DATA_FOLDER}
 
     # 3.a Extract the Private key using passphrase
-    passphrase="$(cat passphrase)"
-    echo "${passphrase}"
-    echo "${passphrase}" | gpg --batch --yes --passphrase-fd 0 privkey.pem.gpg
+    cat passphrase | gpg --batch --yes --passphrase-fd 0 privkey.pem.gpg
 
     # 3.b Convert the Private key pem into der format
     openssl rsa -in ./privkey.pem -outform DER -out privatekey.der

@@ -12,7 +12,7 @@ applicationlibrary="/usr/local/lib/softhsm/libsofthsm2.so"
 # Setting up the java application and running the application
 # 1. Create the configuration pkcs11.cfg for the application
 # Remove any existing cfg file first from the CWD
-rm pkcs11.cfg
+rm -f pkcs11.cfg
 touch pkcs11.cfg
 chmod 755 pkcs11.cfg
 echo "name = ${key_label}" >> pkcs11.cfg

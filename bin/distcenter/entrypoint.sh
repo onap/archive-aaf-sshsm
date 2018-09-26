@@ -19,7 +19,7 @@ then
   done
 else
   cd /distcenter/ca
-  cat /distcenter/passphrase/passphrase | gpg --no-tty --symmetric -z 9 --require-secmem \
+  cat /distcenter/data/passphrase | gpg --no-tty --symmetric -z 9 --require-secmem \
     --cipher-algo AES256 --s2k-cipher-algo AES256 --s2k-digest-algo SHA512 \
     --s2k-mode 3 --s2k-count 65000000 --compress-algo BZIP2 \
     --passphrase-fd 0 privkey.pem
