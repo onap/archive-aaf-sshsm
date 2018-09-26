@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_45caac6f",
+        "filename": "bin/base/abrmd_ready.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 285
+      },
+      "writtenOn": "2018-09-26T02:45:27Z",
+      "side": 1,
+      "message": "In the scenario TABRMD has issues, this will hang here. It will be better to have some logic to break out of the loop after reasonable amount of time and the caller then can either bail out with correct error message or try to recover TABRMD.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "fb2391f574fa402da80a9ade6cddffc1d59d5f89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
