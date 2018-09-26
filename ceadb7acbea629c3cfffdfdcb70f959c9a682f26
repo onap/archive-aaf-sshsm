@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_f4712445",
+        "filename": "bin/base/abrmd_ready.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-26T21:09:43Z",
+      "side": 1,
+      "message": "Yes. The logs of the initContainer will be empty if there is nothing there and will make identifying what happened difficult in cases where timeouts occur.",
+      "parentUuid": "1a76adc5_34f55ccb",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "ceadb7acbea629c3cfffdfdcb70f959c9a682f26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_d40188b0",
         "filename": "bin/base/abrmd_ready.sh",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-26T20:33:33Z",
       "side": 1,
       "message": "white space",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "ceadb7acbea629c3cfffdfdcb70f959c9a682f26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d4742838",
+        "filename": "bin/base/abrmd_ready.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-09-26T21:09:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_d40188b0",
       "range": {
         "startLine": 19,
         "startChar": 0,
