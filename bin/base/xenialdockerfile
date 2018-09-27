@@ -106,3 +106,4 @@ RUN mkdir -p /sshsm/bin
 COPY ./import.sh /sshsm/bin
 COPY ./softhsmconfig.sh /sshsm/bin
 COPY ./application.sh /sshsm/bin
+COPY ./abrmd_ready.sh /sshsm/bin
