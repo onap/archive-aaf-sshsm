@@ -1,0 +1,14 @@
+FROM nexus3.onap.org:10001/onap/aaf/testcaservice
+
+RUN mkdir -p /testca/tests/multithread
+
+COPY softhsmconfig.sh /testca/bin
+COPY multithreadapplication.sh /testca/bin
+RUN  cp -r /testca/bin/softhsmconfig.sh /testca/tests/multithread
+COPY CaSignMultiThread.java /testca/tests/multithread
+COPY multithreadapplication.sh /testca/tests/multithread
+COPY multithreadimport.sh /testca/tests/multithread
+COPY test.csr /testca/tests/multithread
+COPY rights.sh /testca/tests/multithread
+
+ADD entrypoint.sh /entrypoint.sh
