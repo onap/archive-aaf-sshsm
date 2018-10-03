@@ -1,0 +1,12 @@
+###To test the sample multithreaded application
+
+1. Make Sure you have abrmd container up and running
+2. Make sure your import utility/Script is success
+3. Set the variable thread_Count = <Number of threads>
+   in the CaSignMultiThread.java
+4. run java application using the below command
+   java CaSignMultiThread ${upin} 0x${cert_id}
+
+### NOTE - The multithreaded application can be 
+### run as part of the application.sh script too
+### which is part of cacaservicontainer
