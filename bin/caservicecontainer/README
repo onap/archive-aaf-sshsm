@@ -5,18 +5,28 @@
 ### Build docker image with a base image
 
 ````
-$ docker build -t <image name> -f dockerfile .
+$ docker build -t <imagename> -f dockerfile .
 ````
 
 ### Running the CA service container - Below command will run and log you into the container
 
 ````
-$ docker run -v /tmp/run/dbus:/var/run/dbus:rw -v /tmp/volume:/tmp/files:rw --name <container name> -i -t --entrypoint=/bin/bash <image name>
+$ docker run -d -e DATA_FOLDER=<Location of shared directory> -v /tmp/run/dbus:/var/run/dbus:rw -v /tmp/volume:/tmp/files:rw --name <containername> -i -t --entrypoint=/bin/bash <imagename>
+````
+
+### Login to the container
+````
+$ docker exec -it <containername> /bin/bash
 ````
 
 ### Running the Import utility
 ````
 $ import.sh
+````
+
+### Running the Import utility with stress test with multithreading
+````
+$ ./testca/test/multithreadimport.sh
 ````
 #### Make sure the TABRMD container is running on the same dbus mountpoint on the host as the CA service container
 

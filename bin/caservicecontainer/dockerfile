@@ -1,23 +1,17 @@
 # Base Image for the build
-FROM nexus3.onap.org:10001/onap/aaf/aaf-base-xenial:latest
-
-# Files required for the Java application
-RUN wget https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bcpkix-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bcmail-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bcpg-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bctls-jdk15on-159.jar
-RUN cp ./bcpkix-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN cp ./bcprov-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN cp ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN cp ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN cp ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
-
+FROM nexus3.onap.org:10001/onap/aaf/testcaservice
 # Create the directory for running things in this container
 RUN mkdir -p /testca/bin
+RUN mkdir -p /testca/tests/multithread
 
 COPY import.sh /testca/bin
 COPY softhsmconfig.sh /testca/bin
 COPY application.sh /testca/bin
-COPY CaSign.java /testca/bin
 COPY test.csr /testca/bin
+
+COPY multithreadapplication.sh /testca/tests/multithread
+COPY softhsmconfig.sh /testca/tests/multithread
+COPY CaSignMultiThread.java /testca/tests/multithread
+COPY multithreadapplication.sh /testca/tests/multithread
+COPY multithreadimport.sh /testca/tests/multithread
+COPY gencsr.sh /testca/tests/multithread
