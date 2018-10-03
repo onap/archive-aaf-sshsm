@@ -15,9 +15,18 @@ RUN cp ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
 
 # Create the directory for running things in this container
 RUN mkdir -p /testca/bin
+RUN mkdir -p /testca/tests/multithread
 
 COPY import.sh /testca/bin
 COPY softhsmconfig.sh /testca/bin
 COPY application.sh /testca/bin
 COPY CaSign.java /testca/bin
 COPY test.csr /testca/bin
+
+# Files for Stress testing operations
+COPY multithreadapplication.sh /testca/tests/multithread
+COPY softhsmconfig.sh /testca/tests/multithread
+COPY CaSignMultiThread.java /testca/tests/multithread
+COPY multithreadapplication.sh /testca/tests/multithread
+COPY multithreadimport.sh /testca/tests/multithread
+COPY gencsr.sh /testca/tests/multithread
