@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_e67dffb2",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSign.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-04T02:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_855be42d",
+      "range": {
+        "startLine": 107,
+        "startChar": 29,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "6e7e4a5430c6e36c7b11d2fb7c97bf7860cf7838",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_2540d034",
         "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSign.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-25T23:43:35Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 31
+      },
+      "revId": "6e7e4a5430c6e36c7b11d2fb7c97bf7860cf7838",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_864af381",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSign.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-04T02:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_2540d034",
       "range": {
         "startLine": 128,
         "startChar": 30,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_a64ff791",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSign.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-04T02:20:51Z",
+      "side": 1,
+      "message": "If it is a success then it will print out \"/tmp/test.cert: OK\n\"\nif there is an error, it will be displayed by exception Handler",
+      "parentUuid": "1a76adc5_a5a060a6",
+      "range": {
+        "startLine": 198,
+        "startChar": 15,
+        "endLine": 200,
+        "endChar": 17
+      },
+      "revId": "6e7e4a5430c6e36c7b11d2fb7c97bf7860cf7838",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c5a55cb6",
         "filename": "test/integration/samplecaservicecontainer/test/multiprocesstest.sh",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2018-09-26T03:09:38Z",
       "side": 1,
       "message": "Take this as input parameter to the script",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "6e7e4a5430c6e36c7b11d2fb7c97bf7860cf7838",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_46440b74",
+        "filename": "test/integration/samplecaservicecontainer/test/multiprocesstest.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-04T02:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c5a55cb6",
       "range": {
         "startLine": 8,
         "startChar": 13,
