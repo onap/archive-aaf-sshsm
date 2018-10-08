@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_dd319aa3",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-08T22:41:52Z",
+      "side": 1,
+      "message": "Move this out of the thread and run it as a prestep before starting the threads. See bottom comment about this.",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_5d1daa0e",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-08T22:41:52Z",
+      "side": 1,
+      "message": "Move this out of the thread similar to my above comment and run it as a post step after the threads complete.",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 9
+      },
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_3d20e648",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-08T22:41:52Z",
+      "side": 1,
+      "message": "Is there any reason for this sleep?",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 25
+      },
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1d0082a9",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-08T22:41:52Z",
+      "side": 1,
+      "message": "Since we want fast iteration on the thread test, I feel like we should move the thread specific csr files out of the thread itself and make it a prestep.\nSimilarly, we should move the verify to a post step after the threads finish signing the csrs.",
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
