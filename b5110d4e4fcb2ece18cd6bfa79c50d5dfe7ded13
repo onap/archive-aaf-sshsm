@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_f2828451",
+        "filename": "test/unit/setup.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-09T21:23:36Z",
+      "side": 1,
+      "message": "Pass k_pass and srk_handle as command line arguments. No need to create the primary key.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 75
+      },
+      "revId": "b5110d4e4fcb2ece18cd6bfa79c50d5dfe7ded13",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
