@@ -16,6 +16,24 @@
       "revId": "aec1c537d9fd706ba9322ae382c4be0f8399e4c8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_33e48b3a",
+        "filename": "test/func/data/caservice/ipass.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2018-10-10T23:05:30Z",
+      "side": 1,
+      "message": "This file is removed and generated using the arg",
+      "parentUuid": "bada0100_e1a4f058",
+      "revId": "aec1c537d9fd706ba9322ae382c4be0f8399e4c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
