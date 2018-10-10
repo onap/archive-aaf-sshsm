@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_e1a4f058",
+        "filename": "test/func/data/caservice/ipass.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-10T20:36:51Z",
+      "side": 1,
+      "message": "Where is this file being used?",
+      "revId": "aec1c537d9fd706ba9322ae382c4be0f8399e4c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
