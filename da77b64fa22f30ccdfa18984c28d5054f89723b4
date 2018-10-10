@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_1355c7c5",
+        "filename": "test/func/setup.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-10T23:26:47Z",
+      "side": 1,
+      "message": "this is not the correct way of checking for the TPM device since this directory exists for all ubuntu distribution with does not have TPM as well",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "da77b64fa22f30ccdfa18984c28d5054f89723b4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
