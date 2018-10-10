@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_1362a7d8",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-10T21:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_dd319aa3",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_5d1daa0e",
         "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-08T22:41:52Z",
       "side": 1,
       "message": "Move this out of the thread similar to my above comment and run it as a post step after the threads complete.",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 9
+      },
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_335fab10",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-10T21:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_5d1daa0e",
       "range": {
         "startLine": 193,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bada0100_f3a043f6",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-10T21:46:16Z",
+      "side": 1,
+      "message": "Reason was to make sure the system commands are executed successfully. Since they are out of the thread loop now, i have removed this.",
+      "parentUuid": "bada0100_3d20e648",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 25
+      },
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bada0100_1d0082a9",
         "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2018-10-08T22:41:52Z",
       "side": 1,
       "message": "Since we want fast iteration on the thread test, I feel like we should move the thread specific csr files out of the thread itself and make it a prestep.\nSimilarly, we should move the verify to a post step after the threads finish signing the csrs.",
+      "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_93a53706",
+        "filename": "test/integration/samplecaservicecontainer/applicationfiles/CaSignMultiThread.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-10-10T21:46:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bada0100_1d0082a9",
       "revId": "66e03ac2f126bd355b60016c6609a6bafe674bb3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
