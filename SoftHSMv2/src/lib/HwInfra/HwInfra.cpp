@@ -44,69 +44,70 @@ SSHSM_HW_FUNCTIONS_t g_pluginfuncs;
 
 int prepareHWPlugin()
 {
-  DIR *dirhandle;
-  struct dirent *entry;
-  int len;
-  char *env;
-  int ret_val = 0;
+    DIR *dirhandle;
+    struct dirent *entry;
+    int len;
+    char *env;
+    int ret_val = 0;
 
-  LOG("%s() called \n", __func__);
-  /** check if there is any envrionment variable defined to represent
-   ** hw plugin parent directory.
-   **/
-  env = getenv("SSHSM_HW_PLUGINS_PARENT_DIR");
-  if (env != NULL)
-  {
-     len = strlen(env);
-     if (len > MAX_PARENT_PATH_NAME)
-     {
-        LOG("SSHSM_HW_PLUGINS_PARENT_DIR environment is too long %d \n", len);
-        return(SSHSM_HW_PLUGIN_ERROR_BASE + ENVIRONMENT_TOO_LONG);
-     }
-     strcpy(hw_plugins_parent_dir, env);
-  }
-  else
-  {
-     strcpy(hw_plugins_parent_dir, default_hw_plugin_parent_dir);
-  }
-
-  /**Read parent directory entries **/
-  ret_val = -1;
-  dirhandle = opendir (hw_plugins_parent_dir);
-  if (dirhandle != NULL)
+    LOG("%s() called \n", __func__);
+    /** check if there is any envrionment variable defined to represent
+    ** hw plugin parent directory.
+    **/
+    env = getenv("SSHSM_HW_PLUGINS_PARENT_DIR");
+    if (env != NULL)
     {
-      int count = 0;
-      while (NULL != (entry = readdir (dirhandle)) )
-      {
-         count++;
-         /**Check if it is directory **/
-         if (entry->d_type == DT_DIR)
-         {
-             /** See if it starts with 'S' **/
-             if ((entry->d_name[0] == 'S') ||
-                 (entry->d_name[0] == 's') )
-             {
-                /** Load plugin.so file if it exists in the subdirectory
-                    load it and check whether the HW is present by calling
-                    init function  **/
-                ret_val = loadHWPlugin( hw_plugins_parent_dir,
-                                entry->d_name);
-                if(ret_val == 0)
-                {
-                  break;
-                }
-             }
-         }
-      }
+        len = strlen(env);
+        if (len > MAX_PARENT_PATH_NAME)
+        {
+            LOG("SSHSM_HW_PLUGINS_PARENT_DIR environment is too long %d \n", len);
+            return(SSHSM_HW_PLUGIN_ERROR_BASE + ENVIRONMENT_TOO_LONG);
+        }
+        strcpy(hw_plugins_parent_dir, env);
     }
-  else
-  {
-    LOG ("Couldn't open the directory \n");
-    return ret_val;
-  }
+    else
+    {
+        strcpy(hw_plugins_parent_dir, default_hw_plugin_parent_dir);
+    }
 
-  closedir(dirhandle);
-  return ret_val;
+    /**Read parent directory entries **/
+    ret_val = -1;
+    dirhandle = opendir (hw_plugins_parent_dir);
+    if (dirhandle != NULL)
+    {
+        int count = 0;
+        while (NULL != (entry = readdir (dirhandle)) )
+        {
+            count++;
+            /**Check if it is directory **/
+            if (entry->d_type == DT_DIR)
+            {
+                /** See if it starts with 'S' **/
+                if ((entry->d_name[0] == 'S') ||
+                    (entry->d_name[0] == 's') )
+                {
+                    /**
+                    Load plugin.so file if it exists in the subdirectory
+                    load it and check whether the HW is present by calling
+                    init function
+                    **/
+                    ret_val = loadHWPlugin( hw_plugins_parent_dir,
+                                entry->d_name);
+                    if(ret_val == 0)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+    } else
+    {
+        LOG ("Couldn't open the directory \n");
+        return ret_val;
+    }
+
+    closedir(dirhandle);
+    return ret_val;
 }
 
 /**
@@ -119,117 +120,118 @@ int prepareHWPlugin()
 
 int loadHWPlugin(char *parent_dir, char *pluginsubdir)
 {
-   char fullpath[256+1];
-   DIR *dirhandle;
-   struct dirent *entry;
-   char so_present, activate_dir_present, key_dir_present;
-   hwpluginentries_t *entries;
-   int ret_val = -1;
+    char fullpath[256+1];
+    DIR *dirhandle;
+    struct dirent *entry;
+    char so_present, activate_dir_present, key_dir_present;
+    hwpluginentries_t *entries;
+    int ret_val = -1;
 
-   if (strlen(parent_dir) + strlen(pluginsubdir) > 256 )
-   {
-     LOG("hwpluing path is too long  \n");
-     return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-   }
+    if (strlen(parent_dir) + strlen(pluginsubdir) > 256 )
+    {
+        LOG("hwpluing path is too long  \n");
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+    }
 
-   strcpy(fullpath, parent_dir);
-   strcat(fullpath, pluginsubdir);
+    strcpy(fullpath, parent_dir);
+    strcat(fullpath, pluginsubdir);
 
-   dirhandle = opendir(fullpath);
+    dirhandle = opendir(fullpath);
+    entries = (hwpluginentries_t*)malloc(sizeof(hwpluginentries_t));
+    if (entries == NULL )
+    {
+        LOG("Could not allocate entries  \n");
+        closedir(dirhandle);
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
+    }
+    memset(entries, 0, sizeof(hwpluginentries_t));
 
-   entries = (hwpluginentries_t*)malloc(sizeof(hwpluginentries_t));
-   if (entries == NULL )
-   {
-     LOG("Could not allocate entries  \n");
-     closedir(dirhandle);
-     return(SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
-   }
-   memset(entries, 0, sizeof(hwpluginentries_t));
+    if (dirhandle != NULL)
+    {
+        so_present = 0;
+        activate_dir_present = 0;
+        key_dir_present = 0;
+        while (NULL != (entry = readdir (dirhandle)) )
+        {
+            /** Ensure that the directory has plugin.so file, activate directory,
+            ** at least one key directory
+            **/
 
-   if (dirhandle != NULL)
-   {
-      so_present = 0;
-      activate_dir_present = 0;
-      key_dir_present = 0;
-      while (NULL != (entry = readdir (dirhandle)) )
-      {
-         /** Ensure that the directory has plugin.so file, activate directory,
-          ** at least one key directory
-          **/
+            if ((entry->d_type == DT_REG) &&
+                (strcmp(entry->d_name, "plugin.so") == 0))
+            {
+                so_present = 1;
+                if (strlen(fullpath) + strlen("/")+ strlen(entry->d_name) > 256)
+                {
+                    LOG("plugin so path is too long  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+                    break;
+                }
+                strcpy(entries->so_full_path, fullpath);
+                strcat(entries->so_full_path, "/");
+                strcat(entries->so_full_path, entry->d_name);
+            }
 
-          if ((entry->d_type == DT_REG) &&
-              (strcmp(entry->d_name, "plugin.so") == 0))
-          {
-             so_present = 1;
-             if (strlen(fullpath) + strlen("/")+ strlen(entry->d_name) > 256)
-             {
-                LOG("plugin so path is too long  \n");
-                ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-                break;
-             }
-             strcpy(entries->so_full_path, fullpath);
-             strcat(entries->so_full_path, "/");
-             strcat(entries->so_full_path, entry->d_name);
-          }
+            if ((entry->d_type == DT_DIR) &&
+                (strcmp(entry->d_name, "activate") == 0 ))
+            {
+                activate_dir_present = 1;
+                if (strlen(fullpath) + 2*strlen("/")+ strlen(entry->d_name) > 256)
+                {
+                    LOG("activate path is too long  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+                    break;
+                }
+                strcpy(entries->activate_dir_full_path, fullpath);
+                strcat(entries->activate_dir_full_path, "/");
+                strcat(entries->activate_dir_full_path, entry->d_name);
+                strcat(entries->activate_dir_full_path, "/");
+            }
 
-          if ((entry->d_type == DT_DIR) &&
-              (strcmp(entry->d_name, "activate") == 0 ))
-          {
-             activate_dir_present = 1;
-             if (strlen(fullpath) + 2*strlen("/")+ strlen(entry->d_name) > 256)
-             {
-                LOG("activate path is too long  \n");
-                ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-                break;
-             }
-             strcpy(entries->activate_dir_full_path, fullpath);
-             strcat(entries->activate_dir_full_path, "/");
-             strcat(entries->activate_dir_full_path, entry->d_name);
-             strcat(entries->activate_dir_full_path, "/");
-          }
-
-          if ((entry->d_type == DT_DIR) &&
-              (strncmp(entry->d_name, "key", 3) == 0 ))
-          {
-             key_dir_present = 1;
-             if (strlen(fullpath) + 2*strlen("/")+ strlen(entry->d_name) > 256)
-             {
-                LOG("activate path is too long  \n");
-                ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-                break;
-             }
-             strcpy(entries->key_dir_full_path[entries->num_key_dirs],
+            if ((entry->d_type == DT_DIR) &&
+                (strncmp(entry->d_name, "key", 3) == 0 ))
+            {
+                key_dir_present = 1;
+                if (strlen(fullpath) + 2*strlen("/")+ strlen(entry->d_name) > 256)
+                {
+                    LOG("activate path is too long  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+                    break;
+                }
+                strcpy(entries->key_dir_full_path[entries->num_key_dirs],
                              fullpath);
-             strcat(entries->key_dir_full_path[entries->num_key_dirs], "/");
-             strcat(entries->key_dir_full_path[entries->num_key_dirs],
+                strcat(entries->key_dir_full_path[entries->num_key_dirs], "/");
+                strcat(entries->key_dir_full_path[entries->num_key_dirs],
                               entry->d_name);
-             strcat(entries->key_dir_full_path[entries->num_key_dirs], "/");
-             entries->num_key_dirs++;
-          }
+                strcat(entries->key_dir_full_path[entries->num_key_dirs], "/");
+                entries->num_key_dirs++;
+            }
 
-          if (so_present && activate_dir_present && key_dir_present)
-          {
-              printf("so dir path: %s \n", entries->so_full_path);
-              printf("activate dir path: %s \n", entries->activate_dir_full_path);
-              ret_val = HwPlugin_Initiate_Activate_and_load_keys(entries);
-              break;
-          }
-      }
+            if (so_present && activate_dir_present && key_dir_present)
+            {
+                printf("so dir path: %s \n", entries->so_full_path);
+                printf("activate dir path: %s \n", entries->activate_dir_full_path);
+                ret_val = HwPlugin_Initiate_Activate_and_load_keys(entries);
+                break;
+            }
+        }
 
-      if (!so_present || !activate_dir_present || !key_dir_present)
-      {
-          LOG("Minimum set of entries not present hwplugin dir plugindir %s so_present %d activate present %d key present %d \n", fullpath,  so_present, activate_dir_present, key_dir_present);
-          return(SSHSM_HW_PLUGIN_ERROR_BASE + INCOMPLETE_PLUGIN_DIR);
-      }
-   }
-   else
-   {
-     LOG("Could not open hwplugin directory %s \n", fullpath);
-     return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_OPEN_ERROR);
-   }
-   free(entries);
-   closedir(dirhandle);
-   return(ret_val);
+        if (!so_present || !activate_dir_present || !key_dir_present)
+        {
+            LOG("Minimum set of entries not present hwplugin dir plugindir %s \
+                so_present %d activate present %d key present %d \n", fullpath,
+                so_present, activate_dir_present, key_dir_present);
+            return(SSHSM_HW_PLUGIN_ERROR_BASE + INCOMPLETE_PLUGIN_DIR);
+        }
+    }
+    else
+    {
+        LOG("Could not open hwplugin directory %s \n", fullpath);
+         return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_OPEN_ERROR);
+    }
+    free(entries);
+    closedir(dirhandle);
+    return(ret_val);
 }
 
 
@@ -240,26 +242,26 @@ int loadHWPlugin(char *parent_dir, char *pluginsubdir)
 **/
 int HwPlugin_Initiate_Activate_and_load_keys(hwpluginentries_t *entries)
 {
-     int ret_val;
+    int ret_val;
 
-     ret_val = load_hw_plugin_and_get_function_pointers(entries->so_full_path,
+    ret_val = load_hw_plugin_and_get_function_pointers(entries->so_full_path,
                    &g_pluginfuncs);
-     if(ret_val != 0)
-        return(ret_val);
-
-     ret_val = init_hw_plugin(&g_pluginfuncs);
-     if(ret_val != 0 )
-        return(ret_val);
-
-     ret_val = activate_hw_plugin(entries, &g_pluginfuncs);
-     if (ret_val != 0 )
+    if(ret_val != 0)
        return(ret_val);
 
-     ret_val = load_keys_in_hw_plugin(entries, &g_pluginfuncs);
-     if (ret_val != 0 )
+    ret_val = init_hw_plugin(&g_pluginfuncs);
+    if(ret_val != 0 )
        return(ret_val);
 
-     return(0);
+    ret_val = activate_hw_plugin(entries, &g_pluginfuncs);
+    if (ret_val != 0 )
+      return(ret_val);
+
+    ret_val = load_keys_in_hw_plugin(entries, &g_pluginfuncs);
+    if (ret_val != 0 )
+      return(ret_val);
+
+    return(0);
 }
 
 
@@ -270,27 +272,27 @@ int HwPlugin_Initiate_Activate_and_load_keys(hwpluginentries_t *entries)
 int load_hw_plugin_and_get_function_pointers(char *so_path,
               SSHSM_HW_FUNCTIONS_t *funcs)
 {
-   int (*functogetpluginfuncs)(SSHSM_HW_FUNCTIONS_t *fs);
-   int ret_val;
+    int (*functogetpluginfuncs)(SSHSM_HW_FUNCTIONS_t *fs);
+    int ret_val;
 
-   g_dl_handle = dlopen(so_path, RTLD_NOW);
-   if(g_dl_handle == NULL )
-   {
-       LOG("dlopen on %s failed: %s \n", so_path, dlerror());
-       return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_DL_OPEN_ERROR);
-   }
+    g_dl_handle = dlopen(so_path, RTLD_NOW);
+    if(g_dl_handle == NULL )
+    {
+        LOG("dlopen on %s failed: %s \n", so_path, dlerror());
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_DL_OPEN_ERROR);
+    }
 
-   functogetpluginfuncs = NULL;
-   functogetpluginfuncs = (int (*)(SSHSM_HW_FUNCTIONS_t *)) dlsym(g_dl_handle,
+    functogetpluginfuncs = NULL;
+    functogetpluginfuncs = (int (*)(SSHSM_HW_FUNCTIONS_t *)) dlsym(g_dl_handle,
              "sshsm_hw_plugin_get_plugin_functions");
 
-   if (functogetpluginfuncs == NULL)
-   {
-       LOG("dlsym of sshsm_hw_plugin_get_plugin_functions : %s \n", dlerror() );
-       return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_DL_SYM_ERROR);
-   }
+    if (functogetpluginfuncs == NULL)
+    {
+        LOG("dlsym of sshsm_hw_plugin_get_plugin_functions : %s \n", dlerror() );
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_DL_SYM_ERROR);
+    }
 
-   ret_val = functogetpluginfuncs(funcs);
+    ret_val = functogetpluginfuncs(funcs);
 
     return ret_val;
 }
@@ -303,9 +305,8 @@ int init_hw_plugin(SSHSM_HW_FUNCTIONS_t *funcs)
 
     if(ret_val != 0 )
     {
-       LOG("HWPlugin init failed \n" );
-       return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
-
+        LOG("HWPlugin init failed \n" );
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
     }
     return(ret_val);
 }
@@ -313,38 +314,37 @@ int init_hw_plugin(SSHSM_HW_FUNCTIONS_t *funcs)
 
 int activate_hw_plugin(hwpluginentries_t *entries, SSHSM_HW_FUNCTIONS_t *funcs)
 {
-   int ret_val;
+    int ret_val;
 
-   if( (entries == NULL) || (funcs == NULL) )
-   {
-     ret_val = -1;
-     LOG("activate_hw_plugin: Input values are NULL \n");
-     return ret_val;
-   }
-   /** Read all files starting with 'A' and pass the information to
-    ** plugin
-    **/
+    if( (entries == NULL) || (funcs == NULL) )
+    {
+        ret_val = -1;
+        LOG("activate_hw_plugin: Input values are NULL \n");
+        return ret_val;
+    }
+    /** Read all files starting with 'A' and pass the information to
+     ** plugin
+     **/
 
-   SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t comp_buffers;
+    SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t comp_buffers;
 
-   memset(&comp_buffers, 0, sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
+    memset(&comp_buffers, 0, sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
 
-   ret_val = get_all_file_contents(entries->activate_dir_full_path, 'A',
+    ret_val = get_all_file_contents(entries->activate_dir_full_path, 'A',
                        &comp_buffers);
 
-   if (ret_val == 0 )
-   {
-     ret_val = (funcs->xxx_activate)(&comp_buffers);
-     //free_buffers(&comp_buffers);
-   }
+    if (ret_val == 0 )
+    {
+        ret_val = (funcs->xxx_activate)(&comp_buffers);
+        //free_buffers(&comp_buffers);
+    }
 
-   return(ret_val);
+    return(ret_val);
 }
 
 int load_keys_in_hw_plugin(hwpluginentries_t *entries,
                    SSHSM_HW_FUNCTIONS_t *funcs)
 {
-
     int ret_val;
     void *key_handle;
     int ii;
@@ -361,32 +361,31 @@ int load_keys_in_hw_plugin(hwpluginentries_t *entries,
     ret_val = -1;
     for(ii = 0; ii < entries->num_key_dirs; ii++)
     {
-       memset(&comp_buffers, 0,
+        memset(&comp_buffers, 0,
           sizeof(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t));
 
-       ret_val = get_all_file_contents(entries->key_dir_full_path[ii], 'K',
+        ret_val = get_all_file_contents(entries->key_dir_full_path[ii], 'K',
                         &comp_buffers);
 
-       if(ret_val == 0)
-       {
-           ret_val = (funcs->xxx_load_key)(&comp_buffers, &key_handle,
+        if(ret_val == 0)
+        {
+            ret_val = (funcs->xxx_load_key)(&comp_buffers, &key_handle,
                                                        &import_public_key);
-           //free_buffers(&comp_buffers);
-           if(ret_val == 0)
-           {
-               /** Get PKCS11 information **/
-               /** Call SoftHSM functions to create private key object */
-               if (ret_val == 0) {
-                   ret_val = program_pkcs11_info(entries->key_dir_full_path[ii],
+            //free_buffers(&comp_buffers);
+            if(ret_val == 0)
+            {
+                /** Get PKCS11 information **/
+                /** Call SoftHSM functions to create private key object */
+                if (ret_val == 0) {
+                    ret_val = program_pkcs11_info(entries->key_dir_full_path[ii],
                                              &key_handle,  &import_public_key);
-                   if (import_public_key.modulus != NULL)
-                      free(import_public_key.modulus);
-                   if (import_public_key.exponent != NULL)
-                      free(import_public_key.exponent);
-               }
-           }
-       }
-
+                    if (import_public_key.modulus != NULL)
+                        free(import_public_key.modulus);
+                    if (import_public_key.exponent != NULL)
+                        free(import_public_key.exponent);
+                }
+            }
+        }
     }
 
     return(ret_val);
@@ -395,221 +394,219 @@ int load_keys_in_hw_plugin(hwpluginentries_t *entries,
 int get_all_file_contents(char *dirpath, char starting_char,
                   SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *c_buffers )
 {
-   DIR *dirhandle;
-   struct dirent *entry;
+    DIR *dirhandle;
+    struct dirent *entry;
 
-   buffer_info_t *buffer;
-   char *token;
+    buffer_info_t *buffer;
+    char *token;
 
-   struct stat st;
-   int fd;
+    struct stat st;
+    int fd;
 
-   int ret_val = 0;
+    int ret_val = 0;
+    char fullpath[256+1];
 
+    dirhandle = opendir(dirpath);
+    if (dirhandle != NULL)
+    {
+        while (NULL != (entry = readdir (dirhandle)))
+        {
+            if ((entry->d_type == DT_REG) &&
+                (entry->d_name[0] == starting_char))
+            {
+                buffer = (buffer_info_t*) malloc(sizeof(buffer_info_t));
+                if (buffer == NULL )
+                {
+                    LOG("Could not allocate entries  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
+                    break;
+                }
+                token = strchr(entry->d_name, '.');
+                strcpy(buffer->id, token+1);
 
-   char fullpath[256+1];
+                /** get full path of the file **/
+                if ((strlen(dirpath) + strlen(entry->d_name)) > 256)
+                {
+                    LOG("file  path is too long  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+                    free(buffer);
+                    break;
+                }
+                strcpy(fullpath,dirpath);
+                strcat(fullpath, entry->d_name);
+                stat(fullpath, &st);
+                buffer->buffer = (unsigned char*) malloc(st.st_size);
+                if(buffer->buffer == NULL)
+                {
+                    LOG("Could not allocate entries  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
+                    free(buffer);
+                    break;
+                }
+                buffer->length_of_buffer = st.st_size;
+                fd = open(fullpath, O_RDONLY);
+                if (fd == -1 )
+                {
+                    LOG("Could not open file %s  \n", fullpath);
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
+                    free(buffer->buffer);
+                    free(buffer);
+                    break;
+                }
 
-   dirhandle = opendir(dirpath);
-   if (dirhandle != NULL)
-   {
-      while (NULL != (entry = readdir (dirhandle)))
-      {
-         if ((entry->d_type == DT_REG) &&
-              (entry->d_name[0] == starting_char))
-         {
-             buffer = (buffer_info_t*) malloc(sizeof(buffer_info_t));
-             if (buffer == NULL )
-             {
-               LOG("Could not allocate entries  \n");
-               ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
-               break;
-             }
-             token = strchr(entry->d_name, '.');
-             strcpy(buffer->id, token+1);
+                if(read(fd, buffer->buffer, st.st_size) < 0)
+                {
+                    LOG("Reading from file %s failed \n", fullpath);
+                    continue;
+                }
 
-             /** get full path of the file **/
-             if ((strlen(dirpath) + strlen(entry->d_name)) > 256)
-             {
-                LOG("file  path is too long  \n");
-                ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-                free(buffer);
-                break;
-             }
-             strcpy(fullpath,dirpath);
-             strcat(fullpath, entry->d_name);
-             stat(fullpath, &st);
-             buffer->buffer = (unsigned char*) malloc(st.st_size);
-             if(buffer->buffer == NULL)
-             {
-               LOG("Could not allocate entries  \n");
-               ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
-               free(buffer);
-               break;
-             }
-             buffer->length_of_buffer = st.st_size;
-             fd = open(fullpath, O_RDONLY);
-             if (fd == -1 )
-             {
-               LOG("Could not open file %s  \n", fullpath);
-               ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + ALLOCATION_ERROR);
-               free(buffer->buffer);
-               free(buffer);
-               break;
-             }
+                close(fd);
 
-             if(read(fd, buffer->buffer, st.st_size) < 0)
-             {
-                LOG("Reading from file %s failed \n", fullpath);
-                continue;
-             }
+                /** Now write this buffer in c_buffers **/
+                c_buffers->buffer_info[c_buffers->num_buffers] = buffer;
+                c_buffers->num_buffers++;
 
-             close(fd);
+            }
+        }
+    }
+    else
+    {
+        LOG("Could not open hwplugin directory %s \n", dirpath);
+        return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_OPEN_ERROR);
+    }
 
-             /** Now write this buffer in c_buffers **/
-             c_buffers->buffer_info[c_buffers->num_buffers] = buffer;
-             c_buffers->num_buffers++;
+    closedir(dirhandle);
+    //if (ret_val != 0 )
+    //free_buffers(c_buffers);
 
-         }
-      }
-   }
-   else
-   {
-     LOG("Could not open hwplugin directory %s \n", dirpath);
-     return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_OPEN_ERROR);
-   }
-
-   closedir(dirhandle);
-   //if (ret_val != 0 )
-     //free_buffers(c_buffers);
-
-   return(ret_val);
+    return(ret_val);
 }
 
 void free_buffers ( SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *c_buffers )
 {
-   int ii;
+    int ii;
 
-   for(ii = 0; ii < c_buffers->num_buffers; ii++)
-   {
-      free(c_buffers->buffer_info[ii]->buffer);
-      free(c_buffers->buffer_info[ii]);
-   }
+    for(ii = 0; ii < c_buffers->num_buffers; ii++)
+    {
+        free(c_buffers->buffer_info[ii]->buffer);
+        free(c_buffers->buffer_info[ii]);
+    }
 }
 
 int program_pkcs11_info (char *dirpath, void *key_handle,
                          SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *import_public_key)
 {
-   DIR *dirhandle;
-   struct dirent *entry;
+    DIR *dirhandle;
+    struct dirent *entry;
 
-   char fullpath[256+1];
-   int ret_val = 0;
+    char fullpath[256+1];
+    int ret_val = 0;
 
-   FILE *fp;
-   char buffer[80+1];
+    FILE *fp;
+    char buffer[80+1];
 
-   unsigned int  slot_id = 0;
-   unsigned char upin[64+1];
-   int upin_len = 0;
-   unsigned char keyid[64+1];
-   int key_id_len = 0;
-   unsigned char key_label[64+1] = "";
-   char *valuep;
-   char *endvalue;
+    unsigned int  slot_id = 0;
+    unsigned char upin[64+1];
+    int upin_len = 0;
+    unsigned char keyid[64+1];
+    int key_id_len = 0;
+    unsigned char key_label[64+1] = "";
+    char *valuep;
+    char *endvalue;
 
 
-   dirhandle = opendir(dirpath);
-   if (dirhandle != NULL)
-   {
-      while (NULL != (entry = readdir (dirhandle)))
-      {
-           if (strcmp(entry->d_name, "pkcs11.cfg") == 0 )
-           {
-              /** get full path of the file **/
-               if ((strlen(dirpath) + strlen(entry->d_name)) > 256)
-             {
-                LOG("file  path is too long  \n");
-                ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-                break;
-             }
-             strcpy(fullpath,dirpath);
-             strcat(fullpath, entry->d_name);
+    dirhandle = opendir(dirpath);
+    if (dirhandle != NULL)
+    {
+        while (NULL != (entry = readdir (dirhandle)))
+        {
+            if (strcmp(entry->d_name, "pkcs11.cfg") == 0 )
+            {
+                /** get full path of the file **/
+                if ((strlen(dirpath) + strlen(entry->d_name)) > 256)
+                {
+                    LOG("file  path is too long  \n");
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+                    break;
+                }
+                strcpy(fullpath,dirpath);
+                strcat(fullpath, entry->d_name);
 
-             fp = fopen(fullpath, "r");
-             if(fp == NULL )
-             {
-                ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
-                break;
-             }
-             while (fgets(buffer, 80, fp) != NULL)
-             {
-                 valuep = strchr(buffer, ':');
-                 if(valuep == NULL)
-                    continue;
-                 valuep[0] = '\0';
+                fp = fopen(fullpath, "r");
+                if(fp == NULL )
+                {
+                    ret_val = (SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_PATH_TOO_LONG);
+                    break;
+                }
+                while (fgets(buffer, 80, fp) != NULL)
+                {
+                    valuep = strchr(buffer, ':');
+                    if(valuep == NULL)
+                        continue;
+                    valuep[0] = '\0';
 
-                 /** Looks like \n is part of buffer that is read via fgets
-                  ** Replacce tha with 0 **/
-                 endvalue = strchr(valuep+1, '\n');
-                 if(endvalue != NULL)
-                    endvalue[0] =  '\0';
-                 if (strcmp(buffer, "slot") == 0)
-                 {
-                    slot_id = strtoul(valuep+1, NULL, 10);
-                    continue;
-                 }
-                 if(strcmp(buffer, "key_id") == 0 )
-                 {
-                    strcpy((char*)keyid, valuep+1);
-                    key_id_len = strlen((char*)keyid);
-                    continue;
-                 }
-                 if(strcmp(buffer, "key_label") == 0 )
-                 {
-                    strcpy((char*)key_label, valuep+1);
-                    continue;
-                 }
-                 if(strcmp(buffer, "upin") == 0 )
-                 {
-                    strcpy((char*) upin, valuep+1);
-                    upin_len = strlen((char *) upin);
-                    continue;
-                 }
-             }
-             fclose(fp);
+                    /** Looks like \n is part of buffer that is read via fgets
+                    ** Replacce tha with 0 **/
+                    endvalue = strchr(valuep+1, '\n');
+                    if(endvalue != NULL)
+                        endvalue[0] =  '\0';
+                    if (strcmp(buffer, "slot") == 0)
+                    {
+                        slot_id = strtoul(valuep+1, NULL, 10);
+                        continue;
+                    }
+                    if(strcmp(buffer, "key_id") == 0 )
+                    {
+                        strcpy((char*)keyid, valuep+1);
+                        key_id_len = strlen((char*)keyid);
+                        continue;
+                    }
+                    if(strcmp(buffer, "key_label") == 0 )
+                    {
+                        strcpy((char*)key_label, valuep+1);
+                        continue;
+                    }
+                    if(strcmp(buffer, "upin") == 0 )
+                    {
+                        strcpy((char*) upin, valuep+1);
+                        upin_len = strlen((char *) upin);
+                        continue;
+                    }
+                }
+                fclose(fp);
 
-             /** Program key in SoftHSM **/
-             ret_val = PrepareKeyInSoftHSM(slot_id, upin, upin_len, keyid,
+                /** Program key in SoftHSM **/
+                ret_val = PrepareKeyInSoftHSM(slot_id, upin, upin_len, keyid,
                            key_id_len, key_label, key_handle, import_public_key);
 
-              break;
-           }
+                break;
+            }
 
-      }
-   }
+        }
+    }
 
-   return ret_val;
+    return ret_val;
 }
 
 
 void long_to_byte_string(const unsigned long longValue, unsigned char *out, size_t *outlen)
 {
-        unsigned long setValue = longValue;
-        unsigned char byteStrIn[8];
-        size_t i;
+    unsigned long setValue = longValue;
+    unsigned char byteStrIn[8];
+    size_t i;
 
-        for (i = 0; i < 8; i++)
-        {
-            byteStrIn[7-i] = (unsigned char) (setValue & 0xFF);
-            setValue >>= 8;
-        }
-        for (i = 0; i < 8; i++)
-        {
-            if (byteStrIn[i])
-               break;
-        }
-        memcpy(out, &byteStrIn[i], 8-i);
-        *outlen = 8-i;
+    for (i = 0; i < 8; i++)
+    {
+        byteStrIn[7-i] = (unsigned char) (setValue & 0xFF);
+        setValue >>= 8;
+    }
+    for (i = 0; i < 8; i++)
+    {
+        if (byteStrIn[i])
+            break;
+    }
+    memcpy(out, &byteStrIn[i], 8-i);
+    *outlen = 8-i;
 }
 
 
@@ -648,9 +645,9 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
         return (SSHSM_HW_PLUGIN_ERROR_BASE + INVALID_KEY_ERROR);
     }
     if (import_public_key->modulus == NULL ||
-                    import_public_key->exponent == NULL)
+        import_public_key->exponent == NULL)
     {
-         return (SSHSM_HW_PLUGIN_ERROR_BASE + INVALID_KEY_ERROR);
+        return (SSHSM_HW_PLUGIN_ERROR_BASE + INVALID_KEY_ERROR);
     }
 
     /** For creating the key object, first the session needs to be opened
@@ -729,10 +726,11 @@ int PrepareKeyInSoftHSM(unsigned int slot_id,
                 ret_val, slot_id, key_label);
             for (ii = 0; ii < key_id_len; ii++ )
                printf("%2x  %c \n",  key_id[ii], key_id[ii]);
-        //return(ret_val);
+            //return(ret_val);
         }
     }
-    else {
+    else
+    {
         printf("PrepareKeyInSoftHSM: Object already exists\n");
     }
 
@@ -765,8 +763,7 @@ int HwInfraSignInit(void *keyHandle,  unsigned long mechanism,
         return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
 
     return (g_pluginfuncs.xxx_rsa_sign_init(keyHandle, mechanism, param,
-                                                 paramLen, hwCryptoOpaque)) ;
-
+                                            paramLen, hwCryptoOpaque)) ;
 }
 
 int HwInfraSign(void *keyHandle,  unsigned long mechanism,
@@ -786,7 +783,7 @@ int HwInfraSignUpdate(void *keyHandle, unsigned long mechanism,
     if (g_pluginfuncs.xxx_rsa_sign_update == NULL)
         return(SSHSM_HW_PLUGIN_ERROR_BASE + PLUGIN_INIT_ERROR);
 
-    int x =  ( g_pluginfuncs.xxx_rsa_sign_update(keyHandle, mechanism, param,
+    int x = ( g_pluginfuncs.xxx_rsa_sign_update(keyHandle, mechanism, param,
                                                paramLen, hwCryptoOpaque) );
     return 0;
 }

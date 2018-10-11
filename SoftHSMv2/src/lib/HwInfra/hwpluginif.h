@@ -24,10 +24,10 @@ extern "C" {
 #define MAX_ID_LENGTH (32)
 
 typedef struct buffer_info_s{
-       char id[MAX_ID_LENGTH+1];
-       int length_of_buffer;
-       unsigned char *buffer;
-    }buffer_info_t;
+    char id[MAX_ID_LENGTH+1];
+    int length_of_buffer;
+    unsigned char *buffer;
+}buffer_info_t;
 
 /***
  * Init Callback
@@ -90,7 +90,7 @@ typedef struct sshsm_hw_plugin_activate_in_info_s {
 
 
 typedef int (*sshsm_hw_plugin_activate)(
-           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info
+        SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info
         );
 
 
@@ -154,13 +154,13 @@ typedef struct sshsm_hw_plugin_load_key_in_info_s {
 
 
 typedef int (*sshsm_hw_plugin_load_key)(
-           SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-           void **keyHandle,
-           SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *import_public_key
+        SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
+        void **keyHandle,
+        SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *import_public_key
         );
 
 typedef int (*sshsm_hw_plugin_unload_key)(
-           void **keyHandle
+        void **keyHandle
         );
 /***
  * Callback:  RSA Sign Init
@@ -170,11 +170,11 @@ typedef int (*sshsm_hw_plugin_unload_key)(
  */
 
 typedef int (*sshsm_hw_plugin_rsa_sign_init)(
-         void *keyHandle,
-         unsigned long mechanism,
-         void *param,
-         int len,
-         void **pluginOutDataRef
+        void *keyHandle,
+        unsigned long mechanism,
+        void *param,
+        int len,
+        void **pluginOutDataRef
         );
 
 /***
@@ -184,34 +184,32 @@ typedef int (*sshsm_hw_plugin_rsa_sign_init)(
  *
  * In case of TPM plugin, it does following:
  * -- TSS2_Sys_Sing function is called.
- *
- *
  */
 
 typedef int (*sshsm_hw_plugin_rsa_sign)(
-         void *keyHandle,
-         unsigned long mechanism,
-         unsigned char *msg,
-         int msg_len,
-         void *pluginDataRef,
-         unsigned char *outsig,
-         int *outsiglen
+        void *keyHandle,
+        unsigned long mechanism,
+        unsigned char *msg,
+        int msg_len,
+        void *pluginDataRef,
+        unsigned char *outsig,
+        int *outsiglen
         );
 
 typedef int (*sshsm_hw_plugin_rsa_sign_update)(
-         void *keyHandle,
-         unsigned long mechanism,
-         unsigned char *msg,
-         int msg_len,
-         void *pluginDataRef
+        void *keyHandle,
+        unsigned long mechanism,
+        unsigned char *msg,
+        int msg_len,
+        void *pluginDataRef
         );
 
 typedef int (*sshsm_hw_plugin_rsa_sign_final)(
-         void *keyHandle,
-         unsigned long mechanism,
-         void *pluginDataRef,
-         unsigned char *outsig,
-         int *outsiglen
+        void *keyHandle,
+        unsigned long mechanism,
+        void *pluginDataRef,
+        unsigned char *outsig,
+        int *outsiglen
         );
 
 /** This function is called by SSHSM only if there sign_final function is not called.
@@ -219,9 +217,9 @@ If sign_final function is called, it is assumed that plugin would have cleaned t
 ***/
 
 typedef int (*sshsm_hw_plugin_rsa_sign_cleanup)(
-         void *keyHandle,
-         unsigned long mechanism,
-         void *pluginDataRef
+        void *keyHandle,
+        unsigned long mechanism,
+        void *pluginDataRef
         );
 
 /***
@@ -235,11 +233,9 @@ typedef int (*sshsm_hw_plugin_rsa_sign_cleanup)(
  *  Outputs: funcs
  *  Inputs: None
  *  Return value:  SUCCESS or FAILURE
- *
  ***/
 
-typedef struct sshsm_hw_functions_s
-{
+typedef struct sshsm_hw_functions_s {
     sshsm_hw_plugin_init  xxx_init;
     sshsm_hw_plugin_uninit  xxx_uninit;
     sshsm_hw_plugin_activate xxx_activate;
@@ -250,7 +246,6 @@ typedef struct sshsm_hw_functions_s
     sshsm_hw_plugin_rsa_sign_update xxx_rsa_sign_update;
     sshsm_hw_plugin_rsa_sign_final xxx_rsa_sign_final;
     sshsm_hw_plugin_rsa_sign_cleanup xxx_rsa_sign_cleanup;
-
 }SSHSM_HW_FUNCTIONS_t;
 
 

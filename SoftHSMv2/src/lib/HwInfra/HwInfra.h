@@ -31,10 +31,10 @@ extern "C" {
 #define MAX_KEY_DIRS_SUPPORTED 64
 
 typedef struct hwpluginentries_s {
-   char so_full_path[256+1];
-   char activate_dir_full_path[256+1];
-   int num_key_dirs;
-   char key_dir_full_path[MAX_KEY_DIRS_SUPPORTED][256+1];
+    char so_full_path[256+1];
+    char activate_dir_full_path[256+1];
+    int num_key_dirs;
+    char key_dir_full_path[MAX_KEY_DIRS_SUPPORTED][256+1];
 }hwpluginentries_t;
 
 int prepareHWPlugin();
