@@ -32,6 +32,7 @@ DISTCENTER_SEC="$(pwd)/data/distcenter/data"
 CASERVICE_DATA="$(pwd)/data/caservice"
 WORKDIR="$(pwd)/"
 
+mkdir -p $(pwd)/data/abrmd/cred
 echo $1 > $ABRMD_DATA/cred/srk_handle.txt
 echo $2 > $ABRMD_DATA/cred/opass.txt
 
