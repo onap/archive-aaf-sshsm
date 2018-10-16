@@ -31,6 +31,7 @@ echo "Build SoftHSMv2..."
 cd SoftHSMv2
 sh autogen.sh
 ./configure --disable-gost
+make check
 make -j$(nproc)
 cd ..
 
