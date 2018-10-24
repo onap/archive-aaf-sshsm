@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_8064d449",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "Remove this",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 197
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_205ba888",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 40
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_6061b038",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "These don\u0027t seem to be shared resources. Why do we need synchronized here?",
+      "range": {
+        "startLine": 147,
+        "startChar": 16,
+        "endLine": 148,
+        "endChar": 47
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_405eec77",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "This does not need to be done in the thread. The goal here is to reduce any latency in the thread itself to expose race conditions.",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 194,
+        "endChar": 13
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c0497cb8",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "Do we need this start? Start is already a member function of Thread class.",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 5
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_c072dc10",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "This cannot be here because the main thread is waiting for T[i] to complete, essentially making this single threaded code.\n\nThe join should be outside the code.",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 28
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_0069c424",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-10-24T02:33:13Z",
+      "side": 1,
+      "message": "move this to the tests folder.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "bf74fe8f813cf426c7fdfe7e5e132ff0d40df89c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
