@@ -9,12 +9,12 @@
 ### container and is mounted as /tmp/files/ inside container
 ### the host's name "TPM_NODE_NAME" environmental variable
 
-### The input to this container is srkhandle(a file/environmental vatiable)
+### The input to this container is srkhandle(a file/environmental variable)
 ### tpm_status.yaml (TPM State) password (for TPM Primary key,
 ### password is encrypted using pgp and is extracted using the passphrase
 ### (provided in shared volume))
 ### Output of this container is the public
-### portion of the TPM's Primary key (out_parent_public) and the staus will
+### portion of the TPM's Primary key (out_parent_public) and the status will
 ### be updated in the tpm_status.yaml file
 
 
