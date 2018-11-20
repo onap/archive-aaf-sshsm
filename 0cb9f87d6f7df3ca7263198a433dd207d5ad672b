@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_fc18f576",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T23:56:04Z",
+      "side": 1,
+      "message": "Don\u0027t use this as the base image for this. It is not guaranteed to exist. Keep the previous method for image building.",
+      "range": {
+        "startLine": 2,
+        "startChar": 36,
+        "endLine": 2,
+        "endChar": 49
+      },
+      "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_dce7313f",
+        "filename": "bin/caservicecontainer/stressmultithread.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T23:56:04Z",
+      "side": 1,
+      "message": "Remove.\nWe can call multithreadimport.sh directly.",
+      "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_1cc5b98d",
+        "filename": "bin/caservicecontainer/test.csr",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T23:56:04Z",
+      "side": 1,
+      "message": "Where is this used?",
+      "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
