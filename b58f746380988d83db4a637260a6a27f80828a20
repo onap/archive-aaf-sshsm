@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_ad99e120",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "This should be the thread specific csr file?",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_4da07543",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "Empty statement. Remove?",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_6da3f94f",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "Does this need this to be synchronized?",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 13
+      },
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8dbdfd6a",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "s/thread_Count/threadCount/g",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 24
+      },
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cd9305f9",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "Can be moved outside for loop.\nRun it once on all generated csr files.",
+      "range": {
+        "startLine": 239,
+        "startChar": 12,
+        "endLine": 250,
+        "endChar": 13
+      },
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ed8e09d0",
+        "filename": "bin/caservicecontainer/CaSignMultiThread.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "This should be after join if this is really needed.",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0db10d8f",
+        "filename": "bin/caservicecontainer/stressmultithread.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "We don\u0027t need this file. Do we?",
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_6dba1970",
+        "filename": "bin/caservicecontainer/test.csr",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2018-11-20T00:01:49Z",
+      "side": 1,
+      "message": "Is this file used anywhere?",
+      "revId": "b58f746380988d83db4a637260a6a27f80828a20",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
