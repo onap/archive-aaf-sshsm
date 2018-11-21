@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_7c5c05ee",
+        "filename": "bin/caservicecontainer/dockerfile",
+        "patchSetId": 14
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-11-21T00:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9adffdf1_fc18f576",
+      "range": {
+        "startLine": 2,
+        "startChar": 36,
+        "endLine": 2,
+        "endChar": 49
+      },
+      "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_dce7313f",
         "filename": "bin/caservicecontainer/stressmultithread.sh",
         "patchSetId": 14
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_1c737981",
+        "filename": "bin/caservicecontainer/stressmultithread.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-11-21T00:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9adffdf1_dce7313f",
+      "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_1cc5b98d",
         "filename": "bin/caservicecontainer/test.csr",
         "patchSetId": 14
@@ -53,6 +95,24 @@
       "writtenOn": "2018-11-20T23:56:04Z",
       "side": 1,
       "message": "Where is this used?",
+      "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_5c5901fd",
+        "filename": "bin/caservicecontainer/test.csr",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2018-11-21T00:45:13Z",
+      "side": 1,
+      "message": "This is used by the base image in which the operation is done only once.",
+      "parentUuid": "9adffdf1_1cc5b98d",
       "revId": "0cb9f87d6f7df3ca7263198a433dd207d5ad672b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
