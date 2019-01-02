@@ -7,8 +7,8 @@
 # Program version
 
 define([SOFTHSM_VERSION_MAJOR], [2])
-define([SOFTHSM_VERSION_MINOR], [4])
-define([SOFTHSM_VERSION_FIX], [0])
+define([SOFTHSM_VERSION_MINOR], [5])
+define([SOFTHSM_VERSION_FIX], [1])
 define([PACKAGE_SUFFIX], [])
 
 # Library version
@@ -20,7 +20,7 @@ define([PACKAGE_SUFFIX], [])
 
 define([SOFTHSM_VERSION_CURRENT], [2])
 define([SOFTHSM_VERSION_AGE], [1])
-define([SOFTHSM_VERSION_REVISION], [4])
+define([SOFTHSM_VERSION_REVISION], [5])
 
 ##################
 #                #
@@ -44,6 +44,7 @@ AC_SUBST(VERSION_INFO)
 # Checks for compilers
 AC_PROG_CC
 AC_PROG_CXX
+PKG_PROG_PKG_CONFIG
 
 # Compiler flags
 ACX_PEDANTIC
@@ -219,6 +220,7 @@ AC_CONFIG_FILES([
 	src/bin/Makefile
 	src/bin/common/Makefile
 	src/bin/dump/Makefile
+	src/bin/keyconv/Makefile
 	src/bin/migrate/Makefile
 	src/bin/util/Makefile
 ])
