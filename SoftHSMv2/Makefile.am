@@ -18,8 +18,14 @@ endif
 
 EXTRA_DIST =	$(srcdir)/aes_wrap_key_with_pad/botan-diff \
 		$(srcdir)/aes_wrap_key_with_pad/README \
+		$(srcdir)/CMakeLists.txt \
+		$(srcdir)/CMAKE-NOTES.md \
+		$(srcdir)/config.h.in.cmake \
 		$(srcdir)/FIPS-NOTES.md \
 		$(srcdir)/LICENSE \
 		$(srcdir)/m4/*.m4 \
+		$(srcdir)/modules/*.cmake \
+		$(srcdir)/modules/tests/*.c \
+		$(srcdir)/modules/tests/*.cpp \
 		$(srcdir)/OSX-NOTES.md \
-		$(srcdir)/README.md 
+		$(srcdir)/README.md
