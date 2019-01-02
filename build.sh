@@ -37,7 +37,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/
 echo "Build SoftHSMv2..."
 cd SoftHSMv2
 sh autogen.sh
-./configure --disable-gost
+./configure --disable-gost --with-openssl=/usr/local/
+make
+make check
 sudo make install
 cd ..
 
