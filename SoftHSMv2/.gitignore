@@ -9,6 +9,8 @@ compile
 py-compile
 confdefs.h
 config.*
+!win32+botan/config.h
+!win32+openssl/config.h
 configure
 conftest
 conftest.c
@@ -34,6 +36,12 @@ test-driver
 *.lib
 *.la
 *.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
 
 # Test outputs
 *.log
@@ -65,6 +73,7 @@ src/lib/handle_mgr/test/handlemgrtest
 src/lib/object_store/test/objstoretest
 src/lib/session_mgr/test/sessionmgrtest
 src/lib/slot_mgr/test/slotmgrtest
+src/lib/test/p11test
 src/lib/test/softhsm2-alt.conf
 src/lib/test/softhsm2.conf
 src/lib/test/tokens/64d6c3fe-1575-1736-1d26-5ccb28440ea7/
