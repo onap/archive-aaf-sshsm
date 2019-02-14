@@ -23,7 +23,7 @@
 #include <ctype.h>
 #include <getopt.h>
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
 #include "hwpluginif.h"
 
 #ifdef __cplusplus
