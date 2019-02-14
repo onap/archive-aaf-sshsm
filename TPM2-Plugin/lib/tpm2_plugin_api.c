@@ -13,53 +13,80 @@
 * limitations under the License.
 */
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
+#include <tss2/tss2-tcti-tabrmd.h>
+#include <tss2/tss2_common.h>
+#include <tss2/tss2_esys.h>
+#include <tss2/tss2_mu.h>
+#include <tss2/tss2_tcti.h>
+#include <tss2/tss2_tcti_device.h>
+#include <tss2/tss2_tcti_mssim.h>
+#include <tss2/tss2_tpm2_types.h>
+
+#ifndef TSS2_SYS_H
+#define TSS2_SYS_H
+#endif
+#ifndef TSS2_API_VERSION_1_2_1_108
+#error Version mismatch among TSS2 header files.
+#endif  /* TSS2_API_VERSION_1_2_1_108 */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/* SAPI context blob */
+typedef struct _TSS2_SYS_OPAQUE_CONTEXT_BLOB TSS2_SYS_CONTEXT;
+
 #include <stdbool.h>
 #include <errno.h>
 #include <unistd.h>
 #include "tpm2_plugin_api.h"
 #ifdef HAVE_TCTI_DEV
-#include <tcti/tcti_device.h>
+#include <tss2/tss2_tcti.h>
 #endif
 #ifdef HAVE_TCTI_SOCK
-#include <tcti/tcti_socket.h>
+#include <tss2/tss2-tcti-tabrmd.h>
 #endif
 #ifdef HAVE_TCTI_TABRMD
-#include <tcti/tcti-tabrmd.h>
+#include <tss2/tss2-tcti-tabrmd.h>
 #endif
 #define ARRAY_LEN(x) (sizeof(x)/sizeof(x[0]))
+#define TSSWG_INTEROP 1
+#define TSS_SAPI_FIRST_FAMILY 2
+#define TSS_SAPI_FIRST_LEVEL 1
+#define TSS_SAPI_FIRST_VERSION 108
 
 bool output_enabled = true;
 bool hexPasswd = false;
-TPM_HANDLE handle2048rsa;
+TPM2_HANDLE handle2048rsa;
 const char *tcti_path="libtss2-tcti-device.so";
 
-static void tcti_teardown(TSS2_TCTI_CONTEXT *tcti_context)
+static void tcti_teardown(TSS2_TCTI_CONTEXT *tcticontext)
 {
-    if (tcti_context == NULL)
+    if (tcticontext == NULL)
         return;
-    tss2_tcti_finalize (tcti_context);
-    free (tcti_context);
+    Tss2_Tcti_Finalize (tcticontext);
+    free (tcticontext);
 }
 
-static void sapi_teardown(TSS2_SYS_CONTEXT *sapi_context)
+static void sapi_teardown(TSS2_SYS_CONTEXT *sysContext)
 {
-    if (sapi_context == NULL)
+    if (sysContext == NULL)
         return;
-    Tss2_Sys_Finalize (sapi_context);
-    free (sapi_context);
+    Tss2_Sys_Finalize (sysContext);
+    free (sysContext);
 }
 
-static void sapi_teardown_full (TSS2_SYS_CONTEXT *sapi_context)
+static void sapi_teardown_full (TSS2_SYS_CONTEXT *sysContext)
 {
-    TSS2_TCTI_CONTEXT *tcti_context = NULL;
+    TSS2_TCTI_CONTEXT *tcticontext = NULL;
     TSS2_RC rc;
 
-    rc = Tss2_Sys_GetTctiContext (sapi_context, &tcti_context);
+    rc = Tss2_Sys_GetTctiContext (sysContext, &tcticontext);
     if (rc != TSS2_RC_SUCCESS)
         return;
-    sapi_teardown (sapi_context);
-    tcti_teardown (tcti_context);
+    sapi_teardown (sysContext);
+    tcti_teardown (tcticontext);
 }
 
 int tpm2_plugin_init()
@@ -74,7 +101,7 @@ int tpm2_plugin_uninit()
     return 0;
 }
 
-TPM_HANDLE srk_handle;
+TPM2_HANDLE srk_handle;
 int tpm2_plugin_activate(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *activate_in_info)
 {
     /*
@@ -176,7 +203,8 @@ TSS2_TCTI_CONTEXT *tcti_tabrmd_init (void)
     TSS2_RC rc;
     size_t size;
 
-    rc = tss2_tcti_tabrmd_init(NULL, &size);
+    //rc = tss2_tcti_tabrmd_init(NULL, &size);
+    rc = Tss2_Tcti_Tabrmd_Init(NULL, &size, NULL);
     if (rc != TSS2_RC_SUCCESS) {
         printf("Failed to get size for TABRMD TCTI context: 0x%x", rc);
         return NULL;
@@ -186,7 +214,7 @@ TSS2_TCTI_CONTEXT *tcti_tabrmd_init (void)
         printf("Allocation for TABRMD TCTI context failed: %s", strerror (errno));
         return NULL;
     }
-    rc = tss2_tcti_tabrmd_init (tcti_ctx, &size);
+    rc = Tss2_Tcti_Tabrmd_Init (tcti_ctx, &size, NULL);
     if (rc != TSS2_RC_SUCCESS) {
         printf("Failed to initialize TABRMD TCTI context: 0x%x", rc);
         free(tcti_ctx);
@@ -218,7 +246,7 @@ TSS2_TCTI_CONTEXT *tcti_init_from_options(common_opts_t *options)
 
 static TSS2_SYS_CONTEXT *sapi_ctx_init (TSS2_TCTI_CONTEXT *tcti_ctx)
 {
-    TSS2_SYS_CONTEXT *sapi_ctx;
+    TSS2_SYS_CONTEXT *sysContext;
     TSS2_RC rc;
     size_t size;
     TSS2_ABI_VERSION abi_version = {
@@ -229,24 +257,24 @@ static TSS2_SYS_CONTEXT *sapi_ctx_init (TSS2_TCTI_CONTEXT *tcti_ctx)
     };
 
     size = Tss2_Sys_GetContextSize (0);
-    sapi_ctx = (TSS2_SYS_CONTEXT*)calloc (1, size);
-    if (sapi_ctx == NULL) {
+    sysContext = (TSS2_SYS_CONTEXT*)calloc (1, size);
+    if (sysContext == NULL) {
         fprintf (stderr,
                  "Failed to allocate 0x%zx bytes for the SAPI context\n",
                  size);
         return NULL;
     }
-    rc = Tss2_Sys_Initialize (sapi_ctx, size, tcti_ctx, &abi_version);
+    rc = Tss2_Sys_Initialize (sysContext, size, tcti_ctx, &abi_version);
     if (rc != TSS2_RC_SUCCESS) {
         fprintf (stderr, "Failed to initialize SAPI context: 0x%x\n", rc);
-        free (sapi_ctx);
+        free (sysContext);
         return NULL;
     }
-    return sapi_ctx;
+    return sysContext;
 }
 
-#define BUFFER_SIZE(type, field) (sizeof((((type *)NULL)->t.field)))
-#define TPM2B_TYPE_INIT(type, field) { .t = { .size = BUFFER_SIZE(type, field), }, }
+#define BUFFER_SIZE(type, field) (sizeof((((type *)NULL)->field)))
+#define TPM2B_TYPE_INIT(type, field) { .size = BUFFER_SIZE(type, field), }
 
 int hex2ByteStructure(const char *inStr, UINT16 *byteLength, BYTE *byteBuffer)
 {
@@ -276,45 +304,36 @@ int hex2ByteStructure(const char *inStr, UINT16 *byteLength, BYTE *byteBuffer)
         byteBuffer[i] = strtol(tmpStr, NULL, 16);
     }
     return 0;
-}
-
-int load_key(TSS2_SYS_CONTEXT *sapi_context,
-             TPMS_AUTH_COMMAND sessionData,
+} 
+int load_key(TSS2_SYS_CONTEXT *sysContext,
+             TSS2L_SYS_AUTH_COMMAND sessionData,
              TPMI_DH_OBJECT    parentHandle,
              TPM2B_PUBLIC     *inPublic,
              TPM2B_PRIVATE    *inPrivate)
 {
     UINT32 rval;
-    TPMS_AUTH_RESPONSE sessionDataOut;
-    TSS2_SYS_CMD_AUTHS sessionsData;
-    TSS2_SYS_RSP_AUTHS sessionsDataOut;
-    TPMS_AUTH_COMMAND *sessionDataArray[1];
-    TPMS_AUTH_RESPONSE *sessionDataOutArray[1];
-
+    TSS2L_SYS_AUTH_RESPONSE sessionsDataOut;
     TPM2B_NAME nameExt = TPM2B_TYPE_INIT(TPM2B_NAME, name);
 
-    sessionDataArray[0] = &sessionData;
-    sessionDataOutArray[0] = &sessionDataOut;
+TSS2L_SYS_AUTH_COMMAND sessionsData = { .count = 1, .auths = {{
+        .sessionHandle = TPM2_RS_PW,
+        .sessionAttributes = 0,
+        .nonce = {.size = 0},
+        .hmac = {.size = 0}}}};
 
-    sessionsDataOut.rspAuths = &sessionDataOutArray[0];
-    sessionsData.cmdAuths = &sessionDataArray[0];
-
-    sessionsDataOut.rspAuthsCount = 1;
-    sessionsData.cmdAuthsCount = 1;
-
-    if (sessionData.hmac.t.size > 0 && hexPasswd)
+    if (sessionsData.auths[0].hmac.size > 0 && hexPasswd)
     {
-        sessionData.hmac.t.size = sizeof(sessionData.hmac) - 2;
-        if (hex2ByteStructure((char *)sessionData.hmac.t.buffer,
-                              &sessionData.hmac.t.size,
-                              sessionData.hmac.t.buffer) != 0)
+        sessionsData.auths[0].hmac.size = sizeof(sessionsData.auths[0].hmac) - 2;
+        if (hex2ByteStructure((char *)sessionsData.auths[0].hmac.buffer,
+                              &sessionsData.auths[0].hmac.size,
+                              sessionsData.auths[0].hmac.buffer) != 0)
         {
             printf( "Failed to convert Hex format password for parent Passwd.\n");
             return -1;
         }
     }
 
-    rval = Tss2_Sys_Load (sapi_context,
+    rval = Tss2_Sys_Load (sysContext,
                           parentHandle,
                           &sessionsData,
                           inPrivate,
@@ -322,7 +341,7 @@ int load_key(TSS2_SYS_CONTEXT *sapi_context,
                           &handle2048rsa,
                           &nameExt,
                           &sessionsDataOut);
-    if(rval != TPM_RC_SUCCESS)
+    if(rval != TPM2_RC_SUCCESS)
     {
         printf("\nLoad Object Failed ! ErrorCode: 0x%0x\n\n",rval);
         return -1;
@@ -332,30 +351,23 @@ int load_key(TSS2_SYS_CONTEXT *sapi_context,
     return 0;
 }
 
-int read_public(TSS2_SYS_CONTEXT *sapi_context,
-                TPM_HANDLE handle,
+int read_public(TSS2_SYS_CONTEXT *sysContext,
+                TPM2_HANDLE handle,
                 SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info)
 {
-
-    TPMS_AUTH_RESPONSE session_out_data;
-    TSS2_SYS_RSP_AUTHS sessions_out_data;
-    TPMS_AUTH_RESPONSE *session_out_data_array[1];
+    TSS2L_SYS_AUTH_RESPONSE sessionsDataOut;
 
     TPM2B_PUBLIC public = {
-            { 0, }
+             0
     };
 
     TPM2B_NAME name = TPM2B_TYPE_INIT(TPM2B_NAME, name);
 
     TPM2B_NAME qualified_name = TPM2B_TYPE_INIT(TPM2B_NAME, name);
 
-    session_out_data_array[0] = &session_out_data;
-    sessions_out_data.rspAuths = &session_out_data_array[0];
-    sessions_out_data.rspAuthsCount = ARRAY_LEN(session_out_data_array);
-
-    TPM_RC rval = Tss2_Sys_ReadPublic(sapi_context, handle, 0,
-            &public, &name, &qualified_name, &sessions_out_data);
-    if (rval != TPM_RC_SUCCESS) {
+    TPM2_RC rval = Tss2_Sys_ReadPublic(sysContext, handle, 0,
+            &public, &name, &qualified_name, &sessionsDataOut);
+    if (rval != TPM2_RC_SUCCESS) {
         printf("TPM2_ReadPublic error: rval = 0x%0x", rval);
         return false;
     }
@@ -363,33 +375,33 @@ int read_public(TSS2_SYS_CONTEXT *sapi_context,
     printf("\nTPM2_ReadPublic OutPut: \n");
     printf("name: \n");
     UINT16 i;
-    for (i = 0; i < name.t.size; i++)
-        printf("%02x ", name.t.name[i]);
+    for (i = 0; i < name.size; i++)
+        printf("%02x ", name.name[i]);
     printf("\n");
 
     printf("qualified_name: \n");
-    for (i = 0; i < qualified_name.t.size; i++)
-        printf("%02x ", qualified_name.t.name[i]);
+    for (i = 0; i < qualified_name.size; i++)
+        printf("%02x ", qualified_name.name[i]);
     printf("\n");
 
-    printf("public.t.publicArea.parameters.rsaDetail.keyBits = %d \n", public.t.publicArea.parameters.rsaDetail.keyBits);
-    printf("public.t.publicArea.parameters.rsaDetail.exponent = %d \n", public.t.publicArea.parameters.rsaDetail.exponent);
+    printf("public.publicArea.parameters.rsaDetail.keyBits = %d \n", public.publicArea.parameters.rsaDetail.keyBits);
+    printf("public.publicArea.parameters.rsaDetail.exponent = %d \n", public.publicArea.parameters.rsaDetail.exponent);
 
-    importkey_info->modulus_size = public.t.publicArea.unique.rsa.t.size;
+    importkey_info->modulus_size = public.publicArea.unique.rsa.size;
     printf("importkey_info->modulus_size = %ld \n", importkey_info->modulus_size);
     importkey_info->modulus = (unsigned char *) malloc(importkey_info->modulus_size);
     if (importkey_info->modulus != NULL) {
-        memcpy(importkey_info->modulus, &public.t.publicArea.unique.rsa.t.buffer, importkey_info->modulus_size);
+        memcpy(importkey_info->modulus, &public.publicArea.unique.rsa.buffer, importkey_info->modulus_size);
     }
 
-    importkey_info->exponent_size = sizeof(public.t.publicArea.parameters.rsaDetail.exponent);
+    importkey_info->exponent_size = sizeof(public.publicArea.parameters.rsaDetail.exponent);
     printf("importkey_info->exponent_size = %ld \n", importkey_info->exponent_size);
-    importkey_info->exponent = (unsigned char *) malloc(importkey_info->exponent_size);
+    importkey_info->exponent = (unsigned int *) malloc(importkey_info->exponent_size);
     if (importkey_info->exponent != NULL) {
-        memcpy(importkey_info->exponent, &public.t.publicArea.parameters.rsaDetail.exponent, importkey_info->exponent_size);
+        memcpy(importkey_info->exponent, &public.publicArea.parameters.rsaDetail.exponent, importkey_info->exponent_size);
     }
 
-    //*importkey_info->exponent = public.t.publicArea.parameters.rsaDetail.exponent;
+    //*importkey_info->exponent = public.publicArea.parameters.rsaDetail.exponent;
 
     return 0;
 }
@@ -399,17 +411,17 @@ Reads the PRK_PASSWORD Environment variable
 and populates that information into the
 provided sessionData variable
 */
-int readPassword(TPMS_AUTH_COMMAND *sessionData)
+int readPassword(TSS2L_SYS_AUTH_COMMAND *sessionData)
 {
     char *prk_passwd;
 
     prk_passwd = getenv("TPM_PRK_PASSWORD");
     if (prk_passwd != NULL) {
-        sessionData->hmac.t.size = strlen(prk_passwd);
-        if (sessionData->hmac.t.size > sizeof(sessionData->hmac.t.buffer)) {
+        sessionData->auths[0].hmac.size = strlen(prk_passwd);
+        if (sessionData->auths[0].hmac.size > sizeof(sessionData->auths[0].hmac.buffer)) {
             return -1;
         }
-        memcpy(sessionData->hmac.t.buffer, prk_passwd, sessionData->hmac.t.size);
+        memcpy(sessionData->auths[0].hmac.buffer, prk_passwd, sessionData->auths[0].hmac.size);
         return 0;
     }
     return 0;
@@ -418,14 +430,14 @@ int readPassword(TPMS_AUTH_COMMAND *sessionData)
 TPMS_CONTEXT loaded_key_context;
 
 int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
-                     void **keyHandle, TSS2_SYS_CONTEXT *sapi_context,
+                     void **keyHandle, TSS2_SYS_CONTEXT *sysContext,
                      SSHSM_HW_PLUGIN_IMPORT_PUBLIC_KEY_INFO_t *importkey_info)
 {
 
     TPMI_DH_OBJECT parentHandle;
     TPM2B_PUBLIC  inPublic;
     TPM2B_PRIVATE inPrivate;
-    TPMS_AUTH_COMMAND sessionData;
+    TSS2L_SYS_AUTH_COMMAND sessionData;
     UINT16 size;
     int returnVal = 0;
 
@@ -434,11 +446,11 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
         sessionAttributes is a union and the following assignment
         is based on the method used in other tpm2 tools.
     */
-    *((UINT8 *)((void *)&sessionData.sessionAttributes)) = 0;
-    sessionData.sessionHandle = TPM_RS_PW;
-    sessionData.nonce.t.size = 0;
-    sessionData.hmac.t.size = 0;
-
+     TSS2L_SYS_AUTH_COMMAND sessionsData = { .count = 1, .auths = {{
+        .sessionHandle = TPM2_RS_PW,
+        .sessionAttributes = 0,
+        .nonce = {.size = 0},
+        .hmac = {.size = 0}}}};
     memset(&inPublic,0,sizeof(TPM2B_PUBLIC));
     memset(&inPrivate,0,sizeof(TPM2B_PRIVATE));
 
@@ -475,17 +487,17 @@ int load_key_execute(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_info,
         return -1;
     }
 
-    returnVal = load_key (sapi_context,
+    returnVal = load_key (sysContext,
                           sessionData,
                           parentHandle,
                           &inPublic,
                           &inPrivate);
-    returnVal = read_public(sapi_context,
+    returnVal = read_public(sysContext,
                             handle2048rsa,
                             importkey_info);
 
-    TPM_RC rval = Tss2_Sys_ContextSave(sapi_context, handle2048rsa, &loaded_key_context);
-    if (rval != TPM_RC_SUCCESS) {
+    TPM2_RC rval = Tss2_Sys_ContextSave(sysContext, handle2048rsa, &loaded_key_context);
+    if (rval != TPM2_RC_SUCCESS) {
         printf("Tss2_Sys_ContextSave: Saving handle 0x%x context failed. TPM Error:0x%x", handle2048rsa, rval);
         return -1;
     }
@@ -504,20 +516,20 @@ int tpm2_plugin_load_key(SSHSM_HW_PLUGIN_ACTIVATE_LOAD_IN_INFO_t *loadkey_in_inf
     if (tcti_ctx == NULL)
         return -1;
 
-    TSS2_SYS_CONTEXT *sapi_context = NULL;
+    TSS2_SYS_CONTEXT *sysContext = NULL;
     if (tcti_ctx) {
-        sapi_context = sapi_ctx_init(tcti_ctx);
-        if (!sapi_context) {
+        sysContext = sapi_ctx_init(tcti_ctx);
+        if (!sysContext) {
             free(tcti_ctx);
             return -1;
         }
     }
 
-    ret = load_key_execute(loadkey_in_info, keyHandle, sapi_context, importkey_info);
+    ret = load_key_execute(loadkey_in_info, keyHandle, sysContext, importkey_info);
     if (ret !=0)
         printf("Load key API failed in TPM plugin ! \n");
 
-    sapi_teardown_full(sapi_context);
+    sapi_teardown_full(sysContext);
 
     printf("Load key API successful in TPM plugin ! \n");
     return 0;
@@ -533,7 +545,7 @@ struct tpm_sign_ctx {
     char outFilePath[PATH_MAX];
     BYTE *msg;
     UINT16 length;
-    TSS2_SYS_CONTEXT *sapi_context;
+    TSS2_SYS_CONTEXT *sysContext;
 };
 
 //create a table to consolidate all parts of data from multiple SignUpdate from sessions
@@ -595,83 +607,87 @@ int tpm2_plugin_rsa_sign_cleanup(
 }
 
 
-UINT32 tpm_hash(TSS2_SYS_CONTEXT *sapi_context, TPMI_ALG_HASH hashAlg,
+UINT32 tpm_hash(TSS2_SYS_CONTEXT *sysContext, TPMI_ALG_HASH hashAlg,
         UINT16 size, BYTE *data, TPM2B_DIGEST *result) {
     TPM2B_MAX_BUFFER dataSizedBuffer;
 
-    dataSizedBuffer.t.size = size;
-    memcpy(dataSizedBuffer.t.buffer, data, size);
-    return Tss2_Sys_Hash(sapi_context, 0, &dataSizedBuffer, hashAlg,
-            TPM_RH_NULL, result, 0, 0);
+    dataSizedBuffer.size = size;
+    memcpy(dataSizedBuffer.buffer, data, size);
+    return Tss2_Sys_Hash(sysContext, 0, &dataSizedBuffer, hashAlg,
+            TPM2_RH_NULL, result, 0, 0);
 }
 
-static TPM_RC hash_sequence_ex(TSS2_SYS_CONTEXT *sapi_context,
+static TPM2_RC hash_sequence_ex(TSS2_SYS_CONTEXT *sysContext,
 
     TPMI_ALG_HASH hashAlg, UINT32 numBuffers, TPM2B_MAX_BUFFER *bufferList,
     TPM2B_DIGEST *result) {
-    TPM_RC rval;
+    TPM2_RC rval;
     TPM2B_AUTH nullAuth;
     TPMI_DH_OBJECT sequenceHandle;
-    TPM2B emptyBuffer;
+    TPM2B_MAX_BUFFER emptyBuffer;
     TPMT_TK_HASHCHECK validation;
 
     TPMS_AUTH_COMMAND cmdAuth;
     TPMS_AUTH_COMMAND *cmdSessionArray[1] = { &cmdAuth };
-    TSS2_SYS_CMD_AUTHS cmdAuthArray = { 1, &cmdSessionArray[0] };
+    TSS2L_SYS_AUTH_COMMAND cmdAuthArray = { .count = 1, .auths = {{
+        .sessionHandle = TPM2_RS_PW,
+        .sessionAttributes = 0,
+        .nonce = {.size = 0},
+        .hmac = {.size = 0}}}};
 
-    nullAuth.t.size = 0;
+    nullAuth.size = 0;
     emptyBuffer.size = 0;
 
     // Set result size to 0, in case any errors occur
-    result->b.size = 0;
+    result->size = 0;
 
     // Init input sessions struct
-    cmdAuth.sessionHandle = TPM_RS_PW;
-    cmdAuth.nonce.t.size = 0;
+    cmdAuth.sessionHandle = TPM2_RS_PW;
+    cmdAuth.nonce.size = 0;
     *((UINT8 *) ((void *) &cmdAuth.sessionAttributes)) = 0;
-    cmdAuth.hmac.t.size = 0;
+    cmdAuth.hmac.size = 0;
 
-    rval = Tss2_Sys_HashSequenceStart(sapi_context, 0, &nullAuth, hashAlg,
+    rval = Tss2_Sys_HashSequenceStart(sysContext, 0, &nullAuth, hashAlg,
             &sequenceHandle, 0);
-    if (rval != TPM_RC_SUCCESS) {
+    if (rval != TPM2_RC_SUCCESS) {
         return rval;
     }
 
     unsigned i;
     for (i = 0; i < numBuffers; i++) {
-        rval = Tss2_Sys_SequenceUpdate(sapi_context, sequenceHandle,
+        rval = Tss2_Sys_SequenceUpdate(sysContext, sequenceHandle,
                 &cmdAuthArray, &bufferList[i], 0);
 
-        if (rval != TPM_RC_SUCCESS) {
+        if (rval != TPM2_RC_SUCCESS) {
             return rval;
         }
     }
 
-    rval = Tss2_Sys_SequenceComplete(sapi_context, sequenceHandle,
+    rval = Tss2_Sys_SequenceComplete(sysContext, sequenceHandle,
             &cmdAuthArray, (TPM2B_MAX_BUFFER *) &emptyBuffer,
-            TPM_RH_PLATFORM, result, &validation, 0);
+            TPM2_RH_PLATFORM, result, &validation, 0);
 
-    if (rval != TPM_RC_SUCCESS) {
+    if (rval != TPM2_RC_SUCCESS) {
         return rval;
     }
 
     return rval;
 }
 
-int tpm_hash_compute_data(TSS2_SYS_CONTEXT *sapi_context, BYTE *buffer,
+int tpm_hash_compute_data(TSS2_SYS_CONTEXT *sysContext, BYTE *buffer,
         UINT16 length, TPMI_ALG_HASH halg, TPM2B_DIGEST *result) {
 
-    if (length <= MAX_DIGEST_BUFFER) {
-        if (tpm_hash(sapi_context, halg, length, buffer,
-                result) == TPM_RC_SUCCESS){
-            printf("Single hash result size: %d\n", result->t.size);
+    if (length <= TPM2_MAX_DIGEST_BUFFER) {
+        if (tpm_hash(sysContext, halg, length, buffer,
+                result) == TPM2_RC_SUCCESS){
+            printf("Single hash result size: %d\n", result->size);
             return 0;
         }
         else
             return -1;
     }
 
-    UINT8 numBuffers = (length - 1) / MAX_DIGEST_BUFFER + 1;
+    UINT8 numBuffers = (length - 1) / TPM2_MAX_DIGEST_BUFFER + 1;
 
     TPM2B_MAX_BUFFER *bufferList = (TPM2B_MAX_BUFFER *) calloc(numBuffers,
             sizeof(TPM2B_MAX_BUFFER));
@@ -680,76 +696,67 @@ int tpm_hash_compute_data(TSS2_SYS_CONTEXT *sapi_context, BYTE *buffer,
 
     UINT32 i;
     for (i = 0; i < (UINT32)(numBuffers - 1); i++) {
-        bufferList[i].t.size = MAX_DIGEST_BUFFER;
-        memcpy(bufferList[i].t.buffer, buffer + i * MAX_DIGEST_BUFFER,
-                MAX_DIGEST_BUFFER);
+        bufferList[i].size = TPM2_MAX_DIGEST_BUFFER;
+        memcpy(bufferList[i].buffer, buffer + i * TPM2_MAX_DIGEST_BUFFER,
+                TPM2_MAX_DIGEST_BUFFER);
     }
-    bufferList[i].t.size = length - i * MAX_DIGEST_BUFFER;
-    memcpy(bufferList[i].t.buffer, buffer + i * MAX_DIGEST_BUFFER,
-            bufferList[i].t.size);
+    bufferList[i].size = length - i * TPM2_MAX_DIGEST_BUFFER;
+    memcpy(bufferList[i].buffer, buffer + i * TPM2_MAX_DIGEST_BUFFER,
+            bufferList[i].size);
 
-    TPM_RC rval = hash_sequence_ex(sapi_context, halg, numBuffers, bufferList, result);
+    TPM2_RC rval = hash_sequence_ex(sysContext, halg, numBuffers, bufferList, result);
     free(bufferList);
-    printf("Sequence hash result size: %d\n", result->t.size);
-    return rval == TPM_RC_SUCCESS ? 0 : -3;
+    printf("Sequence hash result size: %d\n", result->size);
+    return rval == TPM2_RC_SUCCESS ? 0 : -3;
 }
 
 
-static bool get_key_type(TSS2_SYS_CONTEXT *sapi_context, TPMI_DH_OBJECT objectHandle,
+static bool get_key_type(TSS2_SYS_CONTEXT *sysContext, TPMI_DH_OBJECT objectHandle,
         TPMI_ALG_PUBLIC *type) {
 
-    TPMS_AUTH_RESPONSE session_data_out;
-
-    TPMS_AUTH_RESPONSE *session_data_out_array[1] = {
-            &session_data_out
-    };
-
-    TSS2_SYS_RSP_AUTHS sessions_data_out = {
-            1,
-            &session_data_out_array[0]
-    };
+    TSS2L_SYS_AUTH_RESPONSE sessions_data_out;
 
     TPM2B_PUBLIC out_public = {
-            { 0, }
+            0
     };
 
     TPM2B_NAME name = TPM2B_TYPE_INIT(TPM2B_NAME, name);
 
     TPM2B_NAME qaulified_name = TPM2B_TYPE_INIT(TPM2B_NAME, name);
 
-    TPM_RC rval = Tss2_Sys_ReadPublic(sapi_context, objectHandle, 0, &out_public, &name,
+    TPM2_RC rval = Tss2_Sys_ReadPublic(sysContext, objectHandle, 0, &out_public, &name,
             &qaulified_name, &sessions_data_out);
-    if (rval != TPM_RC_SUCCESS) {
+    if (rval != TPM2_RC_SUCCESS) {
         printf("Sys_ReadPublic failed, error code: 0x%x", rval);
         return false;
     }
-    *type = out_public.t.publicArea.type;
+    *type = out_public.publicArea.type;
     return true;
 }
 
-static bool set_scheme(TSS2_SYS_CONTEXT *sapi_context, TPMI_DH_OBJECT keyHandle,
+static bool set_scheme(TSS2_SYS_CONTEXT *sysContext, TPMI_DH_OBJECT keyHandle,
         TPMI_ALG_HASH halg, TPMT_SIG_SCHEME *inScheme) {
 
-    TPM_ALG_ID type;
-    bool result = get_key_type(sapi_context, keyHandle, &type);
+    TPM2_ALG_ID type;
+    bool result = get_key_type(sysContext, keyHandle, &type);
     if (!result) {
         return false;
     }
 
     switch (type) {
-    case TPM_ALG_RSA :
-        inScheme->scheme = TPM_ALG_RSASSA;
+    case TPM2_ALG_RSA :
+        inScheme->scheme = TPM2_ALG_RSASSA;
         inScheme->details.rsassa.hashAlg = halg;
         break;
-    case TPM_ALG_KEYEDHASH :
-        inScheme->scheme = TPM_ALG_HMAC;
+    case TPM2_ALG_KEYEDHASH :
+        inScheme->scheme = TPM2_ALG_HMAC;
         inScheme->details.hmac.hashAlg = halg;
         break;
-    case TPM_ALG_ECC :
-        inScheme->scheme = TPM_ALG_ECDSA;
+    case TPM2_ALG_ECC :
+        inScheme->scheme = TPM2_ALG_ECDSA;
         inScheme->details.ecdsa.hashAlg = halg;
         break;
-    case TPM_ALG_SYMCIPHER :
+    case TPM2_ALG_SYMCIPHER :
     default:
         printf("Unknown key type, got: 0x%x", type);
         return false;
@@ -761,42 +768,36 @@ static bool sign_and_save(tpm_sign_ctx *ctx, TPMT_SIGNATURE *sig) {
     TPM2B_DIGEST digest = TPM2B_TYPE_INIT(TPM2B_DIGEST, buffer);
 
     TPMT_SIG_SCHEME in_scheme;
-    TSS2_SYS_CMD_AUTHS sessions_data;
-    TPMS_AUTH_RESPONSE session_data_out;
-    TSS2_SYS_RSP_AUTHS sessions_data_out;
-    TPMS_AUTH_COMMAND *session_data_array[1];
-    TPMS_AUTH_RESPONSE *session_data_out_array[1];
+    TSS2L_SYS_AUTH_RESPONSE sessions_data_out;
 
-    session_data_array[0] = &ctx->sessionData;
-    sessions_data.cmdAuths = &session_data_array[0];
-    session_data_out_array[0] = &session_data_out;
-    sessions_data_out.rspAuths = &session_data_out_array[0];
-    sessions_data_out.rspAuthsCount = 1;
-    sessions_data.cmdAuthsCount = 1;
+    TSS2L_SYS_AUTH_COMMAND sessions_data = { .count = 1, .auths = {{
+	    .sessionHandle = TPM2_RS_PW,
+		    .sessionAttributes = 0,
+		    .nonce = {.size = 0},
+		    .hmac = {.size = 0}}}};
 
-    int rc = tpm_hash_compute_data(ctx->sapi_context, ctx->msg, ctx->length, ctx->halg, &digest);
+    int rc = tpm_hash_compute_data(ctx->sysContext, ctx->msg, ctx->length, ctx->halg, &digest);
     if (rc) {
         printf("Compute message hash failed!");
         return false;
     }
 
-    printf("Compute message hash digest size : %d \n", digest.t.size);
+    printf("Compute message hash digest size : %d \n", digest.size);
 
-    bool result = set_scheme(ctx->sapi_context, ctx->keyHandle, ctx->halg, &in_scheme);
+    bool result = set_scheme(ctx->sysContext, ctx->keyHandle, ctx->halg, &in_scheme);
     if (!result) {
         return false;
     }
 
-    TPM_RC rval = Tss2_Sys_Sign(ctx->sapi_context, ctx->keyHandle,
+    TPM2_RC rval = Tss2_Sys_Sign(ctx->sysContext, ctx->keyHandle,
                                 &sessions_data, &digest, &in_scheme,
                                 &ctx->validation, sig,
                                 &sessions_data_out);
 
-    if (rval != TPM_RC_SUCCESS) {
+    if (rval != TPM2_RC_SUCCESS) {
         printf("Sys_Sign failed, error code: 0x%x", rval);
         return false;
     }
-    
     return true;
 }
 
@@ -809,7 +810,7 @@ int tpm2_plugin_rsa_sign(
         unsigned char *sig,
         int *sig_len)
 {
-    TPM_RC rval;
+    TPM2_RC rval;
     common_opts_t opts = COMMON_OPTS_INITIALIZER;
     TPMT_SIGNATURE signature;
     TSS2_TCTI_CONTEXT *tcti_ctx;
@@ -817,10 +818,10 @@ int tpm2_plugin_rsa_sign(
     if (tcti_ctx == NULL)
         return -1;
 
-    TSS2_SYS_CONTEXT *sapi_context = NULL;
+    TSS2_SYS_CONTEXT *sysContext = NULL;
     if (tcti_ctx) {
-       sapi_context = sapi_ctx_init(tcti_ctx);
-       if (!sapi_context) {
+       sysContext = sapi_ctx_init(tcti_ctx);
+       if (!sysContext) {
            free(tcti_ctx);
            return -1;
        }
@@ -832,21 +833,21 @@ int tpm2_plugin_rsa_sign(
             .halg = 0,
             .keyHandle = 0,
             .validation = { 0 },
-            .sapi_context = sapi_context
+            .sysContext = sysContext
     };
 
     printf("rsa_sign API mechanism is %lx \n", mechanism);
-    ctx.sessionData.sessionHandle = TPM_RS_PW;
-    ctx.validation.tag = TPM_ST_HASHCHECK;
-    ctx.validation.hierarchy = TPM_RH_NULL;
+    ctx.sessionData.sessionHandle = TPM2_RS_PW;
+    ctx.validation.tag = TPM2_ST_HASHCHECK;
+    ctx.validation.hierarchy = TPM2_RH_NULL;
     if (mechanism == 7)
-        ctx.halg = TPM_ALG_SHA256;
+        ctx.halg = TPM2_ALG_SHA256;
     else
         printf("mechanism not supported! \n");
     ctx.keyHandle = *(TPMI_DH_OBJECT *)keyHandle;
 
-    rval = Tss2_Sys_ContextLoad(ctx.sapi_context, &loaded_key_context, &ctx.keyHandle);
-    if (rval != TPM_RC_SUCCESS) {
+    rval = Tss2_Sys_ContextLoad(ctx.sysContext, &loaded_key_context, &ctx.keyHandle);
+    if (rval != TPM2_RC_SUCCESS) {
         printf("ContextLoad Error in RSA Sign API. TPM Error:0x%x", rval);
         goto out;
     }
@@ -858,14 +859,14 @@ int tpm2_plugin_rsa_sign(
         goto out;
     }
 
-    *sig_len = (int)signature.signature.rsassa.sig.t.size;
+    *sig_len = (int)signature.signature.rsassa.sig.size;
     printf("signature length:  %d \n", *sig_len);
-    memcpy(sig, signature.signature.rsassa.sig.t.buffer, *sig_len);
-    printf("signature buffer size:  %ld \n", sizeof(signature.signature.rsassa.sig.t.buffer));
+    memcpy(sig, signature.signature.rsassa.sig.buffer, *sig_len);
+    printf("signature buffer size:  %ld \n", sizeof(signature.signature.rsassa.sig.buffer));
     printf("RSA sign API successful in TPM plugin ! \n");
 
 out:
-    sapi_teardown_full(sapi_context);
+    sapi_teardown_full(sysContext);
 
     return 0;
 
