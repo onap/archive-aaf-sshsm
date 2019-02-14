@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "tss2_common.h": "c",
+        "tss2_tcti_device.h": "c",
+        "tcti_socket.h": "c",
+        "tpm2_plugin_api.h": "c",
+        "unistd.h": "c"
+    }
+}
