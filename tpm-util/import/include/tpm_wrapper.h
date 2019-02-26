@@ -25,17 +25,22 @@
 #include <ctype.h>
 #include <getopt.h>
 
-#include <sapi/tpm20.h>
-
-#include <tcti/tcti-tabrmd.h>
+#include <tss2/tss2_sys.h>
+#include <tss2/tss2-tcti-tabrmd.h>
+#include <tss2/tss2_common.h>
+#include <tss2/tss2_esys.h>
+#include <tss2/tss2_mu.h>
+#include <tss2/tss2_tcti.h>
+#include <tss2/tss2_tpm2_types.h>
+#include <tss2/tpm2b.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define INIT_SIMPLE_TPM2B_SIZE( type ) (type).t.size = sizeof( type ) - 2;
+#define INIT_SIMPLE_TPM2B_SIZE( type ) (type).size = sizeof( type ) - 2;
 
-TSS2_TCTI_CONTEXT* tpm_tcti_tabrmd_init (void);
+TSS2_TCTI_CONTEXT* tpm2_tcti_tabrmd_init (void);
 
 TSS2_SYS_CONTEXT* sys_ctx_init (TSS2_TCTI_CONTEXT *tcti_ctx);
 
@@ -46,7 +51,7 @@ void TeardownSysContext( TSS2_SYS_CONTEXT **sysContext );
 TSS2_RC swKeyTpmImport(
       /* IN */
       TSS2_SYS_CONTEXT *sysContext,
-      TPM_HANDLE parentKeyHandle,
+      TPM2_HANDLE parentKeyHandle,
       TPM2B_DATA* encryptionKey, TPM2B_PUBLIC* swKeyPublic, TPM2B_PRIVATE* swKeyPrivate,  TPM2B_ENCRYPTED_SECRET* encSymSeed,
       unsigned char* tpm_pwd, int tpm_pwd_len,
       /* OUT */
