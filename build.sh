@@ -88,3 +88,8 @@ cd TPM2-Plugin
 sudo make install
 cd ..
 sudo ldconfig
+
+echo "Build Duplicate Utility tool"
+cd tpm-util/duplicate
+make -f sampleMakefile
+
