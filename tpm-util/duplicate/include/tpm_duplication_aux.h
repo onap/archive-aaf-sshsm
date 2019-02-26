@@ -18,30 +18,29 @@
 #ifndef     TPM_DUP_AUX
 #define     TPM_DUP_AUX
 
-#include <sapi/tpm20.h>
 #include <openssl/rand.h>
 #include <openssl/hmac.h>
 #include "crypto_aux.h"
 
-#define BYTES_TO_BITS(val) (val * 8) 
+#define BYTES_TO_BITS(val) (val * 8)
 
-#define INIT_SIMPLE_TPM2B_SIZE( type ) (type).t.size = sizeof( type ) - 2;
+#define INIT_SIMPLE_TPM2B_SIZE( type ) (type).size = sizeof( type ) - 2;
 
-TPM2B_NAME * GetName(TPMI_ALG_HASH hashAlg, TPM2B_PUBLIC *obj, TPM2B_NAME *outName);
+TPM2B_NAME * GetName(TPMI_ALG_HASH hashAlg, TPM2B_PUBLIC *obj);
 
 TSS2_RC swKeyDuplicate(
-      /* IN */
-      RSA* rsaKey, TPM2B_PUBLIC* parentKeyPublicPortion, UINT8* policyDigest, int digestSize,
+	  RSA* rsaKey, TPM2B_PUBLIC* parentKeyPublicPortion, UINT8* policyDigest, int digestSize,
       /* OUT */
-      TPM2B_DATA* encryptionKey, TPM2B_PUBLIC *swKeyPublic, TPM2B_PRIVATE *swKeyPrivate,  TPM2B_ENCRYPTED_SECRET *encSymSeed);
+      TPM2B* encryptionKey, TPM2B_PUBLIC *swKeyPublic, TPM2B_PRIVATE *swKeyPrivate,  TPM2B_ENCRYPTED_SECRET *encSymSeed);
+
 
 void CreateDuplicationBlob(
 		//IN
 		TPM2B_PUBLIC_KEY_RSA *protector,
 		TPMT_PUBLIC * publicPortion,
 		TPMT_SENSITIVE *sens,
-		TPM2B_ENCRYPTED_SECRET *plainSymSeed, TPMI_YES_NO generateInSymSeed,
-		TPM2B_DATA *encryptionKey, TPMI_YES_NO generateEncryptionKey,
+		TPM2B *plainSymSeed, TPMI_YES_NO generateInSymSeed,
+		TPM2B encryptionKey, TPMI_YES_NO generateEncryptionKey,
 
 		//OUT
 		TPM2B_PRIVATE *outDuplicate,
@@ -53,16 +52,17 @@ void CreateSwDataObject(
 		RSA * rsakey,
 		BYTE * dataToSeal, UINT16 dataSize,
 		BYTE * policyDigest, UINT16 policyDigestSize,
-		TPMT_PUBLIC * outPublic, 
+		TPMT_PUBLIC * outPublic,
         TPMT_SENSITIVE *outSens);
 
 void CreateDuplicationBlob2B(
-		//IN
+	//IN
 		TPM2B_PUBLIC_KEY_RSA *protector,
-		TPM2B_PUBLIC * publicPortion,
-		TPM2B_SENSITIVE *sens,
-		TPM2B_ENCRYPTED_SECRET *plainSymSeed, TPMI_YES_NO generateInSymSeed,
-		TPM2B_DATA *encryptionKey, TPMI_YES_NO generateEncryptionKey,
+		TPM2B_PUBLIC * public2B,
+		TPM2B_SENSITIVE *sens2B,
+		TPM2B *plainSymSeed, TPMI_YES_NO generateInSymSeed,
+		TPM2B encryptionKey, TPMI_YES_NO generateEncryptionKey,
+
 		//OUT
 		TPM2B_PRIVATE *outDuplicate,
 		TPM2B_ENCRYPTED_SECRET *encSymSeed);
@@ -73,7 +73,7 @@ void CreateSwDataObject2B(
 		RSA * rsaKey,
 		BYTE * policyDigest, UINT16 policyDigestSize,
 		//OUT
-		TPM2B_PUBLIC * outPublic, 
+		TPM2B_PUBLIC * outPublic,
         TPM2B_SENSITIVE *outSens);
 
 
