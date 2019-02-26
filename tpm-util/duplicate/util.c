@@ -17,20 +17,20 @@
 
 #include "util.h"
 
-TPM_RC ConcatSizedByteBuffer( TPM2B_MAX_BUFFER *result, TPM2B *addBuffer )
+TPM2_RC ConcatSizedByteBuffer( TPM2B_MAX_BUFFER *result, TPM2B *addBuffer )
 {
     int i;
 
-    if( ( result->t.size + addBuffer->size ) > MAX_DIGEST_BUFFER )
+    if( ( result->size + addBuffer->size ) > TPM2_MAX_DIGEST_BUFFER )
         return TSS2_SYS_RC_BAD_VALUE;
     else
     {
         for( i = 0; i < addBuffer->size; i++ )
-            result->t.buffer[i + result->t.size] = addBuffer->buffer[i];
+            result->buffer[i + result->size] = addBuffer->buffer[i];
 
-        result->t.size += addBuffer->size;
+        result->size += addBuffer->size;
 
-        return TPM_RC_SUCCESS;
+        return TPM2_RC_SUCCESS;
     }
 }
 
@@ -93,5 +93,3 @@ int loadDataFromFile(const char *fileName, UINT8 *buf, UINT16 *size)
     fclose(f);
     return 0;
 }
-
-
