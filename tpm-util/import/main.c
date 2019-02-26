@@ -23,8 +23,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <sapi/tpm20.h>
-
 #include "tpm_wrapper.h"
 #include "util.h"
 
@@ -45,7 +43,7 @@ void PrintHelp()
 
 int main(int argc, char* argv[])
 {
-    TPM_RC rval = 0;
+    TPM2_RC rval = 0;
     int count=0;
     TSS2_TCTI_CONTEXT *tcti_ctx = 0;
     TSS2_SYS_CONTEXT  *sysContext = 0;
@@ -72,7 +70,7 @@ int main(int argc, char* argv[])
     int priv_flag = 0;
     unsigned short file_size = 0;
 
-    TPM_HANDLE primaryKeyHandle = 0;
+    TPM2_HANDLE primaryKeyHandle = 0;
     int H_flag = 0;
 
     TPM2B_PUBLIC parentKeyPublicPortion;
@@ -207,7 +205,7 @@ int main(int argc, char* argv[])
 
         if ( rval == 0 ) {
             /* Initialize TCTI and sapi context */
-            tcti_ctx = tpm_tcti_tabrmd_init();
+            tcti_ctx = tpm2_tcti_tabrmd_init();
             if(tcti_ctx == NULL) {
                 printf("Creation of TCTI context with TABRMD failed ! \n");
                 goto end;
