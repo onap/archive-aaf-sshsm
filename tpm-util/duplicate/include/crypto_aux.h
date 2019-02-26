@@ -19,7 +19,16 @@
 #define     CRYPTO_AUX
 
 #include <string.h>
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
+#include <tss2/tss2-tcti-tabrmd.h>
+#include <tss2/tss2_common.h>
+#include <tss2/tss2_esys.h>
+#include <tss2/tss2_mu.h>
+#include <tss2/tss2_tcti.h>
+#include <tss2/tss2_tcti_device.h>
+#include <tss2/tss2_tcti_mssim.h>
+#include <tss2/tss2_tpm2_types.h>
+#include <tss2/tpm2b.h>
 #include <openssl/rsa.h>
 #include <openssl/aes.h>
 #include <openssl/rsa.h>
@@ -49,7 +58,7 @@ void AES_128_CFB_enc_dec(
 
 
 
-TPM_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
+TPM2_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
     TPM2B *contextU, TPM2B *contextV, UINT16 bits, TPM2B_MAX_BUFFER  *resultKey );
 
 UINT32 OpenSslHmac( TPMI_ALG_HASH hashAlg, TPM2B *key,TPM2B **bufferList, TPM2B_DIGEST *result );
