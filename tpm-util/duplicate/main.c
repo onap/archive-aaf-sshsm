@@ -19,17 +19,15 @@
 //
 
 #include <stdio.h>
-#include <stdlib.h>   
+#include <stdlib.h>
 #include <string.h>
-#include <unistd.h>  
-
+#include <unistd.h>
 #include <openssl/pem.h>
-
 #include <pthread.h>
-
-#include <sapi/tpm20.h>
-#include <tcti/tcti_socket.h>
-
+#include <tss2/tss2-tcti-tabrmd.h>
+#include <tss2/tss2_common.h>
+#include <tss2/tss2_tpm2_types.h>
+#include <tss2/tpm2b.h>
 #include "tpm_duplication_aux.h"
 #include "util.h"
 
@@ -40,21 +38,21 @@ char version[] = "0.1";
 void PrintHelp()
 {
     printf(
-            "OSSL key to tpm import tool, Version %s\nUsage:" 
-            "./ossl_tpm_duplicate [-pemfile InputPemFile] [-pempwd inputPemPwd (optional)] [-parentPub inputParentPubFile]" 
+            "OSSL key to tpm import tool, Version %s\nUsage:"
+            "./ossl_tpm_duplicate [-pemfile InputPemFile] [-pempwd inputPemPwd (optional)] [-parentPub inputParentPubFile]"
             "[-dupPub out_dupPubFile] [-dupPriv out_dupPrivFile] [-dupSymSeed out_dupSymSeedFile] [-dupEncKey out_dupEncKeyFile] \n" 
 			"\n"
 			 , version);
 }
 
-static TPM_RC convert_PEM_To_EVP(EVP_PKEY **evpPkey,                /* freed by caller */
+static TPM2_RC convert_PEM_To_EVP(EVP_PKEY **evpPkey,                /* freed by caller */
                               const char *pem_Filename,
                               const char *pem_pwd)
 {
-    TPM_RC      rc = 0;
+    TPM2_RC      rc = 0;
     FILE        *fp_pemfile = NULL;
 
-    if (rc == 0) 
+    if (rc == 0)
     {
         fp_pemfile = fopen(pem_Filename, "rb");  /* closed @2 */
         if(fp_pemfile == NULL) {
@@ -73,8 +71,8 @@ static TPM_RC convert_PEM_To_EVP(EVP_PKEY **evpPkey,                /* freed by 
         printf("PEM_read_PrivateKey success for file: %s \n", pem_Filename);
     }
 
-end: 
-   if (fp_pemfile != NULL) 
+end:
+   if (fp_pemfile != NULL)
     {
         fclose(fp_pemfile);
     }
@@ -82,12 +80,12 @@ end:
     return rc;
 }
 
-static TPM_RC convert_EVP_to_RSA(RSA **rsaKey,              /* freed by caller */
+static TPM2_RC convert_EVP_to_RSA(RSA **rsaKey,              /* freed by caller */
                               EVP_PKEY *evpPkey)
 {
-    TPM_RC      rc = 0;
+    TPM2_RC      rc = 0;
 
-    if (rc == 0) 
+    if (rc == 0)
     {
         *rsaKey = EVP_PKEY_get1_RSA(evpPkey);
         if (*rsaKey == NULL) 
@@ -104,7 +102,7 @@ static TPM_RC convert_EVP_to_RSA(RSA **rsaKey,              /* freed by caller *
 
 int main(int argc, char* argv[])
 {
-    TPM_RC rval = 0;
+    TPM2_RC rval = 0;
     int count=0;
 
     char pem_Filename[256];
@@ -125,10 +123,10 @@ int main(int argc, char* argv[])
     int dupSymSeed_flag = 0;
     char dupEncKey_Filename[256];
     int dupEncKey_flag = 0;
-    TPM2B_DATA encryptionKey; 
-    TPM2B_PUBLIC swKeyPublic; 
-    TPM2B_PRIVATE swKeyPrivate; 
-    TPM2B_ENCRYPTED_SECRET encSymSeed; 
+    TPM2B encryptionKey;
+    TPM2B_PUBLIC swKeyPublic;
+    TPM2B_PRIVATE swKeyPrivate;
+    TPM2B_ENCRYPTED_SECRET encSymSeed;
     unsigned short file_size = 0;
     UINT8 policyDigest[32] = {0};
     UINT32 digestSize = 0;
@@ -224,13 +222,13 @@ int main(int argc, char* argv[])
     }
 
     // For Duplicate functionality, check all input params are present
-    if( (!pemfile_flag) || 
+    if( (!pemfile_flag) ||
                 (!parent_pub_flag) ||
                 (!dupPub_flag) ||
                 (!dupPriv_flag) ||
                 (!dupSymSeed_flag) ||
                 (!dupEncKey_flag)
-            ) 
+            )
     {
         printf("Error: One or more Inputs for Duplicate are not passed as input \n");
         return -1;
@@ -252,7 +250,7 @@ int main(int argc, char* argv[])
 
     /* SW key duplicate operation started */
     if ( rval == 0 )  {
-        rval = swKeyDuplicate(rsaKey, &parentKeyPublicPortion, policyDigest, digestSize, 
+        rval = swKeyDuplicate(rsaKey, &parentKeyPublicPortion, policyDigest, digestSize,
                 &encryptionKey, &swKeyPublic, &swKeyPrivate, &encSymSeed);
         if(rval != 0) {
             printf("\nswKeyDuplicate failed: 0x%x ! \n", rval);
