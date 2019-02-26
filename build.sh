@@ -107,4 +107,10 @@ make
 sudo make install
 sudo ldconfig
 cd ..
+
+echo "Build import tool"
+cd tpm-util
+cd import
+make -f samplemakefile
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
