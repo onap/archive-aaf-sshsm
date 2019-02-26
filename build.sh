@@ -27,12 +27,15 @@ sudo apt -y install p11-kit
 sudo apt -y install libcurl4-gnutls-dev
 sudo apt -y autoremove
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
 echo "Build SoftHSMv2..."
 cd SoftHSMv2
 sh autogen.sh
-./configure --disable-gost
+./configure --with-openssl=/usr/local --disable-gost
 make check
-make -j$(nproc)
+make
+make install
 cd ..
 
 sudo apt -y install \
@@ -49,55 +52,50 @@ sudo apt -y install \
   libssl-dev \
   pandoc
 
-#echo "Install openssl..."
-#git clone https://github.com/openssl/openssl.git
-#cd openssl
-#./config
-#make -j$(nproc)
-#sudo make install
-#cd ..
-#rm -rf openssl
+echo "Install tpm2-tss 2.0.0"
+wget https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz
+tar -xvf tpm2-tss-2.0.0.tar.gz
+wget https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.0.0/tpm2-abrmd-2.0.0.tar.gz
+tar -xvf tpm2-abrmd-2.0.0.tar.gz
+wget https://github.com/tpm2-software/tpm2-tools/releases/download/3.1.0/tpm2-tools-3.1.0.tar.gz
+tar -xvf tpm2-tools-3.1.0.tar.gz
 
-echo "Install tpm2-tss 1.2.0..."
-git clone https://github.com/tpm2-software/tpm2-tss.git
-cd tpm2-tss
-git checkout 1.2.0
-./bootstrap
-./configure --enable-unit
-#cp ../implementation.h ./include/sapi/implementation.h
-make -j$(nproc) check
-sudo make install
-sudo ldconfig
+cd tpm2-tss-2.0.0
+./configure
+make
+make install
+cp /tpm2-tss-2.0.0/src/util/tpm2b.h /usr/local/include/tss2/
 cd ..
-rm -rf tpm2-tss
+rm -rf tpm2-tss-2.0.0
 
-echo "Install tpm2-abrmd 1.1.1..."
-#sudo useradd --system --user-group tss
-git clone https://github.com/tpm2-software/tpm2-abrmd.git
-cd tpm2-abrmd
-git checkout 1.1.1
-./bootstrap
-./configure --with-dbuspolicydir=/etc/dbus-1/system.d --with-systemdsystemunitdir=/lib/systemd/system --with-systemdpresetdir=/lib/systemd/system-preset --with-udevrulesdir=/etc/udev/rules.d --datarootdir=/usr/share --enable-unit
-make -j$(nproc) check
-sudo make install
-sudo ldconfig
-sudo udevadm control --reload-rules && sudo udevadm trigger
-sudo pkill -HUP dbus-daemon
-sudo systemctl daemon-reload
+cd tpm2-abrmd-2.0.0
+useradd --system --user-group tss
+./configure --with-dbuspolicydir=/etc/dbus-1/system.d \
+    --with-udevrulesdir=/etc/udev/rules.d/ \
+    --with-systemdsystemunitdir=/lib/systemd/system
+make
+make install
 cd ..
-rm -rf tpm2-abrmd
+rm -rf tpm2-abrmd-2.0.0
 
-echo "Install tpm2-tools 2.1.1..."
-git clone https://github.com/tpm2-software/tpm2-tools.git
-cd tpm2-tools
-git checkout 2.1.1
-./bootstrap
-./configure --enable-unit
-make -j$(nproc) check
-sudo make install
-sudo ldconfig
+cd tpm2-tools-3.1.0
+  ./configure
+  make
+  make install
 cd ..
-rm -rf tpm2-tools
+rm -rf tpm2-tools-3.1.0
+
+echo "Build Duplicate utility tool"
+cd tpm-util
+cd duplicate
+make -f sampleMakefile
+cd ..
+
+echo "Build Import utility tool"
+cd tpm-util
+cd import
+make -f sampleMakefile
+cd ..
 
 echo "Build TPM2_plugin..."
 cd TPM2-Plugin
@@ -107,4 +105,3 @@ make
 sudo make install
 sudo ldconfig
 cd ..
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
