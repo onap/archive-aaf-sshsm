@@ -21,61 +21,49 @@
 #include "util.h"
 
 #include <errno.h>
-
-#include <sapi/tpm20.h>
-#include <sapi/tss2_sys.h>
-#include <tcti/tcti_device.h>
-#include "tcti_util.h"
+#define TSSWG_INTEROP 1
+#define TSS_SAPI_FIRST_FAMILY 2
+#define TSS_SAPI_FIRST_LEVEL 1
+#define TSS_SAPI_FIRST_VERSION 108
 
 TSS2_RC swKeyTpmImport(
       /* IN */
       TSS2_SYS_CONTEXT *sysContext,
-      TPM_HANDLE parentKeyHandle,
+      TPM2_HANDLE parentKeyHandle,
       TPM2B_DATA* encryptionKey, TPM2B_PUBLIC* swKeyPublic, TPM2B_PRIVATE* swKeyPrivate,  TPM2B_ENCRYPTED_SECRET* encSymSeed,
       unsigned char* tpm_pwd, int tpm_pwd_len, 
       /* OUT */
       TPM2B_PRIVATE *importPrivate)
 {
-    TPM_RC rval = TPM_RC_SUCCESS;
-    TPM2B_NAME name = { { sizeof( TPM2B_NAME ) - 2, } };
+    TPM2_RC rval = TPM2_RC_SUCCESS;
+    TPM2B_NAME name = {sizeof( TPM2B_NAME ) - 2};
 
-    TPM_HANDLE wrapperKeyHandle;
+    TPM2_HANDLE wrapperKeyHandle;
 
-    TSS2_SYS_CMD_AUTHS npsessionsData;
-    TSS2_SYS_RSP_AUTHS npsessionsDataOut;
-    TPMS_AUTH_COMMAND npsessionData;
-    TPMS_AUTH_RESPONSE npsessionDataOut;
+    TSS2L_SYS_AUTH_RESPONSE npsessionsDataOut;
 
     if(NULL == tpm_pwd) {
         printf("TPM password pinter is NULL \n");
         return -1;
     }
 
-    *((UINT8 *)((void *)&npsessionData.sessionAttributes)) = 0;
-    npsessionData.sessionHandle = TPM_RS_PW;
-    npsessionData.nonce.t.size = 0;
-    npsessionData.hmac.t.size = 0;
+TSS2L_SYS_AUTH_COMMAND npsessionsData = { .count = 1, .auths = {{
+        .sessionHandle = TPM2_RS_PW,
+        .sessionAttributes = 0,
+        .nonce = {.size = 0},
+        .hmac = {.size = 0}}}};
 
-    npsessionData.hmac.t.size = tpm_pwd_len;
+    npsessionsData.auths[0].hmac.size = tpm_pwd_len;
     if(tpm_pwd_len > 0)
     {
-        memcpy(npsessionData.hmac.t.buffer, tpm_pwd, npsessionData.hmac.t.size);
+        memcpy(npsessionsData.auths[0].hmac.buffer, tpm_pwd, npsessionsData.auths[0].hmac.size);
     }
 
-    TPMS_AUTH_COMMAND *npsessionDataArray[1];
-    TPMS_AUTH_RESPONSE *npsessionDataOutArray[1];
     TPMT_SYM_DEF_OBJECT symmetricAlg;
 
-    npsessionDataArray[0] = &npsessionData;
-    npsessionDataOutArray[0] = &npsessionDataOut;
-    npsessionsData.cmdAuthsCount = 1;
-    npsessionsData.cmdAuths = &npsessionDataArray[0];
-    npsessionsDataOut.rspAuthsCount = 1;
-    npsessionsDataOut.rspAuths = &npsessionDataOutArray[0];
-
-    symmetricAlg.algorithm = TPM_ALG_AES;
+    symmetricAlg.algorithm = TPM2_ALG_AES;
     symmetricAlg.keyBits.aes = 128;
-    symmetricAlg.mode.aes = TPM_ALG_CFB;
+    symmetricAlg.mode.aes = TPM2_ALG_CFB;
 
     rval =  Tss2_Sys_Import( sysContext,
                              parentKeyHandle,
@@ -110,13 +98,13 @@ TSS2_RC swKeyTpmImport(
     return rval;
 }
 
-TSS2_TCTI_CONTEXT* tpm_tcti_tabrmd_init (void)
+TSS2_TCTI_CONTEXT* tpm2_tcti_tabrmd_init (void)
 {
     TSS2_TCTI_CONTEXT *tcti_ctx;
     TSS2_RC rc;
     size_t size;
 
-    rc = tss2_tcti_tabrmd_init(NULL, &size);
+    rc = Tss2_Tcti_Tabrmd_Init(NULL, &size, NULL);
     if (rc != TSS2_RC_SUCCESS) {
         printf ("Failed to get size for TABRMD TCTI context: 0x%x", rc);
         return NULL;
@@ -128,7 +116,7 @@ TSS2_TCTI_CONTEXT* tpm_tcti_tabrmd_init (void)
                  strerror (errno));
         return NULL;
     }
-    rc = tss2_tcti_tabrmd_init (tcti_ctx, &size);
+    rc = Tss2_Tcti_Tabrmd_Init (tcti_ctx, &size, NULL);
     if (rc != TSS2_RC_SUCCESS) {
         printf ("Failed to initialize TABRMD TCTI context: 0x%x", rc);
         free (tcti_ctx);
@@ -170,7 +158,9 @@ TSS2_SYS_CONTEXT* sys_ctx_init (TSS2_TCTI_CONTEXT *tcti_ctx)
 
 TSS2_RC TeardownTctiContext( TSS2_TCTI_CONTEXT *tctiContext )
 {
-    ((TSS2_TCTI_CONTEXT_INTEL *)tctiContext)->finalize( tctiContext );
+    //(tctiContext)->finalize( tctiContext );
+    //TSS2_TCTI_FINALIZiE(tctiContext);
+    Tss2_Tcti_Finalize (tctiContext);
     free (tctiContext);
     tctiContext = NULL;
     return TSS2_RC_SUCCESS;
