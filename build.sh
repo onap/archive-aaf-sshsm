@@ -32,12 +32,24 @@ sudo apt-get -y install \
     default-jdk \
     libgcrypt20-dev
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local
+
+wget https://www.openssl.org/source/openssl-1.1.0.tar.gz
+gzip -d openssl-1.1.0.tar.gz
+tar -xvf openssl-1.1.0.tar
+cd openssl-1.1.0 && \
+    ./config && \
+    make && \
+sudo make install
+sudo rm -rf openssl-1.1.0
+sudo rm -rf openssl-1.1.0.tar
+sudo rm -rf openssl-1.1.0.tar.gz
+cd ..
 
 echo "Build SoftHSMv2..."
 cd SoftHSMv2
 sh autogen.sh
-./configure --disable-gost --with-openssl=/usr/local/
+./configure --disable-gost --with-openssl=/usr/local/ssl
 make
 make check
 sudo make install
@@ -88,3 +100,8 @@ cd TPM2-Plugin
 sudo make install
 cd ..
 sudo ldconfig
+
+echo "Build Duplicate Utility tool"
+cd tpm-util/duplicate
+make -f sampleMakefile
+
