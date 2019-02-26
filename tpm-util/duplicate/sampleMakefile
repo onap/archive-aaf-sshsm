@@ -6,8 +6,8 @@ AR = ar
 LDDFLAGS += -fPIC
 ARFLAGS = -rc
 
-TSS_DIR?=/tpm2-tss
-OPENSSL_DIR?=/usr/local/bin/openssl
+TSS_DIR?=/tpm2-tss2
+OPENSSL_DIR?=/usr/local/ssl
 
 OUTPUT=ossl_tpm_duplicate
 
@@ -18,10 +18,9 @@ OBJS=	util.o \
         main.o
 
 
-CFLAGS += -g -fPIC -I./include -I${TSS_DIR}/include/ -I$(TSS_DIR)/sysapi/include #-I${OPENSSL_DIR}/include/
+CFLAGS += -g -fPIC -I./include -I${TSS_DIR}/include -I$(TSS_DIR)/sysapi/include -I${OPENSSL_DIR}/include
 
-
-LDFLAGS += -ldl -L/usr/local/lib/ -lsapi -ltcti-device -ltcti-tabrmd
+LDFLAGS += -ldl -L/usr/local/lib -L${OPENSSL_DIR}/lib -ltss2-tcti-tabrmd -ltss2-mu
 
 LIBS = -lpthread -lcrypto -lssl
 
