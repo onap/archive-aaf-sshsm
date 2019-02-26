@@ -34,13 +34,28 @@ sudo apt-get -y install \
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/
 
+wget https://www.openssl.org/source/openssl-1.1.0.tar.gz
+gzip -d openssl-1.1.0.tar.gz
+tar -xvf openssl-1.1.0.tar
+cd openssl-1.1.0 && \
+    ./config && \
+    make
+cd ..
+
 echo "Build SoftHSMv2..."
 cd SoftHSMv2
 sh autogen.sh
-./configure --disable-gost --with-openssl=/usr/local/
-make
-make check
+sudo ./configure --disable-gost --with-openssl=../openssl-1.1.0
+sudo make
+sudo make check
 sudo make install
+cd ..
+
+cd openssl-1.1.0 && 
+sudo make install
+sudo rm -rf openssl-1.1.0
+sudo rm -rf openssl-1.1.0.tar
+sudo rm -rf openssl-1.1.0.tar.gz
 cd ..
 
 echo "Install tpm2-tss 2.0.0"
@@ -88,3 +103,8 @@ cd TPM2-Plugin
 sudo make install
 cd ..
 sudo ldconfig
+
+echo "Build Duplicate Utility tool"
+cd tpm-util/duplicate
+make -f sampleMakefile
+
