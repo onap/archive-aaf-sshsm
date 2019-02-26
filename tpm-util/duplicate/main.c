@@ -26,9 +26,16 @@
 #include <openssl/pem.h>
 
 #include <pthread.h>
-
-#include <sapi/tpm20.h>
-#include <tcti/tcti_socket.h>
+#include <tss2/tss2_sys.h>
+#include <tss2/tss2-tcti-tabrmd.h>
+#include <tss2/tss2_common.h>
+#include <tss2/tss2_esys.h>
+#include <tss2/tss2_mu.h>
+#include <tss2/tss2_tcti.h>
+#include <tss2/tss2_tcti_device.h>
+#include <tss2/tss2_tcti_mssim.h>
+#include <tss2/tss2_tpm2_types.h>
+#include <tss2/tpm2b.h>
 
 #include "tpm_duplication_aux.h"
 #include "util.h"
@@ -47,11 +54,11 @@ void PrintHelp()
 			 , version);
 }
 
-static TPM_RC convert_PEM_To_EVP(EVP_PKEY **evpPkey,                /* freed by caller */
+static TPM2_RC convert_PEM_To_EVP(EVP_PKEY **evpPkey,                /* freed by caller */
                               const char *pem_Filename,
                               const char *pem_pwd)
 {
-    TPM_RC      rc = 0;
+    TPM2_RC      rc = 0;
     FILE        *fp_pemfile = NULL;
 
     if (rc == 0) 
@@ -82,10 +89,10 @@ end:
     return rc;
 }
 
-static TPM_RC convert_EVP_to_RSA(RSA **rsaKey,              /* freed by caller */
+static TPM2_RC convert_EVP_to_RSA(RSA **rsaKey,              /* freed by caller */
                               EVP_PKEY *evpPkey)
 {
-    TPM_RC      rc = 0;
+    TPM2_RC      rc = 0;
 
     if (rc == 0) 
     {
@@ -104,7 +111,7 @@ static TPM_RC convert_EVP_to_RSA(RSA **rsaKey,              /* freed by caller *
 
 int main(int argc, char* argv[])
 {
-    TPM_RC rval = 0;
+    TPM2_RC rval = 0;
     int count=0;
 
     char pem_Filename[256];
@@ -125,7 +132,7 @@ int main(int argc, char* argv[])
     int dupSymSeed_flag = 0;
     char dupEncKey_Filename[256];
     int dupEncKey_flag = 0;
-    TPM2B_DATA encryptionKey; 
+    TPM2B encryptionKey; 
     TPM2B_PUBLIC swKeyPublic; 
     TPM2B_PRIVATE swKeyPrivate; 
     TPM2B_ENCRYPTED_SECRET encSymSeed; 

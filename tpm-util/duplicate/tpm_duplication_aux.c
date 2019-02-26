@@ -55,15 +55,13 @@ void TPMT_SENSITIVE_TO_TPM2B(TPMT_SENSITIVE *source, TPM2B_SENSITIVE *target)
 	runner = buff;
 	size = sizeof(TPM2B_SENSITIVE);
 	TPM2B_SENSITIVE_Unmarshal(target, &runner, &size);
-
-
 }
 
 void TPM2B_SENSITIVE_TO_TPMT(TPM2B_SENSITIVE *source, TPMT_SENSITIVE *target)
 {
 	BYTE buffer[1024], *runner = buffer;
 	int size = 1024;
-	TPMT_SENSITIVE_Marshal(&(source->t.sensitiveArea), &runner, &size);
+	TPMT_SENSITIVE_Marshal(&(source->sensitiveArea), &runner, &size);
 
 	runner = buffer;
 	size = sizeof(*target);
@@ -75,7 +73,7 @@ void TPM2B_PUBLIC_TO_TPMT(TPM2B_PUBLIC *source, TPMT_PUBLIC *target)
 {
 	BYTE buffer[1024], *runner = buffer;
 	int size = 1024;
-	TPMT_PUBLIC_Marshal(&(source->t.publicArea), &runner, &size);
+	TPMT_PUBLIC_Marshal(&(source->publicArea), &runner, &size);
 
 	runner = buffer;
 	size = sizeof(*target);
@@ -84,21 +82,17 @@ void TPM2B_PUBLIC_TO_TPMT(TPM2B_PUBLIC *source, TPMT_PUBLIC *target)
 }
 
 
-TPM2B_NAME * GetName(TPMI_ALG_HASH hashAlg, TPM2B_PUBLIC *obj, TPM2B_NAME *outName)
+TPM2B_NAME * GetName(TPMI_ALG_HASH hashAlg, TPM2B_PUBLIC *obj)
 {
 	int size_in =1024;
 	BYTE buff[1024] = {0};
 	BYTE* runner = buff;
 
 	UINT16 toHashSize = TPM2B_PUBLIC_Marshal(obj, &runner, &size_in) ;
-
-	runner = outName->b.buffer;
 	size_in = 2;
-	outName->b.size =  TPM_ALG_ID_Marshal(&hashAlg, &runner , &size_in) + 32;
+	size =  TPM2_ALG_ID_Marshal(&hashAlg, &runner , &size_in) + 32;
 
 	SHA256(buff+2, toHashSize-2, runner);
-
-	return outName;
 }
 
 
@@ -107,8 +101,8 @@ void CreateDuplicationBlob2B(
 		TPM2B_PUBLIC_KEY_RSA *protector,
 		TPM2B_PUBLIC * public2B,
 		TPM2B_SENSITIVE *sens2B,
-		TPM2B_ENCRYPTED_SECRET *plainSymSeed, TPMI_YES_NO generateInSymSeed,
-		TPM2B_DATA *encryptionKey, TPMI_YES_NO generateEncryptionKey,
+		TPM2B *plainSymSeed, TPMI_YES_NO generateInSymSeed,
+		TPM2B encryptionKey, TPMI_YES_NO generateEncryptionKey,
 
 		//OUT
 		TPM2B_PRIVATE *outDuplicate,
@@ -147,8 +141,8 @@ void CreateDuplicationBlob(
 		TPM2B_PUBLIC_KEY_RSA *protector,
 		TPMT_PUBLIC * publicPortion,
 		TPMT_SENSITIVE *sens,
-		TPM2B_ENCRYPTED_SECRET *plainSymSeed, TPMI_YES_NO generateInSymSeed,
-		TPM2B_DATA *encryptionKey, TPMI_YES_NO generateEncryptionKey,
+		TPM2B *plainSymSeed, TPMI_YES_NO generateInSymSeed,
+		TPM2B encryptionKey, TPMI_YES_NO generateEncryptionKey,
 
 		//OUT
 		TPM2B_PRIVATE *outDuplicate,
@@ -156,33 +150,32 @@ void CreateDuplicationBlob(
 {
 	memset((void*)outDuplicate, 0, sizeof(TPM2B_PRIVATE));
 	memset((void*)encSymSeed, 0, sizeof(TPM2B_ENCRYPTED_SECRET));
-	TPM2B_SYM_KEY outerWrapper;
+	TPM2B outerWrapper;
 	TPM2B NULL_2B = {0};
-	TPM2B_NAME swkName = {{0}};
+	TPM2B swkName = {0};
 
-
-	TPM2B_PUBLIC public2B = {{0}};
-	TPM2B_SENSITIVE sens2B = {{0}};
+	TPM2B_PUBLIC public2B = {0};
+	TPM2B_SENSITIVE sens2B = {0};
 	INT32 size_in = 0;
 
-	TPM2B_MAX_BUFFER encSensitive = {{0}};
+	TPM2B encSensitive = {0};
 
 	if(generateInSymSeed)
 	{
-		RAND_bytes(plainSymSeed->b.buffer, 16);
-		plainSymSeed->b.size = 16;
+		RAND_bytes(plainSymSeed->buffer, 16);
+		plainSymSeed->size = 16;
 	}
 	if(generateEncryptionKey)
 	{
-		RAND_bytes(encryptionKey->b.buffer, 16);
-		encryptionKey->b.size = 16;
+		RAND_bytes(encryptionKey.buffer, 16);
+		encryptionKey.size = 16;
 	}
 
 	// Preparing marshaled publicPortion:
 	TPMT_PUBLIC_TO_TPM2B(publicPortion, &public2B);
 
 	// calculating name:
-	GetName(TPM_ALG_SHA256, &(public2B), &swkName);
+	GetName(TPM2_ALG_SHA256, &(public2B));
 
 	// preparing marshaled sensitive:
 	TPMT_SENSITIVE_TO_TPM2B(sens, &sens2B);
@@ -190,19 +183,19 @@ void CreateDuplicationBlob(
 	//preparing encSensitive
 	{
 		UINT16 tempUint16;
-		TPM2B_SYM_KEY IV = {0};
-		IV.b.size = 16;
-		TPM2B_MAX_BUFFER innerData = {0};
+		TPM2B IV = {0};
+		IV.size = 16;
+		TPM2B innerData = {0};
 		BYTE innerIntegrity[34] = {0}, toHash[1024] = {0};
 		size_in = 1024;
 		BYTE* runner = toHash;
 
 
-		UINT16_Marshal(&(sens2B.b.size), &runner, &size_in);
+		UINT16_Marshal(&(sens2B.size), &runner, &size_in);
 		TPMT_SENSITIVE_Marshal(sens, &runner, &size_in);
 
-		memcpy(runner, swkName.b.buffer, swkName.b.size );
-		runner += swkName.b.size;
+		memcpy(runner, swkName.buffer, swkName.size );
+		runner += swkName.size;
 
 
 		SHA256(toHash, runner - toHash, innerIntegrity+2);
@@ -210,59 +203,59 @@ void CreateDuplicationBlob(
 		tempUint16 = 32;
 		UINT16_Marshal(&tempUint16, &runner, &size_in);
 
-		memcpy(innerData.b.buffer, innerIntegrity, 34);
-		runner = innerData.b.buffer + 34;
+		memcpy(innerData.buffer, innerIntegrity, 34);
+		runner = innerData.buffer + 34;
 		size_in = 1024;
 
-		UINT16_Marshal(&(sens2B.b.size), &runner, &size_in);
+		UINT16_Marshal(&(sens2B.size), &runner, &size_in);
 		TPMT_SENSITIVE_Marshal(sens, &runner, &size_in);
 
-		innerData.b.size = sens2B.b.size + 36;
+		innerData.size = sens2B.size + 36;
 
-		AES_128_CFB_enc_dec(&(innerData.b), &(encSensitive.b), &(encryptionKey->b), &(IV.b), NULL, 1);
+		AES_128_CFB_enc_dec(&(innerData), &(encSensitive), &(encryptionKey), &(IV), NULL, 1);
 	}
 
 
 	// outer integrity
 	{
-		TPM2B_SYM_KEY IV = {{0}};
-		TPM2B_DIGEST hmacKey = {{0}};
-		TPM2B_DIGEST outerHmac = {{0}};
-		TPM2B_MAX_BUFFER dupSensitive = {{0}};
-		TPM2B_MAX_BUFFER dataToHmac = {{0}};
+		const TPM2B IV;
+		TPM2B_DIGEST hmacKey = {0};
+		TPM2B_DIGEST outerHmac = {0};
+		TPM2B dupSensitive = {0};
+		TPM2B_MAX_BUFFER dataToHmac = {0};
 		BYTE * runner = NULL;
 
-		IV.b.size = 16;
+		//IV.size = 16;
 
-		KDFa(TPM_ALG_SHA256, &(plainSymSeed->b), "STORAGE", &(swkName.b), &NULL_2B, 128 , (TPM2B_MAX_BUFFER*) &outerWrapper);
+		KDFa(TPM2_ALG_SHA256, (plainSymSeed), "STORAGE", &(swkName), &NULL_2B, 128 , (TPM2B_MAX_BUFFER*) &outerWrapper);
 
-		AES_128_CFB_enc_dec(&(encSensitive.b), &(dupSensitive.b), &(outerWrapper.b), &(IV.b), NULL, 1);
+		AES_128_CFB_enc_dec(&(encSensitive), &(dupSensitive), &(outerWrapper), &(IV), NULL, 1);
 
-		KDFa(TPM_ALG_SHA256,  &(plainSymSeed->b), "INTEGRITY", &NULL_2B, &NULL_2B, 32*8,(TPM2B_MAX_BUFFER*) &(hmacKey.b));
+		KDFa(TPM2_ALG_SHA256,  (plainSymSeed), "INTEGRITY", &NULL_2B, &NULL_2B, 32*8,(TPM2B_MAX_BUFFER*) &(hmacKey));
 
-		memcpy(dataToHmac.b.buffer, dupSensitive.b.buffer, dupSensitive.b.size);
-		memcpy(dataToHmac.b.buffer + dupSensitive.b.size, swkName.b.buffer, swkName.b.size);
-		dataToHmac.b.size = dupSensitive.b.size + swkName.b.size;
+		memcpy(dataToHmac.buffer, dupSensitive.buffer, dupSensitive.size);
+		memcpy(dataToHmac.buffer + dupSensitive.size, swkName.buffer, swkName.size);
+		dataToHmac.size = dupSensitive.size + swkName.size;
 
 
-		HMAC(EVP_sha256(), hmacKey.b.buffer, hmacKey.b.size, dataToHmac.b.buffer, dataToHmac.b.size,
-				outerHmac.b.buffer, (UINT32*) &size_in);
+		HMAC(EVP_sha256(), hmacKey.buffer, hmacKey.size, dataToHmac.buffer, dataToHmac.size,
+				outerHmac.buffer, (UINT32*) &size_in);
 
-		outerHmac.b.size = size_in;
+		outerHmac.size = size_in;
 
-		runner = outDuplicate->b.buffer;
+		runner = outDuplicate->buffer;
 		size_in = sizeof(*outDuplicate) - 2;
-		outDuplicate->b.size = TPM2B_DIGEST_Marshal(&outerHmac, &runner, &size_in);
+		outDuplicate->size = TPM2B_DIGEST_Marshal(&outerHmac, &runner, &size_in);
 
-		memcpy(runner, dupSensitive.b.buffer, dupSensitive.b.size);
-		outDuplicate->b.size += dupSensitive.b.size;
+		memcpy(runner, dupSensitive.buffer, dupSensitive.size);
+		outDuplicate->size += dupSensitive.size;
 
 	}
 
 	// Encrypting seed with RSA pub:
-	TPM2B_DATA encodingParams = {{0}};
-	encodingParams.b.size = 10;
-	memcpy(encodingParams.b.buffer, "DUPLICATE", 10);
+	TPM2B_DATA encodingParams = {0};
+	encodingParams.size = 10;
+	memcpy(encodingParams.buffer, "DUPLICATE", 10);
 
 	RSA_OAEP_Enc((TPM2B_PUBLIC_KEY_RSA*)plainSymSeed, (TPM2B_PUBLIC_KEY_RSA*)encSymSeed, protector, &encodingParams);
 
@@ -386,29 +379,29 @@ void CreateSwDataObject(
                 );
 
         /* Fill TPM Sensitive data */
-        outSens->sensitiveType = TPM_ALG_RSA;
+        outSens->sensitiveType = TPM2_ALG_RSA;
 
-        outSens->authValue.b.size = authSize;
-        memcpy(outSens->authValue.b.buffer, auth, authSize);
+        outSens->authValue.size = authSize;
+        memcpy(outSens->authValue.buffer, auth, authSize);
 
-        outSens->seedValue.b.size = 32;
-        memcpy(outSens->seedValue.b.buffer, seed, 32);
+        outSens->seedValue.size = 32;
+        memcpy(outSens->seedValue.buffer, seed, 32);
 
-        outSens->sensitive.bits.b.size = p_size;
-        memcpy(outSens->sensitive.bits.b.buffer, p_bytes, p_size);
+        outSens->sensitive.bits.size = p_size;
+        memcpy(outSens->sensitive.bits.buffer, p_bytes, p_size);
 
         /* Fill TPM Public portion */
-        outPublic->type = TPM_ALG_RSA;
-        outPublic->nameAlg = TPM_ALG_SHA256;
-        outPublic->objectAttributes.val = 0;
+        outPublic->type = TPM2_ALG_RSA;
+        outPublic->nameAlg = TPM2_ALG_SHA256;
+        outPublic->objectAttributes = 0;
         //outPublic->objectAttributes.val |= TPMA_OBJECT_RESTRICTED;
-        outPublic->objectAttributes.val |= TPMA_OBJECT_USERWITHAUTH;
-        outPublic->objectAttributes.val |= TPMA_OBJECT_SIGN;
-        outPublic->authPolicy.t.size = 0;
+        outPublic->objectAttributes |= TPMA_OBJECT_USERWITHAUTH;
+        outPublic->objectAttributes |= TPMA_OBJECT_SIGN_ENCRYPT;
+        outPublic->authPolicy.size = 0;
 
         /* Table 182 - Definition of TPMU_PUBLIC_PARMS Union <IN/OUT, S> */
-        outPublic->parameters.rsaDetail.symmetric.algorithm = TPM_ALG_NULL;
-        outPublic->parameters.rsaDetail.scheme.scheme = TPM_ALG_NULL;
+        outPublic->parameters.rsaDetail.symmetric.algorithm = TPM2_ALG_NULL;
+        outPublic->parameters.rsaDetail.scheme.scheme = TPM2_ALG_NULL;
         //outPublic->parameters.rsaDetail.scheme.details.rsassa.hashAlg = TPM_ALG_SHA256;
         
         outPublic->parameters.rsaDetail.keyBits = BYTES_TO_BITS(n_size);;
@@ -419,14 +412,14 @@ void CreateSwDataObject(
         outPublic->parameters.rsaDetail.exponent = tmp_val;
         printf("outPublic->parameters.rsaDetail.exponent: 0x%x \n", outPublic->parameters.rsaDetail.exponent);
 
-        outPublic->unique.rsa.t.size = n_size;
-        memcpy(outPublic->unique.rsa.t.buffer, n_bytes, n_size);
-        printf("outPublic->unique.rsa.t.size: %d \n", outPublic->unique.rsa.t.size);
+        outPublic->unique.rsa.size = n_size;
+        memcpy(outPublic->unique.rsa.buffer, n_bytes, n_size);
+        printf("outPublic->unique.rsa.size: %d \n", outPublic->unique.rsa.size);
 
         if(( policyDigestSize > 0) && (policyDigest != NULL) )
         {
-            memcpy(outPublic->authPolicy.b.buffer, policyDigest, policyDigestSize);
-            outPublic->authPolicy.b.size = policyDigestSize;
+            memcpy(outPublic->authPolicy.buffer, policyDigest, policyDigestSize);
+            outPublic->authPolicy.size = policyDigestSize;
         }
     }
     
@@ -434,39 +427,39 @@ void CreateSwDataObject(
     {
     /* Symmetric Key Creation */
 
-        outSens->authValue.b.size = authSize;
-        memcpy(outSens->authValue.b.buffer, auth, authSize);
+        outSens->authValue.size = authSize;
+        memcpy(outSens->authValue.buffer, auth, authSize);
 
-        outSens->seedValue.b.size = 32;
-        memcpy(outSens->seedValue.b.buffer, seed, 32);
+        outSens->seedValue.size = 32;
+        memcpy(outSens->seedValue.buffer, seed, 32);
 
-        outSens->sensitive.bits.b.size = dataSize;
-        memcpy(outSens->sensitive.bits.b.buffer, dataToSeal, dataSize);
+        outSens->sensitive.bits.size = dataSize;
+        memcpy(outSens->sensitive.bits.buffer, dataToSeal, dataSize);
 
-        outSens->sensitiveType = TPM_ALG_KEYEDHASH;
+        outSens->sensitiveType = TPM2_ALG_KEYEDHASH;
 
-        outPublic->objectAttributes.val = 0;
-        outPublic->objectAttributes.adminWithPolicy = 1;
-        outPublic->nameAlg = TPM_ALG_SHA256;
-        memcpy(outPublic->unique.keyedHash.b.buffer, dataToSeal, dataSize);
-        outPublic->unique.keyedHash.b.size = dataSize;
+        outPublic->objectAttributes = 0;
+        outPublic->objectAttributes = 1;
+        outPublic->nameAlg = TPM2_ALG_SHA256;
+        memcpy(outPublic->unique.keyedHash.buffer, dataToSeal, dataSize);
+        outPublic->unique.keyedHash.size = dataSize;
 
         if(( policyDigestSize > 0) && (policyDigest != NULL) )
         {
-            memcpy(outPublic->authPolicy.b.buffer, policyDigest, policyDigestSize);
-            outPublic->authPolicy.b.size = policyDigestSize;
+            memcpy(outPublic->authPolicy.buffer, policyDigest, policyDigestSize);
+            outPublic->authPolicy.size = policyDigestSize;
         }
 
-        outPublic->type = TPM_ALG_KEYEDHASH;
-        outPublic->nameAlg = TPM_ALG_SHA256;
+        outPublic->type = TPM2_ALG_KEYEDHASH;
+        outPublic->nameAlg = TPM2_ALG_SHA256;
 
-        outPublic->parameters.keyedHashDetail.scheme.scheme = TPM_ALG_NULL;
-        outPublic->parameters.keyedHashDetail.scheme.details.hmac.hashAlg = TPM_ALG_NULL;
+        outPublic->parameters.keyedHashDetail.scheme.scheme = TPM2_ALG_NULL;
+        outPublic->parameters.keyedHashDetail.scheme.details.hmac.hashAlg = TPM2_ALG_NULL;
 
-        memcpy(hash_buffer.b.buffer, seed, 32);
-        memcpy(hash_buffer.b.buffer+32, dataToSeal, dataSize);
-        SHA256(hash_buffer.b.buffer, 32+dataSize, outPublic->unique.keyedHash.b.buffer);
-        outPublic->unique.keyedHash.b.size = 32;
+        memcpy(hash_buffer.buffer, seed, 32);
+        memcpy(hash_buffer.buffer+32, dataToSeal, dataSize);
+        SHA256(hash_buffer.buffer, 32+dataSize, outPublic->unique.keyedHash.buffer);
+        outPublic->unique.keyedHash.size = 32;
     }
 
 }
@@ -476,30 +469,30 @@ TSS2_RC swKeyDuplicate(
       /* IN */
       RSA* rsaKey, TPM2B_PUBLIC* parentKeyPublicPortion, UINT8* policyDigest, int digestSize,
       /* OUT */ 
-      TPM2B_DATA* encryptionKey, TPM2B_PUBLIC *swKeyPublic, TPM2B_PRIVATE *swKeyPrivate,  TPM2B_ENCRYPTED_SECRET *encSymSeed)
+      TPM2B* encryptionKey, TPM2B_PUBLIC *swKeyPublic, TPM2B_PRIVATE *swKeyPrivate,  TPM2B_ENCRYPTED_SECRET *encSymSeed)
 {
-    TPM_RC rval = TPM_RC_SUCCESS;
+    TPM2_RC rval = TPM2_RC_SUCCESS;
     UINT8 auth[0];
     TPM2B_SENSITIVE swKeySens;
-    TPM2B_ENCRYPTED_SECRET plainSymSeed = {{0}};
-    TPM2B_PUBLIC_KEY_RSA protectorRsaPub = {{0}};
+    TPM2B plainSymSeed = {0};
+    TPM2B_PUBLIC_KEY_RSA protectorRsaPub = {0};
 
     INIT_SIMPLE_TPM2B_SIZE(swKeySens);
     INIT_SIMPLE_TPM2B_SIZE(*swKeyPublic);
 
     // Fill the protector data
-    memcpy(protectorRsaPub.b.buffer, parentKeyPublicPortion->t.publicArea.unique.rsa.t.buffer, parentKeyPublicPortion->t.publicArea.unique.rsa.t.size);
-    protectorRsaPub.b.size = parentKeyPublicPortion->t.publicArea.unique.rsa.t.size;
+    memcpy(protectorRsaPub.buffer, parentKeyPublicPortion->publicArea.unique.rsa.buffer, parentKeyPublicPortion->publicArea.unique.rsa.size);
+    protectorRsaPub.size = parentKeyPublicPortion->publicArea.unique.rsa.size;
 
     // Fill Symmetric seed
-    plainSymSeed.b.size =  encryptionKey->b.size = 16;
-    encSymSeed->b.size = 16;
+    plainSymSeed.size =  encryptionKey->size = 16;
+    encSymSeed->size = 16;
 
     // Create SW Data Object Public and Sensitive portions
     CreateSwDataObject2B(auth, 0, rsaKey, policyDigest, digestSize, swKeyPublic, &swKeySens);
 
     // Create Duplication blob needed for Import
-    CreateDuplicationBlob2B( &protectorRsaPub, swKeyPublic, &swKeySens, &plainSymSeed, 0, encryptionKey, 1, swKeyPrivate, encSymSeed);
+    CreateDuplicationBlob2B( &protectorRsaPub, swKeyPublic, &swKeySens, &plainSymSeed, 0, *encryptionKey, 1, swKeyPrivate, encSymSeed);
 
 	return rval;
 }

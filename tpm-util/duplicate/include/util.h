@@ -18,8 +18,18 @@
 #ifndef __UTIL_H__
 #define __UTIL_H__
 
-#include <sapi/tpm20.h>
+#include <tss2/tss2_sys.h>
+#include <tss2/tss2-tcti-tabrmd.h>
+#include <tss2/tss2_common.h>
+#include <tss2/tss2_esys.h>
+#include <tss2/tss2_mu.h>
+#include <tss2/tss2_tcti.h>
+#include <tss2/tss2_tcti_device.h>
+#include <tss2/tss2_tcti_mssim.h>
+#include <tss2/tss2_tpm2_types.h>
+#include <tss2/tpm2b.h>
 #include <stdlib.h>
+
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
@@ -29,7 +39,7 @@
 
 void hex_log(UINT8 *pData, UINT32 numBytes, const char* caption);
 
-TPM_RC ConcatSizedByteBuffer( TPM2B_MAX_BUFFER *result, TPM2B *addBuffer );
+TPM2_RC ConcatSizedByteBuffer( TPM2B_MAX_BUFFER *result, TPM2B *addBuffer );
 
 int saveDataToFile(const char *fileName, UINT8 *buf, UINT16 size);
 

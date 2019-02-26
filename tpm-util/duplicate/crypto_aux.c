@@ -38,8 +38,8 @@ int RSA_OAEP_Enc(TPM2B_PUBLIC_KEY_RSA *plain, // plain text to encrypt
 	BIGNUM* n;
 
 	//Encoding
-	RC = RSA_padding_add_PKCS1_OAEP_mgf1(encoded, key->b.size, plain->b.buffer, plain->b.size,
-			encoding_params->b.buffer, encoding_params->b.size, EVP_sha256(), NULL);
+	RC = RSA_padding_add_PKCS1_OAEP_mgf1(encoded, key->size, plain->buffer, plain->size,
+			encoding_params->buffer, encoding_params->size, EVP_sha256(), NULL);
 
 	if(RC!=1)goto cleanup;
 
@@ -54,17 +54,17 @@ int RSA_OAEP_Enc(TPM2B_PUBLIC_KEY_RSA *plain, // plain text to encrypt
 
 	// Over-writing the public N:
 	//rsa->n = BN_bin2bn(key->b.buffer, key->b.size, rsa->n);
-	n = BN_bin2bn(key->b.buffer, key->b.size, NULL);
+	n = BN_bin2bn(key->buffer, key->size, NULL);
 	RSA_set0_key(rsa,n,NULL, NULL);
 
 	//if(rsa->n == NULL) goto cleanup;
 	if(n == NULL) goto cleanup;
 
 	// Encrypting
-	RC = RSA_public_encrypt(key->b.size, encoded, cipher->b.buffer, rsa, RSA_NO_PADDING);
+	RC = RSA_public_encrypt(key->size, encoded, cipher->buffer, rsa, RSA_NO_PADDING);
 
 	//if(RC<0)goto cleanup;
-	cipher->b.size = key->b.size;
+	cipher->size = key->size;
 
 cleanup:
 	RSA_free(rsa);
@@ -82,11 +82,11 @@ void AES_128_CFB_enc_dec(
 		TPM2B *ivOut,
 		const TPMI_YES_NO enc)
 {
-	TPM2B_SYM_KEY ivTemp = {{0}};
-	ivTemp.b.size = 16;
+	TPM2B_SYM_KEY ivTemp = {0};
+	ivTemp.size = 16;
 
 	if(ivOut == NULL)
-		ivOut = &(ivTemp.b);
+		ivOut = (TPM2B *) &(ivTemp);
 
 	memccpy(ivOut->buffer, ivIn->buffer, 0, ivIn->size);
 	AES_KEY aes;
@@ -124,17 +124,17 @@ UINT32 ChangeEndianDword( UINT32 p )
 }
 
 
-TPM_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
+TPM2_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
     TPM2B *contextU, TPM2B *contextV, UINT16 bits, TPM2B_MAX_BUFFER  *resultKey )
 {
 
-	TPM2B_DIGEST tmpResult;
+    TPM2B_DIGEST tmpResult;
     TPM2B_DIGEST tpm2bLabel, tpm2bBits, tpm2b_i_2;
-    UINT8 *tpm2bBitsPtr = &tpm2bBits.t.buffer[0];
-    UINT8 *tpm2b_i_2Ptr = &tpm2b_i_2.t.buffer[0];
+    UINT8 *tpm2bBitsPtr = &tpm2bBits.buffer[0];
+    UINT8 *tpm2b_i_2Ptr = &tpm2b_i_2.buffer[0];
     TPM2B_DIGEST *bufferList[8];
     UINT32 bitsSwizzled, i_Swizzled;
-    TPM_RC rval;
+    TPM2_RC rval;
     int i, j;
     UINT16 bytes = bits / 8;
 
@@ -144,20 +144,20 @@ TPM_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
     PrintSizedBuffer( key );
 #endif
 
-    resultKey->t .size = 0;
+    resultKey->size = 0;
 
-    tpm2b_i_2.t.size = 4;
+    tpm2b_i_2.size = 4;
 
-    tpm2bBits.t.size = 4;
+    tpm2bBits.size = 4;
     bitsSwizzled = ChangeEndianDword( bits );
     *(UINT32 *)tpm2bBitsPtr = bitsSwizzled;
 
     for(i = 0; label[i] != 0 ;i++ );
 
-    tpm2bLabel.t.size = i+1;
-    for( i = 0; i < tpm2bLabel.t.size; i++ )
+    tpm2bLabel.size = i+1;
+    for( i = 0; i < tpm2bLabel.size; i++ )
     {
-        tpm2bLabel.t.buffer[i] = label[i];
+        tpm2bLabel.buffer[i] = label[i];
     }
 
 #ifdef DEBUG
@@ -171,11 +171,11 @@ TPM_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
     PrintSizedBuffer( contextV );
 #endif
 
-    resultKey->t.size = 0;
+    resultKey->size = 0;
 
     i = 1;
 
-    while( resultKey->t.size < bytes )
+    while( resultKey->size < bytes )
     {
         // Inner loop
 
@@ -183,11 +183,11 @@ TPM_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
         *(UINT32 *)tpm2b_i_2Ptr = i_Swizzled;
 
         j = 0;
-        bufferList[j++] = (TPM2B_DIGEST *)&(tpm2b_i_2.b);
-        bufferList[j++] = (TPM2B_DIGEST *)&(tpm2bLabel.b);
+        bufferList[j++] = (TPM2B_DIGEST *)&(tpm2b_i_2);
+        bufferList[j++] = (TPM2B_DIGEST *)&(tpm2bLabel);
         bufferList[j++] = (TPM2B_DIGEST *)contextU;
         bufferList[j++] = (TPM2B_DIGEST *)contextV;
-        bufferList[j++] = (TPM2B_DIGEST *)&(tpm2bBits.b);
+        bufferList[j++] = (TPM2B_DIGEST *)&(tpm2bBits);
         bufferList[j++] = (TPM2B_DIGEST *)0;
 #ifdef DEBUG
         for( j = 0; bufferList[j] != 0; j++ )
@@ -197,29 +197,29 @@ TPM_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
         }
 #endif
         rval = (*HmacFunctionPtr )( hashAlg, key, (TPM2B **)&( bufferList[0] ), &tmpResult );
-        if( rval != TPM_RC_SUCCESS )
+        if( rval != TPM2_RC_SUCCESS )
         {
             return( rval );
         }
 
-        ConcatSizedByteBuffer( resultKey, &(tmpResult.b) );
+        ConcatSizedByteBuffer( resultKey, (TPM2B *) &(tmpResult) );
     }
 
     // Truncate the result to the desired size.
-    resultKey->t.size = bytes;
+    resultKey->size = bytes;
 
 #ifdef DEBUG
     DebugPrintf( 0, "\n\nKDFA, resultKey = \n" );
     PrintSizedBuffer( &( resultKey->b ) );
 #endif
 
-    return TPM_RC_SUCCESS;
+    return TPM2_RC_SUCCESS;
 }
 
 
 UINT32 OpenSslHmac( TPMI_ALG_HASH hashAlg, TPM2B *key,TPM2B **bufferList, TPM2B_DIGEST *result )
 {
-	if(hashAlg != TPM_ALG_SHA256)return -1;
+	if(hashAlg != TPM2_ALG_SHA256)return -1;
 
 	UINT32 RC = 0;
 	HMAC_CTX *hmac = HMAC_CTX_new();
@@ -234,8 +234,8 @@ UINT32 OpenSslHmac( TPMI_ALG_HASH hashAlg, TPM2B *key,TPM2B **bufferList, TPM2B_
 		HMAC_Update(hmac, bufferList[i]->buffer, bufferList[i]->size);
 	}
 
-	HMAC_Final(hmac, result->b.buffer, &resLen);
-	result->b.size = resLen;
+	HMAC_Final(hmac, result->buffer, &resLen);
+	result->size = resLen;
 
 	HMAC_CTX_free(hmac);
 
