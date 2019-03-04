@@ -1,4 +1,4 @@
-FROM nexus3.onap.org:10001/onap/aaf/aaf-base-openssl_1.1.0:latest
+FROM nexus3.onap.org:10001/onap/aaf/aaf-base-xenial:latest
 
 RUN git clone https://gerrit.onap.org/r/aaf/sshsm
 RUN cd sshsm && \
