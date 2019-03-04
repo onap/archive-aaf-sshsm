@@ -30,37 +30,40 @@ RUN apt-get -y update && \
     default-jdk
 
 RUN apt-get -y install libgcrypt20-dev
+RUN apt-get -y install valgrind
 
-RUN git clone https://github.com/tpm2-software/tpm2-tss.git
-RUN git clone https://github.com/tpm2-software/tpm2-abrmd.git
-RUN git clone https://github.com/tpm2-software/tpm2-tools.git
+RUN wget https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz
+RUN tar -xvf tpm2-tss-2.0.0.tar.gz
+RUN wget https://github.com/tpm2-software/tpm2-abrmd/releases/download/2.0.0/tpm2-abrmd-2.0.0.tar.gz
+RUN tar -xvf tpm2-abrmd-2.0.0.tar.gz
+RUN wget https://github.com/tpm2-software/tpm2-tools/releases/download/3.1.0/tpm2-tools-3.1.0.tar.gz
+RUN tar -xvf tpm2-tools-3.1.0.tar.gz
 
-RUN cd tpm2-tss && \
-  git checkout 1.2.0 && \
-  ./bootstrap && \
+RUN cd tpm2-tss-2.0.0 && \
   ./configure && \
   make && \
   make install
-RUN rm -rf tpm2-tss
+RUN cp /tpm2-tss-2.0.0/src/util/tpm2b.h /usr/local/include/tss2/
+RUN rm -rf tpm2-tss-2.0.0
 
-RUN cd tpm2-abrmd && \
-  git checkout 1.1.1 && \
+RUN cd tpm2-abrmd-2.0.0 && \
   useradd --system --user-group tss && \
-  ./bootstrap && \
   ./configure --with-dbuspolicydir=/etc/dbus-1/system.d \
     --with-udevrulesdir=/etc/udev/rules.d/ \
     --with-systemdsystemunitdir=/lib/systemd/system && \
   make && \
   make install
-RUN rm -rf tpm2-abrmd
+RUN rm -rf tpm2-abrmd-2.0.0
 
-RUN cd tpm2-tools && \
-  git checkout 2.1.0 && \
-  ./bootstrap && \
+RUN cd tpm2-tools-3.1.0 && \
   ./configure && \
   make && \
   make install
-RUN rm -rf tpm2-tools
+RUN rm -rf tpm2-tools-3.1.0
+
+RUN rm -rf tpm2-tss-2.0.0.tar.gz
+RUN rm -rf tpm2-abrmd-2.0.0.tar.gz
+RUN rm -rf tpm2-tools-3.1.0.tar.gz
 
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/tpm2.conf && \
   ldconfig
