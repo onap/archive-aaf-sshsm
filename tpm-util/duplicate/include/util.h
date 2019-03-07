@@ -30,7 +30,6 @@
 #include <tss2/tpm2b.h>
 #include <stdlib.h>
 
-
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>

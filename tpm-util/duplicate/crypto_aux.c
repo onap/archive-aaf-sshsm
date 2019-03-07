@@ -86,7 +86,7 @@ void AES_128_CFB_enc_dec(
 	ivTemp.size = 16;
 
 	if(ivOut == NULL)
-		ivOut = &(ivTemp);
+		ivOut = (TPM2B *) &(ivTemp);
 
 	memccpy(ivOut->buffer, ivIn->buffer, 0, ivIn->size);
 	AES_KEY aes;
@@ -128,7 +128,7 @@ TPM2_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
     TPM2B *contextU, TPM2B *contextV, UINT16 bits, TPM2B_MAX_BUFFER  *resultKey )
 {
 
-	TPM2B tmpResult;
+    TPM2B_DIGEST tmpResult;
     TPM2B_DIGEST tpm2bLabel, tpm2bBits, tpm2b_i_2;
     UINT8 *tpm2bBitsPtr = &tpm2bBits.buffer[0];
     UINT8 *tpm2b_i_2Ptr = &tpm2b_i_2.buffer[0];
@@ -202,7 +202,7 @@ TPM2_RC KDFa( TPMI_ALG_HASH hashAlg, TPM2B *key, char *label,
             return( rval );
         }
 
-        ConcatSizedByteBuffer( resultKey, &(tmpResult) );
+        ConcatSizedByteBuffer( resultKey, (TPM2B *) &(tmpResult) );
     }
 
     // Truncate the result to the desired size.

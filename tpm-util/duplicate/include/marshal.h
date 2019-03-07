@@ -36,6 +36,11 @@
 UINT16  size;
 BYTE    buffer[1];
 
+#define	TRUE	1
+#define	FALSE	0
+#define	YES	1
+#define	NO	0
+
 #if NO_AUTO_ALIGN == YES || LITTLE_ENDIAN_TPM2_ == YES
 #define BYTE_ARRAY_TO_UINT8(b)   (UINT8)((b)[0])
 

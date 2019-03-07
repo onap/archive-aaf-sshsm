@@ -227,11 +227,11 @@ void CreateDuplicationBlob(
 
 		//IV.size = 16;
 
-		KDFa(TPM2_ALG_SHA256, &(plainSymSeed), "STORAGE", &(swkName), &NULL_2B, 128 , (TPM2B_MAX_BUFFER*) &outerWrapper);
+		KDFa(TPM2_ALG_SHA256, (plainSymSeed), "STORAGE", &(swkName), &NULL_2B, 128 , (TPM2B_MAX_BUFFER*) &outerWrapper);
 
 		AES_128_CFB_enc_dec(&(encSensitive), &(dupSensitive), &(outerWrapper), &(IV), NULL, 1);
 
-		KDFa(TPM2_ALG_SHA256,  &(plainSymSeed), "INTEGRITY", &NULL_2B, &NULL_2B, 32*8,(TPM2B_MAX_BUFFER*) &(hmacKey));
+		KDFa(TPM2_ALG_SHA256,  (plainSymSeed), "INTEGRITY", &NULL_2B, &NULL_2B, 32*8,(TPM2B_MAX_BUFFER*) &(hmacKey));
 
 		memcpy(dataToHmac.buffer, dupSensitive.buffer, dupSensitive.size);
 		memcpy(dataToHmac.buffer + dupSensitive.size, swkName.buffer, swkName.size);
