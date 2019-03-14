@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33f79b70_3c6b1511",
+        "filename": "TPM2-Plugin/config.log",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-14T17:48:16Z",
+      "side": 1,
+      "message": "Remove white space",
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29dbfd23_27cfcfc4",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-14T17:48:16Z",
+      "side": 1,
+      "message": "Include only the required files",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "891a63e9_6e713e43",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-14T17:48:16Z",
+      "side": 1,
+      "message": "Remove white space",
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a143076_7cb11133",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-14T17:48:16Z",
+      "side": 1,
+      "message": "Remove white space",
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
