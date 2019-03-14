@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25efd11d_89139685",
+        "filename": "tpm-util/import/include/tpm_wrapper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-14T16:52:07Z",
+      "side": 1,
+      "message": "Include only the required header files",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "857408241ce2631818824255a6059d2f8902b871",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2d00492_a7f98211",
+        "filename": "tpm-util/import/tpm_wrapper.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-14T16:52:07Z",
+      "side": 1,
+      "message": "Include only the required header files",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "857408241ce2631818824255a6059d2f8902b871",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
