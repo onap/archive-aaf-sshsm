@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5da2edf6_e39db76b",
+        "filename": "tpm-util/duplicate/crypto_aux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37431f61_c0a59f0c",
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6faa6d5_96f29c10",
         "filename": "tpm-util/duplicate/include/crypto_aux.h",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-03-12T21:02:49Z",
       "side": 1,
       "message": "Include only the required files",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ef72d37_2c50dd6b",
+        "filename": "tpm-util/duplicate/include/crypto_aux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6faa6d5_96f29c10",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "4ce6b71f_31a84528",
+        "filename": "tpm-util/duplicate/include/marshal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f830371_d5dd0527",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dae7e5b_eb7ee8eb",
         "filename": "tpm-util/duplicate/include/tpm_duplication_aux.h",
         "patchSetId": 2
@@ -76,6 +142,24 @@
       "writtenOn": "2019-03-12T21:02:49Z",
       "side": 1,
       "message": "Remove the white space",
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbeef834_050a6ad0",
+        "filename": "tpm-util/duplicate/include/tpm_duplication_aux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dae7e5b_eb7ee8eb",
       "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -128,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "1b3f0ce5_26703d9d",
+        "filename": "tpm-util/duplicate/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a81b1ea_b12d7d4c",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86944928_066a98b6",
         "filename": "tpm-util/duplicate/tpm_duplication_aux.c",
         "patchSetId": 2
@@ -139,6 +247,24 @@
       "writtenOn": "2019-03-12T21:02:49Z",
       "side": 1,
       "message": "Why is the return missing here?",
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d38c1d_9ebfa235",
+        "filename": "tpm-util/duplicate/tpm_duplication_aux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:05Z",
+      "side": 1,
+      "message": "This struct is changed and it no longer requires the old definition!",
+      "parentUuid": "86944928_066a98b6",
       "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
