@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba29321c_9c9b6f4c",
+        "filename": "bin/base/openssldockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:39:59Z",
+      "side": 1,
+      "message": "This copy is required for since the header file implementing one of the main implementation will not be copied to the host\u0027s directory upon \"Make install\" command. So we need to specifically copy this file to the library location of TSS and then include it on our functionality implementation. I have raised this as a bug in tss community\n\nNOTE - This step should have been done after installing tss. I have sent out a new patch which will fix this error.",
+      "parentUuid": "a4916422_2001eda9",
+      "revId": "830b6f9cf7bdc9c918a141dbe36ff9699e85288d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21cdaeae_f03d8d5e",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-14T05:57:58Z",
       "side": 1,
       "message": "Why is this copy required? \nIt\u0027s failing for me with a not a directory error.\n\nStep 13/33 : RUN cp /tpm2-tss-2.0.0/src/util/tpm2b.h /usr/local/include/tss2/\n ---\u003e Running in 42552a0e77ab\ncp: cannot create regular file \u0027/usr/local/include/tss2/\u0027: Not a directory",
+      "revId": "830b6f9cf7bdc9c918a141dbe36ff9699e85288d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea723c0_92788ad5",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:39:59Z",
+      "side": 1,
+      "message": "This copy is required for since the header file implementing one of the main implementation will not be copied to the host\u0027s directory upon \"Make install\" command. So we need to specifically copy this file to the library location of TSS and then include it on our functionality implementation. I have raised this as a bug in tss community\n\nNOTE - This step should have been done after installing tss. I have sent out a new patch which will fix this error.",
+      "parentUuid": "21cdaeae_f03d8d5e",
       "revId": "830b6f9cf7bdc9c918a141dbe36ff9699e85288d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
