@@ -189,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "3242325e_81872c97",
+        "filename": "tpm-util/duplicate/include/util.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-20T22:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d774114_a8077a63",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "c3c2a2c7e4a7e5576e3f002c6715f88617e357cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a81b1ea_b12d7d4c",
         "filename": "tpm-util/duplicate/main.c",
         "patchSetId": 2
