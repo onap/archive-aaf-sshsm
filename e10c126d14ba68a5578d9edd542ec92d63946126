@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44250e1a_48c4c984",
+        "filename": "TPM2-Plugin/lib/Makefile.am",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T20:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200cf70c_804d57fb",
+      "revId": "e10c126d14ba68a5578d9edd542ec92d63946126",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d56009_5fbfd355",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "253391ed_16f615ef",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T20:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f06b1c_314a021e",
+      "revId": "e10c126d14ba68a5578d9edd542ec92d63946126",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95b6f8b0_74225cc2",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 3
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "66264910_3ff7f15f",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T20:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b6f8b0_74225cc2",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 37
+      },
+      "revId": "e10c126d14ba68a5578d9edd542ec92d63946126",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "244e8ef2_d2f87d17",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 3
@@ -87,6 +147,30 @@
       "writtenOn": "2019-03-21T13:41:57Z",
       "side": 1,
       "message": "Remove commented code",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 2
+      },
+      "revId": "e10c126d14ba68a5578d9edd542ec92d63946126",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18de442c_e609ec5e",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T20:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "244e8ef2_d2f87d17",
       "range": {
         "startLine": 323,
         "startChar": 0,
