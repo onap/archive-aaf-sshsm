@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f49e221_69175686",
+        "filename": "TPM2-Plugin/config.log",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T02:06:59Z",
+      "side": 1,
+      "message": "This is a generated file. Have removed this file",
+      "parentUuid": "33f79b70_3c6b1511",
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29dbfd23_27cfcfc4",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-03-14T17:48:16Z",
       "side": 1,
       "message": "Include only the required files",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fc88355_ae3943d1",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T02:06:59Z",
+      "side": 1,
+      "message": "We need all the files for implementation",
+      "parentUuid": "29dbfd23_27cfcfc4",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "e02c1159_1161c0d6",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T02:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "891a63e9_6e713e43",
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a143076_7cb11133",
         "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2019-03-14T17:48:16Z",
       "side": 1,
       "message": "Remove white space",
+      "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61704911_23d15e2c",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T02:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a143076_7cb11133",
       "revId": "984f794cbdba2316405e65ed2f0c6c9c978855e8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
