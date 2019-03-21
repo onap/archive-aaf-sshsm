@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#set -e
+set -e
 sudo kill -9 $(ps -ef | grep "apt" | grep -v grep | awk '{print $2}')
 
 sudo rm /var/lib/dpkg/lock
