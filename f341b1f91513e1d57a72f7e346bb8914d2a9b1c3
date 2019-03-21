@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cba19080_15f395ad",
+        "filename": "bin/base/openssldockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T22:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "418ce830_64be86ba",
+      "revId": "f341b1f91513e1d57a72f7e346bb8914d2a9b1c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cba377bd_21ee913a",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-21T04:30:02Z",
       "side": 1,
       "message": "following files also needs to be removed to reduce the size of the image:\ntpm2-abrmd-2.0.0.tar.gz  tpm2-tools-3.1.0.tar.gz  tpm2-tss-2.0.0.tar.gz",
+      "revId": "f341b1f91513e1d57a72f7e346bb8914d2a9b1c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3b78486_fba1aeff",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T22:28:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba377bd_21ee913a",
       "revId": "f341b1f91513e1d57a72f7e346bb8914d2a9b1c3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
