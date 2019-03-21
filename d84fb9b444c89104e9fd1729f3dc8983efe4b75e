@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d77a955_ea62254c",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-21T20:57:38Z",
+      "side": 1,
+      "message": "Will fix in upcoming patch",
+      "revId": "d84fb9b444c89104e9fd1729f3dc8983efe4b75e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
