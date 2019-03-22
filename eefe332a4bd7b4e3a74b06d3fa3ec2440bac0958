@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0037c7d_3946fbd0",
+        "filename": "TPM2-Plugin/lib/include/tpm2_plugin_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-22T15:47:19Z",
+      "side": 1,
+      "message": "Use relative path like used in other files.\n\n#include \u003ctss2/tss2_sys.h\u003e",
+      "revId": "eefe332a4bd7b4e3a74b06d3fa3ec2440bac0958",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f16211b_ce422f6a",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-22T15:47:19Z",
+      "side": 1,
+      "message": "Include only the required headers. Looking at the code below tss2_tcti.h and tss2-tcti-tabrms.h should be selectively included.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "eefe332a4bd7b4e3a74b06d3fa3ec2440bac0958",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae479f32_5e288ec8",
+        "filename": "TPM2-Plugin/lib/tpm2_plugin_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-22T15:47:19Z",
+      "side": 1,
+      "message": "These are already included above",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "eefe332a4bd7b4e3a74b06d3fa3ec2440bac0958",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
