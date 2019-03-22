@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a299e1c_244e3946",
+        "filename": "tpm-util/duplicate/crypto_aux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-22T20:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "b055d384ab8b955e7ec790b47aca2848142952a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
