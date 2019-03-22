@@ -22,6 +22,30 @@
       "revId": "da40a1f6a36f4416122529ec8c43246293b3aeee",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dafe8b2_f7cb146b",
+        "filename": "tpm-util/duplicate/include/crypto_aux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-22T20:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5704bb0_74473ea7",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "da40a1f6a36f4416122529ec8c43246293b3aeee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
