@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f13d1b_2928b9e6",
+        "filename": "tpm-util/duplicate/include/crypto_aux.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-22T16:10:14Z",
+      "side": 1,
+      "message": "Included twice",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "5abbb51720a04d07a071555a76f09f142ed42bdd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
