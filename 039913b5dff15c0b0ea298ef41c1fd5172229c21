@@ -16,6 +16,24 @@
       "revId": "039913b5dff15c0b0ea298ef41c1fd5172229c21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc94b794_ef88c857",
+        "filename": "INFO.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-22T00:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9554a8fb_ea4ddc2f",
+      "revId": "039913b5dff15c0b0ea298ef41c1fd5172229c21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
