@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "299f8ad8_49571bf2",
+        "filename": "build.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3087
+      },
+      "writtenOn": "2019-03-26T21:14:55Z",
+      "side": 1,
+      "message": "should be \"make check\", otherwise unit test will not run.",
+      "revId": "fe7f5f6df868cd88553c1d5eb6f65ce45e524952",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
