@@ -16,6 +16,24 @@
       "revId": "e9d7749328010a7d243c4eabb5e61a59932ecbcb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aba854f_7b756c2f",
+        "filename": "bin/abrmdcontainer/run_abrmd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-03-27T01:39:04Z",
+      "side": 1,
+      "message": "The device is mounted onto the container during the run time and not during the image build time and the login to docker must be done as root to even give permission to the device \"/dev/tpm0\" to \"tss\" user and even for the dbus-daemon to start. So docker login through root is required regardless. This document may recommend steps that are valid if the abrmd is run on hardware. But for the case of a container, I am not able to see the actual purpose since we are already logged in as root.",
+      "parentUuid": "a9b91fcd_a8bcd4e6",
+      "revId": "e9d7749328010a7d243c4eabb5e61a59932ecbcb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
