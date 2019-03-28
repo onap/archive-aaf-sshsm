@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ea17c2c_b54cde36",
+        "filename": "build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-03-28T23:50:58Z",
+      "side": 1,
+      "message": "Will this affect the import tool build?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "4ad446742202cd6d97e5ca7753648fe624bfb134",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
