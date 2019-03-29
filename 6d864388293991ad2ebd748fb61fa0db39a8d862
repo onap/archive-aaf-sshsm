@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb1deda_73408541",
+        "filename": "build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-03-29T21:23:24Z",
+      "side": 1,
+      "message": "should be ./configure",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 10
+      },
+      "revId": "6d864388293991ad2ebd748fb61fa0db39a8d862",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
