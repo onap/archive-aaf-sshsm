@@ -10,7 +10,7 @@ sleep 1m
 # Start Resource Manager
 if [ -z $TPM_SIMULATOR ]; then
   echo "Using TPM Hardware for the operations";
-  tpm2-abrmd
+  tpm2-abrmd --allow-root
 else
   echo "Using TPM Simulator for the opeations";
   hostip=$(ip route show | awk '/default/ {print $3}');

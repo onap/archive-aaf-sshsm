@@ -24,10 +24,10 @@ tpm2_readpublic -H ${SRKHANDLE} --opu out_primary_public -T device -V
 
 if [ $? -ne 0 ]; then echo; echo -e "${YELLOW} Primary Key does not exist, creating...";
     rm -f PrimaryKeyBlob
-    echo "tpm2_createprimary -P ${O_PASSWORD} -K ${KEY_PASSWORD} -A o -g 0x000B
+    echo "tpm2_createprimary -P ${O_PASSWORD} -K ${KEY_PASSWORD} -H o -g 0x000B
         -G 0x0001 -T device -V -C PrimaryKeyBlob"
 
-    tpm2_createprimary -P ${O_PASSWORD} -K ${KEY_PASSWORD} -A o -g 0x000B \
+    tpm2_createprimary -P ${O_PASSWORD} -K ${KEY_PASSWORD} -H o -g 0x000B \
         -G 0x0001 -T device -V -C PrimaryKeyBlob
 
     if [ $? -ne 0 ]; then echo; echo -e "${RED}Error, Exit.";
