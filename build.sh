@@ -77,6 +77,12 @@ rm -rf tpm2-tools-3.1.0
 echo "Build Import utility tool"
 cd tpm-util/import
 make -f sampleMakefile
-cd ../../
+cd ../..
 
+echo "Build TPM-Plugin"
+cd TPM2-Plugin
+./bootstrap
+./configure
+sudo make install
+cd ..
 sudo ldconfig
