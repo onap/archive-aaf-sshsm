@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa070d1_7f7c460d",
+        "filename": "build.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "Add this after installing openssl.\nRemove the $LD_LIBRARY_PATH on the right side. It is empty.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58580c1b_b8511fba",
+        "filename": "build.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "Use 1.1.0",
+      "range": {
+        "startLine": 37,
+        "startChar": 44,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b0b2f74_83b7d5cf",
+        "filename": "build.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "use --prefix\u003d/usr/local/ssl --openssldir\u003d/usr/local/ssl",
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99fcc324_a87fee9d",
+        "filename": "build.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "/usr/local/ssl",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1c05ce_8edd2bb7",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 28
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "Should be same as the openssl install dir.\n/usr/local/ssl",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7285415e_68fdf00b",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "remove /",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb0d617f_19441880",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "Uncomment this.",
+      "range": {
+        "startLine": 21,
+        "startChar": 81,
+        "endLine": 21,
+        "endChar": 82
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c62f6123_e7976605",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "remove /",
+      "range": {
+        "startLine": 21,
+        "startChar": 106,
+        "endLine": 21,
+        "endChar": 107
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44a76eb4_f8ed74c9",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "remove /",
+      "range": {
+        "startLine": 23,
+        "startChar": 32,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "421964c2_d7d748c5",
+        "filename": "tpm-util/duplicate/sampleMakefile",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 301
+      },
+      "writtenOn": "2019-04-03T22:15:03Z",
+      "side": 1,
+      "message": "Add ${OPENSSL_DIR}/lib as one more search path here",
+      "revId": "9aed7f07f0d13fec1c37bf2156f2433fa3ea0cd4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
