@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c478b49_5946d9a5",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-04-04T03:13:21Z",
+      "side": 1,
+      "message": "The build fails with not being able to find libcrypto library if this is removed",
+      "parentUuid": "63a62d6a_76eb6296",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "cc32384c794019a56fdc715e5ba475d72b086d0d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcb64db9_52330174",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6d83690d_f4f342a3",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-04-04T03:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb64db9_52330174",
+      "revId": "cc32384c794019a56fdc715e5ba475d72b086d0d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f62f9ae7_581f2989",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 5
@@ -53,6 +95,24 @@
       "writtenOn": "2019-04-03T23:52:17Z",
       "side": 1,
       "message": "--with-openssl\u003d/usr/local/ssl will need to be enabled here too.",
+      "revId": "cc32384c794019a56fdc715e5ba475d72b086d0d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd2dedd7_44e30c09",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-04-04T03:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62f9ae7_581f2989",
       "revId": "cc32384c794019a56fdc715e5ba475d72b086d0d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
