@@ -17,16 +17,13 @@ sudo apt-get -y install \
     libcmocka0 \
     libcmocka-dev \
     build-essential \
-    git \
     pkg-config \
-    vim \
     gcc \
     g++ \
     m4 \
     curl \
     wget \
     liburiparser-dev \
-    libssl-dev \
     pandoc \
     opensc \
     default-jdk \
@@ -79,7 +76,7 @@ cd ..
 rm -rf tpm2-abrmd-2.0.0
 
 cd tpm2-tools-3.1.0
-./configure
+./configure --disable-hardening
 make
 sudo make install
 cd ..
@@ -93,7 +90,7 @@ cd ../..
 echo "Build TPM-Plugin"
 cd TPM2-Plugin
 ./bootstrap
-./configure
+./configure LDFLAGS="-L/usr/local/ssl/lib"
 sudo make install
 cd ..
 sudo ldconfig
