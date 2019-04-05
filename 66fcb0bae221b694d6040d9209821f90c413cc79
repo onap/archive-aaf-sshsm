@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23919794_6dfa4405",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-04-05T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56fc5d4_45784a95",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "66fcb0bae221b694d6040d9209821f90c413cc79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42c59c86_ea3e85c9",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cb319049_4e5f565a",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-04-05T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c59c86_ea3e85c9",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "66fcb0bae221b694d6040d9209821f90c413cc79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0778d8f2_d2303939",
         "filename": "bin/base/xenialdockerfile",
         "patchSetId": 7
@@ -59,6 +107,24 @@
       "writtenOn": "2019-04-04T22:57:39Z",
       "side": 1,
       "message": "Remove openssl tar.gz and folder",
+      "revId": "66fcb0bae221b694d6040d9209821f90c413cc79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90149f70_86ba43ed",
+        "filename": "bin/base/xenialdockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 3261
+      },
+      "writtenOn": "2019-04-05T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0778d8f2_d2303939",
       "revId": "66fcb0bae221b694d6040d9209821f90c413cc79",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
