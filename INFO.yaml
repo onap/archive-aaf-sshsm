@@ -38,7 +38,7 @@ committers:
     - <<: *onap_aaf_ptl
     - name: 'Kiran Kamineni'
       email: 'kiran.k.kamineni@intel.com'
-      company: 'Intel'
+      company: 'Intel Corp'
       id: 'kirankamineni'
       timezone: 'America/Santa_Clara'
     - name: 'Sai Gandham'
