@@ -1,13 +1,16 @@
 FROM nexus3.onap.org:10001/onap/aaf/aaf-base-xenial:latest
 
-RUN git clone https://gerrit.onap.org/r/aaf/sshsm
-RUN cd sshsm && \
+RUN mkdir -p /src
+RUN cd src && \
+  git clone https://gerrit.onap.org/r/aaf/sshsm
+RUN cd src && \
+  cd sshsm && \
   cd tpm-util && \
   cd duplicate && \
   make -f sampleMakefile
 RUN mkdir -p /dup/bin && \
-   cp sshsm/tpm-util/duplicate/ossl_tpm_duplicate /dup/bin && \
-   rm -rf sshsm
+   cp src/sshsm/tpm-util/duplicate/ossl_tpm_duplicate /dup/bin && \
+   rm -rf src
 
 RUN mkdir -p /distcenter/bin
 COPY ./create_ca.sh /distcenter/bin
