@@ -37,6 +37,9 @@ RUN wget https://www.openssl.org/source/openssl-1.1.0.tar.gz && \
   make install
 RUN apt-get -y install libgcrypt20-dev
 
+RUN echo "/usr/local/ssl/lib" > /etc/ld.so.conf.d/ssl.conf && \
+  ldconfig
+
 RUN apt-get -y install valgrind
 RUN wget https://github.com/tpm2-software/tpm2-tss/releases/download/2.0.0/tpm2-tss-2.0.0.tar.gz
 RUN tar -xvf tpm2-tss-2.0.0.tar.gz

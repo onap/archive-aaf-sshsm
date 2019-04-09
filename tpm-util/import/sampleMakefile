@@ -16,7 +16,7 @@ OBJS=	util.o \
 
 CFLAGS += -g -fPIC -I./include -I${TSS_DIR}/include/ -I$(TSS_DIR)/sysapi/include
 
-LDFLAGS += -L/usr/local/lib/ -ltss2-tcti-device -ltss2-sys -ltss2-tcti-tabrmd  -ldl
+LDFLAGS += -L/usr/local/lib/ -L/usr/local/ssl/lib -ltss2-tcti-device -ltss2-sys -ltss2-tcti-tabrmd  -ldl
 
 LIBS = -lpthread -lcrypto -lssl
 
