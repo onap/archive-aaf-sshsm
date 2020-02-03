@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbb21940_45cad107",
+        "filename": "INFO.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5775
+      },
+      "writtenOn": "2020-02-03T10:58:05Z",
+      "side": 1,
+      "message": "timezone: \u0027Europe/Warsaw\u0027",
+      "revId": "ab8aa1060362cc3085fae80c4fbb6937b38e3e06",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
