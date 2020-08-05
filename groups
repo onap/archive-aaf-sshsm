@@ -1,4 +1,5 @@
 # UUID                                                                    	Group Name
 #
+0c2aee3136fbba7e5118a41310950db5d2c7afa5                                  	saml/onap-gerrit-aaf-sshsm-committers
 daebbf523be390041a1a9c0e340a6d833aae5043                                  	GitHub Replication
 ldap:cn=onap-gerrit-aaf-sshsm-committers,ou=Groups,dc=freestandards,dc=org	ldap/onap-gerrit-aaf-sshsm-committers
